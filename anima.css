@@ -1,0 +1,418 @@
+/*
+ * @author Daisuke Homma
+ */
+
+/* container */
+div.container {
+  width: 1080px;
+  height: 820px;
+}
+
+/* tool view */
+div.tv {
+  border: 1px solid;
+  float: left;
+  width: 70px;
+  height: 600px;
+}
+
+div.tv button {
+  background: white;
+  width: 60px;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 9px;
+}
+
+div.tv button.about {
+  background-color: mistyrose;
+}
+
+div.tv button.notyet {
+  color: silver;
+  background-color: lightgray;
+}
+
+/* inspector */
+div.inspector {
+  border: 1px solid;
+  float: right;
+  width: 200px;
+  height: 600px;
+}
+
+div.inspector fieldset {
+  border: 1px solid lightgray;
+  margin-top: 5px;
+  padding-bottom: 6px;
+  font-size: 9px;
+  font-family: sans-serif;
+}
+
+div.inspector legend {
+  font-size: 9px;
+}
+
+div.inspector label {
+  display: block;
+  float: left;
+  text-align: right;
+  width: 60px;
+  margin-right: 10px;
+}
+
+div.inspector input {
+  font-size: 9px;
+}
+
+div.inspector select {
+  margin-top: 4px;
+  font-size: 9px;
+}
+
+div.inspector fieldset.path_attrs_field label {
+  margin-top: 8px;
+}
+
+div.inspector fieldset.path_attrs_field select {
+  margin-top: 6px;
+  width: 90px;
+}
+
+div.inspector fieldset.path_attrs_field input {
+  border: 1px solid lightgray;
+  margin-top: 6px;
+}
+
+div.inspector fieldset.path_attrs_field input.close_path {
+  width: 10px;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+div.inspector input.color_attrs {
+  margin-left: 12px;
+}
+
+div.inspector fieldset.color_attrs_field label {
+  display: inline-block;
+  float: none;
+  text-align: left;
+  width: 10px;
+  margin-left: 5px;
+}
+
+div.inspector fieldset.color_attrs_field label.path_stroke {
+  width: 20px;
+}
+
+div.inspector div.color {
+  border: 1px solid;
+  width: 160px;
+  height: 12px;
+  margin-left: 8px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  color: lightgray;
+  background-color: white;
+}
+
+div.inspector label.hsl_slider {
+  margin-top: 2px;
+}
+
+div.inspector input.hsl_slider {
+  width: 100px;
+  height: 12px;
+}
+
+div.inspector div.palette_color {
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+}
+
+div.inspector button.palette {
+  font-size: 9px;
+  background: white;
+  width: 85px;
+  height: 18px;
+  margin-left: 2px;
+  margin-top: 4px;
+}
+
+div.inspector button.path_ops, div.inspector button.notyet {
+  font-size: 9px;
+  background: white;
+  width: 85px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+div.inspector button.notyet {
+  color: silver;
+  background-color: lightgray;
+}
+
+/* canvas */
+canvas.cv {
+  border: 1px solid;
+  user-select: none;
+  cursor: default;
+  margin-left: 2px;
+}
+
+/* exporter / importer */
+div.modal_window {
+  background: white;
+  border: 1px solid;
+  position: absolute;
+  top: 100px;
+  left: 170px;
+  height: 400px;
+  width: 610px;
+  display: none;
+}
+
+button.mwin_close {
+  background: white;
+  position: absolute;
+  top: 10px;
+  left: 530px;
+  width: 60px;
+}
+
+textarea.mwin_text {
+  position: absolute;
+  top: 70px;
+  left: 80px;
+  height: 240px;
+  width: 450px;
+}
+
+div.modal_window div.check_box {
+  position: absolute;
+  top: 320px;
+  left: 70px;
+}
+
+input.mwin_check {
+  margin-left: 10px;
+}
+
+button.mwin_execute {
+  background: white;
+  position: absolute;
+  top: 350px;
+  left: 470px;
+  width: 60px;
+}
+
+/* track tool box */
+
+div.track_tool {
+  float: left;
+  border: 1px solid;
+  width: 70px;
+  height: 202px;
+  margin-top: 2px
+}
+
+div.track_tool button.track_tb, div.track_tool button.notyet {
+  background: white;
+  width: 60px;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 9px;
+}
+
+div.track_tool button.notyet {
+  color: silver;
+  background-color: lightgray;
+}
+
+/* scene view */
+div.scene_view {
+  float: left;
+  border: 1px solid;
+  width: 1004px;
+  height: 200px;
+  margin-top: 2px;
+  margin-left: 2px;
+  padding-top: 2px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+/* div.enclosure is created by javascript. see track_view.js */
+div.scene_view div.sv_header {
+  width: 1002;
+  height: 22px;
+  margin-right: 0px;
+  padding-right: 0px;
+  border: 0px;
+}
+
+div.scene_view div.enclosure {
+  width: 1002;
+  height: 22px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+div.scene_view div.track_container {
+  width: 1002;
+  height: 155px;
+}
+
+div.scene_view div.label {
+  border: 1px solid lightgray;
+  margin-left: 2px;
+  float: left;
+  width: 274px;
+  height: 20px;
+}
+
+div.scene_view div.active_header {
+  display: inline-block;
+  height: 18px;
+  width: 10px;
+}
+
+div.scene_view div.visibility {
+  display: inline-block;
+  font-size: 9px;
+  height: 18px;
+  width: 40px;
+  vertical-align: middle;
+  padding-left: 12px;
+}
+
+div.scene_view div.track_name {
+  display: inline-block;
+  font-size: 9px;
+  height: 18px;
+  width: 190px;
+  vertical-align: middle;
+  padding-left: 2px;
+}
+
+div.scene_view div.active {
+  height: 16;
+  width: 10px;
+  font-size: 9px;
+  color: white;
+  vertical-align: top;
+  padding-top: 4px;
+  display: none;
+}
+
+div.scene_view input.visibility {
+  font-size: 9px;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 16px;
+  width: 40px;
+  display: none;
+}
+
+div.scene_view input.track_name {
+  border: 1px solid lightgray;
+  font-size: 9px;
+  width: 190px;
+  height: 16px;
+  vertical-align: top;
+  margin-top: 2px;
+  display: none;
+}
+
+div.scene_view div.time_frame_container {
+  border: 1px solid lightgray;
+  float: left;
+  margin-left: 1px;
+  margin-right: 0px;
+  width: 720px;
+  height: 20px;
+}
+
+div.scene_view div.frame_counter {
+  font-size: 9px;
+  margin-top: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 116px;
+  height: 10px;
+  float: left;
+}
+
+div.scene_view div.frame {
+  border: 1px solid silver;
+  float: left;
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 6px;
+  height: 14px;
+  display: none;
+}
+
+div.scene_view div.tenth_frame {
+  border: 1px solid gray;
+  float: left;
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  width: 6px;
+  height: 14px;
+  display: none;
+}
+
+div.scene_view div.track_footer {
+  border: 1px solid lightgray;
+  width: 997px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+div.scene_view div.track_footer input {
+  font-size: 9px;
+  margin-left: 8px;
+  margin-top: 6px;
+  vertical-align: top;
+}
+
+div.scene_view div.track_attrs, div.scene_view div.notyet {
+  display: inline-block;
+  font-size: 9px;
+  padding-top: 5px;
+  vertical-align: top;
+}
+
+div.scene_view div.notyet {
+  color: silver;
+  background-color: lightgray;
+}
+
+div.scene_view div.track_buttons {
+  float: right;
+  height: 20px;
+  margin-right: 10px;
+}
+
+div.scene_view button.track_b, div.scene_view button.notyet {
+  background: white;
+  width: 60px;
+  font-size: 9px;
+  vertical-align: top;
+}
+
+div.scene_view button.notyet {
+  color: silver;
+  background-color: lightgray;
+}
+

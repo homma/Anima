@@ -1,0 +1,417 @@
+<html>
+<head>
+  <title>Anima: 2D Vector Animation Editor</title>
+
+  <!-- @author Daisuke Homma -->
+
+  <link rel="stylesheet" type="text/css" href="anima.css">
+
+  <!-- scripts -->
+  <script type="text/javascript" src="./model/global/global.js"></script>
+  <script type="text/javascript" src="./model/global/canvas.js"></script>
+  <script type="text/javascript" src="./model/undo/undo_manager.js"></script>
+
+  <script type="text/javascript" src="./util/utils.js"></script>
+
+  <!-- event handler -->
+  <script type="text/javascript" src="./ui_event/event_state.js"></script>
+  <!-- tools -->
+  <script type="text/javascript" src="./ui_event/pen/pen.js"></script>
+  <script type="text/javascript" src="./ui_event/line/line.js"></script>
+  <!-- selector -->
+  <script type="text/javascript" src="./ui_event/selector/selector.js"></script>
+  <!-- curve modifier -->
+  <script type="text/javascript" src="./ui_event/modifier/curve_modifier.js"
+    ></script>
+  <!-- path mover -->
+  <script type="text/javascript" src="./ui_event/mover/path_mover.js"></script>
+  <!-- path resizer -->
+  <script type="text/javascript" src="./ui_event/resizer/path_resizer.js"
+    ></script>
+  <!-- curve creator -->
+  <script type="text/javascript" src="./ui_event/curve/curve_creator.js"
+    ></script>
+  <script type="text/javascript" src="./ui_event/curve/dragging.js"></script>
+  <script type="text/javascript" src="./ui_event/curve/finishing.js"></script>
+  <script type="text/javascript" src="./ui_event/curve/first_move.js"></script>
+  <script type="text/javascript" src="./ui_event/curve/hover.js"></script>
+  <script type="text/javascript" src="./ui_event/curve/initial.js"></script>
+
+  <!-- operations -->
+  <script type="text/javascript" src="./operation/operations.js"></script>
+  <script type="text/javascript" src="./operation/path_inspector.js"></script>
+
+  <!-- view -->
+  <script type="text/javascript" src="./view/inspector.js"></script>
+  <script type="text/javascript" src="./view/tool_view.js"></script>
+  <script type="text/javascript" src="./view/exporter.js"></script>
+  <script type="text/javascript" src="./view/importer.js"></script>
+
+  <!-- track view -->
+  <script type="text/javascript" src="./view/track/objects.js"></script>
+  <script type="text/javascript" src="./view/track/track_view.js"></script>
+  <script type="text/javascript" src="./view/track/animation.js"></script>
+  <script type="text/javascript" src="./view/track/fields.js"></script>
+  <script type="text/javascript" src="./view/track/timeframe.js"></script>
+  <script type="text/javascript" src="./view/track/event.js"></script>
+
+  <!-- editor -->
+  <script type="text/javascript" src="./editor/editor.js"></script>
+  <script type="text/javascript" src="./editor/draw.js"></script>
+  <script type="text/javascript" src="./editor/hittest.js"></script>
+  <script type="text/javascript" src="./editor/select.js"></script>
+  <script type="text/javascript" src="./editor/modify.js"></script>
+  <script type="text/javascript" src="./editor/modify_path.js"></script>
+  <script type="text/javascript" src="./editor/modify_edge.js"></script>
+  <script type="text/javascript" src="./editor/copy_paste.js"></script>
+  <script type="text/javascript" src="./editor/util.js"></script>
+
+  <!-- data -->
+  <script type="text/javascript" src="./model/animation/animation.js"></script>
+  <script type="text/javascript" src="./model/animation/play.js"></script>
+  <script type="text/javascript" src="./model/animation/track.js"></script>
+  <script type="text/javascript" src="./model/animation/export.js"></script>
+  <script type="text/javascript" src="./model/exporter/exporter.js"></script>
+  <script type="text/javascript" src="./model/exporter/importer.js"></script>
+
+  <!-- track / timeframe -->
+  <script type="text/javascript" src="./model/timeframe/timeframe.js"></script>
+  <script type="text/javascript" src="./model/timeframe/modify.js"></script>
+  <script type="text/javascript" src="./model/timeframe/export.js"></script>
+  <script type="text/javascript" src="./model/track/track.js"></script>
+  <script type="text/javascript" src="./model/track/modify.js"></script>
+  <script type="text/javascript" src="./model/track/export.js"></script>
+
+  <!-- path -->
+  <script type="text/javascript" src="./model/path/path.js"></script>
+  <script type="text/javascript" src="./model/path/draw.js"></script>
+  <script type="text/javascript" src="./model/path/export.js"></script>
+  <script type="text/javascript" src="./model/path/hittest.js"></script>
+  <script type="text/javascript" src="./model/path/modify.js"></script>
+  <script type="text/javascript" src="./model/path/setter.js"></script>
+  <script type="text/javascript" src="./model/path/transform.js"></script>
+  <script type="text/javascript" src="./model/path/util.js"></script>
+
+  <!-- edges -->
+  <script type="text/javascript" src="./model/edges/point.js"></script>
+  <script type="text/javascript" src="./model/edges/line.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/curve.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/draw.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/modify.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/export.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/hittest.js"></script>
+  <script type="text/javascript" src="./model/edges/curve/util.js"></script>
+  <script type="text/javascript" src="./model/edges/lgrad.js"></script>
+  <script type="text/javascript" src="./model/edges/move.js"></script>
+  <script type="text/javascript" src="./model/edges/rgrad.js"></script>
+
+  <script type="text/javascript" src="./anima.js"></script>
+  <!-- scripts -->
+
+</head>
+<body>
+
+<div id="container" class="container">
+
+<!-- tool view / tool button -->
+<div id="tv" class="tv">
+  <button class="about" id="AnimaButton">Anima</button>
+  <button class="tb" id="penButton">pen</button>
+  <button class="tb" id="curveCreatorButton">curve</button>
+  <button class="notyet" id="shapeButton">shape</button>
+  <button class="tb" id="selectorButton">selector</button>
+  <button class="tb" id="selectAllButton">select all</button>
+  <button class="tb" id="clearButton">clear</button>
+  <button class="tb" id="deleteButton">delete</button>
+  <button class="tb" id="cutButton">cut</button>
+  <button class="tb" id="copyButton">copy</button>
+  <button class="tb" id="pasteButton">paste</button>
+  <button class="notyet" id="undoButton">undo</button>
+  <button class="notyet" id="redoButton">redo</button>
+  <button class="tb" id="saveButton">save</button>
+  <button class="tb" id="restoreButton">restore</button>
+  <button class="tb" id="exportButton">export</button>
+  <button class="tb" id="importButton">import</button>
+  <button class="notyet" id="configButton">config</button>
+</div>
+
+<!-- path inspector view -->
+<div id="inspector" class="inspector">
+
+  <!-- path attributes -->
+  <fieldset class="path_attrs_field" id="path_attrs_field">
+    <legend class="path_attrs">Path Attributes</legend>
+
+    <div>
+      <label class="path_attrs" for="line_width">Line Width: </label>
+      <input type=number class="line_width" id="line_width"
+        min=0.0 max=100.0 step=0.5>
+    </div>
+    <div>
+      <label class="path_attrs" for="line_cap">Line Cap: </label>
+      <select class="line_cap" id="line_cap">
+        <option>butt</option>
+        <option>round</option>
+        <option>square</option>
+      </select>
+    </div>
+    <div>
+      <label class="path_attrs" for="line_join">Line Join: </label>
+      <select class="line_join" id="line_join">
+        <option>bevel</option>
+        <option>round</option>
+        <option>miter</option>
+      </select>
+    </div>
+    <div>
+      <label class="path_attrs" for="miter_limit">Miter Limit: </label>
+      <input type=number class="miter_limit" id="miter_limit"
+        min=0.0 max=100.0 step=0.5>
+    </div>
+    <div>
+      <label class="path_attrs" for="close_path">Close Path: </label>
+      <input type=checkbox class="close_path" id="close_path" />
+    </div>
+
+  </fieldset>
+
+  <!-- color attributes -->
+  <fieldset class="color_attrs_field" id="color_attrs_field">
+    <legend class="color_attrs">Color Attributes</legend>
+
+    <div>
+      <input type=radio class="color_attrs" name="color_attr" id="path_stroke"
+      checked
+      ><label for="path_stroke" class="path_stroke" >Stroke</label
+      ><input type=radio class="color_attrs" name="color_attr" id="path_fill"
+      ><label for="path_fill">Fill</label
+      ><input type=radio class="color_attrs" name="color_attr" id="path_both"
+      ><label for="path_both">Both</label>
+    </div>
+
+    <!-- necessary?
+    <input type=checkbox class="color_attrs" id="path_same_color"
+       ><span>Use same color for fill and stroke</span>
+    -->
+
+  </fieldset>
+
+  <!-- stroke color -->
+  <fieldset class="stroke_color_field" id="stroke_color_field">
+    <legend class="stroke_color">Stroke Color</legend>
+
+    <div class="color" id="stroke_color"></div>
+
+    <label class="hsl_slider" for="stroke_hue_slider">Hue: </label>
+    <input type=range class="hsl_slider" id="stroke_hue_slider"
+      min=0 max=360 step=1>
+
+    <label class="hsl_slider" for="stroke_sat_slider">Saturation: </label>
+    <input type=range class="hsl_slider" id="stroke_sat_slider"
+      min=0 max=100 step=1>
+
+    <label class="hsl_slider" for="stroke_lum_slider">Luminance: </label>
+    <input type=range class="hsl_slider" id="stroke_lum_slider"
+      min=0 max=100 step=1>
+
+    <label class="hsl_slider" for="stroke_alp_slider">Alpha: </label>
+    <input type=range class="hsl_slider" id="stroke_alp_slider"
+      min=0 max=1 step=0.01>
+  </fieldset>
+
+  <!-- fill color -->
+  <fieldset class="fill_color_field" id="fill_color_field">
+    <legend class="hsl">Fill Color</legend>
+
+    <div class="color" id="fill_color"></div>
+
+    <label class="hsl_slider" for="fill_hue_slider">Hue: </label>
+    <input type=range class="hsl_slider" id="fill_hue_slider"
+      min=0 max=360 step=1>
+
+    <label class="hsl_slider" for="fill_sat_slider">Saturation: </label>
+    <input type=range class="hsl_slider" id="fill_sat_slider"
+      min=0 max=100 step=1>
+
+    <label class="hsl_slider" for="fill_lum_slider">Luminance: </label>
+    <input type=range class="hsl_slider" id="fill_lum_slider"
+      min=0 max=100 step=1>
+
+    <label class="hsl_slider" for="fill_alp_slider">Alpha: </label>
+    <input type=range class="hsl_slider" id="fill_alp_slider"
+      min=0 max=1 step=0.01>
+  </fieldset>
+
+  <fieldset class="palette" id="palette">
+    <legend class="palette">Color Palette</legend>
+    <div class="palette_color" id=palette_color_1"></div>
+    <div class="palette_color" id=palette_color_2"></div>
+    <div class="palette_color" id=palette_color_3"></div>
+    <div class="palette_color" id=palette_color_4"></div>
+    <div class="palette_color" id=palette_color_5"></div>
+    <div class="palette_color" id=palette_color_6"></div>
+    <div class="palette_color" id=palette_color_7"></div>
+    <div class="palette_color" id=palette_color_8"></div>
+    <div class="palette_color" id=palette_color_9"></div>
+    <div class="palette_color" id=palette_color_10"></div>
+    <div class="palette_color" id=palette_color_11"></div>
+    <div class="palette_color" id=palette_color_12"></div>
+    <div class="palette_color" id=palette_color_13"></div>
+    <div class="palette_color" id=palette_color_14"></div>
+    <!-- class="palette" -->
+    <button class="notyet" id="set_fill_color">set fill color</button>
+    <button class="notyet" id="set_stroke_color">set stroke color</button>
+  </fieldset>
+
+  <!-- operations -->
+  <fieldset class="path_ops_field" id="path_ops_field">
+    <legend class="path_ops">Path Operations</legend>
+    <!-- class="path_ops -->
+    <button class="path_ops" id="transform">transform</button>
+    <button class="path_ops" id="resize">resize</button>
+    <button class="notyet" id="rotate">rotate</button>
+
+    <button class="notyet" id="merge_p">merge paths</button>
+    <button class="notyet" id="divide">divide</button>
+    <button class="notyet" id="reduce_p">reduce points</button>
+    <button class="notyet" id="subdivide">subdivide</button>
+    <button class="notyet" id="bring_f">bring front</button>
+    <button class="notyet" id="bring_b">bring back</button>
+  </fieldset>
+
+</div>
+
+<!-- canvas -->
+<canvas id="cv" class="cv" width=800 height=600></canvas>
+
+<!-- exporter window -->
+<div id="exportPain" class="modal_window">
+  <button id="exportPainClose" class="mwin_close">close</button>
+  <textarea id="exportText" class="mwin_text"></textarea>
+
+  <div class="check_box">
+    <input type=checkbox id="exportSelectedOnly" class="mwin_check" />
+    <span>Export Selected Pathes Only.</span>
+  </div>
+</div>
+
+<!-- importer window -->
+<div id="importPain" class="modal_window">
+  <button id="importPainClose" class="mwin_close">close</button>
+  <textarea id="importText" class="mwin_text"></textarea>
+
+  <div class="check_box">
+    <input type=checkbox id="importSelectedOnly" class="mwin_check" />
+    <span>Preserve existing data.</span>
+  </div>
+
+  <button id="importerExecuteButton" class="mwin_execute"
+    >Import</button>
+</div>
+
+<!-- track tool view -->
+<div class="track_tool" id="track_tool">
+  <!-- class="track_tb" -->
+  <button class="notyet" id="track_new">new</button>
+  <button class="notyet" id="track_delete">delete</button>
+  <button class="notyet" id="track_front">front</button>
+  <button class="notyet" id="track_back">back</button>
+  <button class="track_tb" id="track_run">run</button>
+</div>
+
+<!-- track / frame view -->
+<div class="scene_view" id="scene_view">
+  <div class="sv_header" id="sv_header">
+    <div class="label">
+      <div class="active_header"></div>
+      <div class="visibility">visible</div>
+      <div class="track_name">name</div>
+    </div>
+    <div class="time_frame_container">
+      <div class="frame_counter" id="frame_counter_1"></div>
+      <div class="frame_counter" id="frame_counter_2"></div>
+      <div class="frame_counter" id="frame_counter_3"></div>
+      <div class="frame_counter" id="frame_counter_4"></div>
+      <div class="frame_counter" id="frame_counter_5"></div>
+      <div class="frame_counter" id="frame_counter_6"></div>
+    </div>
+  </div>
+  <div class="track_container" id="track_container">
+    <div class="enclosure" id="enclosure_1">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_2">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_3">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_4">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_5">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_6">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+    <div class="enclosure" id="enclosure_7">
+      <div class="label">
+        <div class="active">&nbsp;&gt;&gt;</div>
+        <input type=checkbox class="visibility">
+        <input class="track_name">
+      </div>
+      <div class="time_frame_container"></div>
+    </div>
+  </div>
+  <div class="track_footer" id="track_footer">
+    <input type=checkbox class="track_b" id="run_loop">
+    <!-- class="track_attrs" -->
+    <div class="notyet">loop</div>
+    <input type=checkbox class="track_b" id="onion">
+    <!-- class="track_attrs" -->
+    <div class="notyet">onion</div>
+    <div class="track_buttons" id="track_buttons">
+      <!-- class="track_b" -->
+      <button class="notyet" id="track_up">up</button>
+      <button class="notyet" id="track_down">down</button>
+      <button class="track_b" id="track_prev"><- prev</button>
+      <button class="track_b" id="track_next">next -></button>
+    </div>
+  </div>
+</div>
+
+</div>  <!-- container -->
+
+</body>
+</html>
