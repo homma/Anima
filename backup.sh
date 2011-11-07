@@ -4,11 +4,12 @@
 #export BKDIR
 #cp -Rp . ${BKDIR}
 
+git checkout master
 git add .
 git commit -a -m "auto commit"
 git push origin master
 
 git checkout gh-pages
-git pull
+git pull . master
 git push origin gh-pages
 
