@@ -42,10 +42,16 @@
   <script type="text/javascript" src="./operation/path_inspector.js"></script>
 
   <!-- view -->
-  <script type="text/javascript" src="./view/inspector.js"></script>
   <script type="text/javascript" src="./view/tool_view.js"></script>
   <script type="text/javascript" src="./view/exporter.js"></script>
   <script type="text/javascript" src="./view/importer.js"></script>
+
+  <!-- inspector view -->
+  <script type="text/javascript" src="./view/inspector/inspector.js"></script>
+  <script type="text/javascript" src="./view/inspector/color_stock.js"></script>
+  <script type="text/javascript" src="./view/inspector/helper.js"></script>
+  <script type="text/javascript" src="./view/inspector/register.js"></script>
+  <script type="text/javascript" src="./view/inspector/update.js"></script>
 
   <!-- track view -->
   <script type="text/javascript" src="./view/track/objects.js"></script>
@@ -73,6 +79,10 @@
   <script type="text/javascript" src="./model/animation/export.js"></script>
   <script type="text/javascript" src="./model/exporter/exporter.js"></script>
   <script type="text/javascript" src="./model/exporter/importer.js"></script>
+
+  <!-- color -->
+  <script type="text/javascript" src="./model/color/color.js"></script>
+  <script type="text/javascript" src="./model/color/color_stock.js"></script>
 
   <!-- track / timeframe -->
   <script type="text/javascript" src="./model/timeframe/timeframe.js"></script>
@@ -242,25 +252,24 @@
       min=0 max=1 step=0.01>
   </fieldset>
 
-  <fieldset class="palette" id="palette">
-    <legend class="palette">Color Palette</legend>
-    <div class="palette_color" id=palette_color_1"></div>
-    <div class="palette_color" id=palette_color_2"></div>
-    <div class="palette_color" id=palette_color_3"></div>
-    <div class="palette_color" id=palette_color_4"></div>
-    <div class="palette_color" id=palette_color_5"></div>
-    <div class="palette_color" id=palette_color_6"></div>
-    <div class="palette_color" id=palette_color_7"></div>
-    <div class="palette_color" id=palette_color_8"></div>
-    <div class="palette_color" id=palette_color_9"></div>
-    <div class="palette_color" id=palette_color_10"></div>
-    <div class="palette_color" id=palette_color_11"></div>
-    <div class="palette_color" id=palette_color_12"></div>
-    <div class="palette_color" id=palette_color_13"></div>
-    <div class="palette_color" id=palette_color_14"></div>
-    <!-- class="palette" -->
-    <button class="notyet" id="set_fill_color">set fill color</button>
-    <button class="notyet" id="set_stroke_color">set stroke color</button>
+  <fieldset class="color_stock" id="color_stock">
+    <legend class="color_stock">Color Stock</legend>
+    <div class="color_stock" id="color_stock_0"></div>
+    <div class="color_stock" id="color_stock_1"></div>
+    <div class="color_stock" id="color_stock_2"></div>
+    <div class="color_stock" id="color_stock_3"></div>
+    <div class="color_stock" id="color_stock_4"></div>
+    <div class="color_stock" id="color_stock_5"></div>
+    <div class="color_stock" id="color_stock_6"></div>
+    <div class="color_stock" id="color_stock_7"></div>
+    <div class="color_stock" id="color_stock_8"></div>
+    <div class="color_stock" id="color_stock_9"></div>
+    <div class="color_stock" id="color_stock_10"></div>
+    <div class="color_stock" id="color_stock_11"></div>
+    <div class="color_stock" id="color_stock_12"></div>
+    <div class="color_stock" id="color_stock_13"></div>
+    <button class="color_stock" id="set_fill_color">set fill color</button>
+    <button class="color_stock" id="set_stroke_color">set stroke color</button>
   </fieldset>
 
   <!-- operations -->

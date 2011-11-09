@@ -127,7 +127,7 @@ div.inspector input.hsl_slider {
   height: 12px;
 }
 
-div.inspector div.palette_color {
+div.inspector div.color_stock {
   border-style: solid;
   border-width: 1px;
   border-color: lightgray;
@@ -136,7 +136,7 @@ div.inspector div.palette_color {
   height: 8px;
 }
 
-div.inspector button.palette {
+div.inspector button.color_stock {
   font-size: 9px;
   background: white;
   width: 85px;
