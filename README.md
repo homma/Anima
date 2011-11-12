@@ -13,3 +13,10 @@ Demo
 
 <http://homma.github.com/Anima/anima.html>
 
+This demo is tested on Mac OS X Safari.
+
+License
+=======
+
+MIT License. Read the LICENSE file for more details.
+
