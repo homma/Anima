@@ -1,10 +1,13 @@
 #!/bin/sh
 
 DATE=`date '+%Y-%m%d-%H%M.%S'`
+MESSAGE="commit on ${DATE}."
+
+if [ $# -eq 1 ]; then MESSAGE=$1; fi
 
 git checkout master
 git add .
-git commit -a -m "commit on ${DATE}."
+git commit -a -m "${MESSAGE}"
 git push origin master
 
 git checkout gh-pages

@@ -20,6 +20,7 @@ self.prototype.storeColor = function(color) {
 
   if(this.stock.length == this.MaxLength) { this.stock.shift(); };
   this.stock.push(color);
+  this.selectColorAt(this.stock.length - 1);
 
 }
 
