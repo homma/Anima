@@ -6,13 +6,6 @@ new function() {  // block
 
 var self = Anima.Editor;
 
-self.prototype.getResizeGuideRect = function() {
-
-  // surrounding square
-  return this.getBoundaryOfSelectedPaths();
-
-}
-
 self.prototype.getResizeGuideHandles = function() {
 
   var rect = this.getBoundaryOfSelectedPaths();
@@ -40,6 +33,45 @@ self.prototype.getResizeGuideHandles = function() {
   y[6] = rect.y + rect.h / 2;
   x[7] = rect.x + rect.w / 2;
   y[7] = rect.y;
+
+  ret.x = x;
+  ret.y = y;
+
+  return ret;
+}
+
+self.prototype.getRotateGuideHandles = function() {
+
+  var rect = this.getBoundaryOfSelectedPaths();
+  var ret = {};
+
+  var len = this.RotateGuideLineLength;
+
+  var x = new Array();
+  var y = new Array();
+
+  //       [3]
+  // [1] - [0] - [2]
+  //       [4]
+  // [0] : center : not a handle. just for convinience.
+  x[0] = rect.x + rect.w / 2;
+  y[0] = rect.y + rect.h / 2;
+
+  // [1] : left
+  x[1] = x[0] - len;
+  y[1] = y[0];
+
+  // [2] : right
+  x[2] = x[0] + len;
+  y[2] = y[0];
+
+  // [3] : top
+  x[3] = x[0];
+  y[3] = y[0] - len;
+
+  // [4] : bottom
+  x[4] = x[0];
+  y[4] = y[0] + len;
 
   ret.x = x;
   ret.y = y;

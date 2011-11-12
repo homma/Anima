@@ -114,7 +114,7 @@ self.prototype.registerPathOps = function() {
 
   this.registerOnClick(  "transform", pathInspector.transformMode);
   this.registerOnClick(  "resize", pathInspector.resizeMode);
-  // this.registerOnClick(  "rotate", pathInspector.rotateMode);
+  this.registerOnClick(  "rotate", pathInspector.rotateMode);
 
 }
 

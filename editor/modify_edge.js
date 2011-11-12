@@ -34,5 +34,15 @@ self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
 
 }
 
+/// rotate /////////////////////////////////////////////////////////////////////
+
+self.prototype.rotateSelectedPaths = function() {
+
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.selectedPathList[i].rotate();
+  }
+
+}
+
 } // block
 

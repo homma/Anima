@@ -18,6 +18,7 @@ self.prototype.draw = function() {
 
   this.drawHandle(ctx);
   this.drawResizeGuide(ctx);
+  this.drawRotateGuide(ctx);
 
   this.drawNewPath(ctx);
 };
@@ -60,7 +61,7 @@ self.prototype.drawResizeGuide = function(ctx) {
   ctx.save();
 
   // surrounding square
-  var rect = this.getResizeGuideRect();
+  var rect = this.getBoundaryOfSelectedPaths();
 
   ctx.lineWidth = this.ResizeGuideLineWidth;
   ctx.strokeStyle = this.ResizeGuideLineStyle;
@@ -83,25 +84,59 @@ self.prototype.drawResizeGuide = function(ctx) {
 
 }
 
-self.prototype.drawWithRotateGuide = function() {
+self.prototype.drawRotateGuide = function(ctx) {
 
-  this.draw();
-  this.drawRotateGuide();
-
-}
-
-self.prototype.drawRotateGuide = function() {
-
+  if(this.selectMode != this.SelectModes.rotate) { return; };
   if( this.selectedPathList.length == 0) { return; };
 
-  var rect = this.getBoundaryOfSelectedPaths();
-  // ...
+  ctx.save();
+
+  ctx.lineWidth = this.RotateGuideLineWidth;
+  ctx.strokeStyle = this.RotateGuideLineStyle;
+
+  var r = this.RotateGuideCircleR;
+  ctx.fillStyle = this.RotateGuideFillStyle;
+
+  var len     = this.RotateGuideLineLength;
+
+  var positions = this.getRotateGuideHandles();
+  //       [3]
+  // [1] - [0] - [2]
+  //       [4]
+
+  ctx.beginPath();
+  ctx.arc(positions.x[0], positions.y[0], r, Math.PI*2, false);
+  ctx.fill();
+
+  ctx.arc(positions.x[0], positions.y[0], len / 2, Math.PI*2, false);
+  ctx.arc(positions.x[0], positions.y[0], len / 3, Math.PI*2, false);
+
+  // left to right
+  ctx.moveTo(positions.x[1], positions.y[1]);
+  ctx.lineTo(positions.x[2], positions.y[1]);
+
+  // top to bottom
+  ctx.moveTo(positions.x[3], positions.y[3]);
+  ctx.lineTo(positions.x[4], positions.y[4]);
+
+  ctx.stroke();
+
+  // drawing hanles
+  for(var i = 1; i < positions.x.length; i++) {
+    ctx.beginPath();
+    ctx.arc(positions.x[i], positions.y[i], r, 0, Math.PI*2, false);
+    ctx.fill();
+  }
+
+  ctx.restore();
 
 }
 
 } // block
 
+
 /// backup /////////////////////////////////////////////////////////////////////
+
 /*
 
 // draw unselected paths first; then draw selected

@@ -29,6 +29,14 @@ Anima.Editor = function(canvas) {
   this.ResizeGuideFillStyle = "lightgray";
   this.ResizeGuideLineWidth = 0.1;
   this.ResizeGuideCircleR   = 4;
+
+  this.RotateGuideLineStyle  = "black";
+  this.RotateGuideFillStyle  = "lightgray";
+  this.RotateGuideLineWidth  = 0.1;
+  this.RotateGuideLineLength = 80;
+  this.RotateGuideCircleR    = 4;
+  this.RotateGuideAngle      = 0;
+
 }
 var self = Anima.Editor;
 

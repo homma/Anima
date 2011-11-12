@@ -53,12 +53,46 @@ self.prototype.hitTestResizeGuide = function(x, y) {
   var handles = this.getResizeGuideHandles();
 
   var i;
-  for(i = 0; i < 8; i++) {
+  for(i = 0; i < handles.x.length; i++) {
 
     if( this._hitHandle(handles.x[i], handles.y[i], x, y) ) {
       hit = true;
       break;
     }
+
+  }
+
+  if(hit) {
+    var ret = {};
+    ret.position = i;
+
+    return ret;
+  } else {
+    return hit;
+  }
+
+}
+
+// returns boolean or handles and position where is hit
+self.prototype.hitTestRotateHandle = function(x, y) {
+
+  var hit = false;
+
+  // guard
+  if(this.selectMode != this.SelectModes.rotate) { return hit; };
+  if( this.selectedPathList.length == 0) { return hit; };
+
+  var handles = this.getRotateGuideHandles();
+
+  // starts from 1 because handles.x[0] is not actually a handle.
+  var i;
+  for(i = 1; i < handles.x.length; i++) {
+
+    if( this._hitHandle(handles.x[i], handles.y[i], x, y) ) {
+      hit = true;
+      break;
+    }
+
   }
 
   if(hit) {
@@ -86,16 +120,6 @@ self.prototype._hitHandle = function(x0, y0, x1, y1) {
   }
 
   return false;
-}
-
-self.prototype.hitTestRotateHandle = function(x, y) {
-
-  var hit = false;
-
-  // guard
-  if(this.selectMode != this.SelectModes.rotate) { return hit; };
-  if( this.selectedPathList.length == 0) { return hit; };
-
 }
 
 } // block
