@@ -38,6 +38,15 @@ self.prototype.getLuminance  = function()  { return this.lum; }
 self.prototype.setAlpha      = function(a) { this.alp = a; }
 self.prototype.getAlpha      = function()  { return this.alp; }
 
+self.prototype.isSame = function(other) {
+  hsla0 = this.getColor();
+  hsla1 = other.getColor();
+
+  if( hsla0 == hsla1 ) { return true; };
+
+  return false;
+}
+
 self.prototype.export = function(indent) {
 
   var str = '{\n' +

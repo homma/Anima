@@ -18,6 +18,11 @@ var self = Anima.ColorStock;
 
 self.prototype.storeColor = function(color) {
 
+  for(var i = 0; i < this.stock.length; i++) {
+    var stocked = this.stock[i];
+    if( stocked.isSame(color) ) { return; }; // do nothing
+  }
+
   if(this.stock.length == this.MaxLength) { this.stock.shift(); };
   this.stock.push(color);
   this.selectColorAt(this.stock.length - 1);
