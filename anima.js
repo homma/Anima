@@ -15,6 +15,7 @@ function animaInit() {
   new Anima.PathInspectorView();
   new Anima.ToolView();
   new Anima.TrackView();
+  new Anima.Tooltip();
 
 }
 

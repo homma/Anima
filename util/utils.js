@@ -61,6 +61,12 @@ Anima.Util.topOffset = function(elem) {
 }
 */
 
+Anima.Util.getMousePositionInScreen = function(e) {
+
+  var position = this.offset(e.target);
+
+}
+
 Anima.Util.getMousePositionInCanvas = function(e) {
 
   var canvas = e.target;

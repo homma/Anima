@@ -166,6 +166,18 @@ canvas.cv {
   margin-left: 2px;
 }
 
+/* tooltip */
+div.tooltip {
+  font-size: 9px;
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: solid 1px black;
+  background-color: lightyellow;
+  position: absolute;
+  display: none;
+}
+
 /* exporter / importer */
 div.modal_window {
   background: white;
