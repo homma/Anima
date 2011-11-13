@@ -16,6 +16,24 @@ var self = Anima.CurveModifier;
 // inherit from Anima.EventState
 self.prototype = new Anima.EventState();
 
+self.prototype.test = function(e) {
+
+  var position = Anima.Util.getMousePositionInCanvas(e);
+  var x = position.x;
+  var y = position.y;
+
+  // hit test (transform handle)
+  var hitEdge = Anima.Global.editor.hitTestHandle(x, y);
+  if(hitEdge) {
+
+    this.select(hitEdge);
+    return true;
+
+  }
+
+  return false;
+}
+
 self.prototype.select = function(edge) {
 
   this.hitEdge = edge;

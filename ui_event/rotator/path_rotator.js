@@ -15,6 +15,15 @@ var self = Anima.PathRotator;
 // inherit from Anima.EventState;
 self.prototype = new Anima.EventState();
 
+self.prototype.select = function(e) {
+
+  var position = Anima.Util.getMousePositionInCanvas(e);
+  var x = position.x;
+  var y = position.y;
+
+  return false;
+}
+
 self.prototype.select = function(obj) {
 
   this.position = obj.position;

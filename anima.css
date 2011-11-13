@@ -188,8 +188,7 @@ div.inspector button.path_ops, div.inspector button.notyet {
 }
 
 div.inspector button.notyet {
-  display: none;
-  color: silver;
+/*  color: silver; */
   background-color: lightgray;
 }
 

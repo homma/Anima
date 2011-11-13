@@ -15,6 +15,25 @@ var self = Anima.PathResizer;
 // inherit from Anima.EventState;
 self.prototype = new Anima.EventState();
 
+self.prototype.test = function(e) {
+
+  var position = Anima.Util.getMousePositionInCanvas(e);
+  var x = position.x;
+  var y = position.y;
+
+  // hit test (resize guide)
+  var hitResizeGuide = Anima.Global.editor.hitTestResizeGuide(x, y);
+  if(hitResizeGuide) {
+
+    this.select(hitResizeGuide);
+    return true;
+
+  }
+
+  return false;
+
+}
+
 self.prototype.select = function(obj) {
 
   this.position = obj.position;

@@ -35,57 +35,17 @@ self.prototype.deselect = function() {
 
 self.prototype.onMouseDown = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
-  var x = position.x;
-  var y = position.y;
+  var eventObj;
 
-  // hit test (resize guide)
-  var hitResizeGuide = Anima.Global.editor.hitTestResizeGuide(x, y);
-  if(hitResizeGuide) {
+  // let the current handler do its job.
+  eventObj = Anima.Global.PathInspector.getPathOps();
+  if( eventObj.test(e) ) { return; };
 
-    Anima.Global.PathResizer.select(hitResizeGuide);
-    return;
+  // select or move path
+  eventObj = Anima.Global.PathMover;
+  if( eventObj.test(e) ) { return; };
 
-  }
-
-  // hit test (rotate handle)
-  // var hitRotateHandle = Anima.Global.editor.hitTestRotateHandle(x, y);
-  // if(hitRotateHandle) {
-    // do something.
-  // }
-
-  // hit test (transform handle)
-  var hitEdge = Anima.Global.editor.hitTestHandle(x, y);
-  if(hitEdge) {
-
-    Anima.Global.CurveModifier.select(hitEdge);
-    return;
-
-  }
-
-  // hit test (path for move)
-  var hitPath = Anima.Global.editor.hitTest(x, y);
-  if(hitPath) {
-
-    var selectedAlready = false;
-    if( hitPath.getSelected() ) {
-      selectedAlready = true;
-    }
-
-    Anima.Global.editor.selectPath(hitPath);
-    Anima.Global.pathInspectorView.update();  // update the path info pane
-    Anima.Global.editor.draw();
-
-    if(selectedAlready) {
-      Anima.Global.PathMover.select(x, y, true, hitPath);
-    } else {
-      Anima.Global.PathMover.select(x, y, false, null);
-    }
-
-    return;
-  }
-
-  // otherwise
+  // otherwise deselect
   Anima.Global.editor.deselectAll();
   Anima.Global.editor.draw();
   Anima.Global.pathInspectorView.update();  // update the path info pane
