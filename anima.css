@@ -30,6 +30,7 @@ div.tv button.about {
 }
 
 div.tv button.notyet {
+  display: none;
   color: silver;
   background-color: lightgray;
 }
@@ -71,21 +72,54 @@ div.inspector select {
   font-size: 9px;
 }
 
-div.inspector fieldset.path_attrs_field label {
+div.inspector div.path_switcher {
+  margin-top: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-bottom: solid 1px black;
+}
+
+div.inspector button.path_attrs_sw, div.inspector button.path_ops_sw {
+  font-size: 9px;
+  background: white;
+  width: 65px;
+  height: 18px;
+  border: solid 1px black;
+  border-bottom: none;
+  vertical-align: bottom;
+}
+
+div.inspector button.path_ops_sw {
+  margin-top: 1px;
+  height: 17px;
+  background: lightgray;
+  border-left: none;
+  vertical-align: bottom;
+}
+
+div.inspector div.path_attrs {
+  display: block;
+}
+
+div.inspector div.path_ops {
+  display: none;
+}
+
+div.inspector fieldset.line_attrs_field label {
   margin-top: 8px;
 }
 
-div.inspector fieldset.path_attrs_field select {
+div.inspector fieldset.line_attrs_field select {
   margin-top: 6px;
   width: 90px;
 }
 
-div.inspector fieldset.path_attrs_field input {
+div.inspector fieldset.line_attrs_field input {
   border: 1px solid lightgray;
   margin-top: 6px;
 }
 
-div.inspector fieldset.path_attrs_field input.close_path {
+div.inspector fieldset.line_attrs_field input.close_path {
   width: 10px;
   margin-top: 8px;
   margin-right: 10px;
@@ -154,6 +188,7 @@ div.inspector button.path_ops, div.inspector button.notyet {
 }
 
 div.inspector button.notyet {
+  display: none;
   color: silver;
   background-color: lightgray;
 }
@@ -244,6 +279,7 @@ div.track_tool button.track_tb, div.track_tool button.notyet {
 }
 
 div.track_tool button.notyet {
+  display: none;
   color: silver;
   background-color: lightgray;
 }
@@ -398,6 +434,10 @@ div.scene_view div.track_footer input {
   vertical-align: top;
 }
 
+div.scene_view div.track_footer input.notyet {
+  display: none;
+}
+
 div.scene_view div.track_attrs, div.scene_view div.notyet {
   display: inline-block;
   font-size: 9px;
@@ -406,6 +446,7 @@ div.scene_view div.track_attrs, div.scene_view div.notyet {
 }
 
 div.scene_view div.notyet {
+  display: none;
   color: silver;
   background-color: lightgray;
 }
@@ -424,6 +465,7 @@ div.scene_view button.track_b, div.scene_view button.notyet {
 }
 
 div.scene_view button.notyet {
+  display: none;
   color: silver;
   background-color: lightgray;
 }

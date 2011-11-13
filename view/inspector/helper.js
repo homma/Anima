@@ -10,6 +10,48 @@ var self = Anima.PathInspectorView;
 
 /// helper functions ///////////////////////////////////////////////////////////
 
+self.prototype.showPathAttributes = function() {
+
+  var attrs_bt = document.getElementById("path_attrs_sw");
+  var ops_bt   = document.getElementById("path_ops_sw");
+  var attrs    = document.getElementById("path_attrs");
+  var ops      = document.getElementById("path_ops");
+
+  attrs_bt.style.background  = "white";
+  attrs_bt.style.height      = "18px";
+  attrs_bt.style.marginTop   = "0px";
+  attrs_bt.style.borderRight = "solid 1px black";
+  attrs.style.display        = "block";
+
+  ops_bt.style.background    = "lightgray";
+  ops_bt.style.height        = "17px";
+  ops_bt.style.marginTop     = "1px";
+  ops_bt.style.borderLeft    = "none";
+  ops.style.display          = "none";
+
+}
+
+self.prototype.showPathOperations = function() {
+
+  var attrs_bt = document.getElementById("path_attrs_sw");
+  var ops_bt   = document.getElementById("path_ops_sw");
+  var attrs    = document.getElementById("path_attrs");
+  var ops      = document.getElementById("path_ops");
+
+  attrs_bt.style.background  = "lightgray";
+  attrs_bt.style.height      = "17px";
+  attrs_bt.style.marginTop   = "1px";
+  attrs_bt.style.borderRight = "none";
+  attrs.style.display        = "none";
+
+  ops_bt.style.background    = "white";
+  ops_bt.style.height        = "18px";
+  ops_bt.style.marginTop     = "0px";
+  ops_bt.style.borderLeft    = "solid 1px black";
+  ops.style.display          = "block";
+
+}
+
 self.prototype.changeLineCap = function(e) {
 
   var idx = e.target.selectedIndex;
