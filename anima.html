@@ -132,6 +132,8 @@
   <button class="about" id="AnimaButton">Anima</button>
   <button class="tb" id="penButton">pen</button>
   <button class="tb" id="curveCreatorButton">curve</button>
+  <button class="notyet" id="rectCreatorButton">rectangle</button>
+  <button class="notyet" id="ovalCreatorButton">oval</button>
   <button class="notyet" id="shapeButton">shape</button>
   <button class="tb" id="selectorButton">selector</button>
   <button class="tb" id="selectAllButton">select all</button>
@@ -152,147 +154,164 @@
 <!-- path inspector view -->
 <div id="inspector" class="inspector">
 
+<!-- switch between path_attrs and path_ops -->
+  <div class="path_switcher" id="path_switcher"
+    ><button class="path_attrs_sw" id="path_attrs_sw">Attributes</button
+    ><button class="path_ops_sw" id="path_ops_sw">Operations</button>
+  </div>
+
   <!-- path attributes -->
-  <fieldset class="path_attrs_field" id="path_attrs_field">
-    <legend class="path_attrs">Path Attributes</legend>
+  <div class="path_attrs" id="path_attrs">
 
-    <div>
-      <label class="path_attrs" for="line_width">Line Width: </label>
-      <input type=number class="line_width" id="line_width"
-        min=0.0 max=100.0 step=0.5>
-    </div>
-    <div>
-      <label class="path_attrs" for="line_cap">Line Cap: </label>
-      <select class="line_cap" id="line_cap">
-        <option>butt</option>
-        <option>round</option>
-        <option>square</option>
-      </select>
-    </div>
-    <div>
-      <label class="path_attrs" for="line_join">Line Join: </label>
-      <select class="line_join" id="line_join">
-        <option>bevel</option>
-        <option>round</option>
-        <option>miter</option>
-      </select>
-    </div>
-    <div>
-      <label class="path_attrs" for="miter_limit">Miter Limit: </label>
-      <input type=number class="miter_limit" id="miter_limit"
-        min=0.0 max=100.0 step=0.5>
-    </div>
-    <div>
-      <label class="path_attrs" for="close_path">Close Path: </label>
-      <input type=checkbox class="close_path" id="close_path" />
-    </div>
+    <!-- line attributes -->
+    <fieldset class="line_attrs_field" id="line_attrs_field">
+      <legend class="line_attrs">Line Attributes</legend>
 
-  </fieldset>
+      <div>
+        <label class="line_attrs" for="line_width">Line Width: </label>
+        <input type=number class="line_width" id="line_width"
+          min=0.0 max=100.0 step=0.5>
+      </div>
+      <div>
+        <label class="line_attrs" for="line_cap">Line Cap: </label>
+        <select class="line_cap" id="line_cap">
+          <option>butt</option>
+          <option>round</option>
+          <option>square</option>
+        </select>
+      </div>
+      <div>
+        <label class="line_attrs" for="line_join">Line Join: </label>
+        <select class="line_join" id="line_join">
+          <option>bevel</option>
+          <option>round</option>
+          <option>miter</option>
+        </select>
+      </div>
+      <div>
+        <label class="line_attrs" for="miter_limit">Miter Limit: </label>
+        <input type=number class="miter_limit" id="miter_limit"
+          min=0.0 max=100.0 step=0.5>
+      </div>
+      <div>
+        <label class="line_attrs" for="close_path">Close Path: </label>
+        <input type=checkbox class="close_path" id="close_path" />
+      </div>
 
-  <!-- color attributes -->
-  <fieldset class="color_attrs_field" id="color_attrs_field">
-    <legend class="color_attrs">Color Attributes</legend>
+    </fieldset>
 
-    <div>
-      <input type=radio class="color_attrs" name="color_attr" id="path_stroke"
-      checked
-      ><label for="path_stroke" class="path_stroke" >Stroke</label
-      ><input type=radio class="color_attrs" name="color_attr" id="path_fill"
-      ><label for="path_fill">Fill</label
-      ><input type=radio class="color_attrs" name="color_attr" id="path_both"
-      ><label for="path_both">Both</label>
-    </div>
+    <!-- color attributes -->
+    <fieldset class="color_attrs_field" id="color_attrs_field">
+      <legend class="color_attrs">Color Attributes</legend>
 
-    <!-- necessary?
-    <input type=checkbox class="color_attrs" id="path_same_color"
-       ><span>Use same color for fill and stroke</span>
-    -->
+      <div>
+        <input type=radio class="color_attrs" name="color_attr" id="path_stroke"
+        checked
+        ><label for="path_stroke" class="path_stroke" >Stroke</label
+        ><input type=radio class="color_attrs" name="color_attr" id="path_fill"
+        ><label for="path_fill">Fill</label
+        ><input type=radio class="color_attrs" name="color_attr" id="path_both"
+        ><label for="path_both">Both</label>
+      </div>
 
-  </fieldset>
+      <!-- necessary?
+      <input type=checkbox class="color_attrs" id="path_same_color"
+         ><span>Use same color for fill and stroke</span>
+      -->
 
-  <!-- stroke color -->
-  <fieldset class="stroke_color_field" id="stroke_color_field">
-    <legend class="stroke_color">Stroke Color</legend>
+    </fieldset>
 
-    <div class="color" id="stroke_color"></div>
+    <!-- stroke color -->
+    <fieldset class="stroke_color_field" id="stroke_color_field">
+      <legend class="stroke_color">Stroke Color</legend>
 
-    <label class="hsl_slider" for="stroke_hue_slider">Hue: </label>
-    <input type=range class="hsl_slider" id="stroke_hue_slider"
-      min=0 max=360 step=1>
+      <div class="color" id="stroke_color"></div>
 
-    <label class="hsl_slider" for="stroke_sat_slider">Saturation: </label>
-    <input type=range class="hsl_slider" id="stroke_sat_slider"
-      min=0 max=100 step=1>
+      <label class="hsl_slider" for="stroke_hue_slider">Hue: </label>
+      <input type=range class="hsl_slider" id="stroke_hue_slider"
+        min=0 max=360 step=1>
 
-    <label class="hsl_slider" for="stroke_lum_slider">Luminance: </label>
-    <input type=range class="hsl_slider" id="stroke_lum_slider"
-      min=0 max=100 step=1>
+      <label class="hsl_slider" for="stroke_sat_slider">Saturation: </label>
+      <input type=range class="hsl_slider" id="stroke_sat_slider"
+        min=0 max=100 step=1>
 
-    <label class="hsl_slider" for="stroke_alp_slider">Alpha: </label>
-    <input type=range class="hsl_slider" id="stroke_alp_slider"
-      min=0 max=1 step=0.01>
-  </fieldset>
+      <label class="hsl_slider" for="stroke_lum_slider">Luminance: </label>
+      <input type=range class="hsl_slider" id="stroke_lum_slider"
+        min=0 max=100 step=1>
 
-  <!-- fill color -->
-  <fieldset class="fill_color_field" id="fill_color_field">
-    <legend class="hsl">Fill Color</legend>
+      <label class="hsl_slider" for="stroke_alp_slider">Alpha: </label>
+      <input type=range class="hsl_slider" id="stroke_alp_slider"
+        min=0 max=1 step=0.01>
+    </fieldset>
 
-    <div class="color" id="fill_color"></div>
+    <!-- fill color -->
+    <fieldset class="fill_color_field" id="fill_color_field">
+      <legend class="hsl">Fill Color</legend>
 
-    <label class="hsl_slider" for="fill_hue_slider">Hue: </label>
-    <input type=range class="hsl_slider" id="fill_hue_slider"
-      min=0 max=360 step=1>
+      <div class="color" id="fill_color"></div>
 
-    <label class="hsl_slider" for="fill_sat_slider">Saturation: </label>
-    <input type=range class="hsl_slider" id="fill_sat_slider"
-      min=0 max=100 step=1>
+      <label class="hsl_slider" for="fill_hue_slider">Hue: </label>
+      <input type=range class="hsl_slider" id="fill_hue_slider"
+        min=0 max=360 step=1>
 
-    <label class="hsl_slider" for="fill_lum_slider">Luminance: </label>
-    <input type=range class="hsl_slider" id="fill_lum_slider"
-      min=0 max=100 step=1>
+      <label class="hsl_slider" for="fill_sat_slider">Saturation: </label>
+      <input type=range class="hsl_slider" id="fill_sat_slider"
+        min=0 max=100 step=1>
 
-    <label class="hsl_slider" for="fill_alp_slider">Alpha: </label>
-    <input type=range class="hsl_slider" id="fill_alp_slider"
-      min=0 max=1 step=0.01>
-  </fieldset>
+      <label class="hsl_slider" for="fill_lum_slider">Luminance: </label>
+      <input type=range class="hsl_slider" id="fill_lum_slider"
+        min=0 max=100 step=1>
 
-  <fieldset class="color_stock" id="color_stock">
-    <legend class="color_stock">Color Stock</legend>
-    <div class="color_stock" id="color_stock_0"></div>
-    <div class="color_stock" id="color_stock_1"></div>
-    <div class="color_stock" id="color_stock_2"></div>
-    <div class="color_stock" id="color_stock_3"></div>
-    <div class="color_stock" id="color_stock_4"></div>
-    <div class="color_stock" id="color_stock_5"></div>
-    <div class="color_stock" id="color_stock_6"></div>
-    <div class="color_stock" id="color_stock_7"></div>
-    <div class="color_stock" id="color_stock_8"></div>
-    <div class="color_stock" id="color_stock_9"></div>
-    <div class="color_stock" id="color_stock_10"></div>
-    <div class="color_stock" id="color_stock_11"></div>
-    <div class="color_stock" id="color_stock_12"></div>
-    <div class="color_stock" id="color_stock_13"></div>
-    <button class="color_stock" id="set_stroke_color">set stroke color</button>
-    <button class="color_stock" id="set_fill_color">set fill color</button>
-  </fieldset>
+      <label class="hsl_slider" for="fill_alp_slider">Alpha: </label>
+      <input type=range class="hsl_slider" id="fill_alp_slider"
+        min=0 max=1 step=0.01>
+    </fieldset>
 
-  <!-- operations -->
-  <fieldset class="path_ops_field" id="path_ops_field">
-    <legend class="path_ops">Path Operations</legend>
-    <!-- class="path_ops -->
-    <button class="path_ops" id="transform">transform</button>
-    <button class="path_ops" id="resize">resize</button>
-    <button class="notyet" id="rotate">rotate</button>
+    <fieldset class="color_stock" id="color_stock">
+      <legend class="color_stock">Color Stock</legend>
+      <div class="color_stock" id="color_stock_0"></div>
+      <div class="color_stock" id="color_stock_1"></div>
+      <div class="color_stock" id="color_stock_2"></div>
+      <div class="color_stock" id="color_stock_3"></div>
+      <div class="color_stock" id="color_stock_4"></div>
+      <div class="color_stock" id="color_stock_5"></div>
+      <div class="color_stock" id="color_stock_6"></div>
+      <div class="color_stock" id="color_stock_7"></div>
+      <div class="color_stock" id="color_stock_8"></div>
+      <div class="color_stock" id="color_stock_9"></div>
+      <div class="color_stock" id="color_stock_10"></div>
+      <div class="color_stock" id="color_stock_11"></div>
+      <div class="color_stock" id="color_stock_12"></div>
+      <div class="color_stock" id="color_stock_13"></div>
+      <button class="color_stock" id="set_stroke_color"
+        >set stroke color</button>
+      <button class="color_stock" id="set_fill_color">set fill color</button>
+    </fieldset>
 
-    <button class="notyet" id="merge_p">merge paths</button>
-    <button class="notyet" id="divide">divide</button>
-    <button class="notyet" id="reduce_p">reduce points</button>
-    <button class="notyet" id="subdivide">subdivide</button>
-    <button class="notyet" id="bring_f">bring front</button>
-    <button class="notyet" id="bring_b">bring back</button>
-  </fieldset>
+  </div>  <!-- path_attrs -->
 
-</div>
+  <!-- path_ops -->
+  <div class="path_ops" id="path_ops">
+
+    <!-- operations -->
+    <fieldset class="path_ops_field" id="path_ops_field">
+      <legend class="path_ops">Path Operations</legend>
+      <!-- class="path_ops -->
+      <button class="path_ops" id="transform">transform</button>
+      <button class="path_ops" id="resize">resize</button>
+      <button class="notyet" id="rotate">rotate</button>
+
+      <button class="notyet" id="merge_p">merge paths</button>
+      <button class="notyet" id="divide">divide</button>
+      <button class="notyet" id="reduce_p">reduce points</button>
+      <button class="notyet" id="subdivide">subdivide</button>
+      <button class="notyet" id="bring_f">bring front</button>
+      <button class="notyet" id="bring_b">bring back</button>
+    </fieldset>
+
+  </div>  <!-- path_ops -->
+
+</div>  <!-- inspector -->
 
 <!-- canvas -->
 <canvas id="cv" class="cv" width=800 height=600></canvas>
@@ -411,10 +430,12 @@
     </div>
   </div>
   <div class="track_footer" id="track_footer">
-    <input type=checkbox class="track_b" id="run_loop">
+    <!-- class="track_b" -->
+    <input type=checkbox class="notyet" id="run_loop">
     <!-- class="track_attrs" -->
     <div class="notyet">loop</div>
-    <input type=checkbox class="track_b" id="onion">
+    <!-- class="track_b" -->
+    <input type=checkbox class="notyet" id="onion">
     <!-- class="track_attrs" -->
     <div class="notyet">onion</div>
     <div class="track_buttons" id="track_buttons">

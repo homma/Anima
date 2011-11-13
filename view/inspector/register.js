@@ -10,7 +10,8 @@ var self = Anima.PathInspectorView;
 
 self.prototype.registerHandler = function() {
 
-  this.registerPathAttrs();
+  this.registerSwitcher();
+  this.registerLineAttrs();
   this.registerColorAttrs();
   this.registerStrokeColor();
   this.registerFillColor();
@@ -33,8 +34,16 @@ self.prototype.registerOnChange = function(id, fun) {
   elem.onchange = fun;
 }
 
-// Path Attributes
-self.prototype.registerPathAttrs = function() {
+// Attribtes / Operations switcher
+self.prototype.registerSwitcher = function() {
+
+  this.registerOnClick( "path_attrs_sw", this.showPathAttributes );
+  this.registerOnClick( "path_ops_sw", this.showPathOperations);
+
+}
+
+// Line Attributes
+self.prototype.registerLineAttrs = function() {
   var pathInspector = Anima.Global.PathInspector;
 
   this.registerOnClick( "line_width", pathInspector.changeLineWidth );
