@@ -22,10 +22,6 @@ Anima.ToolView.prototype.createObjects = function() {
   new Anima.CurveCreator();
   new Anima.ExporterView();
   new Anima.ImporterView();
-  new Anima.PathInspector();
-  new Anima.CurveModifier();
-  new Anima.PathMover();
-  new Anima.PathResizer();
 
 }
 
@@ -40,8 +36,6 @@ Anima.ToolView.prototype.initToolView = function() {
   var curveCreator = Anima.Global.CurveCreator;
   var exporterView = Anima.Global.ExporterView;
   var importerView = Anima.Global.ImporterView;
-  var pathInspector = Anima.Global.PathInspector;
-  var curveModifier = Anima.Global.CurveModifier;
 
   // set current tool
   var currentTool = selector;

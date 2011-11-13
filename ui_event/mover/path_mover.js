@@ -20,6 +20,37 @@ var self = Anima.PathMover;
 // inherit from Anima.EventState;
 self.prototype = new Anima.EventState();
 
+self.prototype.test = function(e) {
+
+  var position = Anima.Util.getMousePositionInCanvas(e);
+  var x = position.x;
+  var y = position.y;
+
+  // hit test (path for move)
+  var hitPath = Anima.Global.editor.hitTest(x, y);
+  if(hitPath) {
+
+    var selectedAlready = false;
+    if( hitPath.getSelected() ) {
+      selectedAlready = true;
+    }
+
+    Anima.Global.editor.selectPath(hitPath);
+    Anima.Global.pathInspectorView.update();  // update the path info pane
+    Anima.Global.editor.draw();
+
+    if(selectedAlready) {
+      this.select(x, y, true, hitPath);
+    } else {
+      this.select(x, y, false, null);
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
 self.prototype.select = function(x, y, remove, path) {
 
   // initialize

@@ -31,6 +31,9 @@
   <!-- path rotator -->
   <script type="text/javascript" src="./ui_event/rotator/path_rotator.js"
     ></script>
+  <!-- point remover -->
+  <script type="text/javascript" src="./ui_event/pt_remover/point_remover.js"
+    ></script>
   <!-- curve creator -->
   <script type="text/javascript" src="./ui_event/curve/curve_creator.js"
     ></script>
@@ -42,7 +45,16 @@
 
   <!-- operations -->
   <script type="text/javascript" src="./operation/operations.js"></script>
-  <script type="text/javascript" src="./operation/path_inspector.js"></script>
+  <!-- path inspector -->
+  <script type="text/javascript" src="./operation/inspector/inspector.js"
+    ></script>
+  <script type="text/javascript" src="./operation/inspector/line_attrs.js"
+    ></script>
+  <script type="text/javascript" src="./operation/inspector/fill_color.js"
+    ></script>
+  <script type="text/javascript" src="./operation/inspector/stroke_color.js"
+    ></script>
+  <script type="text/javascript" src="./operation/inspector/path.js"></script>
 
   <!-- view -->
   <script type="text/javascript" src="./view/tool_view.js"></script>
@@ -300,11 +312,15 @@
       <button class="path_ops" id="transform">transform</button>
       <button class="path_ops" id="resize">resize</button>
       <button class="notyet" id="rotate">rotate</button>
+      <button class="notyet" id="pick_cp">move controller</button>
+
+      <button class="notyet" id="remove_pt">remove point</button>
+      <button class="notyet" id="reduce_pt">reduce points</button>
 
       <button class="notyet" id="merge_p">merge paths</button>
       <button class="notyet" id="divide">divide</button>
-      <button class="notyet" id="reduce_p">reduce points</button>
       <button class="notyet" id="subdivide">subdivide</button>
+
       <button class="notyet" id="bring_f">bring front</button>
       <button class="notyet" id="bring_b">bring back</button>
     </fieldset>
