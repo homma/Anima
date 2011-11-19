@@ -13,7 +13,7 @@ Demo
 
 <http://homma.github.com/Anima/anima.html>
 
-This demo is tested on Mac OS X Safari.
+This demo is tested with Safari and Chrome on Mac OS X.
 
 License
 =======
