@@ -13,20 +13,24 @@ self.prototype.addPath = function(p) {
 
   Anima.Global.undoManager.registerUndo(this, this.removePath, [p]);
 
-  // console.log("addPath");
 }
 
 self.prototype.getNewPath = function(p) {
+
   return this.newPath;
+
 }
 
 self.prototype.setNewPath = function(p) {
+
   this.newPath = p;
+
 }
 
 self.prototype.removePath = function(p) {
 
-  // console.log("removePath");
+  this.deselectPath(p);
+
   for(var i = 0; i < this.pathList.length; i++) {
 
     if(this.pathList[i] == p) {
