@@ -9,7 +9,9 @@ var self = Anima.EventState;
 
 // test if this handler should take over
 self.prototype.test = function(e) {
+
   return false;
+
 }
 
 self.prototype.selectSelf = function() {

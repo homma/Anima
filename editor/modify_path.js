@@ -6,34 +6,40 @@ new function() {  // block
 
 var self = Anima.Editor;
 
-/// modify current path ////////////////////////////////////////////////////////
+/// transform //////////////////////////////////////////////////////////////////
 
-self.prototype.addPath = function(p) {
-  this.pathList.push(p);
-
-  Anima.Global.undoManager.registerUndo(this, this.removePath, [p]);
-
-  // console.log("addPath");
+self.prototype.setLineWidth = function(w) {
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.pathList[i].setLineWidth(w);
+  }
 }
 
-self.prototype.getNewPath = function(p) {
-  return this.newPath;
+self.prototype.translateSelectedPaths = function(x, y) {
+
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.selectedPathList[i].translate(x, y);
+  }
+
 }
 
-self.prototype.setNewPath = function(p) {
-  this.newPath = p;
+/// resize /////////////////////////////////////////////////////////////////////
+
+self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
+
+  // console.log(fromX, fromY, scaleX, scaleY);
+
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.selectedPathList[i].resize(fromX, fromY, scaleX, scaleY);
+  }
+
 }
 
-self.prototype.removePath = function(p) {
+/// rotate /////////////////////////////////////////////////////////////////////
 
-  // console.log("removePath");
-  for(var i = 0; i < this.pathList.length; i++) {
+self.prototype.rotateSelectedPaths = function() {
 
-    if(this.pathList[i] == p) {
-      // console.log("removePath: " + i);
-      this.pathList.splice(i , 1);
-      Anima.Global.undoManager.registerUndo(this, this.addPath, [p]);
-    }
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.selectedPathList[i].rotate();
   }
 
 }

@@ -4,7 +4,10 @@
 
 // Cubic Bezier Curve
 
+new function() { // block
+
 Anima.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
+
   this.p0x  = n0;  // anchor point zero
   this.p0y  = n1;
   this.cp0x = n2;  // control point zero
@@ -20,6 +23,17 @@ Anima.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
   this.smoothConnectionFromPrev = true;
   this.smoothConnectionToNext = true;
 
-  this.setSelectedPoint = null;
+  this.path = null;
+
+  this.selectedPoint = null;
+
 }
 
+var self = Anima.Curve;
+
+self.prototype.AnchorPointZero  = 0;
+self.prototype.ControlPointZero = 1;
+self.prototype.AnchorPointOne   = 2;
+self.prototype.ControlPointOne  = 3;
+
+}

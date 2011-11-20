@@ -46,5 +46,19 @@ self.prototype.hitTestHandle = function(x, y) {
 
 }
 
+self.prototype.hitTestAnchorPoint = function(x, y) {
+  if(!this.selected) return false;
+
+  var hitEdge = false;
+
+  for (var i = 0; this.edges.length > i; i++) {
+    hitEdge = this.edges[i].hitTestAnchorPoint(x, y);
+    if(hitEdge) break;
+  }
+
+  return hitEdge;
+
+}
+
 } // block
 

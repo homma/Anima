@@ -10,7 +10,7 @@ var self = Anima.Path;
 
 self.prototype.getBeginPoint = function() {
 
-  var pt = this.edges[0].getFirstPoint();
+  var pt = this.edges[0].getAnchorPointZero();
   return pt;
 
 }
@@ -18,10 +18,12 @@ self.prototype.getBeginPoint = function() {
 self.prototype.getEndPoint = function() {
 
   var n = this.edges.length - 1;
-  var pt = this.edges[n].getSecondPoint();
+  var pt = this.edges[n].getAnchorPointOne();
   return pt;
 
 }
+
+/// add edge ///////////////////////////////////////////////////////////////////
 
 self.prototype.addEdge = function(e) {
 
@@ -34,27 +36,59 @@ self.prototype.addEdge = function(e) {
 
   }
 
-/*
-  this.width = 
-  this.height = 
-*/
+  e.path = this;
 
   this.edges.push(e);
 }
 
+/// remove edge ////////////////////////////////////////////////////////////////
+
+self.prototype.removeEdge = function(edge) {
+
+  for(var i = 0; i < this.edges.length; i++) {
+
+    if(this.edges[i] == edge) {
+
+      // fixes linkage
+      if(edge.prev) { edge.prev.next = edge.next; };
+      if(edge.next) { edge.next.prev = edge.prev; };
+
+      this.edges.splice(i, 1);
+    }
+
+  }
+
+  if(this.edges.length == 0) {
+    Anima.Global.editor.removePath(this);
+  }
+
+}
+
 self.prototype.removeLastEdge = function() {
   if(this.edges.length > 1) {  // every edge must have at least one element.
+
+    // fix the linkage
+    var len = this.edges.length;
+    this.edges[len - 1].prev = null;
+    this.edges[len - 2].next = null;
+
     this.edges.pop();
   };
-}
+};
+
+/// finish modification ////////////////////////////////////////////////////////
 
 self.prototype.finished = function() {
   this.complete = true;
 }
 
+/// clear path /////////////////////////////////////////////////////////////////
+
 self.prototype.clear = function() {
   this.edges = [];
 }
+
+/// duplicate path /////////////////////////////////////////////////////////////
 
 self.prototype.duplicate = function() {
 

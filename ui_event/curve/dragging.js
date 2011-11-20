@@ -23,12 +23,12 @@ self.prototype.onMouseMove = function(e) {
   var curve = this.stateObj.getCurve();
   var nextCurve = this.stateObj.getNextCurve();
 
-  curve.setSecondControlPoint(x, y);
+  curve.setControlPointOne(x, y);
 
   var nextX = curve.p1x - (x - curve.p1x);
   var nextY = curve.p1y - (y - curve.p1y);
 
-  nextCurve.setFirstControlPoint(nextX, nextY);
+  nextCurve.setControlPointZero(nextX, nextY);
 
   Anima.Global.editor.draw();
 
@@ -43,12 +43,12 @@ self.prototype.onMouseUp = function(e) {
   var curve = this.stateObj.getCurve();
   var nextCurve = this.stateObj.getNextCurve();
 
-  curve.setSecondControlPoint(x, y);
+  curve.setControlPointOne(x, y);
 
   var nextX = curve.p1x - (x - curve.p1x);
   var nextY = curve.p1y - (y - curve.p1y);
 
-  nextCurve.setFirstControlPoint(nextX, nextY);
+  nextCurve.setControlPointZero(nextX, nextY);
 
   this.stateObj.setCurve(nextCurve);
 

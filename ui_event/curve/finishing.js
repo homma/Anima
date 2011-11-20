@@ -23,7 +23,7 @@ self.prototype.onMouseDown = function(e, self) {
   var path = Anima.Global.editor.getNewPath();
 
   var curve = this.stateObj.getCurve();
-  curve.setSecondControlPoint(x, y);
+  curve.setControlPointOne(x, y);
 
   path.finished();
   Anima.Global.editor.addPath(path);
@@ -43,7 +43,7 @@ self.prototype.onMouseMove = function(e) {
   var y = position.y;
 
   var curve = this.stateObj.getCurve();
-  curve.setSecondControlPoint(x, y);
+  curve.setControlPointOne(x, y);
 
   Anima.Global.editor.draw();
 
