@@ -23,7 +23,7 @@ self.prototype.hitTest = function(x, y) {
 
 }
 
-// returns an edge if hit
+// returns an edge if hit the modification handles
 self.prototype.hitTestHandle = function(x, y) {
 
   var hitEdge = null;
@@ -34,6 +34,24 @@ self.prototype.hitTestHandle = function(x, y) {
 
   for (var i = 0; i < this.pathList.length; i++) {
     hitEdge = this.pathList[i].hitTestHandle(x, y);
+
+    if(hitEdge) break;
+  }
+
+  return hitEdge;
+}
+
+// returns an edge if hit
+self.prototype.hitTestAnchorPoint = function(x, y) {
+
+  var hitEdge = null;
+
+  // guard
+  if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
+  if( this.pathList.length == 0 ) { return hitEdge; };
+
+  for (var i = 0; i < this.pathList.length; i++) {
+    hitEdge = this.pathList[i].hitTestAnchorPoint(x, y);
 
     if(hitEdge) break;
   }

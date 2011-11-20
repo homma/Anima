@@ -29,8 +29,8 @@ self.prototype.onMouseDown = function(e) {
 
   var curve = new Anima.Curve();
 
-  curve.setFirstPoint(x, y);
-  curve.setFirstControlPoint(x, y);
+  curve.setAnchorPointZero(x, y);
+  curve.setControlPointZero(x, y);
 
   this.stateObj.setCurve(curve);
   path.addEdge(curve);

@@ -6,6 +6,8 @@ new function() { // block
 
 Anima.PointRemover = function() {
 
+  this.hitEdge = null;
+
   Anima.Global.PointRemover = this;
 
 };
@@ -14,36 +16,50 @@ var self = Anima.PointRemover;
 // inherit from Anima.EventState;
 self.prototype = new Anima.EventState();
 
-self.prototype.select = function() {};
+self.prototype.test = function(e) {
 
-self.prototype.deselect = function() {
-
-  Anima.Global.Selector.select();
-
-};
-
-self.prototype.removePoint = function() {
-
-/*
   var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var diffX = x - this.prevX;
-  var diffY = y - this.prevY;
+  // hit test (Anchor Point)
+  var hitEdge = Anima.Global.editor.hitTestAnchorPoint(x, y);
+  if(hitEdge) {
 
-  this.prevX = x;
-  this.prevY = y;
+    this.select(hitEdge);
+    return true;
 
-  // var paths = Anima.Global.editor.getSelectedPaths();
-  // for(var i = 0; i < paths.length; i++) {
-  //   paths[i].translate(diffX, diffY);
-  // }
-  Anima.Global.editor.translateSelectedPaths(diffX, diffY);
-*/
+  }
 
-  Anima.Global.editor.draw();
+  return false;
+
+}
+
+self.prototype.select = function(edge) {
+
+  this.hitEdge = edge;
+  this.selectSelf();
 
 };
+
+self.prototype.deselect = function() {
+
+  this.hitEdge = null;
+  Anima.Global.Selector.select();
+
+};
+
+self.prototype.onMouseMove = function(e) {
+
+  this.deselect();
+
+}
+
+self.prototype.onMouseUp = function(e) {
+
+  Anima.Global.editor.removePoint(this.hitEdge);
+  Anima.Global.editor.draw();
+
+}
 
 } // block

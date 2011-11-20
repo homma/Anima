@@ -31,11 +31,11 @@ self.prototype.onLeftMouseDown = function(e) {
   var y = position.y;
 
   var curve = this.stateObj.getCurve();
-  curve.setSecondPoint(x, y);
-  curve.setSecondControlPoint(x, y);
+  curve.setAnchorPointOne(x, y);
+  curve.setControlPointOne(x, y);
 
   var nextCurve = new Anima.Curve();
-  nextCurve.setFirstPoint(x, y);
+  nextCurve.setAnchorPointZero(x, y);
 
   this.stateObj.setNextCurve(nextCurve);
 
@@ -53,8 +53,8 @@ self.prototype.onRightMouseDown = function(e) {
   var y = position.y;
 
   var curve = this.stateObj.getCurve();
-  curve.setSecondPoint(x, y);
-  curve.setSecondControlPoint(x, y);
+  curve.setAnchorPointOne(x, y);
+  curve.setControlPointOne(x, y);
 
   this.selectNextState(this.stateObj.state.finishing);
 
@@ -67,8 +67,8 @@ self.prototype.onMouseMove = function(e) {
   var y = position.y;
 
   var curve = this.stateObj.getCurve();
-  curve.setSecondPoint(x, y);
-  curve.setSecondControlPoint(x, y);
+  curve.setAnchorPointOne(x, y);
+  curve.setControlPointOne(x, y);
 
   Anima.Global.editor.draw();
 

@@ -54,7 +54,7 @@ self.prototype.onMouseMove = function(e) {
   var x = position.x;
   var y = position.y;
 
-  this.hitEdge.setSelectedPoint(x, y);
+  Anima.Global.editor.modifyPoint(this.hitEdge, x, y);
   Anima.Global.editor.draw();
 
 };
@@ -65,7 +65,7 @@ self.prototype.onMouseUp = function(e) {
   var x = position.x;
   var y = position.y;
 
-  this.hitEdge.setSelectedPoint(x, y);
+  Anima.Global.editor.modifyPoint(this.hitEdge, x, y);
   Anima.Global.editor.draw();
 
   this.deselect();

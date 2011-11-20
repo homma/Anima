@@ -22,7 +22,7 @@ self.prototype.onMouseMove = function(e) {
 
   var curve = this.stateObj.getCurve();
  
-  curve.setFirstControlPoint(x, y);
+  curve.setControlPointZero(x, y);
 
   Anima.Global.editor.draw();
 
@@ -35,7 +35,7 @@ self.prototype.onMouseUp = function(e) {
   var y = position.y;
 
   var curve = this.stateObj.getCurve();
-  curve.setFirstControlPoint(x, y);
+  curve.setControlPointZero(x, y);
 
   this.selectNextState(this.stateObj.state.hover);
 

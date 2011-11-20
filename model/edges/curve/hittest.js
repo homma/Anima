@@ -33,31 +33,58 @@ self.prototype.hitTest = function(x, y, w) {
 self.prototype.hitTestHandle = function(x, y) {
   var hit = false;
 
+  hit = this.hitTestAnchorPoint(x, y);
+  if(hit) { return hit; };
+
+  hit = this.hitTestControlPoint(x, y);
+  return hit;
+
+}
+
+self.prototype.hitTestAnchorPoint = function(x, y) {
+
+  var hit = false;
+
+  // AnchorPointZero  = 0;
+  // AnchorPointOne   = 2;
+
   if( this._isNearThePoint(this.p0x, this.p0y, x, y) ) {
 
-    this.setSelectedPoint = this.setFirstPoint;
-    hit = this;
-
-  } else if ( this._isNearThePoint(this.cp0x, this.cp0y, x, y) ) {
-
-    this.setSelectedPoint = this.setFirstControlPoint;
+    this.selectedPoint = this.AnchorPointZero;
     hit = this;
 
   } else if ( this._isNearThePoint(this.p1x, this.p1y, x, y) ) {
 
-    this.setSelectedPoint = this.setSecondPoint;
+    this.selectedPoint = this.AnchorPointOne;
+    hit = this;
+
+  }
+
+  return hit;
+
+}
+
+self.prototype.hitTestControlPoint = function(x, y) {
+
+  var hit = false;
+
+  // ControlPointZero = 1;
+  // ControlPointOne  = 3;
+
+  if ( this._isNearThePoint(this.cp0x, this.cp0y, x, y) ) {
+
+    this.selectedPoint = this.ControlPointZero;
     hit = this;
 
   } else if ( this._isNearThePoint(this.cp1x, this.cp1y, x, y) ) {
 
-    this.setSelectedPoint = this.setSecondControlPoint;
+    this.selectedPoint = this.ControlPointOne;
     hit = this;
 
   };
 
-  // console.log(hit);
-
   return hit;
+
 }
 
 self.prototype._isNearThePoint = function(x0, y0, x1, y1) {

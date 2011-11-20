@@ -8,39 +8,15 @@ var self = Anima.Editor;
 
 /// transform //////////////////////////////////////////////////////////////////
 
-self.prototype.setLineWidth = function(w) {
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.pathList[i].setLineWidth(w);
-  }
-}
+self.prototype.modifyPoint = function(edge, x, y) {
 
-self.prototype.translateSelectedPaths = function(x, y) {
-
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].translate(x, y);
-  }
+  edge.setSelectedPoint(x, y);
 
 }
 
-/// resize /////////////////////////////////////////////////////////////////////
+self.prototype.removePoint = function(edge) {
 
-self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
-
-  // console.log(fromX, fromY, scaleX, scaleY);
-
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].resize(fromX, fromY, scaleX, scaleY);
-  }
-
-}
-
-/// rotate /////////////////////////////////////////////////////////////////////
-
-self.prototype.rotateSelectedPaths = function() {
-
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].rotate();
-  }
+  edge.removeSelectedPoint();
 
 }
 
