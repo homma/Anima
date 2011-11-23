@@ -60,6 +60,7 @@
   <script type="text/javascript" src="./view/tool_view.js"></script>
   <script type="text/javascript" src="./view/exporter.js"></script>
   <script type="text/javascript" src="./view/importer.js"></script>
+  <script type="text/javascript" src="./view/rasterizer.js"></script>
   <script type="text/javascript" src="./view/tooltip.js"></script>
 
   <!-- inspector view -->
@@ -162,6 +163,7 @@
   <button class="tb" id="exportButton">export</button>
   <button class="tb" id="importButton">import</button>
   <button class="notyet" id="configButton">config</button>
+  <button class="tb" id="rasterizeButton">rasterize</button>
 </div>
 
 <!-- path inspector view -->
@@ -359,6 +361,14 @@
 
   <button id="importerExecuteButton" class="mwin_execute"
     >Import</button>
+</div>
+
+<!-- rasterizer window -->
+<div id="rasterPain" class="raster_window">
+
+  <button id="rasterPainClose" class="rwin_close">close</button>
+  <img id="rasterImage" class="rasterImage">
+
 </div>
 
 <!-- track tool view -->
