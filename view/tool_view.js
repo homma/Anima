@@ -22,6 +22,7 @@ Anima.ToolView.prototype.createObjects = function() {
   new Anima.CurveCreator();
   new Anima.ExporterView();
   new Anima.ImporterView();
+  new Anima.RasterizerView();
 
 }
 
@@ -36,6 +37,7 @@ Anima.ToolView.prototype.initToolView = function() {
   var curveCreator = Anima.Global.CurveCreator;
   var exporterView = Anima.Global.ExporterView;
   var importerView = Anima.Global.ImporterView;
+  var rasterizerView = Anima.Global.RasterizerView;
 
   // set current tool
   var currentTool = selector;
@@ -81,6 +83,7 @@ Anima.ToolView.prototype.initToolView = function() {
   registerOnClick( "restoreButton", ops.restore );
   registerOnClick( "exportButton", function() { select(exporterView); } );
   registerOnClick( "importButton", function() { select(importerView); } );
+  registerOnClick( "rasterizeButton", function() { select(rasterizerView); } );
   // registerOnClick( "runButton", 
   // registerOnClick( "configButton", 
 
