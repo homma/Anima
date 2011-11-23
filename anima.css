@@ -263,31 +263,13 @@ button.mwin_execute {
 
 /* rasterizer */
 
-div.raster_window {
-  background: white;
-  border: 1px solid;
+img.rasterImage {
+  border: solid 1px lightgray;
   position: absolute;
-  top: 100px;
-  left: 170px;
-  height: 480px;
-  width: 640px;
-  display: none;
-}
-
-.raster_window button.rwin_close {
-  background: white;
-  position: absolute;
-  top: 10px;
-  left: 530px;
-  width: 60px;
-}
-
-.raster_window img {
-  position: absolute;
-  top: 70px;
+  top: 50px;
   left: 80px;
-  height: 360px;
-  width: 480px;
+  height: 330px;
+  width: 440px;
 }
 
 /* track tool box */
