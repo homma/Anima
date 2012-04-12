@@ -88,15 +88,42 @@ self.prototype.clear = function() {
   this.edges = [];
 }
 
+/// reverse ////////////////////////////////////////////////////////////////////
+
+self.prototype.reverse = function() {
+
+  var newEdges = [];
+
+  for(var i = 0; i < this.edges.length; i++) {
+
+    var idx = this.edges.length - (i + 1);
+    var edg = this.edges[idx];
+
+    var len = newEdges.length;
+    if(len > 0) { // linking the edges
+
+      newEdges[len - 1].next = edg;
+      edg.prev = newEdges[len - 1];
+
+    }
+
+    newEdges.push(edg);
+
+  }
+
+  this.edges = newEdges;
+
+}
+
 /// duplicate path /////////////////////////////////////////////////////////////
 
 self.prototype.duplicate = function() {
 
   var newPath = new Anima.Path();
 
-  for(var i = 0; i < this.edges.length; i++) {
-    newPath.addEdge( this.edges[i].duplicate() );
-  }
+  this.edges.forEach(function(edg) {
+    newPath.addEdge( edg.duplicate() );
+  });
 
   this.duplicateAttributes(this, newPath);
 
@@ -134,6 +161,8 @@ self.prototype.duplicateAttributes = function(from, to) {
 }
 
 }  // block
+
+/// backup /////////////////////////////////////////////////////////////////////
 
 /*  backup
 

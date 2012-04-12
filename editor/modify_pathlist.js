@@ -8,26 +8,26 @@ var self = Anima.Editor;
 
 /// modify current path ////////////////////////////////////////////////////////
 
-self.prototype.addPath = function(p) {
+self.prototype._addPath = function(p) {
   this.pathList.push(p);
 
   Anima.Global.undoManager.registerUndo(this, this.removePath, [p]);
 
 }
 
-self.prototype.getNewPath = function(p) {
+self.prototype._getNewPath = function(p) {
 
   return this.newPath;
 
 }
 
-self.prototype.setNewPath = function(p) {
+self.prototype._setNewPath = function(p) {
 
   this.newPath = p;
 
 }
 
-self.prototype.removePath = function(p) {
+self.prototype._removePath = function(p) {
 
   this.deselectPath(p);
 

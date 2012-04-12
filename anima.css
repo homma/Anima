@@ -78,6 +78,16 @@ div.inspector div.path_switcher {
   border-bottom: solid 1px black;
 }
 
+div.inspector label.path_ops {
+  display: block;
+  font-size: 9px;
+  width: 65px;
+  height: 14px;
+  border: none;
+  margin-top: 4px;
+  text-align: left;
+}
+
 div.inspector button.path_attrs_sw, div.inspector button.path_ops_sw {
   font-size: 9px;
   background: white;

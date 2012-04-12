@@ -12,7 +12,7 @@ self.prototype.setSelected = function(flag) {
   this.selected = flag;
 }
 
-self.prototype.getSelected = function() {
+self.prototype.isSelected = function() {
   return this.selected;
 }
 

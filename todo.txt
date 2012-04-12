@@ -1,0 +1,17 @@
+
+# Tasks
+
+o implement "connect paths" function
+
+- to be implemented:
+  path.prototype.drawEdgeWithDifference()
+  editor.prototype._searchConnection()
+
+- related:
+  editor._drawSelectedPath();
+
+  editor.SelectModes.connect
+  path.getBeginPoint()
+  path.getEndPoint()
+  path.reverse()
+
