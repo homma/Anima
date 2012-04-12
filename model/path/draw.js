@@ -64,7 +64,7 @@ self.prototype.drawEdge = function(ctx) {
 
 }
 
-self.prototype.drawEdgeWithDifference(ctx, dx, dy) {
+self.prototype.drawEdgeWithDifference = function(ctx, dx, dy) {
 
   // to be implemented
 
