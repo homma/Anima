@@ -65,14 +65,14 @@ self.prototype._connectAndDrawSelectedPath = function(ctx) {
   if(!conn.exists) {
 
     this.__drawSelectedPath(ctx);
-    return();
+    return;
 
   }
 
   this.pathList.forEach(function(path) {
 
     if(!path.isSelected) {
-      return();
+      return;
     }
 
     path.drawEdgeWithDifference(ctx, conn.dx, conn.dy);
