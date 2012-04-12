@@ -8,7 +8,7 @@ var self = Anima.Editor;
 
 /// change time frame //////////////////////////////////////////////////////////
 
-self.prototype.setTimeFrame = function(frame) {
+self.prototype._setTimeFrame = function(frame) {
 
   this.deselectAll();
 
@@ -17,7 +17,7 @@ self.prototype.setTimeFrame = function(frame) {
 
 }
 
-self.prototype.setTrack = function(track) {
+self.prototype._setTrack = function(track) {
 
   this.setTimeFrame( track.findOrCreateFrame(0) );
 

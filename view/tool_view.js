@@ -73,7 +73,7 @@ Anima.ToolView.prototype.initToolView = function() {
                                         ops.selectAll();
                                       } );
   registerOnClick( "clearButton", ops.clear );
-  registerOnClick( "deleteButton", ops.deleteSelected );
+  registerOnClick( "deleteButton", ops.delete );
   registerOnClick( "cutButton", ops.cut );
   registerOnClick( "copyButton", ops.copy );
   registerOnClick( "pasteButton", ops.paste );

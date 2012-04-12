@@ -55,7 +55,7 @@ self.prototype.selectTrackAt = function(nth) {
 
 self.prototype.isSelectedTrackBefore = function(nth) {
   for(var i = 0; i < this.trackList.length; i++) {
-    if( this.trackList[i].getSelected() ) {
+    if( this.trackList[i].isSelected() ) {
       if(i < nth) { return true; } else { return false; };
     }
   }
@@ -97,7 +97,7 @@ self.prototype.removeSelectedTrack = function() {
   if(this.trackList.length <= 1) return;
 
   for(var i = 0; i < this.trackList.length; i++) {
-    if( this.trackList[i].getSelected() ) {
+    if( this.trackList[i].isSelected() ) {
 
       if(i == this.trackList.length - 1) {
         this.selectTrackAt(i - 1);
@@ -119,7 +119,7 @@ self.prototype.removeTrack = function(track) {
 
   for(var i = 0; i < this.trackList.length; i++) {
     if(track == this.trackList[i]) {
-      // if(this.trackList[i].getSelected())
+      // if(this.trackList[i].isSelected())
       // ...
       this.trackList.splice(i, 1);
       return;
@@ -132,7 +132,7 @@ self.prototype.removeTrackAt = function(nth) {
 
   if(this.TrackList.length <= 1) return;
 
-  // if(this.trackList[nth].getSelected())
+  // if(this.trackList[nth].isSelected())
   // ...
 
   this.trackList.splice(nth, 1);

@@ -89,6 +89,7 @@
   <script type="text/javascript" src="./editor/modify_edge.js"></script>
   <script type="text/javascript" src="./editor/copy_paste.js"></script>
   <script type="text/javascript" src="./editor/util.js"></script>
+  <script type="text/javascript" src="./editor/interface.js"></script>
 
   <!-- data -->
   <script type="text/javascript" src="./model/animation/animation.js"></script>
@@ -312,16 +313,20 @@
     <fieldset class="path_ops_field" id="path_ops_field">
       <legend class="path_ops">Path Operations</legend>
       <!-- class="path_ops -->
+
+      <label class="path_ops">Mode</label>
       <button class="path_ops" id="transform">transform</button>
       <button class="path_ops" id="resize">resize</button>
       <button class="notyet" id="rotate">rotate</button>
       <button class="notyet" id="pick_cp">move controller</button>
-
+      <button class="notyet" id="connect">connect paths</button>
       <button class="path_ops" id="remove_pt">remove point</button>
+      <button class="notyet" id="divide">divide</button>
+
+      <label class="path_ops">Action</label>
       <button class="notyet" id="reduce_pt">reduce points</button>
 
       <button class="notyet" id="merge_p">merge paths</button>
-      <button class="notyet" id="divide">divide</button>
       <button class="notyet" id="subdivide">subdivide</button>
 
       <button class="notyet" id="bring_f">bring front</button>

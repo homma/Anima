@@ -25,9 +25,9 @@ self.prototype.clear = function() {
 
 }
 
-self.prototype.deleteSelected = function() {
+self.prototype.delete = function() {
 
-  Anima.Global.editor.deleteSelected();
+  Anima.Global.editor.delete();
   Anima.Global.editor.draw();
 
 }
@@ -41,7 +41,7 @@ self.prototype.cut = function() {
 
 self.prototype.copy = function() {
 
-  Anima.Global.editor.copySelected();
+  Anima.Global.editor.copy();
   Anima.Global.editor.draw();
 
 }

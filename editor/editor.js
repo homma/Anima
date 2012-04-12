@@ -5,6 +5,7 @@
 new function() {  // block
 
 // Graphic Data Editor
+// Every change to the model should go through this
 
 Anima.Editor = function(canvas) {
 
@@ -19,6 +20,7 @@ Anima.Editor = function(canvas) {
   this.SelectModes.transform = 1;
   this.SelectModes.resize = 2;
   this.SelectModes.rotate = 3;
+  this.SelectModes.connect = 4;
   this.selectMode = this.SelectModes.transform;
 
   this.selectedPathList = [];

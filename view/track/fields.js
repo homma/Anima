@@ -72,7 +72,7 @@ self.prototype.updateField = function(nth, obj) {
 
   this.setFieldVisibility(nth, true);
 
-  this.markTrackSelected(nth, obj.getSelected() );
+  this.markTrackSelected(nth, obj.isSelected() );
   this.updateTrackVisibility(nth, obj.getVisible() );
   this.updateTrackName(nth, obj.getName() );
   this.markTimeFrame(nth, obj);

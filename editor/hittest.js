@@ -9,7 +9,7 @@ var self = Anima.Editor;
 /// hittest ////////////////////////////////////////////////////////////////////
 
 // returns a path if hit
-self.prototype.hitTest = function(x, y) {
+self.prototype._hitTest = function(x, y) {
 
   var path = null;
 
@@ -24,7 +24,7 @@ self.prototype.hitTest = function(x, y) {
 }
 
 // returns an edge if hit the modification handles
-self.prototype.hitTestHandle = function(x, y) {
+self.prototype._hitTestHandle = function(x, y) {
 
   var hitEdge = null;
 
@@ -42,7 +42,7 @@ self.prototype.hitTestHandle = function(x, y) {
 }
 
 // returns an edge if hit
-self.prototype.hitTestAnchorPoint = function(x, y) {
+self.prototype._hitTestAnchorPoint = function(x, y) {
 
   var hitEdge = null;
 
@@ -59,14 +59,14 @@ self.prototype.hitTestAnchorPoint = function(x, y) {
   return hitEdge;
 }
 
-// returns boolean or handles and position where is hit
-self.prototype.hitTestResizeGuide = function(x, y) {
+// returns false or position being hit
+self.prototype._hitTestResizeGuide = function(x, y) {
 
   var hit = false;
 
   // guard
-  if(this.selectMode != this.SelectModes.resize) { return hit; };
-  if( this.selectedPathList.length == 0) { return hit; };
+  if(this.selectMode != this.SelectModes.resize) { return false; };
+  if( this.selectedPathList.length == 0) { return false; };
 
   var handles = this.getResizeGuideHandles();
 
@@ -86,13 +86,13 @@ self.prototype.hitTestResizeGuide = function(x, y) {
 
     return ret;
   } else {
-    return hit;
+    return false;
   }
 
 }
 
 // returns boolean or handles and position where is hit
-self.prototype.hitTestRotateHandle = function(x, y) {
+self.prototype._hitTestRotateHandle = function(x, y) {
 
   var hit = false;
 
@@ -141,50 +141,4 @@ self.prototype._hitHandle = function(x0, y0, x1, y1) {
 }
 
 } // block
-
-////////////////// Backup //////////////////////////////////////////////////////
-
-/* obsolete
-// automatically adding the path to selected path list.
-self.prototype.hitTestAndAdd = function(x, y) {
-
-  var path = null;
-
-  for(var i = 0; i < this.pathList.length; i++) {
-
-    if(this.pathList[i].hitTest(x, y)) {
-      this.selectPath(this.pathList[i]);
-      path = this.pathList[i];
-      break;
-    }
-  }
-  return path;
-
-}
-
-self.prototype.hitTestToPickupOne = function(x, y) {
-
-  this.deselectAll();
-
-  var hit = false;
-
-  for(var i = 0; i < this.pathList.length; i++) {
-
-    // only one path can be hit.
-    if(hit) {
-      this.deselectPath(this.pathList[i]);
-      continue;
-    }
-
-    if(this.pathList[i].hitTest(x, y)) {
-      this.selectPath(this.pathList[i]);
-      hit = true;
-    } else {
-      this.deselectPath(this.pathList[i]);
-    }
-  }
-
-  return hit;
-}
-*/
 

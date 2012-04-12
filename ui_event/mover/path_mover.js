@@ -30,10 +30,7 @@ self.prototype.test = function(e) {
   var hitPath = Anima.Global.editor.hitTest(x, y);
   if(hitPath) {
 
-    var selectedAlready = false;
-    if( hitPath.getSelected() ) {
-      selectedAlready = true;
-    }
+    var selectedAlready = Anima.Global.editor.isSelectedPath(hitPath);
 
     Anima.Global.editor.selectPath(hitPath);
     Anima.Global.pathInspectorView.update();  // update the path info pane

@@ -10,6 +10,8 @@ var self = Anima.Path;
 
 self.prototype.draw = function(ctx) {
 
+  this.setupContext(ctx);
+
   this.drawEdge(ctx);
 
   if(this.selected) {
@@ -22,7 +24,7 @@ self.prototype.draw = function(ctx) {
 
 }
 
-self.prototype.drawEdge = function(ctx) {
+self.prototype.setupContext = function(ctx) {
 
   ctx.lineWidth = this.lineWidth;
   ctx.lineCap = this.lineCap;
@@ -34,6 +36,10 @@ self.prototype.drawEdge = function(ctx) {
   ctx.shadowOffsetX = this.shadowOffsetX;
   ctx.shadowOffsetY = this.shadowOffsetY;
   ctx.shadowBlur = this.shadowBlur;
+
+}
+
+self.prototype.drawEdge = function(ctx) {
 
   ctx.beginPath();
 
@@ -55,6 +61,12 @@ self.prototype.drawEdge = function(ctx) {
   if( this.getStroke() ) {
     ctx.stroke();
   }
+
+}
+
+self.prototype.drawEdgeWithDifference(ctx, dx, dy) {
+
+  // to be implemented
 
 }
 

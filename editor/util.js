@@ -6,7 +6,21 @@ new function() {  // block
 
 var self = Anima.Editor;
 
-self.prototype.getResizeGuideHandles = function() {
+// returns a connection object.
+//{
+//   exists: true or false,
+//     from: path or null,
+//       to: path or null,
+//       dx: num or null, // diff x
+//       dy: num or null  // diff y
+//}
+self.prototype._searchConnection = function() {
+
+  // search
+
+}
+
+self.prototype._getResizeGuideHandles = function() {
 
   var rect = this.getBoundaryOfSelectedPaths();
   var ret = {};
@@ -40,7 +54,7 @@ self.prototype.getResizeGuideHandles = function() {
   return ret;
 }
 
-self.prototype.getRotateGuideHandles = function() {
+self.prototype._getRotateGuideHandles = function() {
 
   var rect = this.getBoundaryOfSelectedPaths();
   var ret = {};
@@ -79,7 +93,7 @@ self.prototype.getRotateGuideHandles = function() {
   return ret;
 }
 
-self.prototype.getBoundaryOfSelectedPaths = function() {
+self.prototype._getBoundaryOfSelectedPaths = function() {
 
   if(this.selectedPathList.length == 0) { return; };
 
