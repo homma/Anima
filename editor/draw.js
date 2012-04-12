@@ -27,7 +27,7 @@ self.prototype._draw = function() {
 /* self.prototype._drawPath = function(ctx) {
 
   this.pathList.forEach(function(path) {
-      path.drawEdge(ctx);
+      path.draw(ctx);
   });
 
 } */
@@ -51,7 +51,7 @@ self.prototype.__drawSelectedPath = function(ctx) {
   this.pathList.forEach(function(path) {
 
     if(path.isSelected) {
-      path.drawEdge(ctx);
+      path.draw(ctx);
     }
 
   });
@@ -75,7 +75,7 @@ self.prototype._connectAndDrawSelectedPath = function(ctx) {
       return;
     }
 
-    path.drawEdgeWithDifference(ctx, conn.dx, conn.dy);
+    path.drawWithDifference(ctx, conn.dx, conn.dy);
 
   });
 
@@ -86,7 +86,7 @@ self.prototype._drawUnselectedPath = function(ctx) {
   this.pathList.forEach(function(path) {
 
     if(!path.isSelected) {
-      path.drawEdge(ctx);
+      path.draw(ctx);
     }
 
   });

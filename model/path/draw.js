@@ -10,8 +10,6 @@ var self = Anima.Path;
 
 self.prototype.draw = function(ctx) {
 
-  this.setupContext(ctx);
-
   this.drawEdge(ctx);
 
   if(this.selected) {
@@ -21,6 +19,12 @@ self.prototype.draw = function(ctx) {
   if(!this.complete) {
     this.drawLastTwoHandles(ctx);
   }
+
+}
+
+self.prototype.drawWithDifference = function(ctx, dx, dy) {
+
+  // to be implemented
 
 }
 
@@ -40,6 +44,8 @@ self.prototype.setupContext = function(ctx) {
 }
 
 self.prototype.drawEdge = function(ctx) {
+
+  this.setupContext(ctx);
 
   ctx.beginPath();
 
@@ -61,12 +67,6 @@ self.prototype.drawEdge = function(ctx) {
   if( this.getStroke() ) {
     ctx.stroke();
   }
-
-}
-
-self.prototype.drawEdgeWithDifference = function(ctx, dx, dy) {
-
-  // to be implemented
 
 }
 

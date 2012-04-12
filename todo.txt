@@ -4,7 +4,7 @@
 o implement "connect paths" function
 
 - to be implemented:
-  path.prototype.drawEdgeWithDifference()
+  path.prototype.drawWithDifference()
   editor.prototype._searchConnection()
 
 - related:
