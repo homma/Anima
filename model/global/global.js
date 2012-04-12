@@ -4,6 +4,5 @@
 
 Anima = {};
 Anima.Global = {};
-
 Anima.Util = {};
 
