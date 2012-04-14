@@ -14,7 +14,7 @@ self.prototype.setFillHue = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].fillColor.setHue(h);
+    paths[i].getFillColor().setHue(h);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -28,7 +28,7 @@ self.prototype.setFillSaturation = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].fillColor.setSaturation(s);
+    paths[i].getFillColor().setSaturation(s);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -42,7 +42,7 @@ self.prototype.setFillLuminance = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].fillColor.setLuminance(l);
+    paths[i].getFillColor().setLuminance(l);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -56,7 +56,7 @@ self.prototype.setFillAlpha = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].fillColor.setAlpha(a);
+    paths[i].getFillColor().setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -79,10 +79,10 @@ self.prototype.setFillColor = function(h, s, l, a) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].fillColor.setHue(h);
-    paths[i].fillColor.setSaturation(s);
-    paths[i].fillColor.setLuminance(l);
-    paths[i].fillColor.setAlpha(a);
+    paths[i].getFillColor().setHue(h);
+    paths[i].getFillColor().setSaturation(s);
+    paths[i].getFillColor().setLuminance(l);
+    paths[i].getFillColor().setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();

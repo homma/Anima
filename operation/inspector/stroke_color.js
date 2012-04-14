@@ -15,7 +15,7 @@ self.prototype.setStrokeHue = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].strokeColor.setHue(h);
+    paths[i].getStrokeColor().setHue(h);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -29,7 +29,7 @@ self.prototype.setStrokeSaturation = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].strokeColor.setSaturation(s);
+    paths[i].getStrokeColor().setSaturation(s);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -43,7 +43,7 @@ self.prototype.setStrokeLuminance = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].strokeColor.setLuminance(l);
+    paths[i].getStrokeColor().setLuminance(l);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -57,7 +57,7 @@ self.prototype.setStrokeAlpha = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].strokeColor.setAlpha(a);
+    paths[i].getStrokeColor().setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -84,10 +84,10 @@ self.prototype.setStrokeColor = function(h, s, l, a) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].strokeColor.setHue(h);
-    paths[i].strokeColor.setSaturation(s);
-    paths[i].strokeColor.setLuminance(l);
-    paths[i].strokeColor.setAlpha(a);
+    paths[i].getStrokeColor().setHue(h);
+    paths[i].getStrokeColor().setSaturation(s);
+    paths[i].getStrokeColor().setLuminance(l);
+    paths[i].getStrokeColor().setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();
