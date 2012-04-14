@@ -40,5 +40,13 @@ self.prototype.setFill = function(flag) {
   this.fill = flag;
 }
 
+self.prototype.getStrokeColor = function() {
+  return this.strokeColor;
+}
+
+self.prototype.getFillColor = function() {
+  return this.fillColor;
+}
+
 }  // block
 
