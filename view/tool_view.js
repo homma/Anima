@@ -18,7 +18,6 @@ Anima.ToolView.prototype.createObjects = function() {
 
   new Anima.Selector();
   new Anima.PenHandler();
-  new Anima.LineHandler();
   new Anima.CurveCreator();
   new Anima.ExporterView();
   new Anima.ImporterView();
@@ -33,7 +32,6 @@ Anima.ToolView.prototype.initToolView = function() {
   // instantiate handlers
   var selector = Anima.Global.Selector;
   var penHandler = Anima.Global.PenHandler;
-  var lineHandler = Anima.Global.LineHandler;
   var curveCreator = Anima.Global.CurveCreator;
   var exporterView = Anima.Global.ExporterView;
   var importerView = Anima.Global.ImporterView;

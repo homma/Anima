@@ -10,15 +10,13 @@ self.prototype.middleOfLine = function(p0, p1) {
   var x = (p0.x + p1.x) / 2;
   var y = (p0.y + p1.y) / 2;
 
-  return new Anima.Point(x, y);
+  return { x: x, y: y };
 }
 
 self.prototype.subdivide = function(b) {
 
   var nb0 = new Anima.Curve();
   var nb1 = new Anima.Curve();
-
-  var tp = new Anima.Point();  // temporary point 0
 
   /// get x //////////////////////////
   nb0.p0x = b.p0x;
@@ -27,9 +25,9 @@ self.prototype.subdivide = function(b) {
   nb0.cp0x = (b.p0x + b.cp0x) / 2;
   nb1.cp1x = (b.p1x + b.cp1x) / 2;
 
-  tp.x = (b.cp0x + b.cp1x) / 2;
-  nb0.cp1x = (nb0.cp0x + tp.x) / 2;
-  nb1.cp0x = (nb1.cp1x + tp.x) / 2;
+  var x = (b.cp0x + b.cp1x) / 2;
+  nb0.cp1x = (nb0.cp0x + x) / 2;
+  nb1.cp0x = (nb1.cp1x + x) / 2;
 
   nb0.p1x = (nb0.cp1x + nb1.cp0x) / 2;
   nb1.p0x = nb0.p1x;
@@ -41,9 +39,9 @@ self.prototype.subdivide = function(b) {
   nb0.cp0y = (b.p0y + b.cp0y) / 2;
   nb1.cp1y = (b.p1y + b.cp1y) / 2;
 
-  tp.y = (b.cp0y + b.cp1y) / 2;
-  nb0.cp1y = (nb0.cp0y + tp.y) / 2;
-  nb1.cp0y = (nb1.cp1y + tp.y) / 2;
+  var y = (b.cp0y + b.cp1y) / 2;
+  nb0.cp1y = (nb0.cp0y + y) / 2;
+  nb1.cp0y = (nb1.cp1y + y) / 2;
 
   nb0.p1y = (nb0.cp1y + nb1.cp0y) / 2;
   nb1.p0y = nb0.p1y;
