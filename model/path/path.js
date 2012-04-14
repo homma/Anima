@@ -28,19 +28,8 @@ Anima.Path.prototype.initPath = function() {
   this.stroke = true;
   this.fill = false;
 
-  this.strokeH = 0;
-  this.strokeS = 100;
-  this.strokeL = 0;  // black
-  this.strokeA = 1;
-  this.strokeHSLA = null;
-  this.updateStrokeColor();
-
-  this.fillH = 0;
-  this.fillS = 100;
-  this.fillL = 0;  // black
-  this.fillA = 1;
-  this.fillHSLA = null;
-  this.updateFillColor();
+  this.strokeColor = new Anima.Color(0, 100, 0, 1); // H, S, L, A => black
+  this.fillColor = new Anima.Color(0, 100, 0, 1);   // H, S, L, A => black
 
   this.strokeStyle = null;            // color or gradient
   this.fillStyle = null;              // color or gradient

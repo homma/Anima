@@ -12,12 +12,12 @@ Anima.Color = function(hue, sat, lum, alp) {
   this.alp = alp || 1;
 
   this.hsla = null;
-  this.updateColor();
+  this.update();
 
 }
 var self = Anima.Color;
 
-self.prototype.updateColor = function() {
+self.prototype.update = function() {
 
   this.hsla = "hsla(" + this.hue + "," + this.sat + "%," +
                    this.lum + "%," + this.alp + ")"
@@ -25,17 +25,17 @@ self.prototype.updateColor = function() {
 }
 
 self.prototype.getColor = function() {
-  this.updateColor();
+  this.update();
   return this.hsla;
 }
 
-self.prototype.setHue        = function(h) { this.hue = h; }
+self.prototype.setHue        = function(h) { this.hue = h; this.update(); }
 self.prototype.getHue        = function()  { return this.hue; }
-self.prototype.setSaturation = function(s) { this.sat = s; }
+self.prototype.setSaturation = function(s) { this.sat = s; this.update(); }
 self.prototype.getSaturation = function()  { return this.sat; }
-self.prototype.setLuminance  = function(l) { this.lum = l; }
+self.prototype.setLuminance  = function(l) { this.lum = l; this.update(); }
 self.prototype.getLuminance  = function()  { return this.lum; }
-self.prototype.setAlpha      = function(a) { this.alp = a; }
+self.prototype.setAlpha      = function(a) { this.alp = a; this.update(); }
 self.prototype.getAlpha      = function()  { return this.alp; }
 
 self.prototype.isSame = function(other) {
@@ -69,7 +69,6 @@ self.prototype.import = function(obj) {
   this.setSaturation(obj.saturation);
   this.setLuminance(obj.luminance);
   this.setAlpha(obj.alpha);
-  this.updateColor();
 
 }
 

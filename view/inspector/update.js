@@ -82,18 +82,18 @@ self.prototype.updateValues = function(path) {
 self.prototype.updateColors = function(path) {
 
   // Stroke HSLA
-  var shue = path.getStrokeHue();
-  var ssat = path.getStrokeSaturation();
-  var slum = path.getStrokeLuminance();
-  var salp = path.getStrokeAlpha();
+  var shue = path.strokeColor.getHue();
+  var ssat = path.strokeColor.getSaturation();
+  var slum = path.strokeColor.getLuminance();
+  var salp = path.strokeColor.getAlpha();
 
   this.setStrokeColorAttrs(shue, ssat, slum, salp);
 
   // Fill HSLA
-  var fhue = path.getFillHue();
-  var fsat = path.getFillSaturation();
-  var flum = path.getFillLuminance();
-  var falp = path.getFillAlpha();
+  var fhue = path.fillColor.getHue();
+  var fsat = path.fillColor.getSaturation();
+  var flum = path.fillColor.getLuminance();
+  var falp = path.fillColor.getAlpha();
 
   this.setFillColorAttrs(fhue, fsat, flum, falp);
 
