@@ -23,10 +23,6 @@ self.prototype.onMouseDown = function(e) {
   var path = new Anima.Path();
   Anima.Global.editor.setNewPath(path);
 
-  // var edge = new Anima.Move(x, y);
-  // path.addEdge(edge);
-  // path.setBeginPoint(x, y);
-
   var curve = new Anima.Curve();
 
   curve.setAnchorPointZero(x, y);
