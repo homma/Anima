@@ -21,14 +21,14 @@ self.prototype.dataExport = function() {
     indent + '  "closePath": ' + this.getClosePath() + ',\n' +
     indent + '  "stroke": ' + this.getStroke() + ',\n' +
     indent + '  "fill": ' + this.getFill() + ',\n' +
-    indent + '  "strokeH": ' + this.getStrokeHue() + ',\n' +
-    indent + '  "strokeS": ' + this.getStrokeSaturation() + ',\n' +
-    indent + '  "strokeL": ' + this.getStrokeLuminance() + ',\n' +
-    indent + '  "strokeA": ' + this.getStrokeAlpha() + ',\n' +
-    indent + '  "fillH": ' + this.getFillHue() + ',\n' +
-    indent + '  "fillS": ' + this.getFillSaturation() + ',\n' +
-    indent + '  "fillL": ' + this.getFillLuminance() + ',\n' +
-    indent + '  "fillA": ' + this.getFillAlpha() + ',\n' +
+    indent + '  "strokeH": ' + this.strokeColor.getHue() + ',\n' +
+    indent + '  "strokeS": ' + this.strokeColor.getSaturation() + ',\n' +
+    indent + '  "strokeL": ' + this.strokeColor.getLuminance() + ',\n' +
+    indent + '  "strokeA": ' + this.strokeColor.getAlpha() + ',\n' +
+    indent + '  "fillH": ' + this.fillColor.getHue() + ',\n' +
+    indent + '  "fillS": ' + this.fillColor.getSaturation() + ',\n' +
+    indent + '  "fillL": ' + this.fillColor.getLuminance() + ',\n' +
+    indent + '  "fillA": ' + this.fillColor.getAlpha() + ',\n' +
     indent + '  "edges": [ ';
 
   var midStr = new String();
@@ -62,14 +62,14 @@ self.prototype.dataImport = function(obj) {
   this.setClosePath(obj.closePath);
   this.setStroke(obj.stroke);
   this.setFill(obj.fill);
-  this.setStrokeHue(obj.strokeH);
-  this.setStrokeSaturation(obj.strokeS);
-  this.setStrokeLuminance(obj.strokeL);
-  this.setStrokeAlpha(obj.strokeA);
-  this.setFillHue(obj.fillH);
-  this.setFillSaturation(obj.fillS);
-  this.setFillLuminance(obj.fillL);
-  this.setFillAlpha(obj.fillA);
+  this.strokeColor.setHue(obj.strokeH);
+  this.strokeColor.setSaturation(obj.strokeS);
+  this.strokeColor.setLuminance(obj.strokeL);
+  this.strokeColor.setAlpha(obj.strokeA);
+  this.fillColor.setHue(obj.fillH);
+  this.fillColor.setSaturation(obj.fillS);
+  this.fillColor.setLuminance(obj.fillL);
+  this.fillColor.setAlpha(obj.fillA);
 
   for(var i = 0; i < obj.edges.length; i++) {
 

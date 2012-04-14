@@ -15,7 +15,7 @@ self.prototype.setStrokeHue = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setStrokeHue(h);
+    paths[i].strokeColor.setHue(h);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -29,7 +29,7 @@ self.prototype.setStrokeSaturation = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setStrokeSaturation(s);
+    paths[i].strokeColor.setSaturation(s);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -43,7 +43,7 @@ self.prototype.setStrokeLuminance = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setStrokeLuminance(l);
+    paths[i].strokeColor.setLuminance(l);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -57,7 +57,7 @@ self.prototype.setStrokeAlpha = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setStrokeAlpha(a);
+    paths[i].strokeColor.setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -84,35 +84,10 @@ self.prototype.setStrokeColor = function(h, s, l, a) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setStrokeHue(h);
-    paths[i].setStrokeSaturation(s);
-    paths[i].setStrokeLuminance(l);
-    paths[i].setStrokeAlpha(a);
-  }
-
-  Anima.Global.pathInspectorView.update();
-  Anima.Global.editor.draw();
-}
-
-self.prototype.setFillColorFromView = function() {
-
-  var h = this.getValue("fill_hue_slider");
-  var s = this.getValue("fill_sat_slider");
-  var l = this.getValue("fill_lum_slider");
-  var a = this.getValue("fill_alp_slider");
-
-  this.setFillColor(h, s, l, a);
-
-}
-
-self.prototype.setFillColor = function(h, s, l, a) {
-
-  var paths = Anima.Global.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].setFillHue(h);
-    paths[i].setFillSaturation(s);
-    paths[i].setFillLuminance(l);
-    paths[i].setFillAlpha(a);
+    paths[i].strokeColor.setHue(h);
+    paths[i].strokeColor.setSaturation(s);
+    paths[i].strokeColor.setLuminance(l);
+    paths[i].strokeColor.setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();

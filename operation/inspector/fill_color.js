@@ -14,7 +14,7 @@ self.prototype.setFillHue = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setFillHue(h);
+    paths[i].fillColor.setHue(h);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -28,7 +28,7 @@ self.prototype.setFillSaturation = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setFillSaturation(s);
+    paths[i].fillColor.setSaturation(s);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -42,7 +42,7 @@ self.prototype.setFillLuminance = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setFillLuminance(l);
+    paths[i].fillColor.setLuminance(l);
   }
 
   Anima.Global.pathInspectorView.update();
@@ -56,12 +56,37 @@ self.prototype.setFillAlpha = function(e) {
 
   var paths = Anima.Global.editor.getSelectedPaths();
   for(var i = 0; i < paths.length; i++) {
-    paths[i].setFillAlpha(a);
+    paths[i].fillColor.setAlpha(a);
   }
 
   Anima.Global.pathInspectorView.update();
   Anima.Global.editor.draw();
 
+}
+
+self.prototype.setFillColorFromView = function() {
+
+  var h = this.getValue("fill_hue_slider");
+  var s = this.getValue("fill_sat_slider");
+  var l = this.getValue("fill_lum_slider");
+  var a = this.getValue("fill_alp_slider");
+
+  this.setFillColor(h, s, l, a);
+
+}
+
+self.prototype.setFillColor = function(h, s, l, a) {
+
+  var paths = Anima.Global.editor.getSelectedPaths();
+  for(var i = 0; i < paths.length; i++) {
+    paths[i].fillColor.setHue(h);
+    paths[i].fillColor.setSaturation(s);
+    paths[i].fillColor.setLuminance(l);
+    paths[i].fillColor.setAlpha(a);
+  }
+
+  Anima.Global.pathInspectorView.update();
+  Anima.Global.editor.draw();
 }
 
 } // block
