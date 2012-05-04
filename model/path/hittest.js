@@ -73,13 +73,13 @@ self.prototype.isOnHandle = function(ctx, x, y) {
 
 }
 
-self.prototype.isOnAnchorPoint = function(ctx, x, y) {
+self.prototype.isOnAnchorPoints = function(ctx, x, y) {
   if(!this.selected) return false;
 
   var hitEdge = false;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].isOnAnchorPoint(ctx, x, y, this.lineWidth);
+    hitEdge = this.edges[i].isOnAnchorPoints(ctx, x, y, this.lineWidth);
     if(hitEdge) break;
   }
 

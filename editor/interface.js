@@ -45,8 +45,8 @@ self.prototype.isOnHandle = function(x, y) {
 }
 
 // return hit edge or null
-self.prototype.isOnAnchorPoint = function(x, y) {
-  return this._isOnAnchorPoint(x, y);
+self.prototype.isOnAnchorPoints = function(x, y) {
+  return this._isOnAnchorPoints(x, y);
 }
 
 // return hit edge or null
