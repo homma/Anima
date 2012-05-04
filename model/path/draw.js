@@ -54,6 +54,11 @@ self.prototype.drawEdge = function(ctx) {
 
   for (var i = 0; this.edges.length > i; i++) {
     this.edges[i].draw(ctx);
+
+    // test code for outline
+    // if(this.selected) {
+    //    this.edges[i].drawOutLine(ctx, this.lineWidth);
+    // }
   }
 
   if( this.getClosePath() ) {  // true if this.closePath == true

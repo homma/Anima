@@ -23,7 +23,7 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (Anchor Point)
-  var hitEdge = Anima.Global.editor.hitTestAnchorPoint(x, y);
+  var hitEdge = Anima.Global.editor.isOnAnchorPoint(x, y);
   if(hitEdge) {
 
     this.select(hitEdge);

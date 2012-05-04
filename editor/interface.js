@@ -35,28 +35,18 @@ self.prototype.draw = function() {
 
 // returns hit path or null
 self.prototype.hitTest = function(x, y) {
-  return this._hitTest(x, y);
-}
-
-// return hit path or null
-self.prototype.hitTestHandle = function(x, y) {
-  return this._hitTestHandle(x, y);
+  return this._onPath(x, y);
 }
 
 // check a hit on a control point or an anchor point
 // return hit edge or null
-self.prototype.hitTestHandle = function(x, y) {
-  return this._hitTestHandle(x, y);
+self.prototype.isOnHandle = function(x, y) {
+  return this._isOnHandle(x, y);
 }
 
 // return hit edge or null
-self.prototype.hitTestAnchorPoint = function(x, y) {
-  return this._hitTestAnchorPoint(x, y);
-}
-
-// return hit edge or null
-self.prototype.hitTestAnchorPoint = function(x, y) {
-  return this._hitTestAnchorPoint(x, y);
+self.prototype.isOnAnchorPoint = function(x, y) {
+  return this._isOnAnchorPoint(x, y);
 }
 
 // return hit edge or null

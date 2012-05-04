@@ -6,6 +6,8 @@ new function() { // block
 
 var self = Anima.Curve;
 
+/// curve manipulation /////////////////////////////////////////////////////////
+
 self.prototype.middleOfLine = function(p0, p1) {
   var x = (p0.x + p1.x) / 2;
   var y = (p0.y + p1.y) / 2;
@@ -15,6 +17,7 @@ self.prototype.middleOfLine = function(p0, p1) {
 
 self.prototype.subdivide = function(b) {
 
+  // new bezier curve
   var nb0 = new Anima.Curve();
   var nb1 = new Anima.Curve();
 
@@ -73,6 +76,8 @@ self.prototype.duplicate = function() {
   return cv;
 }
 
+/// getting outer rectangle ////////////////////////////////////////////////////
+
 // boundary rect of this bezier curve (not including control points)
 self.prototype.getBoundary = function() {
 
@@ -109,6 +114,7 @@ self.prototype.getRange = function(p0, cp0, p1, cp1) {
   return ret;
 }
 
+// the position in path at time 't'
 self.prototype.getPosition = function(p0, cp0, p1, cp1, t) {
 
   var tp1 = p0 + (cp0 - p0) * t;
@@ -171,7 +177,22 @@ self.prototype.getRoot = function(p0, cp0, p1, cp1) {
   return ret;
 }
 
-// boundary which includes control points
+// returns a rectangle which includes this curve with margin
+self.prototype.getSurroundingRectWithMargin = function(margin) {
+
+  var rect = this.getSurroundingRect();
+
+  // adjustment
+  rect.x -= margin;
+  rect.w += margin * 2;
+  rect.y -= margin;
+  rect.h += margin * 2;
+
+  return rect;
+
+}
+
+// boundary which includes this curve
 self.prototype.getSurroundingRect = function() {
 
   // calculate the boundary

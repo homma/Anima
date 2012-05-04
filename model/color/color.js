@@ -47,6 +47,19 @@ self.prototype.isSame = function(other) {
   return false;
 }
 
+self.prototype.duplicate = function() {
+
+  var ret = new Color();
+  ret.setHue( this.getHue() );
+  ret.setSaturation( this.getSaturation() );
+  ret.setLuminance( this.getLuminance() );
+  ret.setAlpha( this.getAlpha() );
+  ret.update();
+
+  return ret;
+
+}
+
 self.prototype.export = function(indent) {
 
   var str = '{\n' +

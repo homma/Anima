@@ -9,31 +9,54 @@ var self = Anima.Editor;
 /// hittest ////////////////////////////////////////////////////////////////////
 
 // returns a path if hit
-self.prototype._hitTest = function(x, y) {
+self.prototype._onPath = function(x, y) {
 
   var path = null;
+  var ctx = this.canvas.canvas.getContext('2d');
 
   for(var i = 0; i < this.pathList.length; i++) {
-    if(this.pathList[i].hitTest(x, y)) {
+    if( this.pathList[i].onPath(ctx, x, y) ) {
       path = this.pathList[i];
       break;
     }
   }
+
+  return path;
+
+}
+
+self.prototype._inPath = function(x, y) {
+
+  var path = null;
+
+  path = this._onPath(x, y);
+  if( path ) { return path; };
+
+  var ctx = this.canvas.canvas.getContext('2d');
+
+  for(var i = 0; i < this.pathList.length; i++) {
+    if( this.pathList[i].isPointInPath(ctx, x, y) ) {
+      path = this.pathList[i];
+      break;
+    }
+  }
+
   return path;
 
 }
 
 // returns an edge if hit the modification handles
-self.prototype._hitTestHandle = function(x, y) {
+self.prototype._isOnHandle = function(x, y) {
 
   var hitEdge = null;
+  var ctx = this.canvas.canvas.getContext('2d');
 
   // guard
   if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
   if( this.pathList.length == 0 ) { return hitEdge; };
 
   for (var i = 0; i < this.pathList.length; i++) {
-    hitEdge = this.pathList[i].hitTestHandle(x, y);
+    hitEdge = this.pathList[i].isOnHandle(ctx, x, y);
 
     if(hitEdge) break;
   }
@@ -42,7 +65,7 @@ self.prototype._hitTestHandle = function(x, y) {
 }
 
 // returns an edge if hit
-self.prototype._hitTestAnchorPoint = function(x, y) {
+self.prototype._isOnAnchorPoint = function(x, y) {
 
   var hitEdge = null;
 
@@ -50,9 +73,10 @@ self.prototype._hitTestAnchorPoint = function(x, y) {
   if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
   if( this.pathList.length == 0 ) { return hitEdge; };
 
-  for (var i = 0; i < this.pathList.length; i++) {
-    hitEdge = this.pathList[i].hitTestAnchorPoint(x, y);
+  var ctx = this.canvas.canvas.getContext('2d');
 
+  for (var i = 0; i < this.pathList.length; i++) {
+    hitEdge = this.pathList[i].isOnAnchorPoint(ctx, x, y);
     if(hitEdge) break;
   }
 
