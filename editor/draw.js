@@ -12,7 +12,7 @@ self.prototype._draw = function() {
 
   this.canvas.clear();  // erase all the pathes before we draw
 
-  ctx = this.canvas.canvas.getContext('2d');
+  var ctx = this.canvas.canvas.getContext('2d');
 
   this._drawUnselectedPath(ctx);
   this._drawSelectedPath(ctx);
@@ -100,7 +100,7 @@ self.prototype._drawNewPath = function(ctx) {
 
 }
 
-self.prototype._drawHandle = function() {
+self.prototype._drawHandle = function(ctx) {
 
   if(this.selectMode != this.SelectModes.transform) { return; };
   if( this.selectedPathList.length == 0) { return; };

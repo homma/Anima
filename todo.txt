@@ -15,3 +15,5 @@ o implement "connect paths" function
   path.getEndPoint()
   path.reverse()
 
+o implement Curve#outLine method
+

@@ -23,7 +23,7 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (transform handle)
-  var hitEdge = Anima.Global.editor.hitTestHandle(x, y);
+  var hitEdge = Anima.Global.editor.isOnHandle(x, y);
   if(hitEdge) {
 
     this.select(hitEdge);

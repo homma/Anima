@@ -8,16 +8,16 @@ new function() {  // block
 
 var self = Anima.Path;
 
-self.prototype.hitTest = function(x, y) {
+self.prototype.onPath = function(ctx, x, y) {
 
-  var hitEdge = false;
+  var hit = false;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].hitTest(x, y, this.lineWidth);
-    if(hitEdge) break;
+    hit = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
+    if(hit) break;
   }
 
-  if(hitEdge) return hitEdge;
+  if(hit) return hit;
 
   // check closing edge if this.closePath == true
   if( this.getClosePath() ) {
@@ -25,20 +25,47 @@ self.prototype.hitTest = function(x, y) {
     var p1 = this.getBeginPoint();
 
     var cv = new Anima.Curve(p0.x, p0.y, p0.x, p0.y, p1.x, p1.y, p1.x, p1.y);
-    hitEdge = cv.hitTest(x, y, this.lineWidth);
+    hit = cv.onCurve(ctx, x, y, this.lineWidth);
 
   }
 
-  return hitEdge;
+  return hit;
 }
 
-self.prototype.hitTestHandle = function(x, y) {
+self.prototype.isPointInPath = function(ctx, x, y) {
+
+  var res = false;
+
+  ctx.save();
+
+  this.setupContext(ctx);
+
+  ctx.beginPath();
+
+  var pt = this.getBeginPoint();
+  ctx.moveTo(pt.x, pt.y);
+
+  this.edges.forEach( function(edge) { edge.draw(ctx); });
+
+  if( this.getClosePath() ) {  // true if this.closePath == true
+    ctx.closePath();
+  }
+
+  res = ctx.isPointInPath(x, y);
+
+  ctx.restore();
+
+  return res;
+
+}
+
+self.prototype.isOnHandle = function(ctx, x, y) {
   if(!this.selected) return false;
 
   var hitEdge = false;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].hitTestHandle(x, y);
+    hitEdge = this.edges[i].isOnHandle(ctx, x, y, this.lineWidth);
     if(hitEdge) break;
   }
 
@@ -46,13 +73,13 @@ self.prototype.hitTestHandle = function(x, y) {
 
 }
 
-self.prototype.hitTestAnchorPoint = function(x, y) {
+self.prototype.isOnAnchorPoint = function(ctx, x, y) {
   if(!this.selected) return false;
 
   var hitEdge = false;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].hitTestAnchorPoint(x, y);
+    hitEdge = this.edges[i].isOnAnchorPoint(ctx, x, y, this.lineWidth);
     if(hitEdge) break;
   }
 

@@ -125,38 +125,30 @@ self.prototype.duplicate = function() {
     newPath.addEdge( edg.duplicate() );
   });
 
-  this.duplicateAttributes(this, newPath);
+  this.copyAttributes(newPath);
 
   return newPath;
 
 }
 
-self.prototype.duplicateAttributes = function(from, to) {
+self.prototype.copyAttributes = function(to) {
 
-  to.complete = from.complete;
-  to.closePath = from.closePath;
-  to.lineWidth = from.lineWidth;
-  to.lineCap = from.lineCap;
-  to.lineJoin = from.lineJoin;
-  to.miterLimit = from.miterLimit;
-  to.fill = from.fill;
-  to.fillH = from.fillH;
-  to.fillS = from.fillS;
-  to.fillL = from.fillL;
-  to.fillA = from.fillA;
-  to.fillHSLA = from.fillHSLA;
-  to.fillStyle = from.fillStyle;
-  to.stroke = from.stroke;
-  to.strokeH = from.strokeH;
-  to.strokeS = from.strokeS;
-  to.strokeL = from.strokeL;
-  to.strokeA = from.strokeA;
-  to.strokeHSLA = from.strokeHSLA;
-  to.strokeStyle = from.strokeStyle;
-  to.shadowColor = from.shadowColor;
-  to.shadowOffsetX = from.shadowOffsetX;
-  to.shadowOffsetY = from.shadowOffsetY;
-  to.shadowBlur = from.shadowBlur;
+  to.complete = this.complete;
+  to.closePath = this.closePath;
+  to.lineWidth = this.lineWidth;
+  to.lineCap = this.lineCap;
+  to.lineJoin = this.lineJoin;
+  to.miterLimit = this.miterLimit;
+  to.fill = this.fill;
+  to.fillColor = this.fillColor.duplicate();
+  to.fillStyle = this.fillStyle;
+  to.stroke = this.stroke;
+  to.strokeColor = this.strokeColor.duplicate();
+  to.strokeStyle = this.strokeStyle;
+  to.shadowColor = this.shadowColor;
+  to.shadowOffsetX = this.shadowOffsetX;
+  to.shadowOffsetY = this.shadowOffsetY;
+  to.shadowBlur = this.shadowBlur;
 
 }
 
