@@ -65,7 +65,7 @@ self.prototype._isOnHandle = function(x, y) {
 }
 
 // returns an edge if hit
-self.prototype._isOnAnchorPoint = function(x, y) {
+self.prototype._isOnAnchorPoints = function(x, y) {
 
   var hitEdge = null;
 
@@ -76,7 +76,7 @@ self.prototype._isOnAnchorPoint = function(x, y) {
   var ctx = this.canvas.canvas.getContext('2d');
 
   for (var i = 0; i < this.pathList.length; i++) {
-    hitEdge = this.pathList[i].isOnAnchorPoint(ctx, x, y);
+    hitEdge = this.pathList[i].isOnAnchorPoints(ctx, x, y);
     if(hitEdge) break;
   }
 
