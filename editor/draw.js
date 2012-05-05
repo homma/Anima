@@ -29,13 +29,8 @@ self.prototype.drawSelectedPath = function(ctx) {
 
 self.prototype.drawUnselectedPath = function(ctx) {
 
-  this.pathList.forEach(function(path) {
+  this.selectMode.drawUnselectedPath(ctx);
 
-    if(!path.isSelected) {
-      path.draw(ctx);
-    }
-
-  });
 }
 
 self.prototype.drawHandle = function(ctx) {

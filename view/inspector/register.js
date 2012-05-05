@@ -121,10 +121,11 @@ self.prototype.registerColorStock = function() {
 self.prototype.registerPathOps = function() {
   var pathInspector = Anima.Global.PathInspector;
 
-  this.registerOnClick(  "transform", pathInspector.selectTransform );
-  this.registerOnClick(  "resize", pathInspector.selectResize );
-  this.registerOnClick(  "rotate", pathInspector.selectRotate );
-  this.registerOnClick(  "remove_pt", pathInspector.selectPointRemover );
+  this.registerOnClick( "transform", pathInspector.selectTransform );
+  this.registerOnClick( "resize", pathInspector.selectResize );
+  this.registerOnClick( "rotate", pathInspector.selectRotate );
+  this.registerOnClick( "connect", pathInspector.selectConnect );
+  this.registerOnClick( "remove_pt", pathInspector.selectPointRemover );
 
 }
 

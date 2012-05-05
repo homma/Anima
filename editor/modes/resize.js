@@ -21,6 +21,22 @@ self.prototype = new Anima.EditorMode();
 
 /// draw ///////////////////////////////////////////////////////////////////////
 
+self.prototype.drawSelectedPath = function(ctx) {
+
+  var arr = this.editor.pathList;
+
+  for(var i = arr.length - 1; i >= 0 ; i--) {
+
+    var path = arr[i];
+
+    if(path.isSelected()) {
+      path.drawWithEndPoints(ctx);
+    }
+
+  }
+
+}
+
 // drawing resize guide
 self.prototype.drawHandle = function(ctx) {
 

@@ -10,11 +10,23 @@ var self = Anima.Path;
 
 self.prototype.draw = function(ctx) {
 
-  this.drawEdge(ctx);
-
   if(this.selected) {
-    this.drawHandle(ctx);
+
+    this.drawWithHandles(ctx);
+
+  } else {
+
+    this.drawEdge(ctx, 0, 0);
+
   }
+
+}
+
+self.prototype.drawWithHandles = function(ctx) {
+
+  this.drawEdge(ctx, 0, 0);
+
+  this.drawHandles(ctx);
 
   if(!this.complete) {
     this.drawLastTwoHandles(ctx);
@@ -22,9 +34,24 @@ self.prototype.draw = function(ctx) {
 
 }
 
+self.prototype.drawWithAnchorPoints = function(ctx) {
+
+  this.drawEdge(ctx, 0, 0);
+  this.drawAnchorPoints(ctx, 0, 0);
+
+}
+
+self.prototype.drawWithEndPoints = function(ctx) {
+
+  this.drawEdge(ctx, 0, 0);
+  this.drawEndPointsOfPath(ctx, 0, 0);
+
+}
+
 self.prototype.drawWithDifference = function(ctx, dx, dy) {
 
-  // to be implemented
+  this.drawEdge(ctx, dx, dy);
+  this.drawEndPointsOfPath(ctx, dx, dy);
 
 }
 
@@ -43,11 +70,15 @@ self.prototype.setupContext = function(ctx) {
 
 }
 
-self.prototype.drawEdge = function(ctx) {
+self.prototype.drawEdge = function(ctx, dx, dy) {
 
   this.setupContext(ctx);
 
+  ctx.save();
+
   ctx.beginPath();
+
+  ctx.translate(dx, dy);
 
   var pt = this.getBeginPoint();
   ctx.moveTo(pt.x, pt.y);
@@ -73,9 +104,10 @@ self.prototype.drawEdge = function(ctx) {
     ctx.stroke();
   }
 
+  ctx.restore();
 }
 
-self.prototype.drawHandle = function(ctx) {
+self.prototype.drawHandles = function(ctx) {
   var len = this.edges.length;
 
   for (var i = 0; this.edges.length > i; i++) {
@@ -85,6 +117,33 @@ self.prototype.drawHandle = function(ctx) {
   if(!this.complete) {
     this.drawLastTwoHandles(ctx);
   }
+}
+
+self.prototype.drawAnchorPoints = function(ctx, dx, dy) {
+
+  var len = this.edges.length;
+
+  for (var i = 0; this.edges.length > i; i++) {
+
+    ctx.save();
+    ctx.translate(dx, dy);
+    this.edges[i].drawAnchorPoints(ctx);
+    ctx.restore();
+
+  }
+
+}
+
+self.prototype.drawEndPointsOfPath = function(ctx, dx, dy) {
+
+  var last = this.edges.length - 1;
+
+  ctx.save();
+  ctx.translate(dx, dy);
+  this.edges[0].drawAnchorPointZero(ctx);
+  this.edges[last].drawAnchorPointOne(ctx);
+  ctx.restore();
+
 }
 
 self.prototype.drawLastTwoHandles = function(ctx) {

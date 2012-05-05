@@ -25,13 +25,33 @@ self.prototype.drawSelectedPath = function(ctx) {
 
 self.prototype.drawSelectedPathImpl = function(ctx) {
 
-  this.editor.pathList.forEach(function(path) {
+  var arr = this.editor.pathList;
 
-    if(path.isSelected) {
+  for(var i = arr.length - 1; i >= 0 ; i--) {
+
+    var path = arr[i];
+
+    if(path.isSelected()) {
       path.draw(ctx);
     }
 
-  });
+  }
+
+}
+
+self.prototype.drawUnselectedPath = function(ctx) {
+
+  var arr = this.editor.pathList;
+
+  for(var i = arr.length - 1; i >= 0 ; i--) {
+
+    var path = arr[i];
+
+    if(!path.isSelected()) {
+      path.draw(ctx);
+    }
+
+  }
 
 }
 
