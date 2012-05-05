@@ -39,7 +39,7 @@ self.prototype.onLeftMouseDown = function(e) {
 
   this.stateObj.setNextCurve(nextCurve);
 
-  var path = Anima.Global.editor.newPath;
+  var path = Anima.Global.editor.getNewPath();
   path.addEdge(nextCurve);
 
   this.selectNextState(this.stateObj.state.dragging);

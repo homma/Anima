@@ -8,18 +8,18 @@ var self = Anima.Editor;
 
 /// delete / cut / copy / paste selected paths /////////////////////////////////
 
-self.prototype._deleteAll = function() {
+self.prototype.deleteAll = function() {
   this.pathList.splice(0, this.pathList.length);
 }
 
-self.prototype._deleteSelected = function() {
+self.prototype.deleteSelected = function() {
 
   for (var i = this.pathList.length - 1; i >= 0; i--) {
 
     var path = this.pathList[i];
 
     if( path.isSelected() ) {  // true if the path is selected.
-      this.deselectPath(path);
+      this.interface.deselectPath(path);
       this.pathList.splice(i, 1);
     }
 
@@ -27,7 +27,7 @@ self.prototype._deleteSelected = function() {
 
 }
 
-self.prototype._cut = function() {
+self.prototype.cut = function() {
 
   this.clipBoard = [];
 
@@ -39,11 +39,11 @@ self.prototype._cut = function() {
     }
   }
 
-  this.deleteSelected();
+  this.interface.deleteSelected();
 
 }
 
-self.prototype._copy = function() {
+self.prototype.copy = function() {
   var selected = [];
 
   for (var i = 0; i < this.pathList.length; i++) {
@@ -65,15 +65,15 @@ self.prototype._copy = function() {
   }
 }
 
-self.prototype._paste = function() {
+self.prototype.paste = function() {
   if( this.clipBoard.length == 0 ) return;
 
-  this.deselectAll();
+  this.interface.deselectAll();
 
   for (var i = 0; i < this.clipBoard.length; i++) {
 
       var path = this.clipBoard[i].duplicate();
-      this.selectPath(path);
+      this.interface.selectPath(path);
       this.pathList.push(path);
 
   }

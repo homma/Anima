@@ -14,15 +14,15 @@ var self = Anima.Editor;
 //       dx: num or null, // diff x
 //       dy: num or null  // diff y
 //}
-self.prototype._searchConnection = function() {
+self.prototype.searchConnection = function() {
 
   // search
 
 }
 
-self.prototype._getResizeGuideHandles = function() {
+self.prototype.getResizeGuideHandles = function() {
 
-  var rect = this.getBoundaryOfSelectedPaths();
+  var rect = this.interface.getBoundaryOfSelectedPaths();
   var ret = {};
 
   // handle
@@ -54,12 +54,12 @@ self.prototype._getResizeGuideHandles = function() {
   return ret;
 }
 
-self.prototype._getRotateGuideHandles = function() {
+self.prototype.getRotateGuideHandles = function() {
 
-  var rect = this.getBoundaryOfSelectedPaths();
+  var rect = this.interface.getBoundaryOfSelectedPaths();
   var ret = {};
 
-  var len = this.RotateGuideLineLength;
+  var len = this.interface.RotateGuideLineLength;
 
   var x = new Array();
   var y = new Array();
@@ -93,7 +93,7 @@ self.prototype._getRotateGuideHandles = function() {
   return ret;
 }
 
-self.prototype._getBoundaryOfSelectedPaths = function() {
+self.prototype.getBoundaryOfSelectedPaths = function() {
 
   if(this.selectedPathList.length == 0) { return; };
 

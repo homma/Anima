@@ -8,7 +8,7 @@ var self = Anima.Editor;
 
 /// transform //////////////////////////////////////////////////////////////////
 
-self.prototype._modifyPoint = function(edge, x, y) {
+self.prototype.modifyPoint = function(edge, x, y) {
 
   if(this.selectMode == this.SelectModes.connect) {
     // connect edges
@@ -18,7 +18,7 @@ self.prototype._modifyPoint = function(edge, x, y) {
 
 }
 
-self.prototype._removePoint = function(edge) {
+self.prototype.removePoint = function(edge) {
 
   edge.removeSelectedPoint();
 
