@@ -48,123 +48,20 @@ self.prototype.inPath = function(x, y) {
 
 }
 
-// returns an edge if hit the modification handles
-self.prototype.isOnHandle = function(x, y) {
-
-  var hitEdge = null;
-  var ctx = this.canvas.canvas.getContext('2d');
-
-  // guard
-  if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
-  if( this.pathList.length == 0 ) { return hitEdge; };
-
-  for (var i = 0; i < this.pathList.length; i++) {
-    hitEdge = this.pathList[i].isOnHandle(ctx, x, y);
-
-    if(hitEdge) break;
-  }
-
-  return hitEdge;
-}
-
 // returns an edge if hit
 self.prototype.isOnAnchorPoints = function(x, y) {
 
-  var hitEdge = null;
-
   // guard
   if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
-  if( this.pathList.length == 0 ) { return hitEdge; };
 
-  var ctx = this.canvas.canvas.getContext('2d');
-
-  for (var i = 0; i < this.pathList.length; i++) {
-    hitEdge = this.pathList[i].isOnAnchorPoints(ctx, x, y);
-    if(hitEdge) break;
-  }
-
-  return hitEdge;
+  return this.selectMode.isOnAnchorPoints(x, y);
 }
 
-// returns false or position being hit
-self.prototype.hitTestResizeGuide = function(x, y) {
+// returns an edge if hit the modification handles
+self.prototype.isOnHandle = function(x, y) {
 
-  var hit = false;
+  return this.selectMode.isOnHandle(x, y);
 
-  // guard
-  if(this.selectMode != this.SelectModes.resize) { return false; };
-  if( this.selectedPathList.length == 0) { return false; };
-
-  var handles = this.interface.getResizeGuideHandles();
-
-  var i;
-  for(i = 0; i < handles.x.length; i++) {
-
-    if( this.hitHandle(handles.x[i], handles.y[i], x, y) ) {
-      hit = true;
-      break;
-    }
-
-  }
-
-  if(hit) {
-    var ret = {};
-    ret.position = i;
-
-    return ret;
-  } else {
-    return false;
-  }
-
-}
-
-// returns boolean or handles and position where is hit
-self.prototype.hitTestRotateHandle = function(x, y) {
-
-  var hit = false;
-
-  // guard
-  if(this.selectMode != this.SelectModes.rotate) { return hit; };
-  if( this.selectedPathList.length == 0) { return hit; };
-
-  var handles = this.interface.getRotateGuideHandles();
-
-  // starts from 1 because handles.x[0] is not actually a handle.
-  var i;
-  for(i = 1; i < handles.x.length; i++) {
-
-    if( this.hitHandle(handles.x[i], handles.y[i], x, y) ) {
-      hit = true;
-      break;
-    }
-
-  }
-
-  if(hit) {
-    var ret = {};
-    ret.position = i;
-
-    return ret;
-  } else {
-    return hit;
-  }
-
-}
-
-self.prototype.hitHandle = function(x0, y0, x1, y1) {
-
-  var r = this.ResizeGuideCircleR;
-
-  var left = x0 - r;
-  var right = x0 + r;
-  var top = y0 + r;
-  var bottom = y0 - r;
-
-  if( (x1 >= left) && (x1 <= right) && (y1 <= top) && (y1 >= bottom) ) {
-    return true;
-  }
-
-  return false;
 }
 
 } // block

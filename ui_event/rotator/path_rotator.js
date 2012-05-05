@@ -54,13 +54,6 @@ self.prototype.rotatePath = function(e) {
 
   var position = Anima.Util.getMousePositionInCanvas(e);
 
-  var handles = Anima.Global.editor.getRotateGuideHandles();
-  var p = this.position;
-
-  //     3
-  // 1 - 0 - 2
-  //     4
-
   // Anima.Global.editor.rotateSelectedPaths();
   // Anima.Global.editor.translateSelectedPaths(diffX, diffY);
 

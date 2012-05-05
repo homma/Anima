@@ -22,7 +22,7 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (resize guide)
-  var hitResizeGuide = Anima.Global.editor.hitTestResizeGuide(x, y);
+  var hitResizeGuide = Anima.Global.editor.isOnHandle(x, y);
   if(hitResizeGuide) {
 
     this.select(hitResizeGuide);
@@ -64,7 +64,7 @@ self.prototype.resizePath = function(e) {
 
   var position = Anima.Util.getMousePositionInCanvas(e);
 
-  var handles = Anima.Global.editor.getResizeGuideHandles();
+  var handles = Anima.Global.editor.getResizeArea();
   var p = this.position;
 
   // 0 - 7 - 3
