@@ -40,6 +40,15 @@ self.prototype.selectRotate = function() {
 
 }
 
+self.prototype.selectConnect = function() {
+
+  // need fix.
+  Anima.Global.PathInspector.setPathOps( Anima.Global.CurveModifier );
+  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.connect);
+  Anima.Global.editor.draw();
+
+}
+
 self.prototype.selectPointRemover = function() {
 
   Anima.Global.PathInspector.setPathOps( Anima.Global.PointRemover );

@@ -14,7 +14,7 @@ var self = Anima.TransformMode;
 
 self.prototype = new Anima.EditorMode();
 
-/// drwa ///////////////////////////////////////////////////////////////////////
+/// draw ///////////////////////////////////////////////////////////////////////
 
 self.prototype.drawHandle = function(ctx) {
 
@@ -23,7 +23,7 @@ self.prototype.drawHandle = function(ctx) {
   for (var i = 0; i < this.editor.pathList.length; i++) {
     var path = this.editor.pathList[i];
     if(path.selected) {
-      path.drawHandle(ctx);
+      path.drawHandles(ctx);
     }
   }
 
