@@ -53,6 +53,7 @@ var scripts = [
 "./editor/copy_paste.js",
 "./editor/util.js",
 "./editor/interface/interface.js",
+"./editor/modes/mode.js",
 "./editor/modes/connect.js",
 "./editor/modes/resize.js",
 "./editor/modes/rotate.js",

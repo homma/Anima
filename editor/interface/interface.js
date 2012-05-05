@@ -59,16 +59,6 @@ self.prototype.isOnAnchorPoints = function(x, y) {
   return editor.isOnAnchorPoints(x, y);
 }
 
-// return hit edge or null
-self.prototype.hitTestResizeGuide = function(x, y) {
-  return editor.hitTestResizeGuide(x, y);
-}
-
-// return hit edge or null
-self.prototype.hitTestRotateGuide = function(x, y) {
-  return editor.hitTestRotateGuide(x, y);
-}
-
 ///////////////////////////////////////
 
 self.prototype.setTimeFrame = function(frame) {
@@ -172,16 +162,10 @@ self.prototype.selectAll = function() {
 
 ///////////////////////////////////////
 
-self.prototype.getResizeGuideHandles = function() {
-  return editor.getResizeGuideHandles();
-}
+self.prototype.getResizeArea = function() {
 
-self.prototype.getRotateGuideHandles = function() {
-  return editor.getRotateGuideHandles();
-}
+  return editor.getResizeArea();
 
-self.prototype.getBoundaryOfSelectedPaths = function() {
-  return editor.getBoundaryOfSelectedPaths();
 }
 
 ///////////////////////////////////////

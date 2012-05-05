@@ -29,6 +29,12 @@ self.prototype.onPath = function(ctx, x, y) {
 
   }
 
+  if(hit) return hit;
+
+  if( this.getFill() ) {
+    hit = this.isPointInPath(ctx, x, y);
+  }
+
   return hit;
 }
 
