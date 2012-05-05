@@ -11,12 +11,12 @@ Anima.Curve.prototype.dataExport = function() {
     indent + '  "type": "curve",\n' +
     indent + '  "p0x": ' + this.p0x + ',\n' +
     indent + '  "p0y": ' + this.p0y + ',\n' +
-    indent + '  "cp0x": ' + this.cp0x + ',\n' +
-    indent + '  "cp0y": ' + this.cp0y + ',\n' +
+    indent + '  "c0x": ' + this.c0x + ',\n' +
+    indent + '  "c0y": ' + this.c0y + ',\n' +
     indent + '  "p1x": ' + this.p1x + ',\n' +
     indent + '  "p1y": ' + this.p1y + ',\n' +
-    indent + '  "cp1x": ' + this.cp1x + ',\n' +
-    indent + '  "cp1y": ' + this.cp1y + '\n' +
+    indent + '  "c1x": ' + this.c1x + ',\n' +
+    indent + '  "c1y": ' + this.c1y + '\n' +
     indent + '}';
 
   return str;
@@ -27,11 +27,11 @@ Anima.Curve.prototype.dataImport = function(obj) {
 
   this.p0x = obj.p0x;
   this.p0y = obj.p0y;
-  this.cp0x = obj.cp0x;
-  this.cp0y = obj.cp0y;
+  this.c0x = obj.c0x;
+  this.c0y = obj.c0y;
   this.p1x = obj.p1x;
   this.p1y = obj.p1y;
-  this.cp1x = obj.cp1x;
-  this.cp1y = obj.cp1y;
+  this.c1x = obj.c1x;
+  this.c1y = obj.c1y;
 
 }

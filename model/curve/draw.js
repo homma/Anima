@@ -5,10 +5,10 @@
 Anima.Curve.prototype.draw = function(ctx) {
   // console.log("drawing bezier");
   ctx.bezierCurveTo(
-    this.cp0x,
-    this.cp0y,
-    this.cp1x,
-    this.cp1y,
+    this.c0x,
+    this.c0y,
+    this.c1x,
+    this.c1y,
     this.p1x,
     this.p1y
   );
@@ -40,11 +40,11 @@ Anima.Curve.prototype._drawFirstHandle = function(ctx) {
 
     ctx.beginPath();
     ctx.moveTo(this.p0x, this.p0y);
-    ctx.lineTo(this.cp0x, this.cp0y);
+    ctx.lineTo(this.c0x, this.c0y);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(this.cp0x, this.cp0y, radius, 0, 2 * Math.PI, false);
+    ctx.arc(this.c0x, this.c0y, radius, 0, 2 * Math.PI, false);
     ctx.stroke();
     ctx.fill();
   }
@@ -70,11 +70,11 @@ Anima.Curve.prototype._drawSecondHandle = function(ctx) {
 
     ctx.beginPath();
     ctx.moveTo(this.p1x, this.p1y);
-    ctx.lineTo(this.cp1x, this.cp1y);
+    ctx.lineTo(this.c1x, this.c1y);
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(this.cp1x, this.cp1y, radius, 0, 2 * Math.PI, false);
+    ctx.arc(this.c1x, this.c1y, radius, 0, 2 * Math.PI, false);
     ctx.stroke();
     ctx.fill();
   }

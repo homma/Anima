@@ -38,12 +38,11 @@ self.prototype.createCircle = function(x, y, r) {
 
 }
 
-// ap => anchor point or end point
-// cp => control point
-self.prototype.addArc = function(ap0x, ap0y, cp0x, cp0y,
-                                 ap1x, ap1y, cp1x, cp1y) {
+// p => anchor point
+// c => control point
+self.prototype.addArc = function(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y) {
 
-  var edge = new Anima.Curve(ap0x, ap0y, cp0x, cp0y, ap1x, ap1y, cp1x, cp1y);
+  var edge = new Anima.Curve(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y);
   this.addEdge(edge);
 
 }

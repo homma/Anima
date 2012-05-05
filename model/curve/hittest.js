@@ -138,14 +138,14 @@ self.prototype.isOnControlPoints = function(ctx, x, y) {
 
   var res = null;
 
-  res = this.isOnPoint(ctx, this.cp0x, this.cp0y, 0, x, y);
+  res = this.isOnPoint(ctx, this.c0x, this.c0y, 0, x, y);
   if(res) {
     // this architecture must be changed
     this.selectedPoint = this.ControlPointZero;
     return this;
   };
 
-  res = this.isOnPoint(ctx, this.cp1x, this.cp1y, 0, x, y);
+  res = this.isOnPoint(ctx, this.c1x, this.c1y, 0, x, y);
   if(res) {
     // this architecture must be changed
     this.selectedPoint = this.ControlPointOne;
