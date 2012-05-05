@@ -8,23 +8,23 @@ var self = Anima.Editor;
 
 /// draw ///////////////////////////////////////////////////////////////////////
 
-self.prototype._draw = function() {
+self.prototype.draw = function() {
 
   this.canvas.clear();  // erase all the pathes before we draw
 
   var ctx = this.canvas.canvas.getContext('2d');
 
-  this._drawUnselectedPath(ctx);
-  this._drawSelectedPath(ctx);
+  this.drawUnselectedPath(ctx);
+  this.drawSelectedPath(ctx);
 
-  this._drawHandle(ctx);
-  this._drawResizeGuide(ctx);
-  this._drawRotateGuide(ctx);
+  this.drawHandle(ctx);
+  this.drawResizeGuide(ctx);
+  this.drawRotateGuide(ctx);
 
-  this._drawNewPath(ctx);
+  this.drawNewPath(ctx);
 };
 
-/* self.prototype._drawPath = function(ctx) {
+/* self.prototype.drawPath = function(ctx) {
 
   this.pathList.forEach(function(path) {
       path.draw(ctx);
@@ -32,21 +32,21 @@ self.prototype._draw = function() {
 
 } */
 
-self.prototype._drawSelectedPath = function(ctx) {
+self.prototype.drawSelectedPath = function(ctx) {
 
   if(this.SelectMode == this.SelectModes.connect) {
 
-    this._connectAndDrawSelectedPath(ctx);
+    this.connectAndDrawSelectedPath(ctx);
 
   } else {
 
-    this.__drawSelectedPath(ctx);
+    this.drawSelectedPathImpl(ctx);
 
   }
 
 }
 
-self.prototype.__drawSelectedPath = function(ctx) {
+self.prototype.drawSelectedPathImpl = function(ctx) {
 
   this.pathList.forEach(function(path) {
 
@@ -58,13 +58,13 @@ self.prototype.__drawSelectedPath = function(ctx) {
 
 }
 
-self.prototype._connectAndDrawSelectedPath = function(ctx) {
+self.prototype.connectAndDrawSelectedPath = function(ctx) {
 
-  var conn = this._searchConnection();
+  var conn = this.searchConnection();
 
   if(!conn.exists) {
 
-    this.__drawSelectedPath(ctx);
+    this.drawSelectedPathImpl(ctx);
     return;
 
   }
@@ -81,7 +81,7 @@ self.prototype._connectAndDrawSelectedPath = function(ctx) {
 
 }
 
-self.prototype._drawUnselectedPath = function(ctx) {
+self.prototype.drawUnselectedPath = function(ctx) {
 
   this.pathList.forEach(function(path) {
 
@@ -92,7 +92,7 @@ self.prototype._drawUnselectedPath = function(ctx) {
   });
 }
 
-self.prototype._drawNewPath = function(ctx) {
+self.prototype.drawNewPath = function(ctx) {
 
   if(!this.newPath) { return };
 
@@ -100,7 +100,7 @@ self.prototype._drawNewPath = function(ctx) {
 
 }
 
-self.prototype._drawHandle = function(ctx) {
+self.prototype.drawHandle = function(ctx) {
 
   if(this.selectMode != this.SelectModes.transform) { return; };
   if( this.selectedPathList.length == 0) { return; };
@@ -113,7 +113,7 @@ self.prototype._drawHandle = function(ctx) {
   }
 }
 
-self.prototype._drawResizeGuide = function(ctx) {
+self.prototype.drawResizeGuide = function(ctx) {
 
   if(this.selectMode != this.SelectModes.resize) { return; };
   if( this.selectedPathList.length == 0) { return; };
@@ -121,7 +121,7 @@ self.prototype._drawResizeGuide = function(ctx) {
   ctx.save();
 
   // surrounding square
-  var rect = this.getBoundaryOfSelectedPaths();
+  var rect = this.interface.getBoundaryOfSelectedPaths();
 
   ctx.lineWidth = this.ResizeGuideLineWidth;
   ctx.strokeStyle = this.ResizeGuideLineStyle;
@@ -129,7 +129,7 @@ self.prototype._drawResizeGuide = function(ctx) {
   ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
 
   // handle
-  var handles = this.getResizeGuideHandles();
+  var handles = this.interface.getResizeGuideHandles();
 
   var r = this.ResizeGuideCircleR;
   ctx.fillStyle = this.ResizeGuideFillStyle;
@@ -144,7 +144,7 @@ self.prototype._drawResizeGuide = function(ctx) {
 
 }
 
-self.prototype._drawRotateGuide = function(ctx) {
+self.prototype.drawRotateGuide = function(ctx) {
 
   if(this.selectMode != this.SelectModes.rotate) { return; };
   if( this.selectedPathList.length == 0) { return; };
@@ -159,7 +159,7 @@ self.prototype._drawRotateGuide = function(ctx) {
 
   var len     = this.RotateGuideLineLength;
 
-  var positions = this.getRotateGuideHandles();
+  var positions = this.interface.getRotateGuideHandles();
   //       [3]
   // [1] - [0] - [2]
   //       [4]

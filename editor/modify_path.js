@@ -8,7 +8,7 @@ var self = Anima.Editor;
 
 /// change attribute ///////////////////////////////////////////////////////////
 
-self.prototype._setLineWidth = function(w) {
+self.prototype.setLineWidth = function(w) {
   for (var i = 0; i < this.selectedPathList.length; i++) {
     this.pathList[i].setLineWidth(w);
   }
@@ -16,7 +16,7 @@ self.prototype._setLineWidth = function(w) {
 
 /// translate(move) ////////////////////////////////////////////////////////////
 
-self.prototype._translateSelectedPaths = function(x, y) {
+self.prototype.translateSelectedPaths = function(x, y) {
 
   for (var i = 0; i < this.selectedPathList.length; i++) {
     this.selectedPathList[i].translate(x, y);
@@ -24,13 +24,13 @@ self.prototype._translateSelectedPaths = function(x, y) {
 
 }
 
-self.prototype._commitTranslation = function() {
+self.prototype.commitTranslation = function() {
   // do something
 }
 
 /// resize /////////////////////////////////////////////////////////////////////
 
-self.prototype._resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
+self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
 
   // console.log(fromX, fromY, scaleX, scaleY);
 
@@ -40,13 +40,13 @@ self.prototype._resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
 
 }
 
-self.prototype._commitSize = function() {
+self.prototype.commitSize = function() {
   // do something
 }
 
 /// rotate /////////////////////////////////////////////////////////////////////
 
-self.prototype._rotateSelectedPaths = function() {
+self.prototype.rotateSelectedPaths = function() {
 
   for (var i = 0; i < this.selectedPathList.length; i++) {
     this.selectedPathList[i].rotate();
@@ -54,7 +54,7 @@ self.prototype._rotateSelectedPaths = function() {
 
 }
 
-self.prototype._commitRotation = function() {
+self.prototype.commitRotation = function() {
   // do something
 }
 

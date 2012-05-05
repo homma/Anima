@@ -1,180 +1,196 @@
 new function() {  // block
 
-var self = Anima.Editor;
+var editor;  // editor internal
+
+Anima.EditorInterface = function(ed) {
+
+  editor = ed;
+
+  this.SelectModes = ed.SelectModes;
+  Anima.Global.editor = this;
+
+}
+var self = Anima.EditorInterface;
 
 ///////////////////////////////////////
 
 self.prototype.deleteAll = function() {
-  this._deleteAll();
+  editor.deleteAll();
 }
 
 self.prototype.delete = function() {
-  this._deleteSelected();
+  editor.deleteSelected();
 }
 
 self.prototype.cut = function() {
-  this._cut();
+  editor.cut();
 }
 
 self.prototype.copy = function() {
-  this._copy();
+  editor.copy();
 }
 
 self.prototype.paste = function() {
-  this._paste();
+  editor.paste();
 }
 
 ///////////////////////////////////////
 
 // repaint the screen
 self.prototype.draw = function() {
-  this._draw();
+  editor.draw();
 }
 
 ///////////////////////////////////////
 
 // returns hit path or null
 self.prototype.hitTest = function(x, y) {
-  return this._onPath(x, y);
+  return editor.onPath(x, y);
 }
 
 // check a hit on a control point or an anchor point
 // return hit edge or null
 self.prototype.isOnHandle = function(x, y) {
-  return this._isOnHandle(x, y);
+  return editor.isOnHandle(x, y);
 }
 
 // return hit edge or null
 self.prototype.isOnAnchorPoints = function(x, y) {
-  return this._isOnAnchorPoints(x, y);
+  return editor.isOnAnchorPoints(x, y);
 }
 
 // return hit edge or null
 self.prototype.hitTestResizeGuide = function(x, y) {
-  return this._hitTestResizeGuide(x, y);
+  return editor.hitTestResizeGuide(x, y);
 }
 
 // return hit edge or null
 self.prototype.hitTestRotateGuide = function(x, y) {
-  return this._hitTestRotateGuide(x, y);
+  return editor.hitTestRotateGuide(x, y);
 }
 
 ///////////////////////////////////////
 
 self.prototype.setTimeFrame = function(frame) {
-  this._setTimeFrame(frame);
+  editor.setTimeFrame(frame);
 }
 
 self.prototype.setTrack = function(track) {
-  this._setTrack(track);
+  editor.setTrack(track);
 }
 
 ///////////////////////////////////////
 
 self.prototype.modifyPoint = function(edge, x, y) {
-  this._modifyPoint(edge, x, y);
+  editor.modifyPoint(edge, x, y);
 }
 
 self.prototype.removePoint = function(edge) {
-  this._removePoint(edge);
+  editor.removePoint(edge);
 }
 
 ///////////////////////////////////////
 
 self.prototype.setLineWidth = function(w) {
-  this._setLineWidth(w);
+  editor.setLineWidth(w);
 }
 
 self.prototype.translateSelectedPaths = function(x, y) {
-  this._translateSelectedPaths(x, y);
+  editor.translateSelectedPaths(x, y);
 }
 
 // fix position
 self.prototype.commitTranslation = function() {
-//  this._commitTranslation();
+//  editor.commitTranslation();
 }
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
-  this._resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
+  editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
 }
 
 // fix size
 self.prototype.commitSize = function() {
-//  this._commitSize();
+//  editor.commitSize();
 }
 
 self.prototype.rotateSelectedPaths = function() {
-  this._rotateSelectedPaths();
+  editor.rotateSelectedPaths();
 }
 
 // fix angle
 self.prototype.commitRotation = function() {
-//  this._commitRotation();
+//  editor.commitRotation();
 }
 
 ///////////////////////////////////////
 
 self.prototype.addPath = function(p) {
-  this._addPath(p);
+  editor.addPath(p);
 }
 
 self.prototype.getNewPath = function(p) {
-  return this._getNewPath(p);
+  return editor.getNewPath(p);
 }
 
 self.prototype.setNewPath = function(p) {
-  this._setNewPath(p);
+  editor.setNewPath(p);
 }
 
 self.prototype.removePath = function(p) {
-  this._removePath(p);
+  editor.removePath(p);
 }
 
 ///////////////////////////////////////
 
 self.prototype.setSelectMode = function(mode) {
-  this._setSelectMode(mode);
+  editor.setSelectMode(mode);
 }
 
 self.prototype.getSelectedPaths = function() {
-  return this._getSelectedPaths();
+  return editor.getSelectedPaths();
 }
 
 self.prototype.isSelectedPath = function(p) {
-  return this._isSelectedPath(p);
+  return editor.isSelectedPath(p);
 }
 
 self.prototype.selectPath = function(p) {
-  this._selectPath(p);
+  editor.selectPath(p);
 }
 
 self.prototype.deselectPath = function(p) {
-  this._deselectPath(p);
+  editor.deselectPath(p);
 }
 
 self.prototype.deselectAll = function() {
-  this._deselectAll();
+  editor.deselectAll();
 }
 
 self.prototype.selectAll = function() {
-  this._selectAll();
+  editor.selectAll();
 }
 
 ///////////////////////////////////////
 
 self.prototype.getResizeGuideHandles = function() {
-  return this._getResizeGuideHandles();
+  return editor.getResizeGuideHandles();
 }
 
 self.prototype.getRotateGuideHandles = function() {
-  return this._getRotateGuideHandles();
+  return editor.getRotateGuideHandles();
 }
 
 self.prototype.getBoundaryOfSelectedPaths = function() {
-  return this._getBoundaryOfSelectedPaths();
+  return editor.getBoundaryOfSelectedPaths();
 }
 
 ///////////////////////////////////////
+
+self.prototype.initialize = function() {
+
+  editor.initialize();
+
+}
 
 } // block
 

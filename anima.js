@@ -8,7 +8,7 @@ function animaInit() {
   new Anima.Canvas();
   new Anima.UndoManager();
   new Anima.Animation();
-  new Anima.Editor(Anima.Global.canvas);
+  new Anima.Editor();
   new Anima.Exporter();
   new Anima.Importer();
   new Anima.Operations();

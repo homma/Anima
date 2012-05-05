@@ -8,27 +8,23 @@ var self = Anima.Editor;
 
 /// select / deselect path with cache management ///////////////////////////////
 
-self.prototype._setSelectMode = function(mode) {
-
-  // this.SelectModes.transform = 1;
-  // this.SelectModes.resize = 2;
-  // this.SelectModes.rotate = 3;
+self.prototype.setSelectMode = function(mode) {
 
   this.selectMode = mode;
 
 }
 
-self.prototype._getSelectedPaths = function() {
+self.prototype.getSelectedPaths = function() {
 
   return this.selectedPathList;
 
 }
 
-self.prototype._isSelectedPath = function(p) {
+self.prototype.isSelectedPath = function(p) {
   return p.isSelected();
 }
 
-self.prototype._selectPath = function(p) {
+self.prototype.selectPath = function(p) {
 
   if( p.isSelected() ) return; // do nothing if it is already selected.
 
@@ -37,7 +33,7 @@ self.prototype._selectPath = function(p) {
 
 }
 
-self.prototype._deselectPath = function(p) {
+self.prototype.deselectPath = function(p) {
 
   if( !p.isSelected() ) return; // do nothing if it is already deselected.
 
@@ -51,18 +47,18 @@ self.prototype._deselectPath = function(p) {
 
 }
 
-self.prototype._deselectAll = function() {
+self.prototype.deselectAll = function() {
 
   for (var i = 0; i < this.pathList.length; i++) {
-    this.deselectPath(this.pathList[i]);
+    this.interface.deselectPath(this.pathList[i]);
   }
 
 }
 
-self.prototype._selectAll = function() {
+self.prototype.selectAll = function() {
 
   for (var i = 0; i < this.pathList.length; i++) {
-    this.selectPath(this.pathList[i]);
+    this.interface.selectPath(this.pathList[i]);
   }
 
 }
