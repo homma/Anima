@@ -52,10 +52,8 @@ self.prototype.onMouseDown = function(e) {
   Anima.Global.editor.setNewPath(path);
 
   var curve = new Anima.Curve();
-  curve.p0x = x;
-  curve.p0y = y;
-  curve.cp0x = x;
-  curve.cp0y = y;
+  curve.setAnchorPointZero(x, y);
+  curve.setControlPointZero(x, y);
   path.addEdge(curve);
 
   this.prevCurve = curve;
@@ -76,16 +74,12 @@ self.prototype.onMouseMove = function(e) {
 
   var path = Anima.Global.editor.getNewPath();
 
-  this.prevCurve.p1x = x;
-  this.prevCurve.p1y = y;
-  this.prevCurve.cp1x = x;
-  this.prevCurve.cp1y = y;
+  this.prevCurve.setAnchorPointOne(x, y);
+  this.prevCurve.setControlPointOne(x, y);
 
   var curve = new Anima.Curve();
-  curve.p0x = x;
-  curve.p0y = y;
-  curve.cp0x = x;
-  curve.cp0y = y;
+  curve.setAnchorPointZero(x, y);
+  curve.setControlPointZero(x, y);
   path.addEdge(curve);
 
   this.prevCurve = curve;
@@ -104,10 +98,8 @@ self.prototype.onMouseUp = function(e) {
 
   var path = Anima.Global.editor.getNewPath();
 
-  this.prevCurve.p1x = x;
-  this.prevCurve.p1y = y;
-  this.prevCurve.cp1x = x;
-  this.prevCurve.cp1y = y;
+  this.prevCurve.setAnchorPointOne(x, y);
+  this.prevCurve.setControlPointOne(x, y);
 
   path.finished();
   Anima.Global.editor.addPath(path);

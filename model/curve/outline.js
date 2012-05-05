@@ -135,7 +135,7 @@ self.prototype.diffToNewLine = function(x0, y0, x1, y1, w) {
 // before using this, make sure with isCurve() that it is a curve
 self.prototype.curveOutLine = function(width) {
 
-  // cv (curve): p0x, p0y, cp0x, cp0y, p1x, p1y, cp1x, cp1y
+  // cv (curve): p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y
   var cv1 = {}; // curve from right of p0 to left of p1
   var cv2 = {}; // curve from left of p0 to right of p1
 
@@ -146,12 +146,12 @@ self.prototype.curveOutLine = function(width) {
   var p0IsCp0 = false;
   var p1IsCp1 = false;
 
-  if( (this.p0x == this.cp0x) && (this.p0y == this.cp0y) ) {
-    // when p0 == cp0
+  if( (this.p0x == this.c0x) && (this.p0y == this.c0y) ) {
+    // when p0 == c0
     p0IsCp0 = true;
 
-  } else if ( (this.p1x == this.cp1x) && (this.p1y == this.cp1y) ) {
-    // when p1 == cp1
+  } else if ( (this.p1x == this.c1x) && (this.p1y == this.c1y) ) {
+    // when p1 == c1
     p1IsCp1 = true;
 
   }
@@ -161,18 +161,18 @@ self.prototype.curveOutLine = function(width) {
   if(p0IsCp0) {
 
     var diff;
-    diff = this.diffToNewLine(this.p0x, this.p0y, this.cp1x, this.cp1y, width);
+    diff = this.diffToNewLine(this.p0x, this.p0y, this.c1x, this.c1y, width);
 
-    cv1.cp0x = cv1.p0x = this.p0x - diff.w;
-    cv1.cp0y = cv1.p0y = this.p0y + diff.h;
+    cv1.c0x = cv1.p0x = this.p0x - diff.w;
+    cv1.c0y = cv1.p0y = this.p0y + diff.h;
 
-    cv2.cp1x = cv2.p1x = this.p0x + diff.w;
-    cv2.cp1y = cv2.p1y = this.p0y - diff.h;
+    cv2.c1x = cv2.p1x = this.p0x + diff.w;
+    cv2.c1y = cv2.p1y = this.p0y - diff.h;
 
   } else {
 
     var diff;
-    diff = this.diffToNewLine(this.p0x, this.p0y, this.cp0x, this.cp0y, width);
+    diff = this.diffToNewLine(this.p0x, this.p0y, this.c0x, this.c0y, width);
 
     cv1.p0x = this.p0x + diff.w;
     cv1.p0y = this.p0y - diff.h;
@@ -182,13 +182,13 @@ self.prototype.curveOutLine = function(width) {
 
     // cv1.p0 is inside or outside
     var inside;
-    // if cp1 is on the right side, then the right side of p0 is inside.
+    // if c1 is on the right side, then the right side of p0 is inside.
     // thus, cv1.p0 is inside.
-    inside = right(this.p0x, this.p0y, this.cp0x, this.cp0y,
-                   this.cp1x, this.cp1y);
+    inside = right(this.p0x, this.p0y, this.c0x, this.c0y,
+                   this.c1x, this.c1y);
 
-    var w = this.p0x - this.cp0x;
-    var h = this.p0y - this.cp0y;
+    var w = this.p0x - this.c0x;
+    var h = this.p0y - this.c0y;
     var aw = Math.abs(w);
     var ah = Math.abs(h);
     var adw = Math.abs(diff.w);
@@ -198,37 +198,37 @@ self.prototype.curveOutLine = function(width) {
 
       // cv1 is inside
       if( aw < adw ) {
-        cv1.cp0x = cv1.p0x;
+        cv1.c0x = cv1.p0x;
       } else {  // normal
-        cv1.cp0x = cv1.p0x - w * ( aw - adw ) / aw;
+        cv1.c0x = cv1.p0x - w * ( aw - adw ) / aw;
       }
       if( ah < adh ) {
-        cv1.cp0y = cv1.p0y;
+        cv1.c0y = cv1.p0y;
       } else {  // normal
-        cv1.cp0y = cv1.p0y - h * ( ah - adh ) / ah;
+        cv1.c0y = cv1.p0y - h * ( ah - adh ) / ah;
       }
 
       // cv2 is outside
-      cv2.cp1x = cv2.p1x - w * ( aw + adw ) / aw;
-      cv2.cp1y = cv2.p1y - h * ( ah + adh ) / ah;
+      cv2.c1x = cv2.p1x - w * ( aw + adw ) / aw;
+      cv2.c1y = cv2.p1y - h * ( ah + adh ) / ah;
 
 
     } else { // outside
 
       // cv1 is outside
-      cv1.cp0x = cv1.p0x - w * ( aw + adw ) / aw;
-      cv1.cp0y = cv1.p0y - h * ( ah + adh ) / ah;
+      cv1.c0x = cv1.p0x - w * ( aw + adw ) / aw;
+      cv1.c0y = cv1.p0y - h * ( ah + adh ) / ah;
 
       // cv2 is inside
       if( aw < adw ) {
-        cv2.cp1x = cv2.p1x;
+        cv2.c1x = cv2.p1x;
       } else { // normal
-        cv2.cp1x = cv2.p1x - w * ( aw - adw ) / aw;
+        cv2.c1x = cv2.p1x - w * ( aw - adw ) / aw;
       }
       if( ah < adh ) {
-        cv2.cp1y = cv2.p1y;
+        cv2.c1y = cv2.p1y;
       } else { // normal
-        cv2.cp1y = cv2.p1y - h * ( ah - adh ) / ah;
+        cv2.c1y = cv2.p1y - h * ( ah - adh ) / ah;
       }
 
     }
@@ -240,19 +240,19 @@ self.prototype.curveOutLine = function(width) {
   if(p1IsCp1) {
 
     var diff;
-    diff = this.diffToNewLine(this.p1x, this.p1y, this.cp0x, this.cp0y, width);
+    diff = this.diffToNewLine(this.p1x, this.p1y, this.c0x, this.c0y, width);
 
-    cv1.cp1x = cv1.p1x = this.p1x + diff.w;
-    cv1.cp1y = cv1.p1y = this.p1y - diff.h;
+    cv1.c1x = cv1.p1x = this.p1x + diff.w;
+    cv1.c1y = cv1.p1y = this.p1y - diff.h;
 
-    cv2.cp0x = cv2.p0x = this.p1x - diff.w;
-    cv2.cp0y = cv2.p0y = this.p1y + diff.h;
+    cv2.c0x = cv2.p0x = this.p1x - diff.w;
+    cv2.c0y = cv2.p0y = this.p1y + diff.h;
 
 
   } else {
 
     var diff;
-    diff = this.diffToNewLine(this.p1x, this.p1y, this.cp1x, this.cp1y, width);
+    diff = this.diffToNewLine(this.p1x, this.p1y, this.c1x, this.c1y, width);
 
     cv1.p1x = this.p1x - diff.w;
     cv1.p1y = this.p1y + diff.h;
@@ -262,13 +262,13 @@ self.prototype.curveOutLine = function(width) {
 
     // cv1.p1 is inside or outside
     var inside;
-    // if cp0 is on the left side, then the left side of p1 is inside.
+    // if c0 is on the left side, then the left side of p1 is inside.
     // thus, cv1.p1 is inside.
-    inside = left(this.p1x, this.p1y, this.cp1x, this.cp1y,
-                  this.cp0x, this.cp0y);
+    inside = left(this.p1x, this.p1y, this.c1x, this.c1y,
+                  this.c0x, this.c0y);
 
-    var w = this.p1x - this.cp1x;
-    var h = this.p1y - this.cp1y;
+    var w = this.p1x - this.c1x;
+    var h = this.p1y - this.c1y;
     var aw = Math.abs(w);
     var ah = Math.abs(h);
     var adw = Math.abs(diff.w);
@@ -278,36 +278,36 @@ self.prototype.curveOutLine = function(width) {
 
       // cv1 is inside
       if( aw < adw ) {
-        cv1.cp1x = cv1.p1x;
+        cv1.c1x = cv1.p1x;
       } else {  // normal
-        cv1.cp1x = cv1.p1x - w * ( aw - adw ) / aw;
+        cv1.c1x = cv1.p1x - w * ( aw - adw ) / aw;
       }
       if( ah < adh ) {
-        cv1.cp1y = cv1.p1y;
+        cv1.c1y = cv1.p1y;
       } else {  // normal
-        cv1.cp1y = cv1.p1y - h * ( ah - adh ) / ah;
+        cv1.c1y = cv1.p1y - h * ( ah - adh ) / ah;
       }
 
       // cv2 is outside
-      cv2.cp0x = cv2.p0x - w * ( aw + adw ) / aw;
-      cv2.cp0y = cv2.p0y - h * ( ah + adh ) / ah;
+      cv2.c0x = cv2.p0x - w * ( aw + adw ) / aw;
+      cv2.c0y = cv2.p0y - h * ( ah + adh ) / ah;
 
     } else { // outside
 
       // cv1 is outside
-      cv1.cp1x = cv1.p1x - w * ( aw + adw ) / aw;
-      cv1.cp1y = cv1.p1y - h * ( ah + adh ) / ah;
+      cv1.c1x = cv1.p1x - w * ( aw + adw ) / aw;
+      cv1.c1y = cv1.p1y - h * ( ah + adh ) / ah;
 
       // cv2 is inside
       if( aw < adh ) {
-        cv2.cp0x = cv2.p0x;
+        cv2.c0x = cv2.p0x;
       } else { // normal
-        cv2.cp0x = cv2.p0x - w * ( aw - adw ) / aw;
+        cv2.c0x = cv2.p0x - w * ( aw - adw ) / aw;
       }
       if( ah < adh ) {
-        cv2.cp0y = cv2.p0y;
+        cv2.c0y = cv2.p0y;
       } else { // normal
-        cv2.cp0y = cv2.p0y - h * ( ah - adh ) / ah;
+        cv2.c0y = cv2.p0y - h * ( ah - adh ) / ah;
       }
 
     }
@@ -322,12 +322,12 @@ self.prototype.curveOutLine = function(width) {
 
   // creating path
   var path = new Anima.Path();
-  var e1 = new Anima.Curve(cv1.p0x, cv1.p0y, cv1.cp0x, cv1.cp0y,
-                           cv1.cp1x, cv1.cp1y, cv1.p1x, cv1.p1y);
+  var e1 = new Anima.Curve(cv1.p0x, cv1.p0y, cv1.c0x, cv1.c0y,
+                           cv1.c1x, cv1.c1y, cv1.p1x, cv1.p1y);
   var e2 = new Anima.Curve(cv1.p1x, cv1.p1y, cv1.p1x, cv1.p1y,
                            cv2.p0x, cv2.p0y, cv2.p0x, cv2.p0y);
-  var e3 = new Anima.Curve(cv2.p0x, cv2.p0y, cv2.cp0x, cv2.cp0y,
-                           cv2.cp1x, cv2.cp1y, cv2.p1x, cv2.p1y);
+  var e3 = new Anima.Curve(cv2.p0x, cv2.p0y, cv2.c0x, cv2.c0y,
+                           cv2.c1x, cv2.c1y, cv2.p1x, cv2.p1y);
   var e4 = new Anima.Curve(cv2.p1x, cv2.p1y, cv2.p1x, cv2.p1y,
                            cv1.p0x, cv1.p0y, cv1.p0x, cv1.p0y);
   path.addEdge(e1);

@@ -27,7 +27,7 @@ self.prototype.isVerticalLine = function() {
 self.prototype.isVerticallyAligned = function() {
 
   // all the x-values are same?
-  var xarr = [ this.cp0x, this.p1x, this.cp1x ];
+  var xarr = [ this.c0x, this.p1x, this.c1x ];
   return xarr.every( function(v) { return (v == this.p0x) } );
 
 }
@@ -43,7 +43,7 @@ self.prototype.isHorizontalLine = function() {
 self.prototype.isHorizontallyAligned = function() {
 
   // all the y-values are same?
-  var yarr = [ this.cp0y, this.p1y, this.cp1y ];
+  var yarr = [ this.c0y, this.p1y, this.c1y ];
   return yarr.every( function(v) { return (v == this.p0y) } );
 
 }
@@ -54,10 +54,10 @@ self.prototype.isLine = function() {
 
   if( this.isDot() ) { return false; }
 
-  if( (this.p0x == this.cp0x) &&
-      (this.p0y == this.cp0y) &&
-      (this.p1x == this.cp1x) &&
-      (this.p1y == this.cp1y) ) {
+  if( (this.p0x == this.c0x) &&
+      (this.p0y == this.c0y) &&
+      (this.p1x == this.c1x) &&
+      (this.p1y == this.c1y) ) {
 
     return true;
 
