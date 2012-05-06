@@ -66,7 +66,6 @@ self.prototype.isPointInPath = function(ctx, x, y) {
 }
 
 self.prototype.isOnHandle = function(ctx, x, y) {
-  if(!this.selected) return false;
 
   var hitEdge = false;
 
@@ -80,7 +79,6 @@ self.prototype.isOnHandle = function(ctx, x, y) {
 }
 
 self.prototype.isOnAnchorPoints = function(ctx, x, y) {
-  if(!this.selected) return false;
 
   var hitEdge = false;
 

@@ -23,6 +23,7 @@ Anima.Editor = function() {
   this.SelectModes.resize = new Anima.ResizeMode(this);
   this.SelectModes.rotate = new Anima.RotateMode(this);
   this.SelectModes.connect = new Anima.ConnectMode(this);
+  this.SelectModes.pointRemove = new Anima.PointRemoveMode(this);
   this.selectMode = this.SelectModes.transform;
 
   this.interface = new Anima.EditorInterface(this);

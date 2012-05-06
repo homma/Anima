@@ -5,6 +5,7 @@
 new function() { // block
 
 var self = Anima.PathInspector;
+var gl = Anima.Global;
 
 /// path operations ////////////////////////////////////////////////////////////
 
@@ -18,42 +19,42 @@ self.prototype.getPathOps = function() {
 
 self.prototype.selectTransform = function() {
 
-  Anima.Global.PathInspector.setPathOps( Anima.Global.CurveModifier );
-  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.transform);
-  Anima.Global.editor.draw();
+  gl.PathInspector.setPathOps( gl.CurveModifier );
+  gl.editor.setSelectMode(gl.editor.SelectModes.transform);
+  gl.editor.draw();
 
 }
 
 self.prototype.selectResize = function() {
 
-  Anima.Global.PathInspector.setPathOps( Anima.Global.PathResizer );
-  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.resize);
-  Anima.Global.editor.draw();
+  gl.PathInspector.setPathOps( gl.PathResizer );
+  gl.editor.setSelectMode(gl.editor.SelectModes.resize);
+  gl.editor.draw();
 
 }
 
 self.prototype.selectRotate = function() {
 
-  Anima.Global.PathInspector.setPathOps( Anima.Global.PathRotator );
-  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.rotate);
-  Anima.Global.editor.draw();
+  gl.PathInspector.setPathOps( gl.PathRotator );
+  gl.editor.setSelectMode(gl.editor.SelectModes.rotate);
+  gl.editor.draw();
 
 }
 
 self.prototype.selectConnect = function() {
 
   // need fix.
-  Anima.Global.PathInspector.setPathOps( Anima.Global.CurveModifier );
-  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.connect);
-  Anima.Global.editor.draw();
+  gl.PathInspector.setPathOps( gl.CurveModifier );
+  gl.editor.setSelectMode(gl.editor.SelectModes.connect);
+  gl.editor.draw();
 
 }
 
 self.prototype.selectPointRemover = function() {
 
-  Anima.Global.PathInspector.setPathOps( Anima.Global.PointRemover );
-  Anima.Global.editor.setSelectMode(Anima.Global.editor.SelectModes.transform);
-  Anima.Global.editor.draw();
+  gl.PathInspector.setPathOps( gl.PointRemover );
+  gl.editor.setSelectMode( gl.editor.SelectModes.pointRemove );
+  gl.editor.draw();
 
 }
 

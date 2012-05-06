@@ -36,12 +36,12 @@ self.prototype.isOnHandle = function(x, y) {
   var hitEdge = null;
 
   // guard
-  if( this.editor.pathList.length == 0 ) { return hitEdge; };
+  if( this.editor.selectedPathList.length == 0 ) { return hitEdge; };
 
   var ctx = this.editor.canvas.canvas.getContext('2d');
 
-  for (var i = 0; i < this.editor.pathList.length; i++) {
-    hitEdge = this.editor.pathList[i].isOnHandle(ctx, x, y);
+  for (var i = 0; i < this.editor.selectedPathList.length; i++) {
+    hitEdge = this.editor.selectedPathList[i].isOnHandle(ctx, x, y);
 
     if(hitEdge) break;
   }
@@ -56,11 +56,11 @@ self.prototype.isOnAnchorPoints = function(x, y) {
   var hitEdge = null;
 
   // guard
-  if( this.editor.pathList.length == 0 ) { return hitEdge; };
+  if( this.editor.selectedPathList.length == 0 ) { return hitEdge; };
 
   var ctx = this.editor.canvas.canvas.getContext('2d');
 
-  for (var i = 0; i < this.editor.pathList.length; i++) {
+  for (var i = 0; i < this.editor.selectedPathList.length; i++) {
     hitEdge = this.editor.pathList[i].isOnAnchorPoints(ctx, x, y);
     if(hitEdge) break;
   }

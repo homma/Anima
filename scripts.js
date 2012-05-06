@@ -55,6 +55,7 @@ var scripts = [
 "./editor/interface/interface.js",
 "./editor/modes/mode.js",
 "./editor/modes/connect.js",
+"./editor/modes/point_remove.js",
 "./editor/modes/resize.js",
 "./editor/modes/rotate.js",
 "./editor/modes/transform.js",

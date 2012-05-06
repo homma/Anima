@@ -60,6 +60,7 @@ self.prototype.onMouseUp = function(e) {
 
 };
 
+// need fix
 self.prototype.resizePath = function(e) {
 
   var position = Anima.Util.getMousePositionInCanvas(e);
