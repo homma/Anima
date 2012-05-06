@@ -51,10 +51,8 @@ self.prototype.inPath = function(x, y) {
 // returns an edge if hit
 self.prototype.isOnAnchorPoints = function(x, y) {
 
-  // guard
-  if(this.selectMode != this.SelectModes.transform) { return hitEdge; };
-
   return this.selectMode.isOnAnchorPoints(x, y);
+
 }
 
 // returns an edge if hit the modification handles
