@@ -4,10 +4,12 @@
 
 new function() { // block
 
+var gl = Anima.Global;
+
 Anima.PathResizer = function() {
 
   this.position = null;
-  Anima.Global.PathResizer = this;
+  gl.PathResizer = this;
 
 };
 var self = Anima.PathResizer;
@@ -22,10 +24,10 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (resize guide)
-  var hitResizeGuide = Anima.Global.editor.isOnHandle(x, y);
+  var hitResizeGuide = gl.editor.isOnHandle(x, y);
   if(hitResizeGuide) {
 
-    this.select(hitResizeGuide);
+    this.position = hitResizeGuide.position;
     return true;
 
   }
@@ -36,7 +38,6 @@ self.prototype.test = function(e) {
 
 self.prototype.select = function(obj) {
 
-  this.position = obj.position;
   this.selectSelf();
 
 };
@@ -44,18 +45,35 @@ self.prototype.select = function(obj) {
 self.prototype.deselect = function() {
 
   this.position = null;
-  Anima.Global.Selector.select();
+  this.deselectSelf();
 
 };
 
+self.prototype.onMouseDown = function(e) {
+
+  if( this.test(e) ) { return; }
+
+  // move path
+  eventObj = gl.PathMover;
+  if( eventObj.test(e) ) { return; };
+
+  // otherwise deselect
+  gl.editor.deselectAll();
+  gl.editor.draw();
+  gl.pathInspectorView.update();  // update the path info pane
+
+}
+
 self.prototype.onMouseMove = function(e) {
 
+  if( !this.position ) { return; }
   this.resizePath(e);
 
 }
 
 self.prototype.onMouseUp = function(e) {
 
+  if( !this.position ) { return; }
   this.deselect();
 
 };
@@ -65,7 +83,7 @@ self.prototype.resizePath = function(e) {
 
   var position = Anima.Util.getMousePositionInCanvas(e);
 
-  var handles = Anima.Global.editor.getResizeArea();
+  var handles = gl.editor.getResizeArea();
   var p = this.position;
 
   // 0 - 7 - 3
@@ -124,10 +142,10 @@ self.prototype.resizePath = function(e) {
   var fromX = handles.x[0];
   var fromY = handles.y[0];
 
-  Anima.Global.editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
-  Anima.Global.editor.translateSelectedPaths(diffX, diffY);
+  gl.editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
+  gl.editor.translateSelectedPaths(diffX, diffY);
 
-  Anima.Global.editor.draw();
+  gl.editor.draw();
 
   // console.log(diffX, diffY);
 };

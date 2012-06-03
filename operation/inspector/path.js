@@ -11,6 +11,9 @@ var gl = Anima.Global;
 
 self.prototype.setPathOps = function(ops) {
   this.currentPathOps = ops;
+
+  ops.select();
+
 }
 
 self.prototype.getPathOps = function() {
@@ -44,7 +47,7 @@ self.prototype.selectRotate = function() {
 self.prototype.selectConnect = function() {
 
   // need fix.
-  gl.PathInspector.setPathOps( gl.CurveModifier );
+  gl.PathInspector.setPathOps( gl.PathConnector );
   gl.editor.setSelectMode(gl.editor.SelectModes.connect);
   gl.editor.draw();
 

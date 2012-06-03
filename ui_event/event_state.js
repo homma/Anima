@@ -16,39 +16,45 @@ self.prototype.test = function(e) {
 
 self.prototype.selectSelf = function() {
 
-  this.selectState(this);
+  this.setHandlers(this);
 
 }
 
 self.prototype.selectNextState = function(s) {
 
-  this.selectState(s);
+  this.setHandlers(s);
   s.select();
 
 }
 
-self.prototype.selectState = function(s) {
+self.prototype.setHandlers = function(s) {
 
   var canvas = Anima.Global.canvas.canvas;
   canvas.style.cursor = "default";
 
-  canvas.onmousedown     = function(e) { s.onMouseDown(e) };
-  canvas.onmousemove     = function(e) { s.onMouseMove(e) };
-  canvas.onmouseup       = function(e) { s.onMouseUp(e) };
-  canvas.onmouseout      = function(e) { s.onMouseOut(e) };
-  canvas.onclick         = function(e) { s.onClick(e) };
-  canvas.ondblclick      = function(e) { s.onDblClick(e) };
+  canvas.onmousedown     = function(e) { s.onMouseDown(e); }
+  canvas.onmousemove     = function(e) { s.onMouseMove(e); }
+  canvas.onmouseup       = function(e) { s.onMouseUp(e); }
+  canvas.onmouseout      = function(e) { s.onMouseOut(e); }
+  canvas.onclick         = function(e) { s.onClick(e); }
+  canvas.ondblclick      = function(e) { s.onDblClick(e); }
 
-  document.onkeydown     = function(e) { s.onKeyDown(e) };
+  document.onkeydown     = function(e) { s.onKeyDown(e); }
 
   // we must have this
-  canvas.onselectstart = function() { return false; };
+  canvas.onselectstart = function() { return false; }
   // wd don't use native context menu
-  canvas.oncontextmenu   = function() { return false; };
+  canvas.oncontextmenu   = function() { return false; }
 
   Anima.Global.editor.draw();
 
 };
+
+self.prototype.deselectSelf = function() {
+
+  this.disableAllHandlers();
+
+}
 
 self.prototype.disableAllHandlers = function() {
 
@@ -61,12 +67,8 @@ self.prototype.disableAllHandlers = function() {
   canvas.onmouseout      = null;
   canvas.onclick         = null;
   canvas.ondblclick      = null;
-
   document.onkeydown     = null;
-
-  // we must have this
   canvas.onselectstart = function() { return false; };
-  // wd don't use native context menu
   canvas.oncontextmenu   = function() { return false; };
 
 }

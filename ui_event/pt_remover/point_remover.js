@@ -29,11 +29,11 @@ self.prototype.select = function() {
 
 self.prototype.deselect = function() {
 
-  Anima.Global.Selector.select();
+  this.deselectSelf();
 
 };
 
-self.prototype.onMouseUp = function(e) {
+self.prototype.onClick = function(e) {
 
   var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;

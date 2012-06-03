@@ -4,6 +4,8 @@
 
 new function() { // block
 
+// Not Yet Implemented
+
 Anima.PathRotator = function() {
 
   this.position = null;
@@ -24,17 +26,19 @@ self.prototype.select = function(e) {
   return false;
 }
 
+/*
 self.prototype.select = function(obj) {
 
   this.position = obj.position;
   this.selectSelf();
 
 };
+*/
 
 self.prototype.deselect = function() {
 
   this.position = null;
-  Anima.Global.Selector.select();
+  this.deselectSelf();
 
 };
 

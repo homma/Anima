@@ -5,9 +5,10 @@
 new function() { // block
 
 var gl = Anima.Global;
-var util = Anima.Util;
 
-Anima.PathMover = function() {
+Anima.PathConnector = function() {
+
+  this.hitPath = null;
 
   this.prevX = null;
   this.prevY = null;
@@ -15,50 +16,55 @@ Anima.PathMover = function() {
   this.removePath = null;
   this.moved = false;
 
-  gl.PathMover = this;
+  gl.PathConnector = this;
 
 };
-var self = Anima.PathMover;
+var self = Anima.PathConnector;
 
 // inherit from Anima.EventState;
 self.prototype = new Anima.EventState();
 
 self.prototype.test = function(e) {
 
-  var position = util.getMousePositionInCanvas(e);
+  var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (path for move)
-  var hitPath = gl.editor.hitTest(x, y);
-  if(hitPath) {
+  this.hitPath = gl.editor.hitTest(x, y);
+  if(this.hitPath) {
 
-    var selectedAlready = gl.editor.isSelectedPath(hitPath);
+    var selectedAlready = gl.editor.isSelectedPath(this.hitPath);
 
-    gl.editor.selectPath(hitPath);
+    gl.editor.selectPath(this.hitPath);
     gl.pathInspectorView.update();  // update the path info pane
     gl.editor.draw();
 
+    this.prevX = x;
+    this.prevY = y;
+
     if(selectedAlready) {
-      this.select(x, y, true, hitPath);
+      this.removePathWhenNoMove = true;
+      this.removePath = this.hitPath;
     } else {
-      this.select(x, y, false, null);
+      this.removePathWhenNoMove = false;
+      this.removePath = null;
     }
 
     return true;
+
   }
 
   return false;
 }
 
-self.prototype.select = function(x, y, remove, path) {
+self.prototype.select = function() {
 
   // initialize
-  this.prevX = x;
-  this.prevY = y;
-  this.removePathWhenNoMove = remove;
-  this.removePath = path;
+  this.removePathWhenNoMove = false;
+  this.removePath = null;
   this.moved = false;
+  this.hitPath = null;
 
   this.selectSelf();
 
@@ -66,16 +72,24 @@ self.prototype.select = function(x, y, remove, path) {
 
 self.prototype.deselect = function() {
 
-  this.prevX = null;
-  this.prevY = null;
-
-  // return to the current operator
-  var eventObj = Anima.Global.PathInspector.getPathOps();
-  eventObj.select();
+  this.deselectSelf();
 
 };
 
+self.prototype.onMouseDown = function(e) {
+
+  if( this.test(e) ) { return; }
+
+  // otherwise deselect
+  gl.editor.deselectAll();
+  gl.editor.draw();
+  gl.pathInspectorView.update();  // update the path info pane
+
+}
+
 self.prototype.onMouseMove = function(e) {
+
+  if( !this.hitPath ) { return; }
 
   this.moved = true;
   this.translatePath(e);
@@ -84,18 +98,24 @@ self.prototype.onMouseMove = function(e) {
 
 self.prototype.onMouseUp = function(e) {
 
+  if( !this.hitPath ) { return; }
+
   // this.translatePath(e);  // Is this necessary?
 
   if( (! this.moved) && (this.removePathWhenNoMove) ) {
     gl.editor.deselectPath(this.removePath);
   }
-  this.deselect();
+
+  this.prevX = null;
+  this.prevY = null;
+  this.moved = false;
+  this.hitPath = null;
 
 };
 
 self.prototype.translatePath = function(e) {
 
-  var position = util.getMousePositionInCanvas(e);
+  var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 

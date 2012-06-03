@@ -4,11 +4,13 @@
 
 new function() { // block
 
+var gl = Anima.Global;
+
 Anima.CurveModifier = function() {
 
   this.hitEdge = null;
 
-  Anima.Global.CurveModifier = this;
+  gl.CurveModifier = this;
 
 };
 var self = Anima.CurveModifier;
@@ -23,20 +25,20 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (transform handle)
-  var hitEdge = Anima.Global.editor.isOnHandle(x, y);
+  var hitEdge = gl.editor.isOnHandle(x, y);
   if(hitEdge) {
 
-    this.select(hitEdge);
+    this.hitEdge = hitEdge;
     return true;
 
   }
 
+  this.hitEdge = null;
   return false;
 }
 
-self.prototype.select = function(edge) {
+self.prototype.select = function() {
 
-  this.hitEdge = edge;
   this.selectSelf();
 
 }
@@ -44,32 +46,52 @@ self.prototype.select = function(edge) {
 self.prototype.deselect = function() {
 
   this.hitEdge = null;
-  Anima.Global.Selector.select();
+  this.deselectSelf();
 
 }
 
+self.prototype.onMouseDown = function(e) {
+
+  if( this.test(e) ) { return; }
+
+  var eventObj;
+
+  // move path
+  eventObj = gl.PathMover;
+  if( eventObj.test(e) ) { return; };
+
+  // otherwise deselect
+  gl.editor.deselectAll();
+  gl.editor.draw();
+  gl.pathInspectorView.update();  // update the path info pane
+
+};
+
 self.prototype.onMouseMove = function(e) {
+
+  if(!this.hitEdge) { return; }
 
   var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  Anima.Global.editor.modifyPoint(this.hitEdge, x, y);
-  Anima.Global.editor.draw();
+  gl.editor.modifyPoint(this.hitEdge, x, y);
+  gl.editor.draw();
 
 };
 
 self.prototype.onMouseUp = function(e) {
 
+  if(!this.hitEdge) { return; }
+
   var position = Anima.Util.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  Anima.Global.editor.modifyPoint(this.hitEdge, x, y);
-  Anima.Global.editor.draw();
+  gl.editor.modifyPoint(this.hitEdge, x, y);
+  gl.editor.draw();
 
-  this.deselect();
-
+  this.hitEdge = null;
 };
 
 } // block
