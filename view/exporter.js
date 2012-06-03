@@ -47,12 +47,6 @@ self.prototype.dataExport = function() {
   exportText.focus();
   exportText.select();
 
-/*
-  console.log("ANIMA FILE BEGIN");
-  console.log(str);
-  console.log("ANIMA FILE END");
-*/
-
 }
 
 self.prototype.close = function(e, self) {

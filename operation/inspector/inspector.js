@@ -23,6 +23,7 @@ self.prototype.createEventObjects = function() {
   new Anima.PathRotator();
   new Anima.PointRemover();
   new Anima.CurveModifier();
+  new Anima.PathConnector();
 
 }
 

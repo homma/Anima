@@ -1,7 +1,8 @@
 new function() { // block
 
 var scripts = [
-"./model/global/canvas.js",
+"./global/const.js",
+"./global/canvas.js",
 "./model/undo/undo_manager.js",
 "./util/utils.js",
 "./util/domml.js",
@@ -13,6 +14,7 @@ var scripts = [
 "./ui_event/mover/path_mover.js",
 "./ui_event/resizer/path_resizer.js",
 "./ui_event/rotator/path_rotator.js",
+"./ui_event/connector/path_connector.js",
 "./ui_event/pt_remover/point_remover.js",
 "./ui_event/curve/curve_creator.js",
 "./ui_event/curve/dragging.js",

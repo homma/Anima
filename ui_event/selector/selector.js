@@ -29,7 +29,7 @@ self.prototype.deselect = function() {
   Anima.Global.editor.draw();
 
   // nullify all event handler
-  this.disableAllHandlers();
+  this.deselectSelf();
 
 }
 
