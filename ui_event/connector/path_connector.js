@@ -100,8 +100,6 @@ self.prototype.onMouseUp = function(e) {
 
   if( !this.hitPath ) { return; }
 
-  // this.translatePath(e);  // Is this necessary?
-
   if( (! this.moved) && (this.removePathWhenNoMove) ) {
     gl.editor.deselectPath(this.removePath);
   }

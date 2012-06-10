@@ -91,7 +91,16 @@ self.prototype.translateSelectedPaths = function(x, y) {
 
 // fix position
 self.prototype.commitTranslation = function() {
-//  editor.commitTranslation();
+  editor.commitTranslation();
+}
+
+// connect paths
+//   from: from path,  // source path (moving)
+//   head: boolean,    // connect head (of source path to target path)
+//     to: to path,    // target path (not moving, fixed position)
+// toHead: boolean     // connect to head or not
+self.prototype.connectPaths = function(from, head, to, toHead) {
+  editor.connectPath(from, head, to, toHead);
 }
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
@@ -113,6 +122,7 @@ self.prototype.commitRotation = function() {
 }
 
 ///////////////////////////////////////
+// path arrangement
 
 self.prototype.addPath = function(p) {
   editor.addPath(p);
@@ -131,6 +141,7 @@ self.prototype.removePath = function(p) {
 }
 
 ///////////////////////////////////////
+// path selection
 
 self.prototype.setSelectMode = function(mode) {
   editor.setSelectMode(mode);

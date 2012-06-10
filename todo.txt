@@ -3,7 +3,7 @@
 
 o implement "connect paths" function
 
-- /Users/daisuke/Programming/Anima/ui_event
+- Anima/ui_event
   curve modifier is the first to fix
 
 - to be implemented:

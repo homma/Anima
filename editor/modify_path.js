@@ -28,6 +28,16 @@ self.prototype.commitTranslation = function() {
   // do something
 }
 
+/// connect ////////////////////////////////////////////////////////////////////
+
+//   from: from path,  // source path (moving)
+//   head: boolean,    // connect head (of source path to target path)
+//     to: to path,    // target path (not moving, fixed position)
+// toHead: boolean     // connect to head or not
+self.prototype.connectPaths = function(from, head, to, toHead) {
+
+}
+
 /// resize /////////////////////////////////////////////////////////////////////
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {

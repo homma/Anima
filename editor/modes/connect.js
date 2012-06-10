@@ -51,7 +51,30 @@ self.prototype.drawUnselectedPath = function(ctx) {
 
 }
 
-// returns { path: ..., dx: ..., dy: ... } object
+self.prototype.commitTranslation = function() {
+
+  this.connectPathIfPossible();
+
+}
+
+self.prototype.connectPathIfPossible = function() {
+
+  var path = this.editor.selectedPathList[0];
+
+  var conn = this.findConnection(path);
+  if(conn) {
+    // connect paths
+    this.editor.connectPaths(conn.from, conn.head, conn.to, conn.toHead);
+  }
+}
+
+// returns
+//{   from: from path,  // source path (moving)
+//    head: boolean,    // connect head (of source path to target path)
+//      to: to path,    // target path (not moving, fixed position)
+//  toHead: boolean,    // connect to head or not
+//      dx: diff x,     // x diff from source path to target path
+//      dy: diff y }
 self.prototype.findConnection = function(p) {
 
   var lst = this.editor.pathList;
@@ -69,16 +92,40 @@ self.prototype.findConnection = function(p) {
     var t1 = lst[i].getEndPoint();
 
     res = this.isNearEnough(p0, t0);
-    if(res) { break; }
+    if(res) {
+      res.from = p;
+      res.to = list[i];
+      res.head = true;
+      res.toHead = true;
+      break;
+    }
 
     res = this.isNearEnough(p0, t1);
-    if(res) { break; }
+    if(res) {
+      res.from = p;
+      res.to = list[i];
+      res.head = true;
+      res.toHead = false;
+      break;
+    }
 
     res = this.isNearEnough(p1, t0);
-    if(res) { break; }
+    if(res) {
+      res.from = p;
+      res.to = list[i];
+      res.head = false;
+      res.toHead = true;
+      break;
+    }
 
     res = this.isNearEnough(p1, t1);
-    if(res) { break; }
+    if(res) {
+      res.from = p;
+      res.to = list[i];
+      res.head = false;
+      res.toHead = false;
+      break;
+    }
 
   }
 
@@ -86,6 +133,7 @@ self.prototype.findConnection = function(p) {
 
 }
 
+// isNearEnough(fromPath, toPath)
 self.prototype.isNearEnough = function(p0, p1) {
 
   var res = null;
