@@ -18,6 +18,51 @@ self.prototype.getAnchorPointOne = function() {
   return { x: this.p1x, y: this.p1y };
 }
 
+/// connect ////////////////////////////////////////////////////////////////////
+
+self.prototype.connectFront = function(px, py, cx, cy) {
+
+  this.p0x = px;
+  this.p0y = py;
+  this.c0x = cx;
+  this.c0y = cy;
+
+}
+
+self.prototype.connectBack = function(px, py, cx, cy) {
+
+  this.p1x = px;
+  this.p1y = py;
+  this.c1x = cx;
+  this.c1y = cy;
+
+}
+
+/// reverse ////////////////////////////////////////////////////////////////////
+
+self.prototype.reverse = function() {
+
+  var tmp = this.duplicate();
+
+  this.p0x = tmp.p1x;
+  this.p0y = tmp.p1y;
+  this.p1x = tmp.p0x;
+  this.p1y = tmp.p0y;
+  this.c0x = tmp.c1x;
+  this.c0y = tmp.c1y;
+  this.c1x = tmp.c0x;
+  this.c1y = tmp.c0y;
+
+  var _prev = this.prev;
+  var _next = this.next;
+
+  this.next = _prev;
+  this.prev = _next;
+
+  return this;
+
+}
+
 /// transform //////////////////////////////////////////////////////////////////
 
 self.prototype.setSelectedPoint = function(x, y) {
@@ -55,10 +100,9 @@ self.prototype.setAnchorPointZero = function(x, y) {
   this.c0y -= diffY;
 
   if(this.prev) {
-    this.prev.p1x = x;
-    this.prev.p1y = y;
-    this.prev.c1x -= diffX;
-    this.prev.c1y -= diffY;
+    cx = this.prev.c1x - diffX;
+    cy = this.prev.c1y - diffY;
+    this.prev.connectBack(x, y, cx, cy);
   }
 };
 
@@ -72,10 +116,9 @@ self.prototype.setAnchorPointOne = function(x, y) {
   this.c1y -= diffY;
 
   if(this.next) {
-    this.next.p0x = x;
-    this.next.p0y = y;
-    this.next.c0x -= diffX;
-    this.next.c0y -= diffY;
+    cx = this.next.c0x - diffX;
+    cy = this.next.c0y - diffY;
+    this.next.connectFront(x, y, cx, cy);
   }
 };
 

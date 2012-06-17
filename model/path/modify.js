@@ -97,7 +97,7 @@ self.prototype.reverse = function() {
   for(var i = 0; i < this.edges.length; i++) {
 
     var idx = this.edges.length - (i + 1);
-    var edg = this.edges[idx];
+    var edg = this.edges[idx].reverse();
 
     var len = newEdges.length;
     if(len > 0) { // linking the edges
@@ -112,6 +112,24 @@ self.prototype.reverse = function() {
   }
 
   this.edges = newEdges;
+
+}
+
+/// append a path //////////////////////////////////////////////////////////////
+
+self.prototype.append = function(p) {
+
+  // translate
+  var ep = this.getEndPoint();
+  var bp = p.getBeginPoint();
+  var x = ep.x - bp.x;
+  var y = ep.y - bp.y;
+  p.translate(x, y);
+
+  // append edges
+  for(var i = 0; i < p.edges.length; i++) {
+    this.addEdge(p.edges[i]);
+  }
 
 }
 

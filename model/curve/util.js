@@ -61,6 +61,7 @@ self.prototype.divide = function(t) {
 
 }
 
+// copy this curve to a new curve object
 self.prototype.duplicate = function() {
   var cv = new Anima.Curve();
 
