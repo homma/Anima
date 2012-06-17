@@ -104,6 +104,11 @@ self.prototype.onMouseUp = function(e) {
     gl.editor.deselectPath(this.removePath);
   }
 
+  if(this.moved) {
+    gl.editor.commitTranslation();
+    gl.editor.draw();
+  }
+
   this.prevX = null;
   this.prevY = null;
   this.moved = false;

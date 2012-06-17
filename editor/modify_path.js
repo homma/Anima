@@ -25,7 +25,7 @@ self.prototype.translateSelectedPaths = function(x, y) {
 }
 
 self.prototype.commitTranslation = function() {
-  // do something
+  this.selectMode.commitTranslation();
 }
 
 /// connect ////////////////////////////////////////////////////////////////////
@@ -35,6 +35,12 @@ self.prototype.commitTranslation = function() {
 //     to: to path,    // target path (not moving, fixed position)
 // toHead: boolean     // connect to head or not
 self.prototype.connectPaths = function(from, head, to, toHead) {
+
+  if(!head) from.reverse();
+  if(toHead) to.reverse();
+
+  to.append(from);
+  this.removePath(from);
 
 }
 

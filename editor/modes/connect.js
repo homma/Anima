@@ -94,7 +94,7 @@ self.prototype.findConnection = function(p) {
     res = this.isNearEnough(p0, t0);
     if(res) {
       res.from = p;
-      res.to = list[i];
+      res.to = lst[i];
       res.head = true;
       res.toHead = true;
       break;
@@ -103,7 +103,7 @@ self.prototype.findConnection = function(p) {
     res = this.isNearEnough(p0, t1);
     if(res) {
       res.from = p;
-      res.to = list[i];
+      res.to = lst[i];
       res.head = true;
       res.toHead = false;
       break;
@@ -112,7 +112,7 @@ self.prototype.findConnection = function(p) {
     res = this.isNearEnough(p1, t0);
     if(res) {
       res.from = p;
-      res.to = list[i];
+      res.to = lst[i];
       res.head = false;
       res.toHead = true;
       break;
@@ -121,7 +121,7 @@ self.prototype.findConnection = function(p) {
     res = this.isNearEnough(p1, t1);
     if(res) {
       res.from = p;
-      res.to = list[i];
+      res.to = lst[i];
       res.head = false;
       res.toHead = false;
       break;
