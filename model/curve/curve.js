@@ -6,7 +6,7 @@
 
 new function() { // block
 
-Anima.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
+an.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
 
   this.p0x = n0;  // anchor point zero
   this.p0y = n1;
@@ -29,7 +29,7 @@ Anima.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
 
 }
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 self.prototype.AnchorPointZero  = 0;
 self.prototype.ControlPointZero = 1;

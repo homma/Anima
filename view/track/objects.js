@@ -17,9 +17,9 @@ var TrackField = function(parent, n, domElem) {
 
 }
 
-TrackField.prototype.findNode = Anima.Util.findChildNodeByClass;
+TrackField.prototype.findNode = an.u.findChildNodeByClass;
 
-Anima.TrackField = TrackField;
+an.TrackField = TrackField;
 
 var Label = function(parent, domElem) {
 
@@ -33,7 +33,7 @@ var Label = function(parent, domElem) {
   this.active.onclick = function(e) { thisLabel.activePaneOnClick(e.target); };
 }
 
-Label.prototype.findNode = Anima.Util.findChildNodeByClass;
+Label.prototype.findNode = an.u.findChildNodeByClass;
 
 Label.prototype.activePaneOnClick = function(elem) {
 

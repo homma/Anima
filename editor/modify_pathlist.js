@@ -4,14 +4,14 @@
 
 new function() {  // block
 
-var self = Anima.Editor;
+var self = an.Editor;
 
 /// modify current path ////////////////////////////////////////////////////////
 
 self.prototype.addPath = function(p) {
   this.pathList.push(p);
 
-  Anima.Global.undoManager.registerUndo(this, this.removePath, [p]);
+  an.g.undoManager.registerUndo(this, this.removePath, [p]);
 
 }
 
@@ -36,7 +36,7 @@ self.prototype.removePath = function(p) {
     if(this.pathList[i] == p) {
       // console.log("removePath: " + i);
       this.pathList.splice(i , 1);
-      Anima.Global.undoManager.registerUndo(this, this.addPath, [p]);
+      an.g.undoManager.registerUndo(this, this.addPath, [p]);
     }
   }
 

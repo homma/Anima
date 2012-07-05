@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.Track;
+var self = an.Track;
 
 self.prototype.dataExport = function() {
   this.selected;
@@ -55,7 +55,7 @@ self.prototype.dataImport = function(obj) {
   // timeframe import
   this.removeTimeFrameAt(0);  // remove initial timeframe
   for(var i = 0; i < obj.timeframes.length; i++) {
-    var timeframe = new Anima.TimeFrame();
+    var timeframe = new an.TimeFrame();
     timeframe.dataImport(obj.timeframes[i]);
 
     this.addTimeFrame(timeframe);

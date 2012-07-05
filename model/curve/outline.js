@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 /// drawing outline path for test //////////////////////////////////////////////
 
@@ -41,7 +41,7 @@ self.prototype.outLinePath = function(w) {
 
 self.prototype.dotOutLine = function(w) {
 
-  var path = new Anima.Path();
+  var path = new an.Path();
   path.createCircle(this.p0x, this.p0y, w);
 
   return path;
@@ -52,7 +52,7 @@ self.prototype.dotOutLine = function(w) {
 
 self.prototype.verticalLineOutLine = function(w) {
 
-  var path = new Anima.Path();
+  var path = new an.Path();
   var x = Math.max(this.p0x, this.p1x);
   var y = Math.max(this.p0y, this.p1y);
   var h = Math.abs(this.p0y - this.p1y);
@@ -66,7 +66,7 @@ self.prototype.verticalLineOutLine = function(w) {
 
 self.prototype.horizontalLineOutLine = function(h) {
 
-  var path = new Anima.Path();
+  var path = new an.Path();
   var x = Math.min(this.p0x, this.p1x);
   var y = Math.max(this.p0y, this.p1y);
   var w = Math.abs(this.p0x - this.p1x);
@@ -86,7 +86,7 @@ self.prototype.lineOutLine = function(w) {
 
   var diff = this.diffToNewLine(this.p0x, this.p0y, this.p1x, this.p1y, w);
 
-  var path = new Anima.Path();
+  var path = new an.Path();
   var polyline = [ { x: this.p0x - diff.w, y: this.p0y + diff.h },
                    { x: this.p1x - diff.w, y: this.p1y + diff.h },
                    { x: this.p1x + diff.w, y: this.p1y - diff.h },
@@ -140,8 +140,8 @@ self.prototype.curveOutLine = function(width) {
   var cv2 = {}; // curve from left of p0 to right of p1
 
   // helper methods
-  var left = Anima.Relatively.isLeft;
-  var right = Anima.Relatively.isRight;
+  var left = an.Relatively.isLeft;
+  var right = an.Relatively.isRight;
 
   var p0IsCp0 = false;
   var p1IsCp1 = false;
@@ -321,15 +321,15 @@ self.prototype.curveOutLine = function(width) {
   // also, in case of cv2.p0 and cv2.p1 are both inner
 
   // creating path
-  var path = new Anima.Path();
-  var e1 = new Anima.Curve(cv1.p0x, cv1.p0y, cv1.c0x, cv1.c0y,
-                           cv1.c1x, cv1.c1y, cv1.p1x, cv1.p1y);
-  var e2 = new Anima.Curve(cv1.p1x, cv1.p1y, cv1.p1x, cv1.p1y,
-                           cv2.p0x, cv2.p0y, cv2.p0x, cv2.p0y);
-  var e3 = new Anima.Curve(cv2.p0x, cv2.p0y, cv2.c0x, cv2.c0y,
-                           cv2.c1x, cv2.c1y, cv2.p1x, cv2.p1y);
-  var e4 = new Anima.Curve(cv2.p1x, cv2.p1y, cv2.p1x, cv2.p1y,
-                           cv1.p0x, cv1.p0y, cv1.p0x, cv1.p0y);
+  var path = new an.Path();
+  var e1 = new an.Curve(cv1.p0x, cv1.p0y, cv1.c0x, cv1.c0y,
+                       cv1.c1x, cv1.c1y, cv1.p1x, cv1.p1y);
+  var e2 = new an.Curve(cv1.p1x, cv1.p1y, cv1.p1x, cv1.p1y,
+                       cv2.p0x, cv2.p0y, cv2.p0x, cv2.p0y);
+  var e3 = new an.Curve(cv2.p0x, cv2.p0y, cv2.c0x, cv2.c0y,
+                       cv2.c1x, cv2.c1y, cv2.p1x, cv2.p1y);
+  var e4 = new an.Curve(cv2.p1x, cv2.p1y, cv2.p1x, cv2.p1y,
+                       cv1.p0x, cv1.p0y, cv1.p0x, cv1.p0y);
   path.addEdge(e1);
   path.addEdge(e2);
   path.addEdge(e3);

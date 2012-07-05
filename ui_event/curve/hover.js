@@ -6,13 +6,13 @@ new function() {  // block
 
 // mouseUp state
 
-Anima.CurveCreatorHoverState = function(obj) {
+an.CurveCreatorHoverState = function(obj) {
   this.stateObj = obj;
 };
-var self = Anima.CurveCreatorHoverState;
+var self = an.CurveCreatorHoverState;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.onMouseDown = function(e) {
 
@@ -26,7 +26,7 @@ self.prototype.onMouseDown = function(e) {
 
 self.prototype.onLeftMouseDown = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -34,12 +34,12 @@ self.prototype.onLeftMouseDown = function(e) {
   curve.setAnchorPointOne(x, y);
   curve.setControlPointOne(x, y);
 
-  var nextCurve = new Anima.Curve();
+  var nextCurve = new an.Curve();
   nextCurve.setAnchorPointZero(x, y);
 
   this.stateObj.setNextCurve(nextCurve);
 
-  var path = Anima.Global.editor.getNewPath();
+  var path = an.g.editor.getNewPath();
   path.addEdge(nextCurve);
 
   this.selectNextState(this.stateObj.state.dragging);
@@ -48,7 +48,7 @@ self.prototype.onLeftMouseDown = function(e) {
 
 self.prototype.onRightMouseDown = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -62,7 +62,7 @@ self.prototype.onRightMouseDown = function(e) {
 
 self.prototype.onMouseMove = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -70,25 +70,25 @@ self.prototype.onMouseMove = function(e) {
   curve.setAnchorPointOne(x, y);
   curve.setControlPointOne(x, y);
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
 };
 
 self.prototype.onDblClick = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var path = Anima.Global.editor.getNewPath();
+  var path = an.g.editor.getNewPath();
 
   // double click => additional two curves...
   path.removeLastEdge();
   path.removeLastEdge();
 
   path.finished();
-  Anima.Global.editor.addPath(path);
-  Anima.Global.editor.setNewPath(null);
+  an.g.editor.addPath(path);
+  an.g.editor.setNewPath(null);
 
   this.selectNextState(this.stateObj.state.initial);
 

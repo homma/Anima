@@ -4,12 +4,12 @@
 
 new function() {  // block
 
-Anima.Exporter = function() {
+an.Exporter = function() {
 
-  Anima.Global.Exporter = this;
+  an.g.Exporter = this;
 }
 
-var self = Anima.Exporter;
+var self = an.Exporter;
 
 self.prototype.export = function() {
 
@@ -21,7 +21,7 @@ self.prototype.export = function() {
   var midStr = new String();
 
   // ask animation to export
-  var midStr = Anima.Global.animation.dataExport();
+  var midStr = an.g.animation.dataExport();
 
   var endStr = ' \n}';
 

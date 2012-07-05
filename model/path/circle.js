@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.createCircle = function(x, y, r) {
 
@@ -42,7 +42,7 @@ self.prototype.createCircle = function(x, y, r) {
 // c => control point
 self.prototype.addArc = function(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y) {
 
-  var edge = new Anima.Curve(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y);
+  var edge = new an.Curve(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y);
   this.addEdge(edge);
 
 }

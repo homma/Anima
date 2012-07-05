@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.PathInspectorView;
+var self = an.PathInspectorView;
 
 /// helper functions ///////////////////////////////////////////////////////////
 
@@ -65,7 +65,7 @@ self.prototype.changeLineCap = function(e) {
 
   }
 
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
   pathInspector.changeLineCap(style);
 
 }
@@ -83,7 +83,7 @@ self.prototype.changeLineJoin = function(e) {
 
   }
 
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
   pathInspector.changeLineJoin(style);
 
 }
@@ -186,7 +186,7 @@ self.prototype.getStrokeColor = function() {
   var lum = this.getValue("stroke_lum_slider");
   var alp = this.getValue("stroke_alp_slider");
 
-  var color = new Anima.Color(hue, sat, lum, alp);
+  var color = new an.Color(hue, sat, lum, alp);
   return color;
 }
 
@@ -197,7 +197,7 @@ self.prototype.getFillColor = function() {
   var lum = this.getValue("fill_lum_slider");
   var alp = this.getValue("fill_alp_slider");
 
-  var color = new Anima.Color(hue, sat, lum, alp);
+  var color = new an.Color(hue, sat, lum, alp);
   return color;
 
 }

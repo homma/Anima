@@ -4,12 +4,12 @@
 
 new function() { // block
 
-Anima.ImporterView = function() {
+an.ImporterView = function() {
 
-  Anima.Global.ImporterView = this;
+  an.g.ImporterView = this;
 
 };
-var self = Anima.ImporterView;
+var self = an.ImporterView;
 
 self.prototype.select = function() {
 
@@ -37,7 +37,7 @@ self.prototype.deselect = function() {
   var importText = document.getElementById("importText");
   importText.value = "";
 
-  Anima.Global.Selector.select();
+  an.g.Selector.select();
 
 };
 
@@ -48,10 +48,10 @@ self.prototype.dataImport = function() {
 
   var obj = JSON.parse(str);
 
-  Anima.Global.Importer.import(obj);
+  an.g.Importer.import(obj);
 
-  Anima.Global.editor.draw();
-  Anima.Global.TrackView.updateView();
+  an.g.editor.draw();
+  an.g.TrackView.updateView();
 
 };
 

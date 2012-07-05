@@ -6,7 +6,7 @@ new function() {  // block
 
 /// modify /////////////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.getBeginPoint = function() {
 
@@ -59,7 +59,7 @@ self.prototype.removeEdge = function(edge) {
   }
 
   if(this.edges.length == 0) {
-    Anima.Global.editor.removePath(this);
+    an.g.editor.removePath(this);
   }
 
 }
@@ -137,7 +137,7 @@ self.prototype.append = function(p) {
 
 self.prototype.duplicate = function() {
 
-  var newPath = new Anima.Path();
+  var newPath = new an.Path();
 
   this.edges.forEach(function(edg) {
     newPath.addEdge( edg.duplicate() );

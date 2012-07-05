@@ -6,7 +6,7 @@
 
 new function() { //block
 
-var self = Anima.TrackView;
+var self = an.TrackView;
 
 /// add / remove fields ////////////////////////////////////////////////////////
 
@@ -14,7 +14,7 @@ self.prototype.registerTracks = function() {
 
   for(var i = 0; i < this.MaxFields; i++) {
     var enclosure = document.getElementById("enclosure_" + (i + 1) );
-    var fieldObj = new Anima.TrackField(this, i, enclosure);
+    var fieldObj = new an.TrackField(this, i, enclosure);
     this.trackFields.push(fieldObj);
   }
 
@@ -54,7 +54,7 @@ self.prototype.setFieldVisibility = function(nth, flag) {
 
 self.prototype.updateView = function() {
 
-  var trackObjects = Anima.Global.animation.getTrackList();
+  var trackObjects = an.g.animation.getTrackList();
 
   var nTracks = trackObjects.length - this.scrollGap;
 
@@ -89,7 +89,7 @@ self.prototype.scrollUpFields = function() {
 
 self.prototype.scrollDownFields = function() {
 
-  var nTracks = Anima.Global.animation.getTrackList().length;
+  var nTracks = an.g.animation.getTrackList().length;
 
   if(nTracks - this.scrollGap > this.MaxFields) {
     this.scrollGap++;
@@ -101,10 +101,10 @@ self.prototype.scrollDownFields = function() {
 
 self.prototype.addTrack = function() {
 
-  var track = Anima.Global.animation.getNewTrack();
-  Anima.Global.editor.setTrack(track);
+  var track = an.g.animation.getNewTrack();
+  an.g.editor.setTrack(track);
 
-  var nTracks = Anima.Global.animation.getTrackList().length;
+  var nTracks = an.g.animation.getTrackList().length;
   if(nTracks > this.MaxFields) {
     this.scrollDownFields();
   }
@@ -114,12 +114,12 @@ self.prototype.addTrack = function() {
 
 self.prototype.removeSelectedTrack = function() {
 
-  var nTracks = Anima.Global.animation.getTrackList().length;
+  var nTracks = an.g.animation.getTrackList().length;
 
-  Anima.Global.animation.removeSelectedTrack();
+  an.g.animation.removeSelectedTrack();
 
   var nextToTheBottomLine = this.scrollGap + this.MaxFields + 1;
-  if( Anima.Global.animation.isSelectedTrackBefore(nextToTheBottomLine) ) {
+  if( an.g.animation.isSelectedTrackBefore(nextToTheBottomLine) ) {
     this.scrollUpFields();
   }
 

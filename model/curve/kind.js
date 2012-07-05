@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 // determins the kind of this curve
 

@@ -4,7 +4,7 @@
 
 // Cubic Bezier Curve Exporter
 
-Anima.Curve.prototype.dataExport = function() {
+an.Curve.prototype.dataExport = function() {
 
   var indent = '          '; // 10
   var str = '{\n' +
@@ -23,7 +23,7 @@ Anima.Curve.prototype.dataExport = function() {
 
 }
 
-Anima.Curve.prototype.dataImport = function(obj) {
+an.Curve.prototype.dataImport = function(obj) {
 
   this.p0x = obj.p0x;
   this.p0y = obj.p0y;

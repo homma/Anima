@@ -6,7 +6,7 @@ new function() {  // block
 
 /// hittest ////////////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.onPath = function(ctx, x, y) {
 
@@ -24,7 +24,7 @@ self.prototype.onPath = function(ctx, x, y) {
     var p0 = this.getEndPoint();
     var p1 = this.getBeginPoint();
 
-    var cv = new Anima.Curve(p0.x, p0.y, p0.x, p0.y, p1.x, p1.y, p1.x, p1.y);
+    var cv = new an.Curve(p0.x, p0.y, p0.x, p0.y, p1.x, p1.y, p1.x, p1.y);
     hit = cv.onCurve(ctx, x, y, this.lineWidth);
 
   }

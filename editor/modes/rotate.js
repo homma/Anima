@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-Anima.RotateMode = function(ed) {
+an.RotateMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
@@ -17,9 +17,9 @@ Anima.RotateMode = function(ed) {
   this.RotateGuideAngle      = 0;
 
 }
-var self = Anima.RotateMode;
+var self = an.RotateMode;
 
-self.prototype = new Anima.EditorMode();
+self.prototype = new an.EditorMode();
 
 /// draw ///////////////////////////////////////////////////////////////////////
 

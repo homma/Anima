@@ -6,17 +6,17 @@ new function() {  // block
 
 // mouseInFirstMove state
 
-Anima.CurveCreatorFirstMoveState = function(obj) {
+an.CurveCreatorFirstMoveState = function(obj) {
   this.stateObj = obj;
 };
-var self = Anima.CurveCreatorFirstMoveState;
+var self = an.CurveCreatorFirstMoveState;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.onMouseMove = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -24,13 +24,13 @@ self.prototype.onMouseMove = function(e) {
  
   curve.setControlPointZero(x, y);
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
 };
 
 self.prototype.onMouseUp = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 

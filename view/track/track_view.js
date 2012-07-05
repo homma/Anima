@@ -6,7 +6,7 @@
 
 new function() { //block
 
-Anima.TrackView = function() {
+an.TrackView = function() {
   // this.element = null;
 
   this.trackFields = [];
@@ -18,10 +18,10 @@ Anima.TrackView = function() {
 
   this.initialize();
 
-  Anima.Global.TrackView = this;
+  an.g.TrackView = this;
 
 }
-var self = Anima.TrackView;
+var self = an.TrackView;
 
 self.prototype.initialize = function() {
 

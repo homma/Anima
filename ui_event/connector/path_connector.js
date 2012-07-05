@@ -4,9 +4,7 @@
 
 new function() { // block
 
-var gl = Anima.Global;
-
-Anima.PathConnector = function() {
+an.PathConnector = function() {
 
   this.hitPath = null;
 
@@ -16,29 +14,29 @@ Anima.PathConnector = function() {
   this.removePath = null;
   this.moved = false;
 
-  gl.PathConnector = this;
+  an.g.PathConnector = this;
 
 };
-var self = Anima.PathConnector;
+var self = an.PathConnector;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.test = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (path for move)
-  this.hitPath = gl.editor.hitTest(x, y);
+  this.hitPath = an.g.editor.hitTest(x, y);
   if(this.hitPath) {
 
-    var selectedAlready = gl.editor.isSelectedPath(this.hitPath);
+    var selectedAlready = an.g.editor.isSelectedPath(this.hitPath);
 
-    gl.editor.selectPath(this.hitPath);
-    gl.pathInspectorView.update();  // update the path info pane
-    gl.editor.draw();
+    an.g.editor.selectPath(this.hitPath);
+    an.g.pathInspectorView.update();  // update the path info pane
+    an.g.editor.draw();
 
     this.prevX = x;
     this.prevY = y;
@@ -81,9 +79,9 @@ self.prototype.onMouseDown = function(e) {
   if( this.test(e) ) { return; }
 
   // otherwise deselect
-  gl.editor.deselectAll();
-  gl.editor.draw();
-  gl.pathInspectorView.update();  // update the path info pane
+  an.g.editor.deselectAll();
+  an.g.editor.draw();
+  an.g.pathInspectorView.update();  // update the path info pane
 
 }
 
@@ -101,12 +99,12 @@ self.prototype.onMouseUp = function(e) {
   if( !this.hitPath ) { return; }
 
   if( (! this.moved) && (this.removePathWhenNoMove) ) {
-    gl.editor.deselectPath(this.removePath);
+    an.g.editor.deselectPath(this.removePath);
   }
 
   if(this.moved) {
-    gl.editor.commitTranslation();
-    gl.editor.draw();
+    an.g.editor.commitTranslation();
+    an.g.editor.draw();
   }
 
   this.prevX = null;
@@ -118,7 +116,7 @@ self.prototype.onMouseUp = function(e) {
 
 self.prototype.translatePath = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -128,13 +126,13 @@ self.prototype.translatePath = function(e) {
   this.prevX = x;
   this.prevY = y;
 
-  // var paths = gl.editor.getSelectedPaths();
+  // var paths = an.g.editor.getSelectedPaths();
   // for(var i = 0; i < paths.length; i++) {
   //   paths[i].translate(diffX, diffY);
   // }
-  gl.editor.translateSelectedPaths(diffX, diffY);
+  an.g.editor.translateSelectedPaths(diffX, diffY);
 
-  gl.editor.draw();
+  an.g.editor.draw();
 
 };
 

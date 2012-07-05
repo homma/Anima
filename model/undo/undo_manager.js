@@ -6,7 +6,7 @@
 
 new function() { // block
 
-Anima.UndoManager = function() {
+an.UndoManager = function() {
 
   // _undoStack => [ [obj, fun, [args]], [obj, fun, [args]], ...]
 
@@ -16,10 +16,10 @@ Anima.UndoManager = function() {
   this.undoStack = this._undoStack;
   this.redoStack = this._redoStack;
 
-  Anima.Global.undoManager = this;
+  an.g.undoManager = this;
 
 }
-var self = Anima.UndoManager;
+var self = an.UndoManager;
 
 self.prototype.undo = function() {
 

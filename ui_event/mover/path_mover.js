@@ -4,10 +4,7 @@
 
 new function() { // block
 
-var gl = Anima.Global;
-var util = Anima.Util;
-
-Anima.PathMover = function() {
+an.PathMover = function() {
 
   this.prevX = null;
   this.prevY = null;
@@ -15,29 +12,29 @@ Anima.PathMover = function() {
   this.removePath = null;
   this.moved = false;
 
-  gl.PathMover = this;
+  an.g.PathMover = this;
 
 };
-var self = Anima.PathMover;
+var self = an.PathMover;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.test = function(e) {
 
-  var position = util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (path for move)
-  var hitPath = gl.editor.hitTest(x, y);
+  var hitPath = an.g.editor.hitTest(x, y);
   if(hitPath) {
 
-    var selectedAlready = gl.editor.isSelectedPath(hitPath);
+    var selectedAlready = an.g.editor.isSelectedPath(hitPath);
 
-    gl.editor.selectPath(hitPath);
-    gl.pathInspectorView.update();  // update the path info pane
-    gl.editor.draw();
+    an.g.editor.selectPath(hitPath);
+    an.g.pathInspectorView.update();  // update the path info pane
+    an.g.editor.draw();
 
     if(selectedAlready) {
       this.select(x, y, true, hitPath);
@@ -70,7 +67,7 @@ self.prototype.deselect = function() {
   this.prevY = null;
 
   // return to the current operator
-  var eventObj = Anima.Global.PathInspector.getPathOps();
+  var eventObj = an.g.PathInspector.getPathOps();
   eventObj.select();
 
 };
@@ -87,7 +84,7 @@ self.prototype.onMouseUp = function(e) {
   // this.translatePath(e);  // Is this necessary?
 
   if( (! this.moved) && (this.removePathWhenNoMove) ) {
-    gl.editor.deselectPath(this.removePath);
+    an.g.editor.deselectPath(this.removePath);
   }
   this.deselect();
 
@@ -95,7 +92,7 @@ self.prototype.onMouseUp = function(e) {
 
 self.prototype.translatePath = function(e) {
 
-  var position = util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -105,13 +102,13 @@ self.prototype.translatePath = function(e) {
   this.prevX = x;
   this.prevY = y;
 
-  // var paths = gl.editor.getSelectedPaths();
+  // var paths = an.g.editor.getSelectedPaths();
   // for(var i = 0; i < paths.length; i++) {
   //   paths[i].translate(diffX, diffY);
   // }
-  gl.editor.translateSelectedPaths(diffX, diffY);
+  an.g.editor.translateSelectedPaths(diffX, diffY);
 
-  gl.editor.draw();
+  an.g.editor.draw();
 
 };
 

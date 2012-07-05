@@ -7,9 +7,9 @@ new function() {  // block
 // Graphic Data Editor
 // Every change to the model should go through this
 
-Anima.Editor = function() {
+an.Editor = function() {
 
-  this.canvas = Anima.Global.canvas;
+  this.canvas = an.g.canvas;
   this.newPath = null;
   this.pathList = [];
   this.clipBoard = [];
@@ -19,17 +19,17 @@ Anima.Editor = function() {
   this.selectedPathList = [];
 
   this.SelectModes = {}
-  this.SelectModes.transform = new Anima.TransformMode(this);
-  this.SelectModes.resize = new Anima.ResizeMode(this);
-  this.SelectModes.rotate = new Anima.RotateMode(this);
-  this.SelectModes.connect = new Anima.ConnectMode(this);
-  this.SelectModes.pointRemove = new Anima.PointRemoveMode(this);
+  this.SelectModes.transform = new an.TransformMode(this);
+  this.SelectModes.resize = new an.ResizeMode(this);
+  this.SelectModes.rotate = new an.RotateMode(this);
+  this.SelectModes.connect = new an.ConnectMode(this);
+  this.SelectModes.pointRemove = new an.PointRemoveMode(this);
   this.selectMode = this.SelectModes.transform;
 
-  this.interface = new Anima.EditorInterface(this);
+  this.interface = new an.EditorInterface(this);
 
 }
-var self = Anima.Editor;
+var self = an.Editor;
 
 self.prototype.initialize = function() {
 

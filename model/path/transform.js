@@ -6,7 +6,7 @@ new function() {  // block
 
 /// parameters /////////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.getLineWidth = function(w) {
   return this.lineWidth;
@@ -44,9 +44,9 @@ self.prototype.setMiterLimit = function(limit) {
 
 self.prototype.translate = function(x, y) {
 
-  if( Anima.Global.undoManager.shouldRegister(this, this.moveTo) ) {
+  if( an.g.undoManager.shouldRegister(this, this.moveTo) ) {
     var pt = this.getBeginPoint();
-    Anima.Global.undoManager.registerUndo(this, this.moveTo, [pt.x, pt.y]);
+    an.g.undoManager.registerUndo(this, this.moveTo, [pt.x, pt.y]);
   }
 
   for(var i = 0; i < this.edges.length; i++) {

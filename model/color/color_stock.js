@@ -4,17 +4,17 @@
 
 new function() { // block
 
-Anima.ColorStock = function() {
+an.ColorStock = function() {
 
   this.stock = [];
   this.selected = 0;
   this.MaxLength = 14;
 
-  Anima.Global.ColorStock = this;
+  an.g.ColorStock = this;
 
 }
 
-var self = Anima.ColorStock;
+var self = an.ColorStock;
 
 self.prototype.storeColor = function(color) {
 
@@ -33,7 +33,7 @@ self.prototype.getColorAt = function(n) {
   if(this.stock.length != 0) {
     return this.stock[n];
   } else {
-    return new Anima.Color();
+    return new an.Color();
   }
 }
 

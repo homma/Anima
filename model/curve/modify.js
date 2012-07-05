@@ -6,7 +6,7 @@ new function() { // block
 
 // Cubic Bezier Curve Modifier
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 /// get information ////////////////////////////////////////////////////////////
 

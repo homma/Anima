@@ -6,7 +6,7 @@ new function() {  // block
 
 /// export and import //////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.dataExport = function() {
 
@@ -75,7 +75,7 @@ self.prototype.dataImport = function(obj) {
 
     if(obj.edges[i].type != "curve") continue;
 
-    var curve = new Anima.Curve();
+    var curve = new an.Curve();
     curve.dataImport(obj.edges[i]);
     this.addEdge(curve);
 

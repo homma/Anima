@@ -6,14 +6,14 @@ new function() { // block
 
 /// Path
 
-Anima.Path = function() {
+an.Path = function() {
 
   this.initPath();
 
 }
-self = Anima.Path;
+var self = an.Path;
 
-Anima.Path.prototype.initPath = function() {
+self.prototype.initPath = function() {
 
   this.selected = false;    // path is selected
   this.complete = false;    // path is fixed
@@ -28,8 +28,8 @@ Anima.Path.prototype.initPath = function() {
   this.stroke = true;
   this.fill = false;
 
-  this.strokeColor = new Anima.Color(0, 100, 0, 1); // H, S, L, A => black
-  this.fillColor = new Anima.Color(0, 100, 0, 1);   // H, S, L, A => black
+  this.strokeColor = new an.Color(0, 100, 0, 1); // H, S, L, A => black
+  this.fillColor = new an.Color(0, 100, 0, 1);   // H, S, L, A => black
 
   this.strokeStyle = null;            // color or gradient
   this.fillStyle = null;              // color or gradient

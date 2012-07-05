@@ -6,7 +6,7 @@
 
 new function() { //block
 
-var self = Anima.TrackView;
+var self = an.TrackView;
 
 /// register functions /////////////////////////////////////////////////////////
 

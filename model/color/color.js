@@ -4,7 +4,7 @@
 
 new function() { // block
 
-Anima.Color = function(hue, sat, lum, alp) {
+an.Color = function(hue, sat, lum, alp) {
 
   this.hue = hue || 0;
   this.sat = sat || 100;
@@ -15,7 +15,7 @@ Anima.Color = function(hue, sat, lum, alp) {
   this.update();
 
 }
-var self = Anima.Color;
+var self = an.Color;
 
 self.prototype.update = function() {
 

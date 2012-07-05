@@ -4,8 +4,8 @@
 
 new function() { // block
 
-Anima.EventState = function() {};
-var self = Anima.EventState;
+an.EventState = function() {};
+var self = an.EventState;
 
 // test if this handler should take over
 self.prototype.test = function(e) {
@@ -29,7 +29,7 @@ self.prototype.selectNextState = function(s) {
 
 self.prototype.setHandlers = function(s) {
 
-  var canvas = Anima.Global.canvas.canvas;
+  var canvas = an.g.canvas.canvas;
   canvas.style.cursor = "default";
 
   canvas.onmousedown     = function(e) { s.onMouseDown(e); }
@@ -46,7 +46,7 @@ self.prototype.setHandlers = function(s) {
   // wd don't use native context menu
   canvas.oncontextmenu   = function() { return false; }
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
 };
 
@@ -58,7 +58,7 @@ self.prototype.deselectSelf = function() {
 
 self.prototype.disableAllHandlers = function() {
 
-  var canvas = Anima.Global.canvas.canvas;
+  var canvas = an.g.canvas.canvas;
   canvas.style.cursor = "default";
 
   canvas.onmousedown     = null;

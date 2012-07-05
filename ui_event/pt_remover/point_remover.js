@@ -4,15 +4,15 @@
 
 new function() { // block
 
-Anima.PointRemover = function() {
+an.PointRemover = function() {
 
-  Anima.Global.PointRemover = this;
+  an.g.PointRemover = this;
 
 };
-var self = Anima.PointRemover;
+var self = an.PointRemover;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.test = function(e) {
 
@@ -35,15 +35,15 @@ self.prototype.deselect = function() {
 
 self.prototype.onClick = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (Anchor Point)
-  var hitEdge = Anima.Global.editor.isOnAnchorPoints(x, y);
+  var hitEdge = an.g.editor.isOnAnchorPoints(x, y);
   if(hitEdge) {
-    Anima.Global.editor.removePoint(hitEdge);
-    Anima.Global.editor.draw();
+    an.g.editor.removePoint(hitEdge);
+    an.g.editor.draw();
   }
 
 }

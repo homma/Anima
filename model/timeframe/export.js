@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.TimeFrame;
+var self = an.TimeFrame;
 
 self.prototype.dataExport = function() {
 
@@ -46,7 +46,7 @@ self.prototype.dataImport = function(obj) {
 
   // path import
   for(var i = 0; i < obj.pathList.length; i++) {
-    var path = new Anima.Path();
+    var path = new an.Path();
     path.dataImport(obj.pathList[i]);
 
     this.addPath(path);

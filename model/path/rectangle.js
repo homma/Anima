@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.createRectangle = function(x, y, w, h) {
   // x and y: left-top corner
@@ -20,7 +20,7 @@ self.prototype.createRectangle = function(x, y, w, h) {
 
 self.prototype.addLine = function(p0x, p0y, p1x, p1y) {
 
-  var edge = new Anima.Curve(p0x, p0y, p0x, p0y, p1x, p1y, p1x, p1y);
+  var edge = new an.Curve(p0x, p0y, p0x, p0y, p1x, p1y, p1x, p1y);
   this.addEdge(edge);
 
 }

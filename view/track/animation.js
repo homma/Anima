@@ -6,7 +6,7 @@
 
 new function() { //block
 
-var self = Anima.TrackView;
+var self = an.TrackView;
 
 /// do animations //////////////////////////////////////////////////////////////
 
@@ -27,13 +27,13 @@ self.prototype.runOrStopAnimation = function(e) {
 
 self.prototype.runAnimation = function() {
 
-  Anima.Global.animation.play();
+  an.g.animation.play();
 
 };
 
 self.prototype.stopAnimation = function() {
 
-  Anima.Global.animation.stop();
+  an.g.animation.stop();
 
 };
 

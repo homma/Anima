@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Animation;
+var self = an.Animation;
 
 /// do animation ///////////////////////////////////////////////////////////////
 
@@ -12,7 +12,7 @@ self.prototype.play = function() {
 
   // this.nthFrame = 0;
   this.intervalID = window.setInterval(
-                             function() { Anima.Global.animation.animate(); },
+                             function() { an.g.animation.animate(); },
                              1000 / this.framesPerSecond);
 
 }
@@ -25,7 +25,7 @@ self.prototype.stop = function() {
   this.nthFrame = 0;
   this.intervalID = null;
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 }
 
 self.prototype.animate = function() {
@@ -37,8 +37,8 @@ self.prototype.animate = function() {
   if( track.hasTimeFrameAt(nth) ) {
 
     var frame = track.findOrCreateFrame(nth);
-    Anima.Global.editor.setTimeFrame(frame);
-    Anima.Global.editor.draw();
+    an.g.editor.setTimeFrame(frame);
+    an.g.editor.draw();
 
   }
 

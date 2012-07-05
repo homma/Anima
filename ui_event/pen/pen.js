@@ -6,22 +6,22 @@ new function() { // block
 
 // Pen Mode
 
-Anima.PenHandler = function() {
+an.PenHandler = function() {
 
   this.onDrawing = false;
   this.prevCurve = null;
 
   // console.log(this);
-  Anima.Global.PenHandler = this;
+  an.g.PenHandler = this;
 
 };
 
-var self = Anima.PenHandler;
-self.prototype = new Anima.EventState();
+var self = an.PenHandler;
+self.prototype = new an.EventState();
 
 self.prototype.select = function() {
 
-  var canvas = Anima.Global.canvas.canvas;
+  var canvas = an.g.canvas.canvas;
   canvas.style.cursor = "default";
 
   canvas.onmousedown     = this.onMouseDown;
@@ -38,20 +38,20 @@ self.prototype.select = function() {
   // wd don't use native context menu
   canvas.oncontextmenu   = function() { return false; };
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
 };
 
 self.prototype.onMouseDown = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var path = new Anima.Path();
-  Anima.Global.editor.setNewPath(path);
+  var path = new an.Path();
+  an.g.editor.setNewPath(path);
 
-  var curve = new Anima.Curve();
+  var curve = new an.Curve();
   curve.setAnchorPointZero(x, y);
   curve.setControlPointZero(x, y);
   path.addEdge(curve);
@@ -68,23 +68,23 @@ self.prototype.onMouseMove = function(e) {
 
   if(!this.onDrawing) return;
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var path = Anima.Global.editor.getNewPath();
+  var path = an.g.editor.getNewPath();
 
   this.prevCurve.setAnchorPointOne(x, y);
   this.prevCurve.setControlPointOne(x, y);
 
-  var curve = new Anima.Curve();
+  var curve = new an.Curve();
   curve.setAnchorPointZero(x, y);
   curve.setControlPointZero(x, y);
   path.addEdge(curve);
 
   this.prevCurve = curve;
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
 };
 
@@ -92,20 +92,20 @@ self.prototype.onMouseUp = function(e) {
 
   if(!this.onDrawing) return;
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var path = Anima.Global.editor.getNewPath();
+  var path = an.g.editor.getNewPath();
 
   this.prevCurve.setAnchorPointOne(x, y);
   this.prevCurve.setControlPointOne(x, y);
 
   path.finished();
-  Anima.Global.editor.addPath(path);
-  Anima.Global.editor.setNewPath(null);
+  an.g.editor.addPath(path);
+  an.g.editor.setNewPath(null);
 
-  Anima.Global.editor.draw();
+  an.g.editor.draw();
 
   // console.log("mouse up at " + x + " @ " + y);
 

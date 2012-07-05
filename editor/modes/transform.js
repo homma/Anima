@@ -4,15 +4,15 @@
 
 new function() {  // block
 
-Anima.TransformMode = function(ed) {
+an.TransformMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
 
 }
-var self = Anima.TransformMode;
+var self = an.TransformMode;
 
-self.prototype = new Anima.EditorMode();
+self.prototype = new an.EditorMode();
 
 /// draw ///////////////////////////////////////////////////////////////////////
 

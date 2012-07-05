@@ -4,15 +4,15 @@
 
 new function() {  // block
 
-Anima.PointRemoveMode = function(ed) {
+an.PointRemoveMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
 
 }
-var self = Anima.PointRemoveMode;
+var self = an.PointRemoveMode;
 
-self.prototype = new Anima.EditorMode();
+self.prototype = new an.EditorMode();
 
 /// draw ///////////////////////////////////////////////////////////////////////
 

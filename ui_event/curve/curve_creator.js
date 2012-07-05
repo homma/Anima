@@ -4,25 +4,25 @@
 
 new function() {  // block
 
-Anima.CurveCreator = function() {
+an.CurveCreator = function() {
 
   this.curve;
   this.nextCurve;
 
   this.state = {};
-  this.state.initial = new Anima.CurveCreatorInitialState(this);
-  this.state.dragging = new Anima.CurveCreatorDraggingState(this);
-  this.state.hover = new Anima.CurveCreatorHoverState(this);
-  this.state.firstMove = new Anima.CurveCreatorFirstMoveState(this);
-  this.state.finishing = new Anima.CurveCreatorFinishingState(this);
+  this.state.initial = new an.CurveCreatorInitialState(this);
+  this.state.dragging = new an.CurveCreatorDraggingState(this);
+  this.state.hover = new an.CurveCreatorHoverState(this);
+  this.state.firstMove = new an.CurveCreatorFirstMoveState(this);
+  this.state.finishing = new an.CurveCreatorFinishingState(this);
 
-  Anima.Global.CurveCreator = this;
+  an.g.CurveCreator = this;
 
 };
-var self = Anima.CurveCreator;
+var self = an.CurveCreator;
 
-// inherit from Anima.EventState
-self.prototype = new Anima.EventState();
+// inherit from an.EventState
+self.prototype = new an.EventState();
 
 self.prototype.select = function() {
 

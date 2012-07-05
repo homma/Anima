@@ -4,12 +4,12 @@
 
 new function() {  // block
 
-Anima.EditorMode = function() {
+an.EditorMode = function() {
 
   this.editor;
 
 }
-var self = Anima.EditorMode;
+var self = an.EditorMode;
 
 self.prototype.setEditor = function(ed) {
 

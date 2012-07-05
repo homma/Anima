@@ -96,11 +96,10 @@ var scripts = [
 "./model/curve/util.js",
 "./model/misc/lgrad.js",
 "./model/misc/rgrad.js",
-"./anima.js"
 ];
 
 for(var i = 0; i < scripts.length; i++) {
-  Anima.Loader.loadInOrder( scripts[i] );
+  an.Loader.loadInOrder( scripts[i] );
 }
 
 } // block

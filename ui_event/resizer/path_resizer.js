@@ -4,27 +4,25 @@
 
 new function() { // block
 
-var gl = Anima.Global;
-
-Anima.PathResizer = function() {
+an.PathResizer = function() {
 
   this.position = null;
-  gl.PathResizer = this;
+  an.g.PathResizer = this;
 
 };
-var self = Anima.PathResizer;
+var self = an.PathResizer;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.test = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (resize guide)
-  var hitResizeGuide = gl.editor.isOnHandle(x, y);
+  var hitResizeGuide = an.g.editor.isOnHandle(x, y);
   if(hitResizeGuide) {
 
     this.position = hitResizeGuide.position;
@@ -54,13 +52,13 @@ self.prototype.onMouseDown = function(e) {
   if( this.test(e) ) { return; }
 
   // move path
-  eventObj = gl.PathMover;
+  eventObj = an.g.PathMover;
   if( eventObj.test(e) ) { return; };
 
   // otherwise deselect
-  gl.editor.deselectAll();
-  gl.editor.draw();
-  gl.pathInspectorView.update();  // update the path info pane
+  an.g.editor.deselectAll();
+  an.g.editor.draw();
+  an.g.pathInspectorView.update();  // update the path info pane
 
 }
 
@@ -81,9 +79,9 @@ self.prototype.onMouseUp = function(e) {
 // need fix
 self.prototype.resizePath = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
 
-  var handles = gl.editor.getResizeArea();
+  var handles = an.g.editor.getResizeArea();
   var p = this.position;
 
   // 0 - 7 - 3
@@ -142,10 +140,10 @@ self.prototype.resizePath = function(e) {
   var fromX = handles.x[0];
   var fromY = handles.y[0];
 
-  gl.editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
-  gl.editor.translateSelectedPaths(diffX, diffY);
+  an.g.editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
+  an.g.editor.translateSelectedPaths(diffX, diffY);
 
-  gl.editor.draw();
+  an.g.editor.draw();
 
   // console.log(diffX, diffY);
 };
