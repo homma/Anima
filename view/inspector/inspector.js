@@ -6,14 +6,14 @@
 
 new function() { // block
 
-Anima.PathInspectorView = function() {
+an.PathInspectorView = function() {
 
   this.initPathInspectorView();
 
-  Anima.Global.pathInspectorView = this;
+  an.g.pathInspectorView = this;
 
 }
-var self = Anima.PathInspectorView;
+var self = an.PathInspectorView;
 
 self.prototype.initPathInspectorView = function() {
 
@@ -25,8 +25,8 @@ self.prototype.initPathInspectorView = function() {
 
 self.prototype.createObjects = function() {
 
-  new Anima.PathInspector();
-  new Anima.ColorStock();
+  new an.PathInspector();
+  new an.ColorStock();
 
 }
 

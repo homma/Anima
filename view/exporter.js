@@ -4,12 +4,12 @@
 
 new function() { // block
 
-Anima.ExporterView = function() {
+an.ExporterView = function() {
 
-  Anima.Global.ExporterView = this;
+  an.g.ExporterView = this;
 
 };
-var self = Anima.ExporterView;
+var self = an.ExporterView;
 
 self.prototype.select = function() {
 
@@ -33,13 +33,13 @@ self.prototype.deselect = function() {
   var exportText = document.getElementById("exportText");
   exportText.value = "";
 
-  Anima.Global.Selector.select();
+  an.g.Selector.select();
 
 };
 
 self.prototype.dataExport = function() {
 
-  var str = Anima.Global.Exporter.export();
+  var str = an.g.Exporter.export();
 
   var exportText = document.getElementById("exportText");
   exportText.value = str;

@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-var self = Anima.Editor;
+var self = an.Editor;
 
 /// change time frame //////////////////////////////////////////////////////////
 

@@ -4,14 +4,14 @@
 
 new function() { // block
 
-Anima.Animation = function() {
+an.Animation = function() {
 
   this.initialize();
 
-  Anima.Global.animation = this;
+  an.g.animation = this;
 
 };
-var self = Anima.Animation;
+var self = an.Animation;
 
 self.prototype.initialize = function() {
 

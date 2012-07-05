@@ -4,13 +4,13 @@
 
 new function() { // block
 
-var self = Anima.Animation;
+var self = an.Animation;
 
 /// track creation /////////////////////////////////////////////////////////////
 
 self.prototype.getNewTrack = function() {
 
-  var track = new Anima.Track();
+  var track = new an.Track();
 
   this.trackList.push(track);
 
@@ -86,7 +86,7 @@ self.prototype.selectTimeFrame = function(nthTrack, nthTime) {
   var track = this.trackList[nthTrack];
   var frame = track.findOrCreateFrame(nthTime);
 
-  Anima.Global.editor.setTimeFrame(frame);
+  an.g.editor.setTimeFrame(frame);
 
 }
 

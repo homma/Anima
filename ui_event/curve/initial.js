@@ -6,24 +6,24 @@ new function() {  // block
 
 // mouseReleased state
 
-Anima.CurveCreatorInitialState = function(obj) {
+an.CurveCreatorInitialState = function(obj) {
   this.stateObj = obj;
 };
-var self = Anima.CurveCreatorInitialState;
+var self = an.CurveCreatorInitialState;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.onMouseDown = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  var path = new Anima.Path();
-  Anima.Global.editor.setNewPath(path);
+  var path = new an.Path();
+  an.g.editor.setNewPath(path);
 
-  var curve = new Anima.Curve();
+  var curve = new an.Curve();
 
   curve.setAnchorPointZero(x, y);
   curve.setControlPointZero(x, y);

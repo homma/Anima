@@ -3,7 +3,7 @@
 
 new function() { // block
 
-Anima.DOMML = this;
+an.DOMML = this;
 
 // capturing 'this' to 'self' for convenience.
 var self = this;

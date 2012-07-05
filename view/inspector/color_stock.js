@@ -6,26 +6,26 @@
 
 new function() { // block
 
-var self = Anima.PathInspectorView;
+var self = an.PathInspectorView;
 
 /// color stock ////////////////////////////////////////////////////////////////
 
 self.prototype.selectColorStock = function(e) {
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   var id = e.target.id;
   var n = parseInt( id.substring( "color_stock_".length ), 10 );
 
   colorStock.selectColorAt(n);
 
-  var inspector = Anima.Global.pathInspectorView;
+  var inspector = an.g.pathInspectorView;
   inspector.updateColorStock();
 
 }
 
 self.prototype.updateColorStock = function() {
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   var n = colorStock.getSelectedNumber();
   var len = colorStock.size();
 
@@ -44,38 +44,38 @@ self.prototype.updateColorStock = function() {
 
 self.prototype.setStrokeColor = function(e) {
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   var n = colorStock.getSelectedNumber();
   var color = colorStock.getColorAt(n);
 
-  var view = Anima.Global.pathInspectorView;
+  var view = an.g.pathInspectorView;
   view.setStrokeColorAttrsFromColor(color);
 
-  var ops = Anima.Global.PathInspector;
+  var ops = an.g.PathInspector;
   ops.setStrokeColorFromView();
 
 }
 
 self.prototype.setFillColor = function(e) {
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   var n = colorStock.getSelectedNumber();
   var color = colorStock.getColorAt(n);
 
-  var view = Anima.Global.pathInspectorView;
+  var view = an.g.pathInspectorView;
   view.setFillColorAttrsFromColor(color);
 
-  var ops = Anima.Global.PathInspector;
+  var ops = an.g.PathInspector;
   ops.setFillColorFromView();
 
 }
 
 self.prototype.storeStrokeColorToColorStock = function(e) {
 
-  var inspector = Anima.Global.pathInspectorView;
+  var inspector = an.g.pathInspectorView;
   var color = inspector.getStrokeColor();
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   colorStock.storeColor(color);
 
   inspector.updateColorStock();
@@ -84,10 +84,10 @@ self.prototype.storeStrokeColorToColorStock = function(e) {
 
 self.prototype.storeFillColorToColorStock = function(e) {
 
-  var inspector = Anima.Global.pathInspectorView;
+  var inspector = an.g.pathInspectorView;
   var color = inspector.getFillColor();
 
-  var colorStock = Anima.Global.ColorStock;
+  var colorStock = an.g.ColorStock;
   colorStock.storeColor(color);
 
   inspector.updateColorStock();

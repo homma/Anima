@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.PathInspectorView;
+var self = an.PathInspectorView;
 
 self.prototype.registerHandler = function() {
 
@@ -44,7 +44,7 @@ self.prototype.registerSwitcher = function() {
 
 // Line Attributes
 self.prototype.registerLineAttrs = function() {
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
 
   this.registerOnClick( "line_width", pathInspector.changeLineWidth );
   this.registerOnChange( "line_width", pathInspector.changeLineWidth );
@@ -62,7 +62,7 @@ self.prototype.registerLineAttrs = function() {
 
 // Color Attributes
 self.prototype.registerColorAttrs = function() {
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
 
   this.registerOnClick( "path_stroke", pathInspector.setStroke );
   this.registerOnClick( "path_fill", pathInspector.setFill );
@@ -74,7 +74,7 @@ self.prototype.registerColorAttrs = function() {
 
 // Stroke Color
 self.prototype.registerStrokeColor = function() {
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
 
   this.registerOnClick("stroke_hue_slider", pathInspector.setStrokeHue);
   this.registerOnChange("stroke_hue_slider", pathInspector.setStrokeHue);
@@ -88,7 +88,7 @@ self.prototype.registerStrokeColor = function() {
 
 // Fill Color
 self.prototype.registerFillColor = function() {
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
 
   this.registerOnClick(  "fill_hue_slider", pathInspector.setFillHue );
   this.registerOnChange( "fill_hue_slider", pathInspector.setFillHue );
@@ -102,8 +102,8 @@ self.prototype.registerFillColor = function() {
 
 // Color Stock
 self.prototype.registerColorStock = function() {
-  var pathInspector = Anima.Global.PathInspector;
-  var colorStock = Anima.Global.ColorStock;
+  var pathInspector = an.g.PathInspector;
+  var colorStock = an.g.ColorStock;
 
   this.registerOnClick( "stroke_color", this.storeStrokeColorToColorStock );
   this.registerOnClick( "fill_color", this.storeFillColorToColorStock );
@@ -119,7 +119,7 @@ self.prototype.registerColorStock = function() {
 
 // Path Operations
 self.prototype.registerPathOps = function() {
-  var pathInspector = Anima.Global.PathInspector;
+  var pathInspector = an.g.PathInspector;
 
   this.registerOnClick( "transform", pathInspector.selectTransform );
   this.registerOnClick( "resize", pathInspector.selectResize );

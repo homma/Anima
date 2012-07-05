@@ -3,7 +3,7 @@
 
 new function() { // block
 
-Anima.Loader = this;
+an.Loader = this;
 
 // capturing 'this' to 'self' for convenience.
 var self = this;

@@ -6,7 +6,7 @@
 
 new function() { // block
 
-Anima.Relatively = this;
+an.Relatively = this;
 
 // capturing 'this' to 'self' for convenience.
 var self = this;

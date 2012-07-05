@@ -4,28 +4,26 @@
 
 new function() { // block
 
-var gl = Anima.Global;
-
-Anima.CurveModifier = function() {
+an.CurveModifier = function() {
 
   this.hitEdge = null;
 
-  gl.CurveModifier = this;
+  an.g.CurveModifier = this;
 
 };
-var self = Anima.CurveModifier;
+var self = an.CurveModifier;
 
-// inherit from Anima.EventState
-self.prototype = new Anima.EventState();
+// inherit from an.EventState
+self.prototype = new an.EventState();
 
 self.prototype.test = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
   // hit test (transform handle)
-  var hitEdge = gl.editor.isOnHandle(x, y);
+  var hitEdge = an.g.editor.isOnHandle(x, y);
   if(hitEdge) {
 
     this.hitEdge = hitEdge;
@@ -57,13 +55,13 @@ self.prototype.onMouseDown = function(e) {
   var eventObj;
 
   // move path
-  eventObj = gl.PathMover;
+  eventObj = an.g.PathMover;
   if( eventObj.test(e) ) { return; };
 
   // otherwise deselect
-  gl.editor.deselectAll();
-  gl.editor.draw();
-  gl.pathInspectorView.update();  // update the path info pane
+  an.g.editor.deselectAll();
+  an.g.editor.draw();
+  an.g.pathInspectorView.update();  // update the path info pane
 
 };
 
@@ -71,12 +69,12 @@ self.prototype.onMouseMove = function(e) {
 
   if(!this.hitEdge) { return; }
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  gl.editor.modifyPoint(this.hitEdge, x, y);
-  gl.editor.draw();
+  an.g.editor.modifyPoint(this.hitEdge, x, y);
+  an.g.editor.draw();
 
 };
 
@@ -84,12 +82,12 @@ self.prototype.onMouseUp = function(e) {
 
   if(!this.hitEdge) { return; }
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
-  gl.editor.modifyPoint(this.hitEdge, x, y);
-  gl.editor.draw();
+  an.g.editor.modifyPoint(this.hitEdge, x, y);
+  an.g.editor.draw();
 
   this.hitEdge = null;
 };

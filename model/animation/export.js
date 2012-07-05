@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Animation;
+var self = an.Animation;
 
 /// export /////////////////////////////////////////////////////////////////////
 
@@ -16,8 +16,8 @@ self.prototype.dataExport = function() {
     indent + '  "type": "animation",\n' +
     indent + '  "framesPerSecond": ' + this.framesPerSecond + ',\n' +
     indent + '  "animationLength": ' + this.animationLength + ',\n' +
-    indent + '  "frameWidth": ' + Anima.Global.canvas.width + ',\n' +
-    indent + '  "frameHeight": ' + Anima.Global.canvas.height + ',\n' +
+    indent + '  "frameWidth": ' + an.g.canvas.width + ',\n' +
+    indent + '  "frameHeight": ' + an.g.canvas.height + ',\n' +
     indent + '  "tracks": [ ';
 
   var midStr = new String();
@@ -52,13 +52,13 @@ self.prototype.dataImport = function(obj) {
   this.animationLength = obj.animationLength;
 
   for(var i = 0; i < obj.tracks.length; i++) {
-    var track = new Anima.Track();
+    var track = new an.Track();
     track.dataImport(obj.tracks[i]);
 
     this.addTrack(track);
   }
 
-  Anima.Global.editor.setTrack( this.trackList[0] );
+  an.g.editor.setTrack( this.trackList[0] );
 }
 
 } // block

@@ -4,12 +4,12 @@
 
 new function() { // block
 
-Anima.RasterizerView = function() {
+an.RasterizerView = function() {
 
-  Anima.Global.RasterizerView = this;
+  an.g.RasterizerView = this;
 
 };
-var self = Anima.RasterizerView;
+var self = an.RasterizerView;
 
 self.prototype.select = function() {
 
@@ -30,14 +30,14 @@ self.prototype.deselect = function() {
   var rasterPain = document.getElementById("rasterPain");
   rasterPain.style.display = "none";
 
-  Anima.Global.Selector.select();
+  an.g.Selector.select();
 
 };
 
 self.prototype.displayImage = function() {
 
   var imgElem = document.getElementById("rasterImage");
-  var canvas = Anima.Global.canvas.canvas;
+  var canvas = an.g.canvas.canvas;
   var image = canvas.toDataURL();
 
   imgElem.src = image;

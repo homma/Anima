@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-var self = Anima.Editor;
+var self = an.Editor;
 
 // should be cleaned up.
 self.prototype.getResizeArea = function() {
@@ -24,7 +24,7 @@ self.prototype.getBoundaryOfSelectedPaths = function() {
 
   for(var i = 1; i < this.selectedPathList.length; i++) {
     var bound = this.selectedPathList[i].getBoundary();
-    rect = Anima.Util.getCompoundBoundary(bound, rect);
+    rect = an.u.getCompoundBoundary(bound, rect);
   }
 
   return rect;

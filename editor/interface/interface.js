@@ -2,15 +2,15 @@ new function() {  // block
 
 var editor;  // editor internal
 
-Anima.EditorInterface = function(ed) {
+an.EditorInterface = function(ed) {
 
   editor = ed;
 
   this.SelectModes = ed.SelectModes;
-  Anima.Global.editor = this;
+  an.g.editor = this;
 
 }
-var self = Anima.EditorInterface;
+var self = an.EditorInterface;
 
 ///////////////////////////////////////
 

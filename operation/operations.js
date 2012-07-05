@@ -6,82 +6,82 @@
 
 new function() {  // block
 
-Anima.Operations = function() {
-  Anima.Global.operations = this;
+an.Operations = function() {
+  an.g.operations = this;
 };
-self = Anima.Operations;
+self = an.Operations;
 
 self.prototype.selectAll = function() {
 
-  Anima.Global.editor.selectAll();
-  Anima.Global.editor.draw();
+  an.g.editor.selectAll();
+  an.g.editor.draw();
 
 }
 
 self.prototype.clear = function() {
 
-  Anima.Global.editor.deleteAll();
-  Anima.Global.editor.draw();
+  an.g.editor.deleteAll();
+  an.g.editor.draw();
 
 }
 
 self.prototype.delete = function() {
 
-  Anima.Global.editor.delete();
-  Anima.Global.editor.draw();
+  an.g.editor.delete();
+  an.g.editor.draw();
 
 }
 
 self.prototype.cut = function() {
 
-  Anima.Global.editor.cut();
-  Anima.Global.editor.draw();
+  an.g.editor.cut();
+  an.g.editor.draw();
 
 }
 
 self.prototype.copy = function() {
 
-  Anima.Global.editor.copy();
-  Anima.Global.editor.draw();
+  an.g.editor.copy();
+  an.g.editor.draw();
 
 }
 
 self.prototype.paste = function() {
 
-  Anima.Global.editor.paste();
-  Anima.Global.editor.draw();
+  an.g.editor.paste();
+  an.g.editor.draw();
 
 }
 
 self.prototype.undo = function() {
-  Anima.Global.undoManager.undo();
-  Anima.Global.editor.draw();
+  an.g.undoManager.undo();
+  an.g.editor.draw();
 }
 
 self.prototype.redo = function() {
-  Anima.Global.undoManager.redo();
-  Anima.Global.editor.draw();
+  an.g.undoManager.redo();
+  an.g.editor.draw();
 }
 
 self.prototype.save = function() {
 
-  localStorage.setItem("Anima.save", Anima.Global.Exporter.export() );
+  localStorage.setItem("an.save", an.g.Exporter.export() );
 
 }
 
 self.prototype.restore = function() {
 
-  var dat = localStorage.getItem("Anima.save");
+  var dat = localStorage.getItem("an.save");
   // localStorage.clear();
 
   if(dat == null) return;
 
   var obj = JSON.parse(dat);
 
-  Anima.Global.Importer.import(obj);
+  an.g.Importer.import(obj);
 
-  Anima.Global.editor.draw();
-  Anima.Global.TrackView.updateView();
+  an.g.editor.draw();
+  an.g.TrackView.updateView();
 
 }
 

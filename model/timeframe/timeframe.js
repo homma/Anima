@@ -4,14 +4,14 @@
 
 new function() { // block
 
-Anima.TimeFrame = function() {
+an.TimeFrame = function() {
 
   this.frameNumber = null;
   this.pathList = [];
 
   this.initTimeFrame();
 }
-var self = Anima.TimeFrame;
+var self = an.TimeFrame;
 
 self.prototype.initTimeFrame = function() {
 

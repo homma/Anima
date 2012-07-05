@@ -4,13 +4,13 @@
 
 new function() { // block
 
-Anima.Tooltip = function() {
+an.Tooltip = function() {
 
   this.init();
-  Anima.Global.Tooltip = this;
+  an.g.Tooltip = this;
 
 };
-var self = Anima.Tooltip;
+var self = an.Tooltip;
 
 self.prototype.bind = function(id, text) {
 

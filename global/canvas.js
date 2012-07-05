@@ -6,14 +6,14 @@
 
 new function() { // block
 
-Anima.Canvas = function() {
+an.Canvas = function() {
 
   this.initCanvas();
 
-  Anima.Global.canvas = this;
+  an.g.canvas = this;
 
 }
-var self = Anima.Canvas;
+var self = an.Canvas;
 
 self.prototype.initCanvas = function() {
 
@@ -30,6 +30,7 @@ self.prototype.getCanvas = function() {
 }
 
 self.prototype.clear = function() {
+
   var canvas = this.canvas;
 
   var ctx = canvas.getContext('2d');
@@ -41,6 +42,7 @@ self.prototype.clear = function() {
 /// test ///////////////////////////////////////////////////////////////////////
 
 self.prototype.test = function() {
+
   var canvas = this.canvas;
 
   var ctx = canvas.getContext('2d');
@@ -48,6 +50,7 @@ self.prototype.test = function() {
   ctx.moveTo(100,100);
   ctx.bezierCurveTo(120, 140, 280, 300, 250, 250);
   ctx.stroke();
+
 }
 
 } // block

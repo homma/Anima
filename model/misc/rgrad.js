@@ -4,11 +4,11 @@
 
 // Radial Gradient
 
-Anima.RadialGradient = function() {
+an.RadialGradient = function() {
 
 }
 
-Anima.RadialGradient.prototype.addColorStop = function() {
+an.RadialGradient.prototype.addColorStop = function() {
 
 }
 

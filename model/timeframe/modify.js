@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.TimeFrame;
+var self = an.TimeFrame;
 
 self.prototype.addPath = function(path) {
 

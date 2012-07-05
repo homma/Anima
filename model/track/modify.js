@@ -6,7 +6,7 @@
 
 new function() { // block
 
-var self = Anima.Track;
+var self = an.Track;
 
 /// setter / getter ////////////////////////////////////////////////////////////
 
@@ -38,7 +38,7 @@ self.prototype.getName = function() {
 
 self.prototype.getNewFrame = function(nth) {
 
-  var frame = new Anima.TimeFrame();
+  var frame = new an.TimeFrame();
   frame.setFrameNumber(nth);
   this.frameList.push(frame);
 

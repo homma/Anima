@@ -6,36 +6,38 @@ new function() { // block
 
 // Tool View
 
-Anima.ToolView = function() {
+an.ToolView = function() {
 
   this.initToolView();
 
-  Anima.Global.toolView = this;
+  an.g.toolView = this;
 
 }
 
-Anima.ToolView.prototype.createObjects = function() {
+var self= an.ToolView;
 
-  new Anima.Selector();
-  new Anima.PenHandler();
-  new Anima.CurveCreator();
-  new Anima.ExporterView();
-  new Anima.ImporterView();
-  new Anima.RasterizerView();
+self.prototype.createObjects = function() {
+
+  new an.Selector();
+  new an.PenHandler();
+  new an.CurveCreator();
+  new an.ExporterView();
+  new an.ImporterView();
+  new an.RasterizerView();
 
 }
 
-Anima.ToolView.prototype.initToolView = function() {
+self.prototype.initToolView = function() {
 
   this.createObjects();
 
   // instantiate handlers
-  var selector = Anima.Global.Selector;
-  var penHandler = Anima.Global.PenHandler;
-  var curveCreator = Anima.Global.CurveCreator;
-  var exporterView = Anima.Global.ExporterView;
-  var importerView = Anima.Global.ImporterView;
-  var rasterizerView = Anima.Global.RasterizerView;
+  var selector = an.g.Selector;
+  var penHandler = an.g.PenHandler;
+  var curveCreator = an.g.CurveCreator;
+  var exporterView = an.g.ExporterView;
+  var importerView = an.g.ImporterView;
+  var rasterizerView = an.g.RasterizerView;
 
   // set current tool
   var currentTool = selector;
@@ -59,7 +61,7 @@ Anima.ToolView.prototype.initToolView = function() {
     elem.onchange = fun;
   }
 
-  var ops = Anima.Global.operations;
+  var ops = an.g.operations;
   var str = "Anima: a vector animation editor (prototype)."
   registerOnClick( "AnimaButton", function(){ alert(str); } );
   registerOnClick( "penButton", function() { select(penHandler); } );

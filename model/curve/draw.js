@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 self.prototype.draw = function(ctx) {
   // console.log("drawing bezier");

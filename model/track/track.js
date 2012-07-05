@@ -6,7 +6,7 @@
 
 new function() { // block
 
-Anima.Track = function() {
+an.Track = function() {
   this.selected = false;
   this.visible = true;
   this.trackName = "a Track";
@@ -14,7 +14,7 @@ Anima.Track = function() {
 
   this.initTrack();
 }
-var self = Anima.Track;
+var self = an.Track;
 
 self.prototype.initTrack = function() {
 

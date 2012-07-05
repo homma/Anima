@@ -6,7 +6,7 @@ new function() {  // block
 
 /// info ///////////////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.getBoundary = function() {
 
@@ -14,7 +14,7 @@ self.prototype.getBoundary = function() {
 
   for (var i = 1; this.edges.length > i; i++) {
     var bound = this.edges[i].getBoundary();
-    rect = Anima.Util.getCompoundBoundary(bound, rect);
+    rect = an.u.getCompoundBoundary(bound, rect);
   }
 
 /*  this has a conflict with resizing...

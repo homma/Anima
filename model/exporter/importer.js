@@ -4,12 +4,12 @@
 
 new function() {  // block
 
-Anima.Importer = function() {
+an.Importer = function() {
 
-  Anima.Global.Importer = this;
+  an.g.Importer = this;
 
 };
-var self = Anima.Importer;
+var self = an.Importer;
 
 self.prototype.import = function(obj) {
 
@@ -17,11 +17,11 @@ self.prototype.import = function(obj) {
   if(obj.type != "ANIMA") return;  // do nothing
 
   // initialize
-  Anima.Global.editor.initialize();
-  Anima.Global.animation.initialize();
+  an.g.editor.initialize();
+  an.g.animation.initialize();
 
   // import
-  Anima.Global.animation.dataImport(obj.animation);
+  an.g.animation.dataImport(obj.animation);
 
 };
 

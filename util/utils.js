@@ -4,7 +4,7 @@
 
 // Utility functions
 
-Anima.Util.findChildNodeByClass = function(elem, name) {
+an.u.findChildNodeByClass = function(elem, name) {
   var nodes = elem.childNodes;
   var node = null;
 
@@ -18,7 +18,7 @@ Anima.Util.findChildNodeByClass = function(elem, name) {
   return node;
 }
 
-Anima.Util.offset = function(elem) {
+an.u.offset = function(elem) {
   var obj, left, top;
   obj = elem;
   left = 0;
@@ -34,7 +34,7 @@ Anima.Util.offset = function(elem) {
 }
 
 /*
-Anima.Util.leftOffset = function(elem) {
+an.u.leftOffset = function(elem) {
   var obj, left;
   obj = elem;
   left = 0;
@@ -47,7 +47,7 @@ Anima.Util.leftOffset = function(elem) {
   return left;
 }
 
-Anima.Util.topOffset = function(elem) {
+an.u.topOffset = function(elem) {
   var obj, top;
   obj = elem;
   top = 0;
@@ -61,13 +61,13 @@ Anima.Util.topOffset = function(elem) {
 }
 */
 
-Anima.Util.getMousePositionInScreen = function(e) {
+an.u.getMousePositionInScreen = function(e) {
 
   var position = this.offset(e.target);
 
 }
 
-Anima.Util.getMousePositionInCanvas = function(e) {
+an.u.getMousePositionInCanvas = function(e) {
 
   var canvas = e.target;
   var position = this.offset(canvas);
@@ -83,7 +83,7 @@ Anima.Util.getMousePositionInCanvas = function(e) {
 }
 
 /*
-Anima.Util.registerOnClickFunction = function(id, fun) {
+an.u.registerOnClickFunction = function(id, fun) {
 
   var elem = document.getElementById(id);
   elem.onclick = fun;
@@ -91,7 +91,7 @@ Anima.Util.registerOnClickFunction = function(id, fun) {
 }
 */
 
-Anima.Util.getCompoundBoundary = function(rect1, rect2) {
+an.u.getCompoundBoundary = function(rect1, rect2) {
 
   var rect = {};
 

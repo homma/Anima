@@ -6,7 +6,7 @@ new function() {  // block
 
 /// drawing ////////////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.draw = function(ctx) {
 

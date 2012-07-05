@@ -4,8 +4,7 @@
 
 new function() { // block
 
-var self = Anima.PathInspector;
-var gl = Anima.Global;
+var self = an.PathInspector;
 
 /// path operations ////////////////////////////////////////////////////////////
 
@@ -22,42 +21,42 @@ self.prototype.getPathOps = function() {
 
 self.prototype.selectTransform = function() {
 
-  gl.PathInspector.setPathOps( gl.CurveModifier );
-  gl.editor.setSelectMode(gl.editor.SelectModes.transform);
-  gl.editor.draw();
+  an.g.PathInspector.setPathOps( an.g.CurveModifier );
+  an.g.editor.setSelectMode(an.g.editor.SelectModes.transform);
+  an.g.editor.draw();
 
 }
 
 self.prototype.selectResize = function() {
 
-  gl.PathInspector.setPathOps( gl.PathResizer );
-  gl.editor.setSelectMode(gl.editor.SelectModes.resize);
-  gl.editor.draw();
+  an.g.PathInspector.setPathOps( an.g.PathResizer );
+  an.g.editor.setSelectMode(an.g.editor.SelectModes.resize);
+  an.g.editor.draw();
 
 }
 
 self.prototype.selectRotate = function() {
 
-  gl.PathInspector.setPathOps( gl.PathRotator );
-  gl.editor.setSelectMode(gl.editor.SelectModes.rotate);
-  gl.editor.draw();
+  an.g.PathInspector.setPathOps( an.g.PathRotator );
+  an.g.editor.setSelectMode(an.g.editor.SelectModes.rotate);
+  an.g.editor.draw();
 
 }
 
 self.prototype.selectConnect = function() {
 
   // need fix.
-  gl.PathInspector.setPathOps( gl.PathConnector );
-  gl.editor.setSelectMode(gl.editor.SelectModes.connect);
-  gl.editor.draw();
+  an.g.PathInspector.setPathOps( an.g.PathConnector );
+  an.g.editor.setSelectMode(an.g.editor.SelectModes.connect);
+  an.g.editor.draw();
 
 }
 
 self.prototype.selectPointRemover = function() {
 
-  gl.PathInspector.setPathOps( gl.PointRemover );
-  gl.editor.setSelectMode( gl.editor.SelectModes.pointRemove );
-  gl.editor.draw();
+  an.g.PathInspector.setPathOps( an.g.PointRemover );
+  an.g.editor.setSelectMode( an.g.editor.SelectModes.pointRemove );
+  an.g.editor.draw();
 
 }
 

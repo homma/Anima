@@ -4,26 +4,26 @@
 
 new function() { // block
 
-Anima.PathInspector = function() {
+an.PathInspector = function() {
 
   this.currentPathOps = null;
 
   this.createEventObjects();
-  this.setPathOps( Anima.Global.CurveModifier );
+  this.setPathOps( an.g.CurveModifier );
 
-  Anima.Global.PathInspector = this;
+  an.g.PathInspector = this;
 
 }
-var self = Anima.PathInspector;
+var self = an.PathInspector;
 
 self.prototype.createEventObjects = function() {
 
-  new Anima.PathMover();
-  new Anima.PathResizer();
-  new Anima.PathRotator();
-  new Anima.PointRemover();
-  new Anima.CurveModifier();
-  new Anima.PathConnector();
+  new an.PathMover();
+  new an.PathResizer();
+  new an.PathRotator();
+  new an.PointRemover();
+  new an.CurveModifier();
+  new an.PathConnector();
 
 }
 

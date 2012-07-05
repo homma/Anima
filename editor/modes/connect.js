@@ -4,15 +4,15 @@
 
 new function() {  // block
 
-Anima.ConnectMode = function(ed) {
+an.ConnectMode = function(ed) {
 
   this.setEditor(ed);
   // this.editor = ed;
 
 }
-var self = Anima.ConnectMode;
+var self = an.ConnectMode;
 
-self.prototype = new Anima.EditorMode();
+self.prototype = new an.EditorMode();
 
 self.prototype.drawSelectedPath = function(ctx) {
 

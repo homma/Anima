@@ -4,7 +4,7 @@
 
 new function() {  // block
 
-Anima.ResizeMode = function(ed) {
+an.ResizeMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
@@ -15,9 +15,9 @@ Anima.ResizeMode = function(ed) {
   this.ResizeGuideCircleR   = 4;
 
 }
-var self = Anima.ResizeMode;
+var self = an.ResizeMode;
 
-self.prototype = new Anima.EditorMode();
+self.prototype = new an.EditorMode();
 
 /// draw ///////////////////////////////////////////////////////////////////////
 

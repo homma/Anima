@@ -6,7 +6,7 @@
 
 new function() { //block
 
-var self = Anima.TrackView;
+var self = an.TrackView;
 
 /// initialize /////////////////////////////////////////////////////////////////
 
@@ -78,7 +78,7 @@ self.prototype.markTimeFrame = function(nthField, trackObj) {
   }
 
   // display current frame in red
-  var animation = Anima.Global.animation;
+  var animation = an.g.animation;
   var track = animation.getCurrentTrackIndex();
   var frame = animation.getCurrentTimeFrameIndex();
 
@@ -98,8 +98,8 @@ self.prototype.selectTimeFrame = function(nthField, nthFrame) {
   var nthTrack = this.scrollGap + nthField;
   var nthTimeFrame = this.getStartFrame() + nthFrame;
 
-  Anima.Global.animation.selectTimeFrame( nthTrack, nthTimeFrame );
-  Anima.Global.editor.draw();
+  an.g.animation.selectTimeFrame( nthTrack, nthTimeFrame );
+  an.g.editor.draw();
 
   this.updateView();
 };

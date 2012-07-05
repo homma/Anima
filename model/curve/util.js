@@ -4,7 +4,7 @@
 
 new function() { // block
 
-var self = Anima.Curve;
+var self = an.Curve;
 
 /// curve manipulation /////////////////////////////////////////////////////////
 
@@ -18,8 +18,8 @@ self.prototype.middleOfLine = function(p0, p1) {
 self.prototype.subdivide = function(b) {
 
   // new bezier curve
-  var nb0 = new Anima.Curve();
-  var nb1 = new Anima.Curve();
+  var nb0 = new an.Curve();
+  var nb1 = new an.Curve();
 
   /// get x //////////////////////////
   nb0.p0x = b.p0x;
@@ -54,8 +54,8 @@ self.prototype.subdivide = function(b) {
 
 self.prototype.divide = function(t) {
 
-  var nb0 = new Anima.Curve();
-  var nb1 = new Anima.Curve();
+  var nb0 = new an.Curve();
+  var nb1 = new an.Curve();
 
   // TBD
 
@@ -63,7 +63,7 @@ self.prototype.divide = function(t) {
 
 // copy this curve to a new curve object
 self.prototype.duplicate = function() {
-  var cv = new Anima.Curve();
+  var cv = new an.Curve();
 
   cv.p0x = this.p0x;
   cv.p0y = this.p0y;

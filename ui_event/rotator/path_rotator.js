@@ -6,20 +6,20 @@ new function() { // block
 
 // Not Yet Implemented
 
-Anima.PathRotator = function() {
+an.PathRotator = function() {
 
   this.position = null;
-  Anima.Global.PathRotator = this;
+  an.g.PathRotator = this;
 
 };
-var self = Anima.PathRotator;
+var self = an.PathRotator;
 
-// inherit from Anima.EventState;
-self.prototype = new Anima.EventState();
+// inherit from an.EventState;
+self.prototype = new an.EventState();
 
 self.prototype.select = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
   var y = position.y;
 
@@ -56,12 +56,12 @@ self.prototype.onMouseUp = function(e) {
 
 self.prototype.rotatePath = function(e) {
 
-  var position = Anima.Util.getMousePositionInCanvas(e);
+  var position = an.u.getMousePositionInCanvas(e);
 
-  // Anima.Global.editor.rotateSelectedPaths();
-  // Anima.Global.editor.translateSelectedPaths(diffX, diffY);
+  // an.g.editor.rotateSelectedPaths();
+  // an.g.editor.translateSelectedPaths(diffX, diffY);
 
-  // Anima.Global.editor.draw();
+  // an.g.editor.draw();
 
 };
 

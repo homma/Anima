@@ -6,7 +6,7 @@ new function() {  // block
 
 /// setter / getter ////////////////////////////////////////////////////////////
 
-var self = Anima.Path;
+var self = an.Path;
 
 self.prototype.setSelected = function(flag) {
   this.selected = flag;

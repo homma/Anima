@@ -6,13 +6,13 @@
 
 new function() { // block
 
-var self = Anima.PathInspectorView;
+var self = an.PathInspectorView;
 
 /// update parameters //////////////////////////////////////////////////////////
 
 self.prototype.update = function() {
 
-  var paths = Anima.Global.editor.getSelectedPaths();
+  var paths = an.g.editor.getSelectedPaths();
 
   if(paths.length == 0) {
 
