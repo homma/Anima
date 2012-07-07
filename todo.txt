@@ -1,22 +1,15 @@
 
 # Tasks
 
-o implement "connect paths" function
+o use global constants
 
-- Anima/ui_event
-  curve modifier is the first to fix
+- an.g.editor.isOnPath()
+- an.g.editor.isOnHandle()
+- an.g.editor.isOnAnchorPoints()
 
-- to be implemented:
-  path.prototype.drawWithDifference()
-  editor.prototype._searchConnection()
+o implement "divide paths" function
 
-- related:
-  editor._drawSelectedPath();
-
-  editor.SelectModes.connect
-  path.getBeginPoint()
-  path.getEndPoint()
-  path.reverse()
+o change resizer to remain at least 1pt width/height when resizing
 
 o implement Curve#outLine method
 

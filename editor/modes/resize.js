@@ -9,6 +9,8 @@ an.ResizeMode = function(ed) {
   this.setEditor(ed);
   // editor = ed;
 
+  this.name = "ResizeMode";
+
   this.ResizeGuideLineStyle = "black";
   this.ResizeGuideFillStyle = "lightgray";
   this.ResizeGuideLineWidth = 0.1;

@@ -9,6 +9,8 @@ an.TransformMode = function(ed) {
   this.setEditor(ed);
   // editor = ed;
 
+  this.name = "TransformMode";
+
 }
 var self = an.TransformMode;
 

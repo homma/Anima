@@ -24,6 +24,7 @@ self.prototype.createEventObjects = function() {
   new an.PointRemover();
   new an.CurveModifier();
   new an.PathConnector();
+  new an.PathDivider();
 
 }
 

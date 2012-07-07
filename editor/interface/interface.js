@@ -6,7 +6,7 @@ an.EditorInterface = function(ed) {
 
   editor = ed;
 
-  this.SelectModes = ed.SelectModes;
+  this.EditorModes = ed.EditorModes;
   an.g.editor = this;
 
 }
@@ -43,18 +43,32 @@ self.prototype.draw = function() {
 
 ///////////////////////////////////////
 
-// returns hit path or null
-self.prototype.hitTest = function(x, y) {
+/**
+ * @description returns hit path or null
+ * @param {Number} x x coordinate
+ * @param {Number} y y coordinate
+ * @returns {Path|null} hit path or null
+ */
+self.prototype.isOnPath = function(x, y) {
   return editor.onPath(x, y);
 }
 
-// check a hit on a control point or an anchor point
-// return hit edge or null
+/**
+ * @description check hitting on control points or anchor points
+ * @param {Number} x x coordinate
+ * @param {Number} y y coordinate
+ * @returns {Path|null} hit path or null
+ */
 self.prototype.isOnHandle = function(x, y) {
   return editor.isOnHandle(x, y);
 }
 
-// return hit edge or null
+/**
+ * @description check hitting on a anchor points
+ * @param {Number} x x coordinate
+ * @param {Number} y y coordinate
+ * @returns {Path|null} hit path or null
+ */
 self.prototype.isOnAnchorPoints = function(x, y) {
   return editor.isOnAnchorPoints(x, y);
 }
@@ -85,17 +99,30 @@ self.prototype.setLineWidth = function(w) {
   editor.setLineWidth(w);
 }
 
+///////////////////////////////////////
+
 self.prototype.translateSelectedPaths = function(x, y) {
   editor.translateSelectedPaths(x, y);
 }
 
-// connect paths
-//   from: from path,  // source path (moving)
-//   head: boolean,    // connect head (of source path to target path)
-//     to: to path,    // target path (not moving, fixed position)
-// toHead: boolean     // connect to head or not
+/**
+ * @description connect paths
+ * @param {Path} from source path (moving)
+ * @param {Boolean} head connect head (of source path to target path)
+ * @param {Path} to target path (not moving, fixed position)
+ * @param {Boolean} toHead connect to head or not
+ * @returns {} 
+ */
 self.prototype.connectPaths = function(from, head, to, toHead) {
   editor.connectPath(from, head, to, toHead);
+}
+
+/**
+ * @description divide path
+ */
+self.prototype.dividePath = function() {
+  // to be implemented
+  editor.dividePath();
 }
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
@@ -150,8 +177,8 @@ self.prototype.removePath = function(p) {
 ///////////////////////////////////////
 // path selection
 
-self.prototype.setSelectMode = function(mode) {
-  editor.setSelectMode(mode);
+self.prototype.setEditorMode = function(mode) {
+  editor.setEditorMode(mode);
 }
 
 self.prototype.getSelectedPaths = function() {

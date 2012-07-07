@@ -23,19 +23,21 @@ self.prototype.draw = function() {
 
 self.prototype.drawSelectedPath = function(ctx) {
 
-  this.selectMode.drawSelectedPath(ctx);
+  this.editorMode.drawSelectedPath(ctx);
 
 }
 
 self.prototype.drawUnselectedPath = function(ctx) {
 
-  this.selectMode.drawUnselectedPath(ctx);
+  this.editorMode.drawUnselectedPath(ctx);
 
 }
 
 self.prototype.drawHandle = function(ctx) {
 
-  this.selectMode.drawHandle(ctx);
+  this.editorMode.drawHandle(ctx);
+  // console.log(this.editorMode);
+  // console.log("editor#drawHandle");
 
 }
 
@@ -44,6 +46,7 @@ self.prototype.drawNewPath = function(ctx) {
   if(!this.newPath) { return };
 
   this.newPath.draw(ctx);
+  this.newPath.drawHandles(ctx);
 
 }
 

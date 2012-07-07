@@ -10,9 +10,9 @@ var self = an.Editor;
 self.prototype.getResizeArea = function() {
 
   // guard
-  if(this.selectMode != this.SelectModes.resize) { return null; }
+  if(this.editorMode != this.EditorModes.resize) { return null; }
 
-  return this.selectMode.getResizeGuideHandles();
+  return this.editorMode.getResizeGuideHandles();
 
 }
 

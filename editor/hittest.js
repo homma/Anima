@@ -51,14 +51,14 @@ self.prototype.inPath = function(x, y) {
 // returns an edge if hit
 self.prototype.isOnAnchorPoints = function(x, y) {
 
-  return this.selectMode.isOnAnchorPoints(x, y);
+  return this.editorMode.isOnAnchorPoints(x, y);
 
 }
 
 // returns an edge if hit the modification handles
 self.prototype.isOnHandle = function(x, y) {
 
-  return this.selectMode.isOnHandle(x, y);
+  return this.editorMode.isOnHandle(x, y);
 
 }
 

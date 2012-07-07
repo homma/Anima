@@ -25,15 +25,19 @@ self.prototype.translateSelectedPaths = function(x, y) {
 }
 
 self.prototype.commitTranslation = function() {
-  this.selectMode.commitTranslation();
+  this.editorMode.commitTranslation();
 }
 
 /// connect ////////////////////////////////////////////////////////////////////
 
-//   from: from path,  // source path (moving)
-//   head: boolean,    // connect head (of source path to target path)
-//     to: to path,    // target path (not moving, fixed position)
-// toHead: boolean     // connect to head or not
+/**
+ * @description connect two path
+ * @param {Path} from source path (moving)
+ * @param {Boolean} head connect head (of source path to target path)
+ * @param {Path} to target path (not moving, fixed position)
+ * @param {Boolean} toHead connect to head or not
+ * @returns {}
+ */
 self.prototype.connectPaths = function(from, head, to, toHead) {
 
   if(!head) from.reverse();
@@ -41,6 +45,15 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 
   to.append(from);
   this.removePath(from);
+
+}
+
+/// connect ////////////////////////////////////////////////////////////////////
+
+/**
+ * @description divide path
+ */
+self.prototype.dividePath = function() {
 
 }
 

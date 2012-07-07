@@ -22,7 +22,7 @@ self.prototype.getPathOps = function() {
 self.prototype.selectTransform = function() {
 
   an.g.PathInspector.setPathOps( an.g.CurveModifier );
-  an.g.editor.setSelectMode(an.g.editor.SelectModes.transform);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.transform);
   an.g.editor.draw();
 
 }
@@ -30,7 +30,7 @@ self.prototype.selectTransform = function() {
 self.prototype.selectResize = function() {
 
   an.g.PathInspector.setPathOps( an.g.PathResizer );
-  an.g.editor.setSelectMode(an.g.editor.SelectModes.resize);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.resize);
   an.g.editor.draw();
 
 }
@@ -38,7 +38,7 @@ self.prototype.selectResize = function() {
 self.prototype.selectRotate = function() {
 
   an.g.PathInspector.setPathOps( an.g.PathRotator );
-  an.g.editor.setSelectMode(an.g.editor.SelectModes.rotate);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.rotate);
   an.g.editor.draw();
 
 }
@@ -47,15 +47,24 @@ self.prototype.selectConnect = function() {
 
   // need fix.
   an.g.PathInspector.setPathOps( an.g.PathConnector );
-  an.g.editor.setSelectMode(an.g.editor.SelectModes.connect);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.connect);
   an.g.editor.draw();
 
 }
 
-self.prototype.selectPointRemover = function() {
+self.prototype.selectDivide = function() {
+
+  // need fix.
+  an.g.PathInspector.setPathOps( an.g.PathDivider );
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.PathDivide);
+  an.g.editor.draw();
+
+}
+
+self.prototype.selectPointRemove = function() {
 
   an.g.PathInspector.setPathOps( an.g.PointRemover );
-  an.g.editor.setSelectMode( an.g.editor.SelectModes.pointRemove );
+  an.g.editor.setEditorMode( an.g.editor.EditorModes.pointRemove );
   an.g.editor.draw();
 
 }

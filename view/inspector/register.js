@@ -125,7 +125,8 @@ self.prototype.registerPathOps = function() {
   this.registerOnClick( "resize", pathInspector.selectResize );
   this.registerOnClick( "rotate", pathInspector.selectRotate );
   this.registerOnClick( "connect", pathInspector.selectConnect );
-  this.registerOnClick( "remove_pt", pathInspector.selectPointRemover );
+  this.registerOnClick( "path_divide", pathInspector.selectPathDivide );
+  this.registerOnClick( "remove_pt", pathInspector.selectPointRemove );
 
 }
 

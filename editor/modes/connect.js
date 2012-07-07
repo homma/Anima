@@ -9,6 +9,8 @@ an.ConnectMode = function(ed) {
   this.setEditor(ed);
   // this.editor = ed;
 
+  this.name = "ConnectMode";
+
 }
 var self = an.ConnectMode;
 

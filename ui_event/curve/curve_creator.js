@@ -26,6 +26,7 @@ self.prototype = new an.EventState();
 
 self.prototype.select = function() {
 
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.curve);
   this.selectNextState(this.state.initial);
 
 };

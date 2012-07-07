@@ -4,15 +4,15 @@
 
 new function() {  // block
 
-an.PointRemoveMode = function(ed) {
+an.PathDivideMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
 
-  this.name = "PointRemoveMode";
+  this.name = "PathDivideMode";
 
 }
-var self = an.PointRemoveMode;
+var self = an.PathDivideMode;
 
 self.prototype = new an.EditorMode();
 
