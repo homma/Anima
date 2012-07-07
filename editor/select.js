@@ -8,9 +8,9 @@ var self = an.Editor;
 
 /// select / deselect path with cache management ///////////////////////////////
 
-self.prototype.setSelectMode = function(mode) {
+self.prototype.setEditorMode = function(mode) {
 
-  this.selectMode = mode;
+  this.editorMode = mode;
 
 }
 

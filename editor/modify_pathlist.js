@@ -15,7 +15,7 @@ self.prototype.addPath = function(p) {
 
 }
 
-self.prototype.getNewPath = function(p) {
+self.prototype.getNewPath = function() {
 
   return this.newPath;
 

@@ -28,10 +28,6 @@ self.prototype.drawWithHandles = function(ctx) {
 
   this.drawHandles(ctx);
 
-  if(!this.complete) {
-    this.drawLastTwoHandles(ctx);
-  }
-
 }
 
 self.prototype.drawWithAnchorPoints = function(ctx) {
@@ -114,9 +110,6 @@ self.prototype.drawHandles = function(ctx) {
     this.edges[i].drawHandle(ctx);
   }
 
-  if(!this.complete) {
-    this.drawLastTwoHandles(ctx);
-  }
 }
 
 self.prototype.drawAnchorPoints = function(ctx, dx, dy) {
@@ -146,6 +139,7 @@ self.prototype.drawEndPointsOfPath = function(ctx, dx, dy) {
 
 }
 
+// will we use this?
 self.prototype.drawLastTwoHandles = function(ctx) {
   var len = this.edges.length;
 

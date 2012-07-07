@@ -10,7 +10,7 @@ var self = an.Editor;
 
 self.prototype.modifyPoint = function(edge, x, y) {
 
-  if(this.selectMode == this.SelectModes.connect) {
+  if(this.editorMode == this.EditorModes.connect) {
     // connect edges
 
   }

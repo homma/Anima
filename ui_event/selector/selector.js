@@ -18,6 +18,7 @@ self.prototype = new an.EventState();
 
 self.prototype.select = function() {
 
+  an.g.PathInspector.selectTransform();
   this.selectSelf();
 
 }

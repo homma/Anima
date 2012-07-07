@@ -9,6 +9,8 @@ an.RotateMode = function(ed) {
   this.setEditor(ed);
   // editor = ed;
 
+  this.name = "RotateMode";
+
   this.RotateGuideLineStyle  = "black";
   this.RotateGuideFillStyle  = "lightgray";
   this.RotateGuideLineWidth  = 0.1;
