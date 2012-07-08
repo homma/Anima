@@ -1,4 +1,4 @@
-/*
+/**
  * @author Daisuke Homma
  */
 
@@ -15,6 +15,5 @@ an.CurveCreatorMode = function(ed) {
 var self = an.CurveCreatorMode;
 
 self.prototype = new an.EditorMode();
-
 
 } // block

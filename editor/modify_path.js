@@ -53,7 +53,7 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 /**
  * @description divide path
  */
-self.prototype.dividePath = function() {
+self.prototype.dividePath = function(path, curve, point) {
 
 }
 

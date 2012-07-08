@@ -7,9 +7,11 @@ o use global constants
 - an.g.editor.isOnHandle()
 - an.g.editor.isOnAnchorPoints()
 
-o implement "divide paths" function
+o implement "divide a path" mode
 
 o change resizer to remain at least 1pt width/height when resizing
+
+o implement "add a path" mode
 
 o implement Curve#outLine method
 

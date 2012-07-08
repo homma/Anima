@@ -96,65 +96,69 @@ self.prototype.smallEnough = function(rect, minSize) {
 
 /// Hit Test for Handles ///////////////////////////////////////////////////////
 
-// hit test for the circle portion of a handle
+/**
+ * @description hit test for the circle portion of a handle
+ * @returns {Ad-hoc object|null} hit position information
+ */
 self.prototype.isOnHandle = function(ctx, x, y, w) {
+
   var hit = null;
 
   hit = this.isOnAnchorPoints(ctx, x, y, w);
-  if(hit) { return this; };
+  if(hit) { return hit; };
 
   hit = this.isOnControlPoints(ctx, x, y);
-  if(hit) { return this; };
+  if(hit) { return hit; };
 
   return hit;
 
 }
 
-/// Helper Methods for isOnHandle() ////////////////////////////////////////////
-
+/**
+ * @description hit test for the anchor point
+ * @returns {Ad-hoc object|null} hit position information
+ */
 self.prototype.isOnAnchorPoints = function(ctx, x, y, w) {
 
   var res = null;
 
   res = this.isOnPoint(ctx, this.p0x, this.p0y, w, x, y);
   if(res) {
-    // this architecture must be changed
-    this.selectedPoint = this.AnchorPointZero;
-    return this;
+    return {curve: this, point: an.k.P0};
   };
 
   res = this.isOnPoint(ctx, this.p1x, this.p1y, w, x, y);
   if(res) {
-    // this architecture must be changed
-    this.selectedPoint = this.AnchorPointOne;
-    return this;
+    return {curve: this, point: an.k.P1};
   };
 
   return res;
 
 }
 
+/**
+ * @description hit test for the control point
+ * @returns {Ad-hoc object|null} hit position information
+ */
 self.prototype.isOnControlPoints = function(ctx, x, y) {
 
   var res = null;
 
   res = this.isOnPoint(ctx, this.c0x, this.c0y, 0, x, y);
   if(res) {
-    // this architecture must be changed
-    this.selectedPoint = this.ControlPointZero;
-    return this;
+    return {curve: this, point: an.k.C0};
   };
 
   res = this.isOnPoint(ctx, this.c1x, this.c1y, 0, x, y);
   if(res) {
-    // this architecture must be changed
-    this.selectedPoint = this.ControlPointOne;
-    return this;
+    return {curve: this, point: an.k.C1};
   };
 
   return res;
 
 }
+
+/// Helper Methods /////////////////////////////////////////////////////////////
 
 self.prototype.isOnPoint = function(ctx, px, py, w, tx, ty) {
 // check if (px, py) is hit by (tx, ty)

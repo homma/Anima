@@ -42,9 +42,10 @@ self.prototype.draw = function() {
 }
 
 ///////////////////////////////////////
+// hit test
 
 /**
- * @description returns hit path or null
+ * @description test (x, y) is on path
  * @param {Number} x x coordinate
  * @param {Number} y y coordinate
  * @returns {Path|null} hit path or null
@@ -57,7 +58,8 @@ self.prototype.isOnPath = function(x, y) {
  * @description check hitting on control points or anchor points
  * @param {Number} x x coordinate
  * @param {Number} y y coordinate
- * @returns {Path|null} hit path or null
+ * @returns varies by the mode
+ *   { {path, curve, position} | null } hit info or null
  */
 self.prototype.isOnHandle = function(x, y) {
   return editor.isOnHandle(x, y);
@@ -67,7 +69,7 @@ self.prototype.isOnHandle = function(x, y) {
  * @description check hitting on a anchor points
  * @param {Number} x x coordinate
  * @param {Number} y y coordinate
- * @returns {Path|null} hit path or null
+ * @returns { {path, curve, position} | null } hit info or null
  */
 self.prototype.isOnAnchorPoints = function(x, y) {
   return editor.isOnAnchorPoints(x, y);
@@ -85,12 +87,23 @@ self.prototype.setTrack = function(track) {
 
 ///////////////////////////////////////
 
-self.prototype.modifyPoint = function(edge, x, y) {
-  editor.modifyPoint(edge, x, y);
+/**
+ * @param {Curve} a curve to modify
+ * @param {Number} point in the curve to modify
+ * @param {Number} x-coordinate to set
+ * @param {Number} y-coordinate to set
+ */
+self.prototype.modifyPoint = function(curve, point, x, y) {
+  editor.modifyPoint(curve, point, x, y);
 }
 
-self.prototype.removePoint = function(edge) {
-  editor.removePoint(edge);
+/**
+ * @description remove a point from a path
+ * @param {Curve} a curve from which a point is removed
+ * @param {Number} point in the curve to remove
+ */
+self.prototype.removePoint = function(curve, point) {
+  editor.removePoint(curve, point);
 }
 
 ///////////////////////////////////////
@@ -120,9 +133,9 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 /**
  * @description divide path
  */
-self.prototype.dividePath = function() {
+self.prototype.dividePath = function(path, curve, point) {
   // to be implemented
-  editor.dividePath();
+  editor.dividePath(path, curve, point);
 }
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {

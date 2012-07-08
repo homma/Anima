@@ -67,27 +67,33 @@ self.prototype.isPointInPath = function(ctx, x, y) {
 
 self.prototype.isOnHandle = function(ctx, x, y) {
 
-  var hitEdge = false;
+  var hitInfo = null;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].isOnHandle(ctx, x, y, this.lineWidth);
-    if(hitEdge) break;
+    hitInfo = this.edges[i].isOnHandle(ctx, x, y, this.lineWidth);
+    if(hitInfo) {
+      hitInfo.path = this;
+      return hitInfo;
+    }
   }
 
-  return hitEdge;
+  return hitInfo;
 
 }
 
 self.prototype.isOnAnchorPoints = function(ctx, x, y) {
 
-  var hitEdge = false;
+  var hitInfo = null;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hitEdge = this.edges[i].isOnAnchorPoints(ctx, x, y, this.lineWidth);
-    if(hitEdge) break;
+    hitInfo = this.edges[i].isOnAnchorPoints(ctx, x, y, this.lineWidth);
+    if(hitInfo) {
+      hitInfo.path = this;
+      return hitInfo;
+    }
   }
 
-  return hitEdge;
+  return hitInfo;
 
 }
 
