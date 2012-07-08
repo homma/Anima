@@ -134,7 +134,6 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
  * @description divide path
  */
 self.prototype.dividePath = function(path, curve, point) {
-  // to be implemented
   editor.dividePath(path, curve, point);
 }
 

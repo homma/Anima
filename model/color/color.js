@@ -49,7 +49,7 @@ self.prototype.isSame = function(other) {
 
 self.prototype.duplicate = function() {
 
-  var ret = new Color();
+  var ret = new an.Color();
   ret.setHue( this.getHue() );
   ret.setSaturation( this.getSaturation() );
   ret.setLuminance( this.getLuminance() );
