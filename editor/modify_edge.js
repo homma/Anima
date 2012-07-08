@@ -8,19 +8,26 @@ var self = an.Editor;
 
 /// transform //////////////////////////////////////////////////////////////////
 
-self.prototype.modifyPoint = function(edge, x, y) {
+/**
+ * @description change position of the point in the curve
+ * @param {Curve} a curve to modify
+ * @param {Number} point in the curve to modify
+ * @param {Number} x-coordinate to set
+ * @param {Number} y-coordinate to set
+ */
+self.prototype.modifyPoint = function(curve, point, x, y) {
 
   if(this.editorMode == this.EditorModes.connect) {
-    // connect edges
+    // connect curve
 
   }
-  edge.setSelectedPoint(x, y);
+  curve.setPoint(point, x, y);
 
 }
 
-self.prototype.removePoint = function(edge) {
+self.prototype.removePoint = function(curve, point) {
 
-  edge.removeSelectedPoint();
+  curve.removePoint(point);
 
 }
 

@@ -9,7 +9,6 @@ var self = an.Editor;
 /// hittest ////////////////////////////////////////////////////////////////////
 
 // returns a path if hit
-// called from this.inPath()
 self.prototype.onPath = function(x, y) {
 
   var path = null;
@@ -26,6 +25,7 @@ self.prototype.onPath = function(x, y) {
 
 }
 
+// not used now
 self.prototype.inPath = function(x, y) {
 
   var path = null;
@@ -48,14 +48,21 @@ self.prototype.inPath = function(x, y) {
 
 }
 
-// returns an edge if hit
+/**
+ * @description returns hit information
+ * @returns { {path, curve, position} | null }
+ */
 self.prototype.isOnAnchorPoints = function(x, y) {
 
   return this.editorMode.isOnAnchorPoints(x, y);
 
 }
 
-// returns an edge if hit the modification handles
+/**
+ * @description returns hit info for curve handles
+ * @returns varies by the mode
+ *  { {path, curve, position} | null }
+ */
 self.prototype.isOnHandle = function(x, y) {
 
   return this.editorMode.isOnHandle(x, y);

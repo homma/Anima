@@ -1,4 +1,4 @@
-/*
+/**
  * @author Daisuke Homma
  */
 
@@ -40,9 +40,9 @@ self.prototype.onClick = function(e) {
   var y = position.y;
 
   // hit test (Anchor Point)
-  var hitEdge = an.g.editor.isOnAnchorPoints(x, y);
-  if(hitEdge) {
-    an.g.editor.dividePath(hitEdge);
+  var hitInfo = an.g.editor.isOnAnchorPoints(x, y);
+  if(hitInfo) {
+    an.g.editor.dividePath(hitInfo.path, hitInfo.curve, hitInfo.point);
     an.g.editor.draw();
   }
 

@@ -7,6 +7,7 @@ new function() { // block
 an.CurveModifier = function() {
 
   this.hitEdge = null;
+  this.hitPoint = null;
 
   an.g.CurveModifier = this;
 
@@ -23,15 +24,17 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (transform handle)
-  var hitEdge = an.g.editor.isOnHandle(x, y);
-  if(hitEdge) {
+  var hitInfo = an.g.editor.isOnHandle(x, y);
+  if(hitInfo) {
 
-    this.hitEdge = hitEdge;
+    this.hitEdge = hitInfo.curve;
+    this.hitPoint = hitInfo.point;
     return true;
 
   }
 
   this.hitEdge = null;
+  this.hitPoint = null;
   return false;
 }
 
@@ -44,6 +47,7 @@ self.prototype.select = function() {
 self.prototype.deselect = function() {
 
   this.hitEdge = null;
+  this.hitPoint = null;
   this.deselectSelf();
 
 }
@@ -73,7 +77,7 @@ self.prototype.onMouseMove = function(e) {
   var x = position.x;
   var y = position.y;
 
-  an.g.editor.modifyPoint(this.hitEdge, x, y);
+  an.g.editor.modifyPoint(this.hitEdge, this.hitPoint, x, y);
   an.g.editor.draw();
 
 };
@@ -86,10 +90,12 @@ self.prototype.onMouseUp = function(e) {
   var x = position.x;
   var y = position.y;
 
-  an.g.editor.modifyPoint(this.hitEdge, x, y);
+  an.g.editor.modifyPoint(this.hitEdge, this.hitPoint, x, y);
   an.g.editor.draw();
 
   this.hitEdge = null;
+  this.hitPoint = null;
+
 };
 
 } // block

@@ -65,22 +65,22 @@ self.prototype.drawHandle = function(ctx) {
 
 /// hittest ////////////////////////////////////////////////////////////////////
 
-// returns an edge if hit
+// returns hit information
 self.prototype.isOnAnchorPoints = function(x, y) {
 
-  var hitEdge = null;
+  var hitInfo = null;
 
   // guard
-  if( this.editor.pathList.length == 0 ) { return hitEdge; };
+  if( this.editor.pathList.length == 0 ) { return hitInfo; };
 
   var ctx = this.editor.canvas.canvas.getContext('2d');
 
   for (var i = 0; i < this.editor.pathList.length; i++) {
-    hitEdge = this.editor.pathList[i].isOnAnchorPoints(ctx, x, y);
-    if(hitEdge) break;
+    hitInfo = this.editor.pathList[i].isOnAnchorPoints(ctx, x, y);
+    if(hitInfo) break;
   }
 
-  return hitEdge;
+  return hitInfo;
 }
 
 } // block

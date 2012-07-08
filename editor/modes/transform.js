@@ -35,39 +35,39 @@ self.prototype.drawHandle = function(ctx) {
 
 self.prototype.isOnHandle = function(x, y) {
 
-  var hitEdge = null;
+  var hitInfo = null;
 
   // guard
-  if( this.editor.selectedPathList.length == 0 ) { return hitEdge; };
+  if( this.editor.selectedPathList.length == 0 ) { return hitInfo; };
 
   var ctx = this.editor.canvas.canvas.getContext('2d');
 
   for (var i = 0; i < this.editor.selectedPathList.length; i++) {
-    hitEdge = this.editor.selectedPathList[i].isOnHandle(ctx, x, y);
+    hitInfo = this.editor.selectedPathList[i].isOnHandle(ctx, x, y);
 
-    if(hitEdge) break;
+    if(hitInfo) break;
   }
 
-  return hitEdge;
+  return hitInfo;
 
 }
 
 // returns an edge if hit
 self.prototype.isOnAnchorPoints = function(x, y) {
 
-  var hitEdge = null;
+  var hitInfo = null;
 
   // guard
-  if( this.editor.selectedPathList.length == 0 ) { return hitEdge; };
+  if( this.editor.selectedPathList.length == 0 ) { return hitInfo; };
 
   var ctx = this.editor.canvas.canvas.getContext('2d');
 
   for (var i = 0; i < this.editor.selectedPathList.length; i++) {
-    hitEdge = this.editor.pathList[i].isOnAnchorPoints(ctx, x, y);
-    if(hitEdge) break;
+    hitInfo = this.editor.pathList[i].isOnAnchorPoints(ctx, x, y);
+    if(hitInfo) break;
   }
 
-  return hitEdge;
+  return hitInfo;
 }
 
 } // block

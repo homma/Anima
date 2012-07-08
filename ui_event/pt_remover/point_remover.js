@@ -40,9 +40,9 @@ self.prototype.onClick = function(e) {
   var y = position.y;
 
   // hit test (Anchor Point)
-  var hitEdge = an.g.editor.isOnAnchorPoints(x, y);
-  if(hitEdge) {
-    an.g.editor.removePoint(hitEdge);
+  var hitInfo = an.g.editor.isOnAnchorPoints(x, y);
+  if(hitInfo) {
+    an.g.editor.removePoint(hitInfo.curve, hitInfo.point);
     an.g.editor.draw();
   }
 

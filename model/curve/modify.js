@@ -65,27 +65,24 @@ self.prototype.reverse = function() {
 
 /// transform //////////////////////////////////////////////////////////////////
 
-self.prototype.setSelectedPoint = function(x, y) {
+self.prototype.setPoint = function(point, x, y) {
 
-  // AnchorPointZero  = 0;
-  // ControlPointZero = 1;
-  // AnchorPointOne   = 2;
-  // ControlPointOne  = 3;
+  switch(point) {
 
-  switch(this.selectedPoint) {
-
-    case this.AnchorPointZero:
+    case an.k.P0:
       this.setAnchorPointZero(x, y); break;
 
-    case this.ControlPointZero:
-      this.setControlPointZero(x, y); break;
-
-    case this.AnchorPointOne:
+    case an.k.P1:
       this.setAnchorPointOne(x, y); break;
 
-    case this.ControlPointOne:
+    case an.k.C0:
+      this.setControlPointZero(x, y); break;
+
+    case an.k.C1:
       this.setControlPointOne(x, y); break;
 
+    default:
+      console.log("error in an.Curve#setPoint " + point);
   }
 
 }
@@ -191,16 +188,18 @@ self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
 /// remove point ///////////////////////////////////////////////////////////////
 
-self.prototype.removeSelectedPoint = function() {
+self.prototype.removePoint = function(point) {
 
-  switch(this.selectedPoint) {
+  switch(point) {
 
-    case this.AnchorPointZero:
+    case an.k.P0:
       this.removeAnchorPointZero(); break;
 
-    case this.AnchorPointOne:
+    case an.k.P1:
       this.removeAnchorPointOne(); break;
 
+    default:
+      console.log("error in an.Curve#removePoint " + point);
   }
 }
 
