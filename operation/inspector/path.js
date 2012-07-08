@@ -52,11 +52,11 @@ self.prototype.selectConnect = function() {
 
 }
 
-self.prototype.selectDivide = function() {
+self.prototype.selectPathDivide = function() {
 
   // need fix.
   an.g.PathInspector.setPathOps( an.g.PathDivider );
-  an.g.editor.setEditorMode(an.g.editor.EditorModes.PathDivide);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.pathDivide);
   an.g.editor.draw();
 
 }

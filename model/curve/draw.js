@@ -65,10 +65,12 @@ self.prototype.drawAnchorPointOne = function(ctx) {
 
   var radius = 4;
   ctx.lineWidth   = 0.8;
-  ctx.fillStyle = 'rgb(255,102,255)';
+  ctx.strokeStyle = 'rgb(255,102,255)';
+  ctx.fillStyle = 'rgb(255,255,255)';
 
   ctx.beginPath();
   ctx.arc(this.p1x, this.p1y, radius, 0, 2 * Math.PI, false);
+  ctx.stroke();
   ctx.fill();
 
   ctx.restore();

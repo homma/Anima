@@ -8,6 +8,23 @@ new function() {  // block
 
 var self = an.Path;
 
+var self = an.Path;
+
+self.prototype.getBeginPoint = function() {
+
+  var pt = this.edges[0].getAnchorPointZero();
+  return pt;
+
+}
+
+self.prototype.getEndPoint = function() {
+
+  var n = this.edges.length - 1;
+  var pt = this.edges[n].getAnchorPointOne();
+  return pt;
+
+}
+
 self.prototype.setSelected = function(flag) {
   this.selected = flag;
 }

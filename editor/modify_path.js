@@ -48,12 +48,17 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 
 }
 
-/// connect ////////////////////////////////////////////////////////////////////
+/// divide /////////////////////////////////////////////////////////////////////
 
 /**
  * @description divide path
+ * @param {Path} path a path to divide
+ * @param {Curve} curve a curve includes dividing point
+ * @param {Number} point a position in the curve to divide
  */
 self.prototype.dividePath = function(path, curve, point) {
+
+  path.dividePath(curve, point);
 
 }
 
