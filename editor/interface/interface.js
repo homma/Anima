@@ -45,6 +45,16 @@ self.prototype.draw = function() {
 // hit test
 
 /**
+ * @description test the coordinate is on a curve or not
+ * @param {Number} x x-coordinate
+ * @param {Number} y y-coordinate
+ * @returns {Curve|null} a curve when hit
+ */
+self.prototype.isOnCurve = function(x, y) {
+  return editor.onCurve(x, y);
+}
+
+/**
  * @description test (x, y) is on path
  * @param {Number} x x coordinate
  * @param {Number} y y coordinate
@@ -131,10 +141,17 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 }
 
 /**
- * @description divide path
+ * @description split a path at a point
  */
-self.prototype.dividePath = function(path, curve, point) {
-  editor.dividePath(path, curve, point);
+self.prototype.splitPath = function(path, curve, point) {
+  editor.splitPath(path, curve, point);
+}
+
+/**
+ * @description split a curve
+ */
+self.prototype.divideCurve = function(curve) {
+  editor.divideCurve(curve);
 }
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {

@@ -52,11 +52,11 @@ self.prototype.selectConnect = function() {
 
 }
 
-self.prototype.selectPathDivide = function() {
+self.prototype.selectPathSplit = function() {
 
   // need fix.
-  an.g.PathInspector.setPathOps( an.g.PathDivider );
-  an.g.editor.setEditorMode(an.g.editor.EditorModes.pathDivide);
+  an.g.PathInspector.setPathOps( an.g.PathSplitter );
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.pathSplit);
   an.g.editor.draw();
 
 }
@@ -65,6 +65,14 @@ self.prototype.selectPointRemove = function() {
 
   an.g.PathInspector.setPathOps( an.g.PointRemover );
   an.g.editor.setEditorMode( an.g.editor.EditorModes.pointRemove );
+  an.g.editor.draw();
+
+}
+
+self.prototype.selectPointAdd = function() {
+
+  an.g.PathInspector.setPathOps( an.g.PointAdder );
+  an.g.editor.setEditorMode( an.g.editor.EditorModes.pointAdd );
   an.g.editor.draw();
 
 }

@@ -1,7 +1,10 @@
 
 # Tasks
 
-o implement "add a path" mode
+o implement "divide a curve" mode
+
+  - fix an.Curve#subdivide
+  - implement an.Curve#divide
 
 o implement Curve#outLine method
 

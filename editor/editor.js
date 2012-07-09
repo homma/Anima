@@ -24,8 +24,9 @@ an.Editor = function() {
   this.EditorModes.resize = new an.ResizeMode(this);
   this.EditorModes.rotate = new an.RotateMode(this);
   this.EditorModes.connect = new an.ConnectMode(this);
-  this.EditorModes.pathDivide = new an.PathDivideMode(this);
+  this.EditorModes.pathSplit = new an.PathSplitMode(this);
   this.EditorModes.pointRemove = new an.PointRemoveMode(this);
+  this.EditorModes.pointAdd = new an.PointAddMode(this);
   this.editorMode = this.EditorModes.curve;
 
   this.interface = new an.EditorInterface(this);

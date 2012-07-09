@@ -15,20 +15,20 @@ self.prototype.middleOfLine = function(p0, p1) {
   return { x: x, y: y };
 }
 
-self.prototype.subdivide = function(b) {
+self.prototype.getSubCurves = function() {
 
   // new bezier curve
   var nb0 = new an.Curve();
   var nb1 = new an.Curve();
 
   /// get x //////////////////////////
-  nb0.p0x = b.p0x;
-  nb1.p1x = b.p1x;
+  nb0.p0x = this.p0x;
+  nb1.p1x = this.p1x;
 
-  nb0.c0x = (b.p0x + b.c0x) / 2;
-  nb1.c1x = (b.p1x + b.c1x) / 2;
+  nb0.c0x = (this.p0x + this.c0x) / 2;
+  nb1.c1x = (this.p1x + this.c1x) / 2;
 
-  var x = (b.c0x + b.c1x) / 2;
+  var x = (this.c0x + this.c1x) / 2;
   nb0.c1x = (nb0.c0x + x) / 2;
   nb1.c0x = (nb1.c1x + x) / 2;
 
@@ -36,13 +36,13 @@ self.prototype.subdivide = function(b) {
   nb1.p0x = nb0.p1x;
 
   /// get y //////////////////////////
-  nb0.p0y = b.p0y;
-  nb1.p1y = b.p1y;
+  nb0.p0y = this.p0y;
+  nb1.p1y = this.p1y;
 
-  nb0.c0y = (b.p0y + b.c0y) / 2;
-  nb1.c1y = (b.p1y + b.c1y) / 2;
+  nb0.c0y = (this.p0y + this.c0y) / 2;
+  nb1.c1y = (this.p1y + this.c1y) / 2;
 
-  var y = (b.c0y + b.c1y) / 2;
+  var y = (this.c0y + this.c1y) / 2;
   nb0.c1y = (nb0.c0y + y) / 2;
   nb1.c0y = (nb1.c1y + y) / 2;
 

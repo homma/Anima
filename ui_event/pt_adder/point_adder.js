@@ -1,15 +1,15 @@
-/**
+/*
  * @author Daisuke Homma
  */
 
 new function() { // block
 
-an.PathDivider = function() {
+an.PointAdder = function() {
 
-  an.g.PathDivider = this;
+  an.g.PointAdder = this;
 
 };
-var self = an.PathDivider;
+var self = an.PointAdder;
 
 // inherit from an.EventState;
 self.prototype = new an.EventState();
@@ -40,9 +40,9 @@ self.prototype.onClick = function(e) {
   var y = position.y;
 
   // hit test (Anchor Point)
-  var hitInfo = an.g.editor.isOnAnchorPoints(x, y);
-  if(hitInfo) {
-    an.g.editor.dividePath(hitInfo.path, hitInfo.curve, hitInfo.point);
+  var curve = an.g.editor.isOnCurve(x, y);
+  if(curve) {
+    an.g.editor.divideCurve(curve);
     an.g.editor.draw();
   }
 

@@ -26,6 +26,31 @@ self.prototype.addEdge = function(e) {
   this.edges.push(e);
 }
 
+/**
+ * @description insert e1 after e0
+ */
+self.prototype.insertEdgeAfter = function(e0, e1) {
+
+  var idx = this.edges.indexOf(e0);
+
+  // when e0 is the last edge, just add e1
+  if(idx == this.edges.length - 1) {
+    this.addEdge(e1);
+    return;
+  }
+
+  this.edges.splice(idx + 1, 0, e1);
+
+  // fixes linkage
+  this.edges[idx].next = e1;
+  e1.next = this.edges[idx + 2];
+  e1.prev = this.edges[idx];
+  this.edges[idx + 2].prev = e1;
+
+  e1.path = this;
+
+}
+
 /// remove edge ////////////////////////////////////////////////////////////////
 
 self.prototype.removeEdge = function(edge) {
@@ -155,19 +180,19 @@ self.prototype.copyAttributes = function(to) {
 
 }
 
-/// divide this path ///////////////////////////////////////////////////////////
+/// split this path ////////////////////////////////////////////////////////////
 
 /**
- * @description divide path
- * @param {Curve} curve a curve includes dividing point
- * @param {Number} point a position in the curve to divide
+ * @description split path
+ * @param {Curve} curve a curve includes splitting point
+ * @param {Number} point a position in the curve to split
  */
-self.prototype.dividePath = function(curve, point) {
+self.prototype.splitPath = function(curve, point) {
 
   var idx = this.edges.indexOf(curve);
   if(idx == -1) { return; }
 
-  // when the point is anchor point 1, slide back the dividing point
+  // when the point is anchor point 1, slide back the splitting point
   if(point == an.k.P1) { idx++; }
 
   // start point or end point of path => nothing to do here

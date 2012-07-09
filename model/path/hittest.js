@@ -8,6 +8,36 @@ new function() {  // block
 
 var self = an.Path;
 
+/**
+ * @description test the coordinate is on a curve or not
+ * @param {Canvas Context} ctx
+ * @param {Number} x x-coordinate
+ * @param {Number} y y-coordinate
+ * @returns {Curve|null} a curve when hit
+ */
+self.prototype.onCurve = function(ctx, x, y) {
+
+  var ret = null;
+
+  for (var i = 0; this.edges.length > i; i++) {
+    var hit = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
+    if(hit) {
+      ret = this.edges[i]
+      break;
+    }
+  }
+
+  return ret;
+
+}
+
+/**
+ * @description test the coordinate is in a path or not
+ * @param {Canvas Context} ctx
+ * @param {Number} x x-coordinate
+ * @param {Number} y y-coordinate
+ * @returns {Boolean} on a path or not
+ */
 self.prototype.onPath = function(ctx, x, y) {
 
   var hit = false;

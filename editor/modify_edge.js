@@ -31,5 +31,9 @@ self.prototype.removePoint = function(curve, point) {
 
 }
 
+self.prototype.divideCurve = function(curve) {
+  curve.subdivide();
+}
+
 } // block
 

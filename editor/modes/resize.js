@@ -60,7 +60,8 @@ self.prototype.drawHandle = function(ctx) {
   var r = this.ResizeGuideCircleR;
   ctx.fillStyle = this.ResizeGuideFillStyle;
 
-  for(var i = 0; i < 8; i++) {
+  // Resize Handle starts from 1; see const.js
+  for(var i = 1; i < handles.x.length; i++) {
     ctx.beginPath();
     ctx.arc(handles.x[i], handles.y[i], r, 0, Math.PI*2, false);
     ctx.fill();

@@ -235,4 +235,19 @@ self.prototype.removeAnchorPointOne = function() {
 
 };
 
+/// divide /////////////////////////////////////////////////////////////////////
+
+self.prototype.subdivide = function() {
+
+  var subcurve = this.getSubCurves();
+
+  this.p1x = subcurve.b0.p1x;
+  this.p1y = subcurve.b0.p1y;
+  this.c1x = subcurve.b0.c1x;
+  this.c1y = subcurve.b0.c1y;
+
+  this.path.insertEdgeAfter(this, subcurve.b1);
+
+}
+
 } // block
