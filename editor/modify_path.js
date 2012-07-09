@@ -48,17 +48,17 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 
 }
 
-/// divide /////////////////////////////////////////////////////////////////////
+/// split //////////////////////////////////////////////////////////////////////
 
 /**
- * @description divide path
- * @param {Path} path a path to divide
- * @param {Curve} curve a curve includes dividing point
- * @param {Number} point a position in the curve to divide
+ * @description split a path
+ * @param {Path} path a path to split
+ * @param {Curve} curve a curve includes splitting point
+ * @param {Number} point a position in the curve to split
  */
-self.prototype.dividePath = function(path, curve, point) {
+self.prototype.splitPath = function(path, curve, point) {
 
-  path.dividePath(curve, point);
+  path.splitPath(curve, point);
 
 }
 

@@ -4,15 +4,15 @@
 
 new function() {  // block
 
-an.PathDivideMode = function(ed) {
+an.PathSplitMode = function(ed) {
 
   this.setEditor(ed);
   // editor = ed;
 
-  this.name = "PathDivideMode";
+  this.name = "PathSplitMode";
 
 }
-var self = an.PathDivideMode;
+var self = an.PathSplitMode;
 
 self.prototype = new an.EditorMode();
 

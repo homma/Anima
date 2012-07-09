@@ -22,9 +22,10 @@ self.prototype.createEventObjects = function() {
   new an.PathResizer();
   new an.PathRotator();
   new an.PointRemover();
+  new an.PointAdder();
   new an.CurveModifier();
   new an.PathConnector();
-  new an.PathDivider();
+  new an.PathSplitter();
 
 }
 

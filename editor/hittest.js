@@ -8,20 +8,53 @@ var self = an.Editor;
 
 /// hittest ////////////////////////////////////////////////////////////////////
 
-// returns a path if hit
-self.prototype.onPath = function(x, y) {
+/**
+ * @description test the coordinate is on a curve or not
+ * @param {Number} x x-coordinate
+ * @param {Number} y y-coordinate
+ * @returns {Curve|null} a curve when hit
+ */
+self.prototype.onCurve = function(x, y) {
 
-  var path = null;
+  var ret = null;
   var ctx = this.canvas.canvas.getContext('2d');
 
   for(var i = 0; i < this.pathList.length; i++) {
-    if( this.pathList[i].onPath(ctx, x, y) ) {
-      path = this.pathList[i];
+
+    var curve = this.pathList[i].onCurve(ctx, x, y);
+    if( curve ) {
+      ret = curve;
       break;
     }
+
   }
 
-  return path;
+  return ret;
+
+}
+
+/**
+ * @description test the coordinate is on a path
+ * @param {Number} x x-coordinate
+ * @param {Number} y y-coordinate
+ * @returns {Path|null} path if hit
+ */
+self.prototype.onPath = function(x, y) {
+
+  var ret = null;
+  var ctx = this.canvas.canvas.getContext('2d');
+
+  for(var i = 0; i < this.pathList.length; i++) {
+
+    var curve = this.pathList[i].onPath(ctx, x, y);
+    if( curve ) {
+      ret = this.pathList[i];
+      break;
+    }
+
+  }
+
+  return ret;
 
 }
 
