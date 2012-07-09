@@ -30,8 +30,8 @@ div.tv button.about {
 }
 
 div.tv button.notyet {
-  display: none;
-  color: silver;
+/*  display: none; */
+/*  color: silver; */
   background-color: lightgray;
 }
 
