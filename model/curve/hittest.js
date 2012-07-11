@@ -74,7 +74,7 @@ self.prototype.onSubCurve = function(x, y, depth, margin, minSize) {
     return false;
   }
 
-  var subBezier = this.getSubCurves();
+  var subBezier = this.getHalfCurves();
   if( (subBezier.b0.onSubCurve(x, y, depth - 1, margin, minSize)) ||
       (subBezier.b1.onSubCurve(x, y, depth - 1, margin, minSize)) ) {
     return true;
