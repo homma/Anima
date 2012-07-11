@@ -250,8 +250,10 @@ self.prototype.removeAnchorPointOne = function() {
 
 self.prototype.subdivide = function() {
 
-  var subcurve = this.getSubCurves();
+  var subcurve = this.getHalfCurves();
 
+  this.c0x = subcurve.b0.c0x;
+  this.c0y = subcurve.b0.c0y;
   this.p1x = subcurve.b0.p1x;
   this.p1y = subcurve.b0.p1y;
   this.c1x = subcurve.b0.c1x;

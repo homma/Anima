@@ -9,13 +9,28 @@ var self = an.Curve;
 /// curve manipulation /////////////////////////////////////////////////////////
 
 self.prototype.middleOfLine = function(p0, p1) {
-  var x = (p0.x + p1.x) / 2;
-  var y = (p0.y + p1.y) / 2;
+  var x = (p0.x + p1.x) * 0.5;
+  var y = (p0.y + p1.y) * 0.5;
 
   return { x: x, y: y };
 }
 
-self.prototype.getSubCurves = function() {
+/**
+ * @description returns two curves divided in half
+ * returns {Object} two curves
+ */
+self.prototype.getHalfCurves = function() {
+
+  return this.divide(0.5);
+
+}
+
+/**
+ * @description divide this curve into to at position t
+ * @param {Number} t where to split. range 0.0 - 1.0
+ * @returns {Object} splitted sub curves b0 and b1
+ */
+self.prototype.divide = function(t) {
 
   // new bezier curve
   var nb0 = new an.Curve();
@@ -25,39 +40,31 @@ self.prototype.getSubCurves = function() {
   nb0.p0x = this.p0x;
   nb1.p1x = this.p1x;
 
-  nb0.c0x = (this.p0x + this.c0x) / 2;
-  nb1.c1x = (this.p1x + this.c1x) / 2;
+  nb0.c0x = (this.p0x + this.c0x) * t;
+  nb1.c1x = (this.p1x + this.c1x) * t;
 
-  var x = (this.c0x + this.c1x) / 2;
-  nb0.c1x = (nb0.c0x + x) / 2;
-  nb1.c0x = (nb1.c1x + x) / 2;
+  var x = (this.c0x + this.c1x) * t;
+  nb0.c1x = (nb0.c0x + x) * t;
+  nb1.c0x = (nb1.c1x + x) * t;
 
-  nb0.p1x = (nb0.c1x + nb1.c0x) / 2;
+  nb0.p1x = (nb0.c1x + nb1.c0x) * t;
   nb1.p0x = nb0.p1x;
 
   /// get y //////////////////////////
   nb0.p0y = this.p0y;
   nb1.p1y = this.p1y;
 
-  nb0.c0y = (this.p0y + this.c0y) / 2;
-  nb1.c1y = (this.p1y + this.c1y) / 2;
+  nb0.c0y = (this.p0y + this.c0y) * t;
+  nb1.c1y = (this.p1y + this.c1y) * t;
 
-  var y = (this.c0y + this.c1y) / 2;
-  nb0.c1y = (nb0.c0y + y) / 2;
-  nb1.c0y = (nb1.c1y + y) / 2;
+  var y = (this.c0y + this.c1y) * t;
+  nb0.c1y = (nb0.c0y + y) * t;
+  nb1.c0y = (nb1.c1y + y) * t;
 
-  nb0.p1y = (nb0.c1y + nb1.c0y) / 2;
+  nb0.p1y = (nb0.c1y + nb1.c0y) * t;
   nb1.p0y = nb0.p1y;
 
   return { b0: nb0, b1: nb1 };
-}
-
-self.prototype.divide = function(t) {
-
-  var nb0 = new an.Curve();
-  var nb1 = new an.Curve();
-
-  // TBD
 
 }
 
