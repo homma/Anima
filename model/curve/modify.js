@@ -18,6 +18,15 @@ self.prototype.getAnchorPointOne = function() {
   return { x: this.p1x, y: this.p1y };
 }
 
+self.prototype.getPath = function() {
+
+  if(this.path == null) {
+    console.log("an.Curve#getPath failed. see an.Path#addEdge for the detail");
+  }
+
+  return this.path;
+}
+
 /// connect ////////////////////////////////////////////////////////////////////
 
 self.prototype.connectFront = function(px, py, cx, cy) {
@@ -215,7 +224,8 @@ self.prototype.removeAnchorPointZero = function() {
 
   }
 
-  this.path.removeEdge(this);
+  var p = this.getPath();
+  p.removeEdge(this);
 
 };
 
@@ -231,7 +241,8 @@ self.prototype.removeAnchorPointOne = function() {
 
   }
 
-  this.path.removeEdge(this);
+  var p = this.getPath();
+  p.removeEdge(this);
 
 };
 
@@ -246,7 +257,8 @@ self.prototype.subdivide = function() {
   this.c1x = subcurve.b0.c1x;
   this.c1y = subcurve.b0.c1y;
 
-  this.path.insertEdgeAfter(this, subcurve.b1);
+  var p = this.getPath();
+  p.insertEdgeAfter(this, subcurve.b1);
 
 }
 
