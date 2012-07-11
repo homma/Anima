@@ -21,7 +21,7 @@ self.prototype.middleOfLine = function(p0, p1) {
  */
 self.prototype.getHalfCurves = function() {
 
-  return this.divide(0.5);
+  return this.getSubCurves(0.5);
 
 }
 
@@ -30,7 +30,7 @@ self.prototype.getHalfCurves = function() {
  * @param {Number} t where to split. range 0.0 - 1.0
  * @returns {Object} splitted sub curves b0 and b1
  */
-self.prototype.divide = function(t) {
+self.prototype.getSubCurves = function(t) {
 
   // new bezier curve
   var nb0 = new an.Curve();
