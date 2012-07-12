@@ -1,10 +1,14 @@
 
 # Tasks
 
-o implement "divide a curve" mode
+o implement smooth connect
 
-  - fix an.Curve#subdivide
-  - implement an.Curve#divide
+- implement a tool to enable / disable smooth connect
+
+o divide tools into groups
+  path tools
+  point tools
+  selected path tools
 
 o implement Curve#outLine method
 
@@ -18,5 +22,9 @@ o implement undo / redo
 
 o implement configuration tool
 
-o ui clean up
+o ui overhaul
+
+o make libraries
+
+o implement player
 

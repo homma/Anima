@@ -20,8 +20,8 @@ an.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
   this.prev = null;
   this.next = null;
 
-  this.smoothConnectionFromPrev = true;
-  this.smoothConnectionToNext = true;
+  // smoothly connecting to the next curve.
+  this.smoothConnect = true;
 
   this.path = null;
 
