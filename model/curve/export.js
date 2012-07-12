@@ -17,6 +17,7 @@ an.Curve.prototype.dataExport = function() {
     indent + '  "p1y": ' + this.p1y + ',\n' +
     indent + '  "c1x": ' + this.c1x + ',\n' +
     indent + '  "c1y": ' + this.c1y + '\n' +
+    indent + '  "smoothConnect": ' + this.smoothConnect + '\n' +
     indent + '}';
 
   return str;
@@ -33,5 +34,6 @@ an.Curve.prototype.dataImport = function(obj) {
   this.p1y = obj.p1y;
   this.c1x = obj.c1x;
   this.c1y = obj.c1y;
+  this.smoothConnect = obj.smoothConnect;
 
 }

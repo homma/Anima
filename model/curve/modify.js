@@ -8,25 +8,6 @@ new function() { // block
 
 var self = an.Curve;
 
-/// get information ////////////////////////////////////////////////////////////
-
-self.prototype.getAnchorPointZero = function() {
-  return { x: this.p0x, y: this.p0y };
-};
-
-self.prototype.getAnchorPointOne = function() {
-  return { x: this.p1x, y: this.p1y };
-}
-
-self.prototype.getPath = function() {
-
-  if(this.path == null) {
-    console.log("an.Curve#getPath failed. see an.Path#addEdge for the detail");
-  }
-
-  return this.path;
-}
-
 /// connect ////////////////////////////////////////////////////////////////////
 
 self.prototype.connectFront = function(px, py, cx, cy) {
@@ -129,23 +110,93 @@ self.prototype.setAnchorPointOne = function(x, y) {
 };
 
 self.prototype.setControlPointZero = function(x, y) {
+
+  var smooth = this.smoothConnectFromPrev();
+  var keep = this.keepConnectRatio();
+
+  if(smooth) {
+
+    var dx = x - this.p0x;
+    var dy = y - this.p0y;
+
+    var ratio;
+
+    if(keep) {
+
+      ratio = this.prev.getConnectRatio();
+
+    } else {
+
+      var len = this.lineLength(dx, dy);
+
+      var pdx = this.prev.c1x - this.prev.p1x;
+      var pdy = this.prev.c1y - this.prev.p1y;
+      var plen = this.lineLength(pdx, pdy);
+
+      if( (len == 0) || (plen == 0) ) {
+        ratio = 0;
+      } else {
+        ratio = plen / len;
+      }
+
+    }
+
+    var px = this.p0x - (dx * ratio);
+    var py = this.p0y - (dy * ratio);
+
+    this.prev.c1x = px;
+    this.prev.c1y = py;
+    
+  }
+
   this.c0x = x;
   this.c0y = y;
 
-//  if(this.prev && this.smoothConnectionFromPrev) {
-//    this.prev.c1x = ;
-//    this.prev.c1y = ;
-//  }
 };
 
 self.prototype.setControlPointOne = function(x, y) {
+
+  var smooth = this.smoothConnectToNext();
+  var keep = this.keepConnectRatio();
+
+  if(smooth) {
+
+    var dx = x - this.p1x;
+    var dy = y - this.p1y;
+
+    var ratio;
+
+    if(keep) {
+
+      ratio = this.getConnectRatio();
+
+    } else {
+
+      var len = this.lineLength(dx, dy);
+
+      var ndx = this.next.c0x - this.next.p0x;
+      var ndy = this.next.c0y - this.next.p0y;
+      var nlen = this.lineLength(ndx, ndy);
+
+      if( (len == 0) || (nlen == 0) ) {
+        ratio = 0;
+      } else {
+        ratio = nlen / len;
+      }
+
+    }
+
+    var nx = this.p1x - (dx * ratio);
+    var ny = this.p1y - (dy * ratio);
+
+    this.next.c0x = nx;
+    this.next.c0y = ny;
+ 
+  }
+
   this.c1x = x;
   this.c1y = y;
 
-//  if(this.next && this.smoothConnectionToNext) {
-//    this.next.c0x = ;
-//    this.next.c0y = ;
-//  }
 };
 
 /// translate //////////////////////////////////////////////////////////////////

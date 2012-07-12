@@ -136,6 +136,9 @@ self.prototype.append = function(p) {
   var y = ep.y - bp.y;
   p.translate(x, y);
 
+  // curves do not connect smoothly
+  this.edges[this.edges.length - 1].setSmoothConnect(false);
+
   // append edges
   for(var i = 0; i < p.edges.length; i++) {
     this.addEdge(p.edges[i]);

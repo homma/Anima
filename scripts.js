@@ -93,6 +93,7 @@ var scripts = [
 "./model/path/util.js",
 "./model/curve/curve.js",
 "./model/curve/draw.js",
+"./model/curve/setter.js",
 "./model/curve/modify.js",
 "./model/curve/export.js",
 "./model/curve/kind.js",
