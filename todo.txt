@@ -1,11 +1,13 @@
 
 # Tasks
 
+o remove selector
+
 o implement smooth connect
 
 - implement a tool to enable / disable smooth connect
 
-o divide tools into groups
+o separate tools into groups
   path tools
   point tools
   selected path tools
@@ -27,4 +29,8 @@ o ui overhaul
 o make libraries
 
 o implement player
+
+# Done
+
+o implement subdivide selected paths
 

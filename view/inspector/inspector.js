@@ -25,8 +25,10 @@ self.prototype.initPathInspectorView = function() {
 
 self.prototype.createObjects = function() {
 
-  new an.PathInspector();
-  new an.ColorStock();
+  // child views
+  new an.ColorStockView();
+  new an.PathOperationView();
+  new an.PathActionView();
 
 }
 

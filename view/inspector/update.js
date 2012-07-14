@@ -17,11 +17,12 @@ self.prototype.update = function() {
   if(paths.length == 0) {
 
     this.clear();
+    an.g.ColorStockView.clear();
 
   } else {
 
     this.updateValues(paths[0]);
-    this.updateColors(paths[0]);
+    an.g.ColorStockView.updateColors(paths[0]);
 
   }
 
@@ -38,9 +39,6 @@ self.prototype.clear = function() {
 
   this.setChecked("close_path", false);
   this.setChecked("path_stroke", true);
-
-  this.setStrokeColorAttrs(0, 0, 100, 1);  // lum == 100 => white
-  this.setFillColorAttrs(0, 0, 100, 1);    // lum == 100 => white
 
 }
 
@@ -76,26 +74,6 @@ self.prototype.updateValues = function(path) {
     this.setChecked("path_stroke", true);
 
   }
-
-}
-
-self.prototype.updateColors = function(path) {
-
-  // Stroke HSLA
-  var shue = path.getStrokeColor().getHue();
-  var ssat = path.getStrokeColor().getSaturation();
-  var slum = path.getStrokeColor().getLuminance();
-  var salp = path.getStrokeColor().getAlpha();
-
-  this.setStrokeColorAttrs(shue, ssat, slum, salp);
-
-  // Fill HSLA
-  var fhue = path.getFillColor().getHue();
-  var fsat = path.getFillColor().getSaturation();
-  var flum = path.getFillColor().getLuminance();
-  var falp = path.getFillColor().getAlpha();
-
-  this.setFillColorAttrs(fhue, fsat, flum, falp);
 
 }
 

@@ -16,7 +16,7 @@ an.Curve.prototype.dataExport = function() {
     indent + '  "p1x": ' + this.p1x + ',\n' +
     indent + '  "p1y": ' + this.p1y + ',\n' +
     indent + '  "c1x": ' + this.c1x + ',\n' +
-    indent + '  "c1y": ' + this.c1y + '\n' +
+    indent + '  "c1y": ' + this.c1y + ',\n' +
     indent + '  "smoothConnect": ' + this.smoothConnect + '\n' +
     indent + '}';
 

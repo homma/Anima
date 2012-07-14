@@ -125,6 +125,18 @@ self.prototype.reverse = function() {
 
 }
 
+/// subdivide //////////////////////////////////////////////////////////////////
+
+self.prototype.subdivide = function() {
+
+  // copy edge list
+  var tmp = [];
+  this.edges.forEach(function(e) { tmp.push(e) });
+
+  tmp.forEach(function(e) { e.subdivide(); });
+
+}
+
 /// append a path //////////////////////////////////////////////////////////////
 
 self.prototype.append = function(p) {

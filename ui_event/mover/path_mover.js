@@ -67,7 +67,7 @@ self.prototype.deselect = function() {
   this.prevY = null;
 
   // return to the current operator
-  var eventObj = an.g.PathInspector.getPathOps();
+  var eventObj = an.g.PathOp.getPathOps();
   eventObj.select();
 
 };

@@ -31,8 +31,22 @@ self.prototype.removePoint = function(curve, point) {
 
 }
 
+self.prototype.subdivideSelectedPaths = function() {
+
+  var plist = this.getSelectedPaths();
+
+  plist.forEach(function(p) {
+
+    p.subdivide();
+
+  });
+
+}
+
 self.prototype.divideCurve = function(curve) {
+
   curve.subdivide();
+
 }
 
 } // block
