@@ -148,6 +148,13 @@ self.prototype.splitPath = function(path, curve, point) {
 }
 
 /**
+ * @subdivide each curves in selected paths
+ */
+self.prototype.subdivideSelectedPaths = function() {
+  editor.subdivideSelectedPaths();
+}
+
+/**
  * @description split a curve
  */
 self.prototype.divideCurve = function(curve) {

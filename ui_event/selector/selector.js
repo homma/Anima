@@ -18,7 +18,7 @@ self.prototype = new an.EventState();
 
 self.prototype.select = function() {
 
-  an.g.PathInspector.selectTransform();
+  an.g.PathOp.selectTransform();
   this.selectSelf();
 
 }
@@ -39,7 +39,7 @@ self.prototype.onMouseDown = function(e) {
   var eventObj;
 
   // let the current handler do its job.
-  eventObj = an.g.PathInspector.getPathOps();
+  eventObj = an.g.PathOp.getPathOps();
   if( eventObj.test(e) ) { return; };
 
   // select or move path

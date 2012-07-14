@@ -61,8 +61,10 @@ self.prototype.initToolView = function() {
     elem.onchange = fun;
   }
 
-  var ops = an.g.operations;
+  var acts = an.g.GlobalAction;
+
   var str = "Anima: a vector animation editor (prototype)."
+
   registerOnClick( "AnimaButton", function(){ alert(str); } );
   registerOnClick( "penButton", function() { select(penHandler); } );
   registerOnClick( "curveCreatorButton", function() { select(curveCreator);} );
@@ -70,17 +72,17 @@ self.prototype.initToolView = function() {
   registerOnClick( "selectorButton", function() { select(selector); } );
   registerOnClick( "selectAllButton", function() {
                                         select(selector);
-                                        ops.selectAll();
+                                        acts.selectAll();
                                       } );
-  registerOnClick( "clearButton", ops.clear );
-  registerOnClick( "deleteButton", ops.delete );
-  registerOnClick( "cutButton", ops.cut );
-  registerOnClick( "copyButton", ops.copy );
-  registerOnClick( "pasteButton", ops.paste );
-  registerOnClick( "undoButton", ops.undo );
-  registerOnClick( "redoButton", ops.redo );
-  registerOnClick( "saveButton", ops.save );
-  registerOnClick( "restoreButton", ops.restore );
+  registerOnClick( "clearButton", acts.clear );
+  registerOnClick( "deleteButton", acts.delete );
+  registerOnClick( "cutButton", acts.cut );
+  registerOnClick( "copyButton", acts.copy );
+  registerOnClick( "pasteButton", acts.paste );
+  registerOnClick( "undoButton", acts.undo );
+  registerOnClick( "redoButton", acts.redo );
+  registerOnClick( "saveButton", acts.save );
+  registerOnClick( "restoreButton", acts.restore );
   registerOnClick( "exportButton", function() { select(exporterView); } );
   registerOnClick( "importButton", function() { select(importerView); } );
   registerOnClick( "rasterizeButton", function() { select(rasterizerView); } );
