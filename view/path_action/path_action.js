@@ -13,19 +13,11 @@ an.PathActionView = function() {
 }
 var self = an.PathActionView;
 
-// bind an onclick function to an html element.
-self.prototype.registerOnClick = function(id, fun) {
-
-  var elem = document.getElementById(id);
-  elem.onclick = fun;
-
-}
-
 self.prototype.register = function() {
 
   var path_acts = an.g.PathAction;
 
-  this.registerOnClick("subdivide", path_acts.subdivide);
+  an.u.onClick("subdivide", path_acts.subdivide);
 
 }
 

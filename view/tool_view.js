@@ -49,45 +49,34 @@ self.prototype.initToolView = function() {
                  currentTool.select();
                };
 
-  // assign an onclick function to an html element.
-  var registerOnClick = function(id, fun) {
-    var elem = document.getElementById(id);
-    elem.onclick = fun;
-  }
-
-  // assign an onchange function to an html element.
-  var registerOnChange = function(id, fun) {
-    var elem = document.getElementById(id);
-    elem.onchange = fun;
-  }
-
   var acts = an.g.GlobalAction;
 
   var str = "Anima: a vector animation editor (prototype)."
 
-  registerOnClick( "AnimaButton", function(){ alert(str); } );
-  registerOnClick( "penButton", function() { select(penHandler); } );
-  registerOnClick( "curveCreatorButton", function() { select(curveCreator);} );
-  // registerOnClick( "shapeButton", 
-  registerOnClick( "selectorButton", function() { select(selector); } );
-  registerOnClick( "selectAllButton", function() {
-                                        select(selector);
-                                        acts.selectAll();
-                                      } );
-  registerOnClick( "clearButton", acts.clear );
-  registerOnClick( "deleteButton", acts.delete );
-  registerOnClick( "cutButton", acts.cut );
-  registerOnClick( "copyButton", acts.copy );
-  registerOnClick( "pasteButton", acts.paste );
-  registerOnClick( "undoButton", acts.undo );
-  registerOnClick( "redoButton", acts.redo );
-  registerOnClick( "saveButton", acts.save );
-  registerOnClick( "restoreButton", acts.restore );
-  registerOnClick( "exportButton", function() { select(exporterView); } );
-  registerOnClick( "importButton", function() { select(importerView); } );
-  registerOnClick( "rasterizeButton", function() { select(rasterizerView); } );
-  // registerOnClick( "runButton", 
-  // registerOnClick( "configButton", 
+  an.u.onClick( "AnimaButton", function(){ alert(str); } );
+  an.u.onClick( "penButton", function() { select(penHandler); } );
+  an.u.onClick( "curveCreatorButton",
+                function() { select(curveCreator);} );
+  // an.u.onClick( "shapeButton", 
+  an.u.onClick( "selectorButton",
+                function() { select(selector); } );
+  an.u.onClick( "selectAllButton",
+                function() { select(selector); acts.selectAll(); } );
+  an.u.onClick( "clearButton", acts.clear );
+  an.u.onClick( "deleteButton", acts.delete );
+  an.u.onClick( "cutButton", acts.cut );
+  an.u.onClick( "copyButton", acts.copy );
+  an.u.onClick( "pasteButton", acts.paste );
+  an.u.onClick( "undoButton", acts.undo );
+  an.u.onClick( "redoButton", acts.redo );
+  an.u.onClick( "saveButton", acts.save );
+  an.u.onClick( "restoreButton", acts.restore );
+  an.u.onClick( "exportButton", function() { select(exporterView); } );
+  an.u.onClick( "importButton", function() { select(importerView); } );
+  an.u.onClick( "rasterizeButton",
+                function() { select(rasterizerView); } );
+  // an.u.onClick( "runButton", 
+  // an.u.onClick( "configButton", 
 
 }
 

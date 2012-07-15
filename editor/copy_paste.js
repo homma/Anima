@@ -39,7 +39,7 @@ self.prototype.cut = function() {
     }
   }
 
-  this.interface.deleteSelected();
+  this.interface.delete();
 
 }
 
