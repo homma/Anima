@@ -51,8 +51,7 @@ self.prototype.selectPenHandler = function() {
 
   an.g.editor.deselectAll();
   this.setPathOp( an.g.PenHandler );
-  // To Be Implemented
-  // an.g.editor.setEditorMode(an.g.editor.EditorModes.pen);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.pen);
   an.g.editor.draw();
 
 }

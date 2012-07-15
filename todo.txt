@@ -3,8 +3,6 @@
 
 o implement reduce points
 
-o remove selector
-
 o implement smooth connect
 
 - implement a tool to enable / disable smooth connect
@@ -35,4 +33,6 @@ o implement player
 # Done
 
 o implement subdivide selected paths
+o remove selector
+o add pen mode to editor
 

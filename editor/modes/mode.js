@@ -67,4 +67,11 @@ self.prototype.isOnHandle = function(x, y) {
 
 }
 
+self.prototype.drawNewPath = function(ctx) {
+
+  this.editor.newPath.draw(ctx);
+  this.editor.newPath.drawHandles(ctx);
+
+}
+
 } // block
