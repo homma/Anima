@@ -66,6 +66,7 @@ var scripts = [
 "./editor/util.js",
 "./editor/interface/interface.js",
 "./editor/modes/mode.js",
+"./editor/modes/pen.js",
 "./editor/modes/curve.js",
 "./editor/modes/connect.js",
 "./editor/modes/path_split.js",

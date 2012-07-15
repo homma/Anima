@@ -36,17 +36,13 @@ self.prototype.drawUnselectedPath = function(ctx) {
 self.prototype.drawHandle = function(ctx) {
 
   this.editorMode.drawHandle(ctx);
-  // console.log(this.editorMode);
-  // console.log("editor#drawHandle");
 
 }
 
 self.prototype.drawNewPath = function(ctx) {
 
   if(!this.newPath) { return };
-
-  this.newPath.draw(ctx);
-  this.newPath.drawHandles(ctx);
+  this.editorMode.drawNewPath(ctx);
 
 }
 
