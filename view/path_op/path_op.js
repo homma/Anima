@@ -13,25 +13,17 @@ an.PathOperationView = function() {
 }
 var self = an.PathOperationView;
 
-// bind an onclick function to an html element.
-self.prototype.registerOnClick = function(id, fun) {
-
-  var elem = document.getElementById(id);
-  elem.onclick = fun;
-
-}
-
 self.prototype.register = function() {
 
   var op = an.g.PathOp;
 
-  this.registerOnClick( "transform", op.selectTransform );
-  this.registerOnClick( "resize", op.selectResize );
-  this.registerOnClick( "rotate", op.selectRotate );
-  this.registerOnClick( "connect", op.selectConnect );
-  this.registerOnClick( "path_split", op.selectPathSplit );
-  this.registerOnClick( "remove_pt", op.selectPointRemove );
-  this.registerOnClick( "add_pt", op.selectPointAdd );
+  an.u.onClick( "transform", op.selectTransform );
+  an.u.onClick( "resize", op.selectResize );
+  an.u.onClick( "rotate", op.selectRotate );
+  an.u.onClick( "connect", op.selectConnect );
+  an.u.onClick( "path_split", op.selectPathSplit );
+  an.u.onClick( "remove_pt", op.selectPointRemove );
+  an.u.onClick( "add_pt", op.selectPointAdd );
 
 }
 

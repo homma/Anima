@@ -6,22 +6,6 @@ new function() { // block
 
 var self = an.ColorStockView;
 
-// bind an onclick function to an html element.
-self.prototype.registerOnClick = function(id, fun) {
-
-  var elem = document.getElementById(id);
-  elem.onclick = fun;
-
-}
-
-// bind an onchange function to an html element.
-self.prototype.registerOnChange = function(id, fun) {
-
-  var elem = document.getElementById(id);
-  elem.onchange = fun;
-
-}
-
 self.prototype.register = function() {
 
   this.registerColorAttrs();
@@ -36,11 +20,11 @@ self.prototype.registerColorAttrs = function() {
 
   var pathInspector = an.g.PathInspector;
 
-  this.registerOnClick( "path_stroke", pathInspector.setStroke );
-  this.registerOnClick( "path_fill", pathInspector.setFill );
-  this.registerOnClick( "path_both", pathInspector.setBoth );
+  an.u.onClick( "path_stroke", pathInspector.setStroke );
+  an.u.onClick( "path_fill", pathInspector.setFill );
+  an.u.onClick( "path_both", pathInspector.setBoth );
   // necessary?
-  // this.registerOnClick( "path_same_color", pathInspector.setSameColor );
+  // an.u.onClick( "path_same_color", pathInspector.setSameColor );
 
 }
 
@@ -49,14 +33,14 @@ self.prototype.registerStrokeColor = function() {
 
   var pathInspector = an.g.PathInspector;
 
-  this.registerOnClick("stroke_hue_slider", pathInspector.setStrokeHue);
-  this.registerOnChange("stroke_hue_slider", pathInspector.setStrokeHue);
-  this.registerOnClick("stroke_sat_slider", pathInspector.setStrokeSaturation);
-  this.registerOnChange("stroke_sat_slider", pathInspector.setStrokeSaturation);
-  this.registerOnClick("stroke_lum_slider", pathInspector.setStrokeLuminance);
-  this.registerOnChange("stroke_lum_slider", pathInspector.setStrokeLuminance);
-  this.registerOnClick("stroke_alp_slider", pathInspector.setStrokeAlpha);
-  this.registerOnChange("stroke_alp_slider", pathInspector.setStrokeAlpha);
+  an.u.onClick("stroke_hue_slider", pathInspector.setStrokeHue);
+  an.u.onChange("stroke_hue_slider", pathInspector.setStrokeHue);
+  an.u.onClick("stroke_sat_slider", pathInspector.setStrokeSaturation);
+  an.u.onChange("stroke_sat_slider", pathInspector.setStrokeSaturation);
+  an.u.onClick("stroke_lum_slider", pathInspector.setStrokeLuminance);
+  an.u.onChange("stroke_lum_slider", pathInspector.setStrokeLuminance);
+  an.u.onClick("stroke_alp_slider", pathInspector.setStrokeAlpha);
+  an.u.onChange("stroke_alp_slider", pathInspector.setStrokeAlpha);
 
 }
 
@@ -65,14 +49,14 @@ self.prototype.registerFillColor = function() {
 
   var pathInspector = an.g.PathInspector;
 
-  this.registerOnClick(  "fill_hue_slider", pathInspector.setFillHue );
-  this.registerOnChange( "fill_hue_slider", pathInspector.setFillHue );
-  this.registerOnClick(  "fill_sat_slider", pathInspector.setFillSaturation );
-  this.registerOnChange( "fill_sat_slider", pathInspector.setFillSaturation );
-  this.registerOnClick(  "fill_lum_slider", pathInspector.setFillLuminance );
-  this.registerOnChange( "fill_lum_slider", pathInspector.setFillLuminance );
-  this.registerOnClick(  "fill_alp_slider", pathInspector.setFillAlpha );
-  this.registerOnChange( "fill_alp_slider", pathInspector.setFillAlpha );
+  an.u.onClick(  "fill_hue_slider", pathInspector.setFillHue );
+  an.u.onChange( "fill_hue_slider", pathInspector.setFillHue );
+  an.u.onClick(  "fill_sat_slider", pathInspector.setFillSaturation );
+  an.u.onChange( "fill_sat_slider", pathInspector.setFillSaturation );
+  an.u.onClick(  "fill_lum_slider", pathInspector.setFillLuminance );
+  an.u.onChange( "fill_lum_slider", pathInspector.setFillLuminance );
+  an.u.onClick(  "fill_alp_slider", pathInspector.setFillAlpha );
+  an.u.onChange( "fill_alp_slider", pathInspector.setFillAlpha );
 }
 
 // Color Stock
@@ -80,15 +64,23 @@ self.prototype.registerColorStock = function() {
 
   var cs = an.g.ColorStockView;
 
-  this.registerOnClick( "stroke_color", cs.storeStrokeColorToColorStock );
-  this.registerOnClick( "fill_color", cs.storeFillColorToColorStock );
+  an.u.onClick( "stroke_color",
+                function() { cs.storeStrokeColorToColorStock(); } );
+  an.u.onClick( "fill_color",
+                function() { cs.storeFillColorToColorStock(); } );
 
   for(var i = 0; i < this.colorStock.MaxLength; i++) {
-    this.registerOnClick( "color_stock_" + i, cs.selectColorStock );
+    an.u.onClick( "color_stock_" + i,
+                  function(e) {
+                    var id, n;
+                    id = e.target.id;
+                    n = parseInt( id.substring( "color_stock_".length ), 10 );
+                    cs.selectColorStock(n);
+                  } );
   }
 
-  this.registerOnClick( "set_stroke_color", cs.setStrokeColor );
-  this.registerOnClick( "set_fill_color", cs.setFillColor );
+  an.u.onClick( "set_stroke_color", function() { cs.setStrokeColor(); } );
+  an.u.onClick( "set_fill_color", function() { cs.setFillColor(); } );
 
 }
 

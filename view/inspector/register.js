@@ -15,25 +15,11 @@ self.prototype.registerHandler = function() {
 
 }
 
-// bind an onclick function to an html element.
-self.prototype.registerOnClick = function(id, fun) {
-  // console.log(id);
-  var elem = document.getElementById(id);
-  // console.log(elem);
-  elem.onclick = fun;
-}
-
-// bind an onchange function to an html element.
-self.prototype.registerOnChange = function(id, fun) {
-  var elem = document.getElementById(id);
-  elem.onchange = fun;
-}
-
 // Attribtes / Operations switcher
 self.prototype.registerSwitcher = function() {
 
-  this.registerOnClick( "path_attrs_sw", this.showPathAttributes );
-  this.registerOnClick( "path_ops_sw", this.showPathOperations);
+  an.u.onClick( "path_attrs_sw", this.showPathAttributes );
+  an.u.onClick( "path_ops_sw", this.showPathOperations);
 
 }
 
@@ -41,18 +27,18 @@ self.prototype.registerSwitcher = function() {
 self.prototype.registerLineAttrs = function() {
   var pathInspector = an.g.PathInspector;
 
-  this.registerOnClick( "line_width", pathInspector.changeLineWidth );
-  this.registerOnChange( "line_width", pathInspector.changeLineWidth );
+  an.u.onClick( "line_width", pathInspector.changeLineWidth );
+  an.u.onChange( "line_width", pathInspector.changeLineWidth );
 
-  this.registerOnClick( "line_cap", this.changeLineCap );
-  this.registerOnChange( "line_cap", this.changeLineCap );
-  this.registerOnClick( "line_join", this.changeLineJoin );
-  this.registerOnChange( "line_join", this.changeLineJoin );
-  this.registerOnClick( "miter_limit", pathInspector.changeMiterLimit );
-  this.registerOnChange( "miter_limit", pathInspector.changeMiterLimit );
+  an.u.onClick( "line_cap", this.changeLineCap );
+  an.u.onChange( "line_cap", this.changeLineCap );
+  an.u.onClick( "line_join", this.changeLineJoin );
+  an.u.onChange( "line_join", this.changeLineJoin );
+  an.u.onClick( "miter_limit", pathInspector.changeMiterLimit );
+  an.u.onChange( "miter_limit", pathInspector.changeMiterLimit );
 
-  this.registerOnClick( "close_path", pathInspector.setClosePath );
-  this.registerOnChange( "close_path", pathInspector.setClosePath );
+  an.u.onClick( "close_path", pathInspector.setClosePath );
+  an.u.onChange( "close_path", pathInspector.setClosePath );
 }
 
 } // block

@@ -6,68 +6,55 @@ new function() { // block
 
 var self = an.ColorStockView;
 
-self.prototype.selectColorStock = function(e) {
+self.prototype.selectColorStock = function(n) {
 
-  var csv = an.g.ColorStockView;
+  this.colorStock.selectColorAt(n);
 
-  var id = e.target.id;
-  var n = parseInt( id.substring( "color_stock_".length ), 10 );
-
-  csv.colorStock.selectColorAt(n);
-
-  csv.updateColorStock();
+  this.updateColorStock();
 
 }
 
-self.prototype.setStrokeColor = function(e) {
+self.prototype.setStrokeColor = function() {
 
-  var csv = an.g.ColorStockView;
+  var n = this.colorStock.getSelectedNumber();
+  var color = this.colorStock.getColorAt(n);
 
-  var n = csv.colorStock.getSelectedNumber();
-  var color = csv.colorStock.getColorAt(n);
-
-  csv.setStrokeColorAttrsFromColor(color);
+  this.setStrokeColorAttrsFromColor(color);
 
   var ops = an.g.PathInspector;
   ops.setStrokeColorFromView();
 
 }
 
-self.prototype.setFillColor = function(e) {
+self.prototype.setFillColor = function() {
 
-  var csv = an.g.ColorStockView;
+  var n = this.colorStock.getSelectedNumber();
+  var color = this.colorStock.getColorAt(n);
 
-  var n = csv.colorStock.getSelectedNumber();
-  var color = csv.colorStock.getColorAt(n);
-
-  csv.setFillColorAttrsFromColor(color);
+  this.setFillColorAttrsFromColor(color);
 
   var ops = an.g.PathInspector;
   ops.setFillColorFromView();
 
 }
 
-self.prototype.storeStrokeColorToColorStock = function(e) {
+self.prototype.storeStrokeColorToColorStock = function() {
 
-  var csv = an.g.ColorStockView;
+  var color = this.getStrokeColor();
 
-  var color = csv.getStrokeColor();
+  this.colorStock.storeColor(color);
 
-  csv.colorStock.storeColor(color);
-
-  csv.updateColorStock();
+  this.updateColorStock();
 
 }
 
-self.prototype.storeFillColorToColorStock = function(e) {
+self.prototype.storeFillColorToColorStock = function() {
 
-  var csv = an.g.ColorStockView;
+  var color = this.getFillColor();
 
-  var color = csv.getFillColor();
+  this.colorStock.storeColor(color);
 
-  csv.colorStock.storeColor(color);
-
-  csv.updateColorStock();
+  this.updateColorStock();
 
 }
 
