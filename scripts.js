@@ -9,7 +9,6 @@ var scripts = [
 "./util/relatively.js",
 "./ui_event/event_state.js",
 "./ui_event/pen/pen.js",
-"./ui_event/selector/selector.js",
 "./ui_event/modifier/curve_modifier.js",
 "./ui_event/mover/path_mover.js",
 "./ui_event/resizer/path_resizer.js",

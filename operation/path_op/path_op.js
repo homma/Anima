@@ -6,6 +6,9 @@ new function() { // block
 
 an.PathOp = function() {
 
+  new an.PenHandler();
+  new an.CurveCreator();
+
   new an.PathMover();
   new an.PathResizer();
   new an.PathRotator();
@@ -15,9 +18,9 @@ an.PathOp = function() {
   new an.PathConnector();
   new an.PathSplitter();
 
-  this.currentPathOps = null;
+  this.currentPathOp = null;
 
-  this.setPathOps( an.g.CurveModifier );
+  this.setPathOp( an.g.CurveModifier );
 
   an.g.PathOp = this;
 
@@ -26,23 +29,46 @@ var self = an.PathOp;
 
 /// path operations ////////////////////////////////////////////////////////////
 
-self.prototype.setPathOps = function(ops) {
+self.prototype.setPathOp = function(ops) {
 
-  this.currentPathOps = ops;
+  if(this.currentPathOp) {
+    this.currentPathOp.deselect();
+  }
+
+  this.currentPathOp = ops;
 
   ops.select();
 
 }
 
-self.prototype.getPathOps = function() {
+self.prototype.getPathOp = function() {
 
-  return this.currentPathOps;
+  return this.currentPathOp;
+
+}
+
+self.prototype.selectPenHandler = function() {
+
+  an.g.editor.deselectAll();
+  this.setPathOp( an.g.PenHandler );
+  // To Be Implemented
+  // an.g.editor.setEditorMode(an.g.editor.EditorModes.pen);
+  an.g.editor.draw();
+
+}
+
+self.prototype.selectCurveCreator = function() {
+
+  an.g.editor.deselectAll();
+  this.setPathOp( an.g.CurveCreator );
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.curve);
+  an.g.editor.draw();
 
 }
 
 self.prototype.selectTransform = function() {
 
-  this.setPathOps( an.g.CurveModifier );
+  this.setPathOp( an.g.CurveModifier );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.transform);
   an.g.editor.draw();
 
@@ -50,7 +76,7 @@ self.prototype.selectTransform = function() {
 
 self.prototype.selectResize = function() {
 
-  this.setPathOps( an.g.PathResizer );
+  this.setPathOp( an.g.PathResizer );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.resize);
   an.g.editor.draw();
 
@@ -58,7 +84,7 @@ self.prototype.selectResize = function() {
 
 self.prototype.selectRotate = function() {
 
-  this.setPathOps( an.g.PathRotator );
+  this.setPathOp( an.g.PathRotator );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.rotate);
   an.g.editor.draw();
 
@@ -67,7 +93,7 @@ self.prototype.selectRotate = function() {
 self.prototype.selectConnect = function() {
 
   // need fix.
-  this.setPathOps( an.g.PathConnector );
+  this.setPathOp( an.g.PathConnector );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.connect);
   an.g.editor.draw();
 
@@ -76,7 +102,7 @@ self.prototype.selectConnect = function() {
 self.prototype.selectPathSplit = function() {
 
   // need fix.
-  this.setPathOps( an.g.PathSplitter );
+  this.setPathOp( an.g.PathSplitter );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.pathSplit);
   an.g.editor.draw();
 
@@ -84,7 +110,7 @@ self.prototype.selectPathSplit = function() {
 
 self.prototype.selectPointRemove = function() {
 
-  this.setPathOps( an.g.PointRemover );
+  this.setPathOp( an.g.PointRemover );
   an.g.editor.setEditorMode( an.g.editor.EditorModes.pointRemove );
   an.g.editor.draw();
 
@@ -92,7 +118,7 @@ self.prototype.selectPointRemove = function() {
 
 self.prototype.selectPointAdd = function() {
 
-  this.setPathOps( an.g.PointAdder );
+  this.setPathOp( an.g.PointAdder );
   an.g.editor.setEditorMode( an.g.editor.EditorModes.pointAdd );
   an.g.editor.draw();
 

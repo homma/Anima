@@ -16,11 +16,9 @@ an.ToolView = function() {
 
 var self= an.ToolView;
 
-self.prototype.createObjects = function() {
+self.prototype.createViews = function() {
 
-  new an.Selector();
-  new an.PenHandler();
-  new an.CurveCreator();
+  // related views
   new an.ExporterView();
   new an.ImporterView();
   new an.RasterizerView();
@@ -29,39 +27,32 @@ self.prototype.createObjects = function() {
 
 self.prototype.initToolView = function() {
 
-  this.createObjects();
+  this.createViews();
 
-  // instantiate handlers
-  var selector = an.g.Selector;
-  var penHandler = an.g.PenHandler;
-  var curveCreator = an.g.CurveCreator;
   var exporterView = an.g.ExporterView;
   var importerView = an.g.ImporterView;
   var rasterizerView = an.g.RasterizerView;
-
-  // set current tool
-  var currentTool = selector;
-  currentTool.select();
-
-  var select = function(t) {
-                 currentTool.deselect();
-                 currentTool = t;
-                 currentTool.select();
-               };
 
   var acts = an.g.GlobalAction;
 
   var str = "Anima: a vector animation editor (prototype)."
 
   an.u.onClick( "AnimaButton", function(){ alert(str); } );
-  an.u.onClick( "penButton", function() { select(penHandler); } );
+
+  an.u.onClick( "penButton",
+                function() { an.g.PathOp.selectPenHandler(); } );
   an.u.onClick( "curveCreatorButton",
-                function() { select(curveCreator);} );
+                function() { an.g.PathOp.selectCurveCreator(); } );
   // an.u.onClick( "shapeButton", 
+  //              function() { an.g.PathOp.select...(); } );
   an.u.onClick( "selectorButton",
-                function() { select(selector); } );
+                function() { an.g.PathOp.selectTransform(); } );
+
   an.u.onClick( "selectAllButton",
-                function() { select(selector); acts.selectAll(); } );
+                function() {
+                  an.g.PathOp.selectTransform();
+                  acts.selectAll(); } );
+
   an.u.onClick( "clearButton", acts.clear );
   an.u.onClick( "deleteButton", acts.delete );
   an.u.onClick( "cutButton", acts.cut );
