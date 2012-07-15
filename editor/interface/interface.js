@@ -124,6 +124,9 @@ self.prototype.setLineWidth = function(w) {
 
 ///////////////////////////////////////
 
+/**
+ * @description translate selected paths
+ */
 self.prototype.translateSelectedPaths = function(x, y) {
   editor.translateSelectedPaths(x, y);
 }
@@ -161,12 +164,18 @@ self.prototype.divideCurve = function(curve) {
   editor.divideCurve(curve);
 }
 
+/**
+ * @description resize selected paths
+ */
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
   editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
 }
 
-self.prototype.rotateSelectedPaths = function() {
-  editor.rotateSelectedPaths();
+/**
+ * @description rotate selected paths
+ */
+self.prototype.rotateSelectedPaths = function(x, y, r) {
+  editor.rotateSelectedPaths(x, y, r);
 }
 
 self.prototype.commitChanges = function() {
@@ -242,18 +251,32 @@ self.prototype.selectAll = function() {
 }
 
 ///////////////////////////////////////
+// get handles
 
-self.prototype.getResizeArea = function() {
+self.prototype.getResizeHandles = function() {
 
-  return editor.getResizeArea();
+  return editor.getResizeHandles();
+
+}
+
+self.prototype.getRotateHandles = function() {
+
+  return editor.getRotateHandles();
 
 }
 
 ///////////////////////////////////////
+// reset, initialize
 
 self.prototype.initialize = function() {
 
   editor.initialize();
+
+}
+
+self.prototype.resetRotation = function() {
+
+  editor.resetRotation();
 
 }
 

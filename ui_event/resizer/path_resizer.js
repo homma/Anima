@@ -40,7 +40,7 @@ self.prototype.initialize = function() {
 
 }
 
-self.prototype.select = function(obj) {
+self.prototype.select = function() {
 
   this.selectSelf();
 
@@ -54,6 +54,7 @@ self.prototype.deselect = function() {
 
 self.prototype.onMouseDown = function(e) {
 
+  // hit and continue
   if( this.test(e) ) { return; }
 
   // move path
@@ -77,7 +78,7 @@ self.prototype.onMouseMove = function(e) {
 self.prototype.onMouseUp = function(e) {
 
   if( !this.position ) { return; }
-  this.deselect();
+  this.initialize();
 
 };
 
@@ -86,7 +87,7 @@ self.prototype.resizePath = function(e) {
 
   var position = an.u.getMousePositionInCanvas(e);
 
-  var handles = an.g.editor.getResizeArea();
+  var handles = an.g.editor.getResizeHandles();
   var p = this.position;
 
   var diffX = 0;

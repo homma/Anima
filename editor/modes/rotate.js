@@ -18,10 +18,45 @@ an.RotateMode = function(ed) {
   this.RotateGuideCircleR    = 4;
   this.RotateGuideAngle      = 0;
 
+  this.rect = null;  // surrounding rect
+
 }
 var self = an.RotateMode;
 
 self.prototype = new an.EditorMode();
+
+/// direction //////////////////////////////////////////////////////////////////
+
+  //            [an.k.T]
+  // [an.k.L] - [an.k.C] - [an.k.R]
+  //            [an.k.B]
+  //
+  // [an.k.C] : center
+  // [an.k.L] : left
+  // [an.k.R] : right
+  // [an.k.T] : top
+  // [an.k.B] : bottom
+
+/// setter /////////////////////////////////////////////////////////////////////
+
+self.prototype.setRotateAngle = function(r) {
+
+  this.RotateGuideAngle = r;
+
+}
+
+self.prototype.getRotateAngle = function() {
+
+  return this.RotateGuideAngle;
+
+}
+
+self.prototype.resetRotation = function() {
+
+  this.RotateGuideAngle = 0;
+  this.rect = this.editor.getBoundaryOfSelectedPaths();
+
+}
 
 /// draw ///////////////////////////////////////////////////////////////////////
 
@@ -55,71 +90,79 @@ self.prototype.drawHandle = function(ctx) {
 
   var len     = this.RotateGuideLineLength;
 
-  var positions = this.getRotateGuideHandles();
-  //       [3]
-  // [1] - [0] - [2]
-  //       [4]
+  var positions = this.getRotateHandles();
 
   ctx.beginPath();
-  ctx.arc(positions.x[0], positions.y[0], r, Math.PI*2, false);
+  ctx.arc(positions.x[an.k.C], positions.y[an.k.C], r, Math.PI*2, false);
   ctx.fill();
 
-  ctx.arc(positions.x[0], positions.y[0], len / 2, Math.PI*2, false);
-  ctx.arc(positions.x[0], positions.y[0], len / 3, Math.PI*2, false);
+  ctx.arc(positions.x[an.k.C], positions.y[an.k.C], len / 2, Math.PI*2, false);
+  ctx.arc(positions.x[an.k.C], positions.y[an.k.C], len / 3, Math.PI*2, false);
 
-  // left to right
-  ctx.moveTo(positions.x[1], positions.y[1]);
-  ctx.lineTo(positions.x[2], positions.y[1]);
+  // left
+  ctx.moveTo(positions.x[an.k.C], positions.y[an.k.C]);
+  ctx.lineTo(positions.x[an.k.L], positions.y[an.k.L]);
 
-  // top to bottom
-  ctx.moveTo(positions.x[3], positions.y[3]);
-  ctx.lineTo(positions.x[4], positions.y[4]);
+  // right
+  ctx.moveTo(positions.x[an.k.C], positions.y[an.k.C]);
+  ctx.lineTo(positions.x[an.k.R], positions.y[an.k.R]);
+
+  // top
+  ctx.moveTo(positions.x[an.k.C], positions.y[an.k.C]);
+  ctx.lineTo(positions.x[an.k.T], positions.y[an.k.T]);
+
+  // bottom
+  ctx.moveTo(positions.x[an.k.C], positions.y[an.k.C]);
+  ctx.lineTo(positions.x[an.k.B], positions.y[an.k.B]);
 
   ctx.stroke();
 
   // drawing hanles
-  for(var i = 1; i < positions.x.length; i++) {
+  // for each an.k.L, an.k.R, an.k.T, an.k.B
+  var dir = [an.k.L, an.k.R, an.k.T, an.k.B];
+
+  dir.forEach(function(v) {
+
     ctx.beginPath();
-    ctx.arc(positions.x[i], positions.y[i], r, 0, Math.PI*2, false);
+    ctx.arc(positions.x[v], positions.y[v], r, 0, Math.PI*2, false);
     ctx.fill();
-  }
+
+  });
 
   ctx.restore();
 
 }
 
-self.prototype.getRotateGuideHandles = function() {
+self.prototype.getRotateHandles = function() {
 
-  var rect = this.editor.getBoundaryOfSelectedPaths();
   var ret = {};
 
   var len = this.RotateGuideLineLength;
+  var r = this.RotateGuideAngle;
 
   var x = new Array();
   var y = new Array();
 
-  //       [3]
-  // [1] - [0] - [2]
-  //       [4]
-  // [0] : center : not a handle. just for convinience.
-  x[0] = rect.x + rect.w / 2;
-  y[0] = rect.y + rect.h / 2;
+  this.rect = this.editor.getBoundaryOfSelectedPaths();
 
-  // [1] : left
-  x[1] = x[0] - len;
-  y[1] = y[0];
+  x[an.k.C] = this.rect.x + this.rect.w / 2;
+  y[an.k.C] = this.rect.y + this.rect.h / 2;
 
-  // [2] : right
-  x[2] = x[0] + len;
-  y[2] = y[0];
+  // Left
+  x[an.k.L] = x[an.k.C] - len * Math.cos(r + Math.PI);
+  y[an.k.L] = y[an.k.C] - len * Math.sin(r + Math.PI);
 
-  // [3] : top
-  x[3] = x[0];
-  y[3] = y[0] - len;
+  // Right
+  x[an.k.R] = x[an.k.C] - len * Math.cos(r);
+  y[an.k.R] = y[an.k.C] - len * Math.sin(r);
 
-  // [4] : bottom
-  x[4] = x[0];
-  y[4] = y[0] + len;
+  // Top
+  x[an.k.T] = x[an.k.C] - len * Math.cos(r + Math.PI / 2);
+  y[an.k.T] = y[an.k.C] - len * Math.sin(r + Math.PI / 2);
+
+  // Bottom
+  x[an.k.B] = x[an.k.C] - len * Math.cos(r - Math.PI / 2);
+  y[an.k.B] = y[an.k.C] - len * Math.sin(r - Math.PI / 2);
 
   ret.x = x;
   ret.y = y;
@@ -143,13 +186,16 @@ self.prototype.hitTestRotateHandle = function(x, y) {
   // guard
   if( this.editor.selectedPathList.length == 0) { return hit; };
 
-  var handles = this.getRotateGuideHandles();
+  var handles = this.getRotateHandles();
 
-  // starts from 1 because handles.x[0] is not actually a handle.
-  var i;
-  for(i = 1; i < handles.x.length; i++) {
+  // for each an.k.L, an.k.R, an.k.T, an.k.B
+  var dir = [an.k.L, an.k.R, an.k.T, an.k.B];
 
-    if( this.hitHandle(handles.x[i], handles.y[i], x, y) ) {
+  for(var i = 0; i < dir.length; i++) {
+
+    var n = dir[i];
+
+    if( this.hitHandle(handles.x[n], handles.y[n], x, y) ) {
       hit = true;
       break;
     }

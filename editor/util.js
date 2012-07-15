@@ -7,12 +7,30 @@ new function() {  // block
 var self = an.Editor;
 
 // should be cleaned up.
-self.prototype.getResizeArea = function() {
+self.prototype.getResizeHandles = function() {
 
   // guard
   if(this.editorMode != this.EditorModes.resize) { return null; }
 
-  return this.editorMode.getResizeGuideHandles();
+  return this.editorMode.getResizeHandles();
+
+}
+
+self.prototype.getRotateHandles = function() {
+
+  // guard
+  if(this.editorMode != this.EditorModes.rotate) { return null; }
+
+  return this.editorMode.getRotateHandles();
+
+}
+
+self.prototype.resetRotation = function() {
+
+  // guard
+  if(this.editorMode != this.EditorModes.rotate) { return null; }
+
+  this.editorMode.resetRotation();
 
 }
 

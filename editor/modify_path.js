@@ -80,12 +80,23 @@ self.prototype.commitSize = function() {
 
 /// rotate /////////////////////////////////////////////////////////////////////
 
-self.prototype.rotateSelectedPaths = function() {
+/**
+ * @description rotate selected paths
+ * @param {Number} x x coordinate of the center of the rotation
+ * @param {Number} y y coordinate of the center of the rotation
+ * @param {Number} r angle of the rotation (radian)
+ */
+self.prototype.rotateSelectedPaths = function(x, y, r) {
+
+  // guard
+  if(this.editorMode != this.EditorModes.rotate) { return null; }
+
+  this.editorMode.setRotateAngle(r);
 
   for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].rotate();
+    // To Be Implemented
+    // this.selectedPathList[i].rotate(x, y, r);
   }
-
 }
 
 self.prototype.commitRotation = function() {
