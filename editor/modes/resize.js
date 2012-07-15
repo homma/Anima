@@ -55,7 +55,7 @@ self.prototype.drawHandle = function(ctx) {
   ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
 
   // handle
-  var handles = this.getResizeGuideHandles();
+  var handles = this.getResizeHandles();
 
   var r = this.ResizeGuideCircleR;
   ctx.fillStyle = this.ResizeGuideFillStyle;
@@ -71,7 +71,7 @@ self.prototype.drawHandle = function(ctx) {
 
 }
 
-self.prototype.getResizeGuideHandles = function() {
+self.prototype.getResizeHandles = function() {
 
   var rect = this.editor.getBoundaryOfSelectedPaths();
   var ret = {};
@@ -118,7 +118,7 @@ self.prototype.hitTestResizeGuide = function(x, y) {
   // guard
   if( this.editor.selectedPathList.length == 0) { return false; };
 
-  var handles = this.getResizeGuideHandles();
+  var handles = this.getResizeHandles();
 
   var i;
   for(i = 1; i < handles.x.length; i++) {
