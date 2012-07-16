@@ -33,8 +33,6 @@ self.prototype.deselect = function() {
   var exportText = document.getElementById("exportText");
   exportText.value = "";
 
-  an.g.Selector.select();
-
 };
 
 self.prototype.dataExport = function() {

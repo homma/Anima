@@ -143,8 +143,6 @@ self.prototype.getRotateHandles = function() {
   var x = new Array();
   var y = new Array();
 
-  this.rect = this.editor.getBoundaryOfSelectedPaths();
-
   x[an.k.C] = this.rect.x + this.rect.w / 2;
   y[an.k.C] = this.rect.y + this.rect.h / 2;
 
@@ -191,9 +189,12 @@ self.prototype.hitTestRotateHandle = function(x, y) {
   // for each an.k.L, an.k.R, an.k.T, an.k.B
   var dir = [an.k.L, an.k.R, an.k.T, an.k.B];
 
-  for(var i = 0; i < dir.length; i++) {
+  var n = 0;
+  var i = 0;
 
-    var n = dir[i];
+  for(i = 0; i < dir.length; i++) {
+
+    n = dir[i];
 
     if( this.hitHandle(handles.x[n], handles.y[n], x, y) ) {
       hit = true;
@@ -204,7 +205,7 @@ self.prototype.hitTestRotateHandle = function(x, y) {
 
   if(hit) {
     var ret = {};
-    ret.position = i;
+    ret.position = n;
 
     return ret;
   } else {

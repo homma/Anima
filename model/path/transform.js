@@ -73,5 +73,25 @@ self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
 }
 
+/// resize /////////////////////////////////////////////////////////////////////
+
+/**
+ * @description rotate path
+ * @param {Number} x x coordinate of the center of rotation
+ * @param {Number} y y coordinate of the center of rotation
+ * @param {Number} r angle of rotation
+ */
+self.prototype.rotate = function(x, y, r) {
+
+  for(var i = 0; i < this.edges.length; i++) {
+
+    var e = this.edges[i];
+    e.rotate(x, y, r);
+    e.stickToPrev();
+
+  }
+
+}
+
 }  // block
 

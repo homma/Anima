@@ -78,34 +78,42 @@ self.prototype.setPoint = function(point, x, y) {
 }
 
 self.prototype.setAnchorPointZero = function(x, y) {
-  var diffX = this.p0x - x;
-  var diffY = this.p0y - y;
+
+  // diff x, y
+  var dx = this.p0x - x;
+  var dy = this.p0y - y;
 
   this.p0x = x;
   this.p0y = y;
-  this.c0x -= diffX;
-  this.c0y -= diffY;
+  this.c0x -= dx;
+  this.c0y -= dy;
 
   if(this.prev) {
-    cx = this.prev.c1x - diffX;
-    cy = this.prev.c1y - diffY;
+
+    cx = this.prev.c1x - dx;
+    cy = this.prev.c1y - dy;
     this.prev.connectBack(x, y, cx, cy);
+
   }
 };
 
 self.prototype.setAnchorPointOne = function(x, y) {
-  var diffX = this.p1x - x;
-  var diffY = this.p1y - y;
+
+  // diff x, y
+  var dx = this.p1x - x;
+  var dy = this.p1y - y;
 
   this.p1x = x;
   this.p1y = y;
-  this.c1x -= diffX;
-  this.c1y -= diffY;
+  this.c1x -= dx;
+  this.c1y -= dy;
 
   if(this.next) {
-    cx = this.next.c0x - diffX;
-    cy = this.next.c0y - diffY;
+
+    cx = this.next.c0x - dx;
+    cy = this.next.c0y - dy;
     this.next.connectFront(x, y, cx, cy);
+
   }
 };
 
@@ -198,53 +206,6 @@ self.prototype.setControlPointOne = function(x, y) {
   this.c1y = y;
 
 };
-
-/// translate //////////////////////////////////////////////////////////////////
-
-self.prototype.translate = function(x, y) {
-
-  this.p0x += x;
-  this.c0x += x;
-  this.c1x += x;
-  this.p1x += x;
-
-  this.p0y += y;
-  this.c0y += y;
-  this.c1y += y;
-  this.p1y += y;
-
-};
-
-/// resize /////////////////////////////////////////////////////////////////////
-
-self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
-
-  // console.log(fromX, fromY, scaleX, scaleY);
-  // console.log("BF", this.p0x, this.p0y, this.c0x, this.c0y,
-  //             this.c1x, this.c1y, this.p1x, this.p1y);
-
-  sx = scaleX;
-  sy = scaleY;
-
-  if(scaleX <= 0) {
-    sx = 0.01;
-  }
-  this.p0x = fromX + (this.p0x - fromX) * sx;
-  this.c0x = fromX + (this.c0x - fromX) * sx
-  this.c1x = fromX + (this.c1x - fromX) * sx
-  this.p1x = fromX + (this.p1x - fromX) * sx
-
-  if(scaleY <= 0) {
-    sy = 0.01;
-  }
-  this.p0y = fromY + (this.p0y - fromY) * sy
-  this.c0y = fromY + (this.c0y - fromY) * sy
-  this.c1y = fromY + (this.c1y - fromY) * sy
-  this.p1y = fromY + (this.p1y - fromY) * sy
-
-  // console.log("AF", this.p0x, this.p0y, this.c0x, this.c0y,
-  //             this.c1x, this.c1y, this.p1x, this.p1y);
-}
 
 /// remove point ///////////////////////////////////////////////////////////////
 

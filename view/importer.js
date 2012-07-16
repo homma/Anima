@@ -37,8 +37,6 @@ self.prototype.deselect = function() {
   var importText = document.getElementById("importText");
   importText.value = "";
 
-  an.g.Selector.select();
-
 };
 
 self.prototype.dataImport = function() {

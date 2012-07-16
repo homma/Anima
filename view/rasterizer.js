@@ -30,8 +30,6 @@ self.prototype.deselect = function() {
   var rasterPain = document.getElementById("rasterPain");
   rasterPain.style.display = "none";
 
-  an.g.Selector.select();
-
 };
 
 self.prototype.displayImage = function() {
