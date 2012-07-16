@@ -120,17 +120,18 @@ self.prototype.translatePath = function(e) {
   var x = position.x;
   var y = position.y;
 
-  var diffX = x - this.prevX;
-  var diffY = y - this.prevY;
+  // diff x, y
+  var dx = x - this.prevX;
+  var dy = y - this.prevY;
 
   this.prevX = x;
   this.prevY = y;
 
   // var paths = an.g.editor.getSelectedPaths();
   // for(var i = 0; i < paths.length; i++) {
-  //   paths[i].translate(diffX, diffY);
+  //   paths[i].translate(dx, dy);
   // }
-  an.g.editor.translateSelectedPaths(diffX, diffY);
+  an.g.editor.translateSelectedPaths(dx, dy);
 
   an.g.editor.draw();
 

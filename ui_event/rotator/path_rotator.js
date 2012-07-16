@@ -4,8 +4,6 @@
 
 new function() { // block
 
-// Not Yet Implemented
-
 an.PathRotator = function() {
 
   an.g.PathRotator = this;
@@ -20,6 +18,7 @@ self.prototype = new an.EventState();
 
 self.prototype.select = function(e) {
 
+  this.initialize();
   this.selectSelf();
 
 }
@@ -40,7 +39,7 @@ self.prototype.initialize = function() {
 
 }
 
-self.prototype.hitTest = function(e) {
+self.prototype.hitTestHandle = function(e) {
 
   var position = an.u.getMousePositionInCanvas(e);
   var x = position.x;
@@ -57,14 +56,47 @@ self.prototype.hitTest = function(e) {
 
 }
 
+self.prototype.hitTestPath = function(e) {
+
+  var position = an.u.getMousePositionInCanvas(e);
+  var x = position.x;
+  var y = position.y;
+
+  // hit test to select path
+  var hitPath = an.g.editor.isOnPath(x, y);
+  if(hitPath) {
+
+    if( an.g.editor.isSelectedPath(hitPath) ) {
+
+      an.g.editor.deselectPath(hitPath);
+
+    } else {
+
+      an.g.editor.selectPath(hitPath);
+
+    }
+
+    // update the path info pane
+    an.g.pathInspectorView.update();
+
+    // reset rotation
+    an.g.editor.resetRotation();
+
+    an.g.editor.draw();
+
+    return true;
+  }
+
+  return false;
+
+}
+
 self.prototype.onMouseDown = function(e) {
 
   // hit and continue
-  if( this.hitTest(e) ) { return; }
+  if( this.hitTestHandle(e) ) { return; }
 
-  // move path
-  eventObj = an.g.PathMover;
-  if( eventObj.test(e) ) { return; };
+  if( this.hitTestPath(e) ) { return; }
 
   // otherwise deselect
   an.g.editor.deselectAll();
@@ -84,7 +116,8 @@ self.prototype.onMouseMove = function(e) {
 self.prototype.onMouseUp = function(e) {
 
   if( !this.on ) { return; }
-  this.initialize();
+
+  this.on = false;
 
 };
 
@@ -105,9 +138,10 @@ self.prototype.rotatePath = function(e) {
   // mouse angle
   var ma = Math.atan2(my - cy, mx - cx);
 
-  an.g.editor.rotateSelectedPaths(cx, cy, ma);
-
 /*
+  an.g.editor.rotateSelectedPaths(cx, cy, ma);
+*/
+
   // hit handle
   var hx = handles.x[p];
   var hy = handles.y[p];
@@ -115,8 +149,9 @@ self.prototype.rotatePath = function(e) {
   // hit handle angle
   var ha = Math.atan2(hy - cy, hx - cx);
 
+//  console.log("p: " + p + " ma: " + ma + " ha: " + ha);
+
   an.g.editor.rotateSelectedPaths(cx, cy, ma - ha);
-*/
 
   an.g.editor.draw();
 

@@ -225,4 +225,40 @@ self.prototype.lineLength = function(dx, dy) {
 
 } 
 
+/**
+ * @description find new x, y after rotation
+ * @param {Number} x x coordinate before rotaion
+ * @param {Number} y y coordinate before rotaion
+ * @param {Number} cx x coordinate of the center of rotation
+ * @param {Number} cy y coordinate of the center of rotation
+ * @param {Number} r angle of rotation (radian)
+ * @returns {x: {Number}, y: {Number}} x, y coordinate after rotation
+ */
+self.prototype.rotatedCoordinate = function(x, y, cx, cy, r) {
+
+  // diff x, y
+  var dx = x - cx;
+  var dy = y - cy;
+
+  // length of dx, dy line
+  var len = this.lineLength(dx, dy);
+
+  // original angle
+  var r0 = Math.atan2(dy, dx);
+
+  // new angle
+  var r1 = r + r0;
+
+  // new x, y
+  var nx = cx + len * Math.cos(r1);
+  var ny = cy + len * Math.sin(r1);
+
+  var ret = {};
+  ret.x = nx;
+  ret.y = ny;
+
+  return ret;
+
+}
+
 }  // block

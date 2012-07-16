@@ -50,8 +50,8 @@ self.prototype.getPathOp = function() {
 self.prototype.selectPenHandler = function() {
 
   an.g.editor.deselectAll();
-  this.setPathOp( an.g.PenHandler );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.pen);
+  this.setPathOp( an.g.PenHandler );
   an.g.editor.draw();
 
 }
@@ -59,66 +59,64 @@ self.prototype.selectPenHandler = function() {
 self.prototype.selectCurveCreator = function() {
 
   an.g.editor.deselectAll();
-  this.setPathOp( an.g.CurveCreator );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.curve);
+  this.setPathOp( an.g.CurveCreator );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectTransform = function() {
 
-  this.setPathOp( an.g.CurveModifier );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.transform);
+  this.setPathOp( an.g.CurveModifier );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectResize = function() {
 
-  this.setPathOp( an.g.PathResizer );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.resize);
+  this.setPathOp( an.g.PathResizer );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectRotate = function() {
 
-  this.setPathOp( an.g.PathRotator );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.rotate);
+  this.setPathOp( an.g.PathRotator );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectConnect = function() {
 
-  // need fix.
-  this.setPathOp( an.g.PathConnector );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.connect);
+  this.setPathOp( an.g.PathConnector );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectPathSplit = function() {
 
-  // need fix.
-  this.setPathOp( an.g.PathSplitter );
   an.g.editor.setEditorMode(an.g.editor.EditorModes.pathSplit);
+  this.setPathOp( an.g.PathSplitter );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectPointRemove = function() {
 
-  this.setPathOp( an.g.PointRemover );
   an.g.editor.setEditorMode( an.g.editor.EditorModes.pointRemove );
+  this.setPathOp( an.g.PointRemover );
   an.g.editor.draw();
 
 }
 
 self.prototype.selectPointAdd = function() {
 
-  this.setPathOp( an.g.PointAdder );
   an.g.editor.setEditorMode( an.g.editor.EditorModes.pointAdd );
+  this.setPathOp( an.g.PointAdder );
   an.g.editor.draw();
 
 }

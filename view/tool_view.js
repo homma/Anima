@@ -25,13 +25,19 @@ self.prototype.createViews = function() {
 
 }
 
+self.prototype.selectView = function(v) {
+
+  an.g.ExporterView.deselect();
+  an.g.ImporterView.deselect();
+  an.g.RasterizerView.deselect();
+
+  v.select();
+
+}
+
 self.prototype.initToolView = function() {
 
   this.createViews();
-
-  var exporterView = an.g.ExporterView;
-  var importerView = an.g.ImporterView;
-  var rasterizerView = an.g.RasterizerView;
 
   var acts = an.g.GlobalAction;
 
@@ -62,10 +68,16 @@ self.prototype.initToolView = function() {
   an.u.onClick( "redoButton", acts.redo );
   an.u.onClick( "saveButton", acts.save );
   an.u.onClick( "restoreButton", acts.restore );
-  an.u.onClick( "exportButton", function() { select(exporterView); } );
-  an.u.onClick( "importButton", function() { select(importerView); } );
+
+  // Views
+  var tv = this;
+  an.u.onClick( "exportButton",
+                function() { tv.selectView(an.g.ExporterView); } );
+  an.u.onClick( "importButton",
+                function() { tv.selectView(an.g.ImporterView); } );
   an.u.onClick( "rasterizeButton",
-                function() { select(rasterizerView); } );
+                function() { tv.selectView(an.g.RasterizerView); } );
+
   // an.u.onClick( "runButton", 
   // an.u.onClick( "configButton", 
 

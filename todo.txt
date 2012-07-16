@@ -14,8 +14,6 @@ o separate tools into groups
 
 o implement Curve#outLine method
 
-o implement rotation
-
 o implement path actions like smoothen, merge pathes
 
 o implement rectangle, oval, circle, shape
@@ -32,7 +30,8 @@ o implement player
 
 # Done
 
-o implement subdivide selected paths
-o remove selector
+o implement rotation
 o add pen mode to editor
+o remove selector
+o implement subdivide selected paths
 

@@ -90,20 +90,22 @@ self.prototype.resizePath = function(e) {
   var handles = an.g.editor.getResizeHandles();
   var p = this.position;
 
-  var diffX = 0;
+  // diff x
+  var dx = 0;
   if( (p == an.k.NW) || (p == an.k.SW) || (p == an.k.W) ) {
-    diffX = position.x - handles.x[p];
+    dx = position.x - handles.x[p];
   }
   if(handles.x[an.k.NE] == handles.x[an.k.NW]) {
-    diffX = 0;
+    dx = 0;
   }
 
-  var diffY = 0;
+  // diff y
+  var dy = 0;
   if( (p == an.k.NW) || (p == an.k.NE) || (p == an.k.N) ) {
-    diffY = position.y - handles.y[p];
+    dy = position.y - handles.y[p];
   }
   if(handles.y[an.k.SW] == handles.y[an.k.NW]) {
-    diffY = 0;
+    dy = 0;
   }
 
   var w;
@@ -144,11 +146,11 @@ self.prototype.resizePath = function(e) {
   var fromY = handles.y[an.k.NW];
 
   an.g.editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
-  an.g.editor.translateSelectedPaths(diffX, diffY);
+  an.g.editor.translateSelectedPaths(dx, dy);
 
   an.g.editor.draw();
 
-  // console.log(diffX, diffY);
+  // console.log(dx, dy);
 };
 
 } // block

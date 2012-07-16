@@ -91,11 +91,11 @@ self.prototype.rotateSelectedPaths = function(x, y, r) {
   // guard
   if(this.editorMode != this.EditorModes.rotate) { return null; }
 
-  this.editorMode.setRotateAngle(r);
+  var angle = this.editorMode.getRotateAngle();
+  this.editorMode.setRotateAngle(r + angle);
 
   for (var i = 0; i < this.selectedPathList.length; i++) {
-    // To Be Implemented
-    // this.selectedPathList[i].rotate(x, y, r);
+    this.selectedPathList[i].rotate(x, y, r);
   }
 }
 

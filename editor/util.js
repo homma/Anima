@@ -28,7 +28,9 @@ self.prototype.getRotateHandles = function() {
 self.prototype.resetRotation = function() {
 
   // guard
-  if(this.editorMode != this.EditorModes.rotate) { return null; }
+  if(this.editorMode != this.EditorModes.rotate) {
+    return;
+  }
 
   this.editorMode.resetRotation();
 

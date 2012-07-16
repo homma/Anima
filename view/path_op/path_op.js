@@ -17,13 +17,13 @@ self.prototype.register = function() {
 
   var op = an.g.PathOp;
 
-  an.u.onClick( "transform", op.selectTransform );
-  an.u.onClick( "resize", op.selectResize );
-  an.u.onClick( "rotate", op.selectRotate );
-  an.u.onClick( "connect", op.selectConnect );
-  an.u.onClick( "path_split", op.selectPathSplit );
-  an.u.onClick( "remove_pt", op.selectPointRemove );
-  an.u.onClick( "add_pt", op.selectPointAdd );
+  an.u.onClick( "transform", function() { op.selectTransform(); } );
+  an.u.onClick( "resize", function() { op.selectResize(); } );
+  an.u.onClick( "rotate", function() { op.selectRotate(); } );
+  an.u.onClick( "connect", function() { op.selectConnect(); } );
+  an.u.onClick( "path_split", function() { op.selectPathSplit(); } );
+  an.u.onClick( "remove_pt", function() { op.selectPointRemove(); } );
+  an.u.onClick( "add_pt", function() { op.selectPointAdd(); } );
 
 }
 
