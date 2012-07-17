@@ -65,13 +65,24 @@ self.prototype.moveTo = function(x, y) {
 
 self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
-  // console.log(fromX, fromY, scaleX, scaleY);
-
   for(var i = 0; i < this.edges.length; i++) {
     this.edges[i].resize(fromX, fromY, scaleX, scaleY);
   }
 
 }
+
+/**
+ * @description scale selected paths
+ * not yet implemented
+ * @param {Number} x scaling factor of width
+ * @param {Number} y scaling factor of height
+ */
+self.prototype.scale = function(x, y) {
+  for(var i = 0; i < this.edges.length; i++) {
+    this.edges[i].scale(x, y);
+  }
+}
+
 
 /// resize /////////////////////////////////////////////////////////////////////
 

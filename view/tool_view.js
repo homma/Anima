@@ -49,8 +49,8 @@ self.prototype.initToolView = function() {
                 function() { an.g.PathOp.selectPenHandler(); } );
   an.u.onClick( "curveCreatorButton",
                 function() { an.g.PathOp.selectCurveCreator(); } );
-  // an.u.onClick( "shapeButton", 
-  //              function() { an.g.PathOp.select...(); } );
+  an.u.onClick( "rectCreatorButton",
+                function() { an.g.PathOp.selectRectangleCreator(); } );
   an.u.onClick( "selectorButton",
                 function() { an.g.PathOp.selectTransform(); } );
 

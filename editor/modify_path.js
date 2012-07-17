@@ -66,10 +66,22 @@ self.prototype.splitPath = function(path, curve, point) {
 
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
 
-  // console.log(fromX, fromY, scaleX, scaleY);
-
   for (var i = 0; i < this.selectedPathList.length; i++) {
     this.selectedPathList[i].resize(fromX, fromY, scaleX, scaleY);
+  }
+
+}
+
+/**
+ * @description scale selected paths
+ * not yet implemented
+ * @param {Number} x scaling factor of width
+ * @param {Number} y scaling factor of height
+ */
+self.prototype.scaleSelectedPaths = function(x, y) {
+
+  for (var i = 0; i < this.selectedPathList.length; i++) {
+    this.selectedPathList[i].scale(x, y);
   }
 
 }

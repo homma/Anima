@@ -33,7 +33,7 @@ self.prototype.select = function() {
 
 self.prototype.deselect = function() {
 
-  this.disableAllHandlers();
+  this.deselectSelf();
 
   this.curve = null;
 

@@ -22,12 +22,5 @@ self.prototype.createPolyLine = function(poly) {
 
 }
 
-self.prototype.addLine = function(p0x, p0y, p1x, p1y) {
-
-  var edge = new an.Curve(p0x, p0y, p0x, p0y, p1x, p1y, p1x, p1y);
-  this.addEdge(edge);
-
-}
-
 }  // block
 

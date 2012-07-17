@@ -21,6 +21,7 @@ an.Editor = function() {
   this.EditorModes = {}
   this.EditorModes.pen = new an.PenMode(this);
   this.EditorModes.curve = new an.CurveCreatorMode(this);
+  this.EditorModes.rectangle = new an.RectangleCreatorMode(this);
   this.EditorModes.transform = new an.TransformMode(this);
   this.EditorModes.resize = new an.ResizeMode(this);
   this.EditorModes.rotate = new an.RotateMode(this);

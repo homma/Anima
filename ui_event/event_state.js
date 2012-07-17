@@ -1,4 +1,5 @@
 /*
+ * @fileOverview base object of user interface event handlers
  * @author Daisuke Homma
  */
 

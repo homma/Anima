@@ -9,6 +9,7 @@ var self = an.Editor;
 /// modify current path ////////////////////////////////////////////////////////
 
 self.prototype.addPath = function(p) {
+
   this.pathList.push(p);
 
   an.g.undoManager.registerUndo(this, this.removePath, [p]);
@@ -39,6 +40,25 @@ self.prototype.removePath = function(p) {
       an.g.undoManager.registerUndo(this, this.addPath, [p]);
     }
   }
+
+}
+
+///////////////////////////////////////
+// shape
+
+/**
+ * @description create a rectangle
+ * @param {Number} x x coordinate of left top corner of new rectangle
+ * @param {Number} y y coordinate of left top corner of new rectangle
+ * @param {Number} w width of new rectangle
+ * @param {Number} h height of new rectangle
+ */
+self.prototype.createRectangle = function(x, y, h, w) {
+
+  var p = new an.Path();
+  p.createRectangle(x, y, h, w);
+  this.addPath(p);
+  this.selectPath(p);
 
 }
 
