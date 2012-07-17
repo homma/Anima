@@ -18,7 +18,7 @@ o implement Curve#outLine method
 
 o implement path actions like smoothen, merge pathes
 
-o implement rectangle, oval, circle, shape
+o implement oval, circle, shape
 
 o implement commit / undo / redo
 
@@ -32,6 +32,7 @@ o implement player
 
 # Done
 
+o implement rectangle creator
 o implement rotation
 o add pen mode to editor
 o remove selector

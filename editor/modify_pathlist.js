@@ -53,12 +53,9 @@ self.prototype.removePath = function(p) {
  * @param {Number} w width of new rectangle
  * @param {Number} h height of new rectangle
  */
-self.prototype.createRectangle = function(x, y, h, w) {
+self.prototype.createShape = function(x, y, h, w) {
 
-  var p = new an.Path();
-  p.createRectangle(x, y, h, w);
-  this.addPath(p);
-  this.selectPath(p);
+  this.editorMode.createShape(x, y, w, h);
 
 }
 
