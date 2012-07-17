@@ -20,16 +20,17 @@ self.prototype.initPath = function() {
 
   this.closePath = false;
 
-  this.lineWidth = 0.5;
-  this.lineCap = "butt";  // butt / round / square
-  this.lineJoin = "miter";  // bevel / round / miter
-  this.miterLimit = 10.0;  // > 0
+  this.lineWidth = an.d.lineWidth;
+  this.lineCap = an.d.lineCap;
+  this.lineJoin = an.d.lineJoin;
+  this.miterLimit = an.d.miterLimit;
 
   this.stroke = true;
   this.fill = false;
 
-  this.strokeColor = new an.Color(0, 100, 0, 1); // H, S, L, A => black
-  this.fillColor = new an.Color(0, 100, 0, 1);   // H, S, L, A => black
+  this.strokeColor = new an.Color(an.d.strokeH, an.d.strokeS,
+                                  an.d.strokeL, an.d.strokeA);
+  this.fillColor = new an.Color(an.d.fillH, an.d.fillS, an.d.fillL, an.d.fillA);
 
   this.strokeStyle = null;            // color or gradient
   this.fillStyle = null;              // color or gradient

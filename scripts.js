@@ -2,6 +2,7 @@ new function() { // block
 
 var scripts = [
 "./global/const.js",
+"./global/default.js",
 "./global/canvas.js",
 "./model/undo/undo_manager.js",
 "./util/utils.js",

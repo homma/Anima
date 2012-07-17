@@ -47,9 +47,9 @@ self.prototype.drawAnchorPointZero = function(ctx) {
 
   ctx.save();
 
-  var radius = 4;
-  ctx.lineWidth   = 0.8;
-  ctx.fillStyle = 'rgb(255,102,255)';
+  var radius = an.d.p0.radius;
+  ctx.lineWidth = an.d.p0.lineWidth;
+  ctx.fillStyle = an.d.p0.fill;
 
   ctx.beginPath();
   ctx.arc(this.p0x, this.p0y, radius, 0, 2 * Math.PI, false);
@@ -63,10 +63,10 @@ self.prototype.drawAnchorPointOne = function(ctx) {
 
   ctx.save();
 
-  var radius = 4;
-  ctx.lineWidth   = 0.8;
-  ctx.strokeStyle = 'rgb(255,102,255)';
-  ctx.fillStyle = 'rgb(255,255,255)';
+  var radius = an.d.p1.radius;
+  ctx.lineWidth = an.d.p1.lineWidth;
+  ctx.fillStyle = an.d.p1.fill;
+  ctx.strokeStyle = an.d.p1.stroke;
 
   ctx.beginPath();
   ctx.arc(this.p1x, this.p1y, radius, 0, 2 * Math.PI, false);
@@ -80,14 +80,12 @@ self.prototype.drawAnchorPointOne = function(ctx) {
 
 self.prototype.drawFirstHandle = function(ctx) {
 
-  var radius = 4;
-
   ctx.save();
 
-  ctx.lineWidth   = 0.8;
-
-  ctx.strokeStyle = 'rgb(255,102,255)';
-  ctx.fillStyle = 'rgb(255,255,255)';
+  var radius = an.d.c0.radius;
+  ctx.lineWidth = an.d.c0.lineWidth;
+  ctx.strokeStyle = an.d.c0.stroke;
+  ctx.fillStyle = an.d.c0.fill
 
   ctx.beginPath();
   ctx.moveTo(this.p0x, this.p0y);
@@ -104,14 +102,13 @@ self.prototype.drawFirstHandle = function(ctx) {
 }
 
 self.prototype.drawSecondHandle = function(ctx) {
-  var radius = 4;
 
   ctx.save();
 
-  ctx.lineWidth   = 0.8;
-
-  ctx.strokeStyle = 'rgb(255,102,255)';
-  ctx.fillStyle = 'rgb(255,255,255)';
+  var radius = an.d.c1.radius;
+  ctx.lineWidth = an.d.c1.lineWidth;
+  ctx.strokeStyle = an.d.c1.stroke;
+  ctx.fillStyle = an.d.c1.fill
 
   ctx.beginPath();
   ctx.moveTo(this.p1x, this.p1y);

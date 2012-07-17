@@ -11,11 +11,6 @@ an.ResizeMode = function(ed) {
 
   this.name = "ResizeMode";
 
-  this.ResizeGuideLineStyle = "black";
-  this.ResizeGuideFillStyle = "lightgray";
-  this.ResizeGuideLineWidth = 0.1;
-  this.ResizeGuideCircleR   = 4;
-
 }
 var self = an.ResizeMode;
 
@@ -49,16 +44,16 @@ self.prototype.drawHandle = function(ctx) {
   // surrounding square
   var rect = this.editor.getBoundaryOfSelectedPaths();
 
-  ctx.lineWidth = this.ResizeGuideLineWidth;
-  ctx.strokeStyle = this.ResizeGuideLineStyle;
+  ctx.lineWidth = an.d.ResizeGuideLineWidth;
+  ctx.strokeStyle = an.d.ResizeGuideLineStyle;
 
   ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
 
   // handle
   var handles = this.getResizeHandles();
 
-  var r = this.ResizeGuideCircleR;
-  ctx.fillStyle = this.ResizeGuideFillStyle;
+  var r = an.d.ResizeGuideCircleR;
+  ctx.fillStyle = an.d.ResizeGuideFillStyle;
 
   // Resize Handle starts from 1; see const.js
   for(var i = 1; i < handles.x.length; i++) {
@@ -145,7 +140,7 @@ self.prototype.hitTestResizeGuide = function(x, y) {
 // should be replaced with isInsidePath() method
 self.prototype.hitHandle = function(x0, y0, x1, y1) {
 
-  var r = this.ResizeGuideCircleR;
+  var r = an.d.ResizeGuideCircleR;
 
   var left = x0 - r;
   var right = x0 + r;
