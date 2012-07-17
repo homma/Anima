@@ -242,14 +242,18 @@ self.prototype.removePath = function(p) {
 // shape
 
 /**
- * @description create a rectangle
- * @param {Number} x x coordinate of left top corner of new rectangle
- * @param {Number} y y coordinate of left top corner of new rectangle
- * @param {Number} w width of new rectangle
- * @param {Number} h height of new rectangle
+ * @description create a shape
+ * @param {Number} x x coordinate of left top corner of new shape
+ * @param {Number} y y coordinate of left top corner of new shape
+ * @param {Number} w width of new shape
+ * @param {Number} h height of new shape
  */
-self.prototype.createRectangle = function(x, y, w, h) {
-  editor.createRectangle(x, y, w, h);
+self.prototype.createShape = function(x, y, w, h) {
+  editor.createShape(x, y, w, h);
+}
+
+self.prototype.drawShape = function(x, y, w, h) {
+  editor.drawShape(x, y, w, h);
 }
 
 ///////////////////////////////////////

@@ -46,5 +46,14 @@ self.prototype.drawNewPath = function(ctx) {
 
 }
 
+self.prototype.drawShape = function(x, y, w, h) {
+
+  this.draw();
+
+  var ctx = this.canvas.canvas.getContext('2d');
+  this.editorMode.drawShape(ctx, x, y, w, h);
+
+}
+
 } // block
 

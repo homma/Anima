@@ -17,9 +17,6 @@ self.prototype.createRectangle = function(x, y, w, h) {
 
   // console.log(" x: " + x + " y: " + y + " w: " + w + " h: " + h);
 
-  if( w < 1 ) { w = 1; }
-  if( h < 1 ) { h = 1; }
-
   this.addLine(x, y, x + w, y);
   this.addLine(x + w, y, x + w, y + h);
   this.addLine(x + w, y + h, x, y + h);
