@@ -5,6 +5,7 @@
 an = {};   // Anima
 an.g = {}; // global
 an.k = {}; // const
+an.d = {}; // default
 an.u = {}; // util
 
 function animaInit() {

@@ -29,9 +29,4 @@ an.Curve = function(n0, n1, n2, n3, n4, n5, n6, n7) {
 
 var self = an.Curve;
 
-self.prototype.AnchorPointZero  = 1;
-self.prototype.ControlPointZero = 2;
-self.prototype.AnchorPointOne   = 3;
-self.prototype.ControlPointOne  = 4;
-
 }

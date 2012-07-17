@@ -11,13 +11,6 @@ an.RotateMode = function(ed) {
 
   this.name = "RotateMode";
 
-  this.RotateGuideLineStyle  = "black";
-  this.RotateGuideFillStyle  = "lightgray";
-  this.RotateGuideLineWidth  = 0.1;
-  this.RotateGuideLineLength = 80;
-  this.RotateGuideCircleR    = 4;
-  this.RotateGuideAngle      = 0;
-
   this.rect = null;  // surrounding rect
 
 }
@@ -82,13 +75,13 @@ self.prototype.drawHandle = function(ctx) {
 
   ctx.save();
 
-  ctx.lineWidth = this.RotateGuideLineWidth;
-  ctx.strokeStyle = this.RotateGuideLineStyle;
+  ctx.lineWidth = an.d.RotateGuideLineWidth;
+  ctx.strokeStyle = an.d.RotateGuideLineStyle;
 
-  var r = this.RotateGuideCircleR;
-  ctx.fillStyle = this.RotateGuideFillStyle;
+  var r = an.d.RotateGuideCircleR;
+  ctx.fillStyle = an.d.RotateGuideFillStyle;
 
-  var len     = this.RotateGuideLineLength;
+  var len     = an.d.RotateGuideLineLength;
 
   var positions = this.getRotateHandles();
 
@@ -137,7 +130,7 @@ self.prototype.getRotateHandles = function() {
 
   var ret = {};
 
-  var len = this.RotateGuideLineLength;
+  var len = an.d.RotateGuideLineLength;
   var r = this.RotateGuideAngle;
 
   var x = new Array();
@@ -217,7 +210,7 @@ self.prototype.hitTestRotateHandle = function(x, y) {
 // should be replaced with isInsidePath() method
 self.prototype.hitHandle = function(x0, y0, x1, y1) {
 
-  var r = this.RotateGuideCircleR;
+  var r = an.d.RotateGuideCircleR;
 
   var left = x0 - r;
   var right = x0 + r;
