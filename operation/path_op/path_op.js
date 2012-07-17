@@ -6,17 +6,7 @@ new function() { // block
 
 an.PathOp = function() {
 
-  new an.PenHandler();
-  new an.CurveCreator();
-
-  new an.PathMover();
-  new an.PathResizer();
-  new an.PathRotator();
-  new an.PointRemover();
-  new an.PointAdder();
-  new an.CurveModifier();
-  new an.PathConnector();
-  new an.PathSplitter();
+  new an.UIEvent();
 
   this.currentPathOp = null;
 
@@ -61,6 +51,15 @@ self.prototype.selectCurveCreator = function() {
   an.g.editor.deselectAll();
   an.g.editor.setEditorMode(an.g.editor.EditorModes.curve);
   this.setPathOp( an.g.CurveCreator );
+  an.g.editor.draw();
+
+}
+
+self.prototype.selectRectangleCreator = function() {
+
+  an.g.editor.deselectAll();
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.rectangle);
+  this.setPathOp( an.g.RectangleCreator );
   an.g.editor.draw();
 
 }

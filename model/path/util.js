@@ -31,5 +31,15 @@ self.prototype.getBoundary = function() {
 
 }
 
+self.prototype.addLine = function(p0x, p0y, p1x, p1y) {
+
+//  console.log(" p0x: " + p0x + " p0y: " + p0y);
+//  console.log(" p1x: " + p1x + " p1y: " + p1y);
+
+  var edge = new an.Curve(p0x, p0y, p0x, p0y, p1x, p1y, p1x, p1y);
+  this.addEdge(edge);
+
+}
+
 } // block
 

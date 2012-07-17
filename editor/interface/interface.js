@@ -123,13 +123,43 @@ self.prototype.setLineWidth = function(w) {
 }
 
 ///////////////////////////////////////
+// transform
 
 /**
  * @description translate selected paths
+ * @param {Number} x x coordinate to move
+ * @param {Number} y y coordinate to move
  */
 self.prototype.translateSelectedPaths = function(x, y) {
   editor.translateSelectedPaths(x, y);
 }
+
+/**
+ * @description resize selected paths
+ */
+self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
+  editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
+}
+
+/**
+ * @description scale selected paths
+ * not yet implemented
+ * @param {Number} x scaling factor of width
+ * @param {Number} y scaling factor of height
+ */
+self.prototype.scaleSelectedPaths = function(x, y) {
+  editor.scaleSelectedPaths(x, y);
+}
+
+/**
+ * @description rotate selected paths
+ */
+self.prototype.rotateSelectedPaths = function(x, y, r) {
+  editor.rotateSelectedPaths(x, y, r);
+}
+
+///////////////////////////////////////
+// modify
 
 /**
  * @description connect paths
@@ -164,19 +194,8 @@ self.prototype.divideCurve = function(curve) {
   editor.divideCurve(curve);
 }
 
-/**
- * @description resize selected paths
- */
-self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
-  editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
-}
-
-/**
- * @description rotate selected paths
- */
-self.prototype.rotateSelectedPaths = function(x, y, r) {
-  editor.rotateSelectedPaths(x, y, r);
-}
+///////////////////////////////////////
+// commit for undo / redo
 
 self.prototype.commitChanges = function() {
   // editor.commitChanges();
@@ -217,6 +236,20 @@ self.prototype.setNewPath = function(p) {
 
 self.prototype.removePath = function(p) {
   editor.removePath(p);
+}
+
+///////////////////////////////////////
+// shape
+
+/**
+ * @description create a rectangle
+ * @param {Number} x x coordinate of left top corner of new rectangle
+ * @param {Number} y y coordinate of left top corner of new rectangle
+ * @param {Number} w width of new rectangle
+ * @param {Number} h height of new rectangle
+ */
+self.prototype.createRectangle = function(x, y, w, h) {
+  editor.createRectangle(x, y, w, h);
 }
 
 ///////////////////////////////////////

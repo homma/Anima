@@ -20,7 +20,7 @@ o implement path actions like smoothen, merge pathes
 
 o implement rectangle, oval, circle, shape
 
-o implement undo / redo
+o implement commit / undo / redo
 
 o implement configuration tool
 

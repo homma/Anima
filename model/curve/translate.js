@@ -45,6 +45,13 @@ self.prototype.stickToPrev = function() {
 
 /// resize /////////////////////////////////////////////////////////////////////
 
+/**
+ * @description resize a curve
+ * @param {Number} fromX
+ * @param {Number} fromY
+ * @param {Number} scaleX
+ * @param {Number} scaleY
+ */
 self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
   // console.log(fromX, fromY, scaleX, scaleY);
@@ -70,8 +77,27 @@ self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
   this.c1y = fromY + (this.c1y - fromY) * sy
   this.p1y = fromY + (this.p1y - fromY) * sy
 
-  // console.log("AF", this.p0x, this.p0y, this.c0x, this.c0y,
-  //             this.c1x, this.c1y, this.p1x, this.p1y);
+}
+
+/**
+ * @description scale selected paths
+ * not yet implemented
+ * @param {Number} x scaling factor of width
+ * @param {Number} y scaling factor of height
+ */
+self.prototype.scale = function(x, y) {
+
+  // p0 is not to be changed
+
+  // console.log("scale: x: " + x + " y: " + y);
+
+  this.p1x = this.p0x + (this.p1x - this.p0x) * x;
+  this.p1y = this.p0y + (this.p1y - this.p0y) * y;
+  this.c0x = this.p0x + (this.c0x - this.p0x) * x;
+  this.c0y = this.p0y + (this.c0y - this.p0y) * y;
+  this.c1x = this.p0x + (this.c1x - this.p0x) * x;
+  this.c1y = this.p0y + (this.c1y - this.p0y) * y;
+
 }
 
 /// rotate /////////////////////////////////////////////////////////////////////
