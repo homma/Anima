@@ -27,7 +27,46 @@ self.prototype.createRectangle = function(x, y, w, h) {
 
 }
 
-self.prototype.createCircle = function(x, y, r) {
+self.prototype.createOval = function(x, y, w, h) {
+
+  var r;
+
+  var aw = Math.abs(w);
+  var ah = Math.abs(h);
+
+  if( aw < ah ) {
+
+    r = h;
+    this.createCircleImpl(x, y, r);
+    this.resize(x, y, aw / ah, 1);
+
+  } else {
+
+    r = w;
+    this.createCircleImpl(x, y, r);
+    this.resize(x, y, 1, ah / aw);
+
+  }
+
+
+}
+
+self.prototype.createCircle = function(x, y, w, h) {
+
+  var r;
+
+  if( w < h ) {
+    r = w;
+  } else {
+    r = h;
+  }
+
+  this.createCircleImpl(x, y, r);
+
+}
+
+self.prototype.createCircleImpl = function(x, y, r) {
+
 
   if(this.edges.length != 0) { return null; }
 
@@ -37,23 +76,23 @@ self.prototype.createCircle = function(x, y, r) {
 
   this.addArc(x + r, y,
               x + r, y + len,
-              x, y + r,
-              x + len, y + r);
+              x + len, y + r,
+              x, y + r);
 
   this.addArc(x, y + r,
               x - len, y + r,
-              x - r, y,
-              x - r, y + len);
+              x - r, y + len,
+              x - r, y);
 
   this.addArc(x - r, y,
               x - r, y - len,
-              x, y - r,
-              x - len, y - r);
+              x - len, y - r,
+              x, y - r);
 
   this.addArc(x, y - r,
               x + len, y - r,
-              x + r, y,
-              x + r, y - len);
+              x + r, y - len,
+              x + r, y);
 
   this.finished();
 
