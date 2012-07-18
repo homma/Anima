@@ -46,11 +46,11 @@ self.prototype.stickToPrev = function() {
 /// resize /////////////////////////////////////////////////////////////////////
 
 /**
- * @description resize a curve
- * @param {Number} fromX
- * @param {Number} fromY
- * @param {Number} scaleX
- * @param {Number} scaleY
+ * @description resize this curve
+ * @param {Number} fromX x coordinate of the origin of scale
+ * @param {Number} fromY y coordinate of the origin of scale
+ * @param {Number} scaleX horisontal scale factor
+ * @param {Number} scaleY vertical scale factor
  */
 self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 

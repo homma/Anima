@@ -24,11 +24,14 @@ self.prototype.translateSelectedPaths = function(x, y) {
 
 }
 
-self.prototype.commitTranslation = function() {
-  this.editorMode.commitTranslation();
-}
-
 /// connect ////////////////////////////////////////////////////////////////////
+
+/**
+ * @description check possibility of path connection and connect paths
+ */
+self.prototype.connectPathIfPossible = function() {
+  this.editorMode.connectPathIfPossible();
+}
 
 /**
  * @description connect two path
@@ -64,6 +67,13 @@ self.prototype.splitPath = function(path, curve, point) {
 
 /// resize /////////////////////////////////////////////////////////////////////
 
+/**
+ * @description resize selected paths
+ * @param {Number} fromX x coordinate of the origin of scale
+ * @param {Number} fromY y coordinate of the origin of scale
+ * @param {Number} scaleX horisontal scale factor
+ * @param {Number} scaleY vertical scale factor
+ */
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
 
   for (var i = 0; i < this.selectedPathList.length; i++) {

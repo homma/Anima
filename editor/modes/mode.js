@@ -17,6 +17,12 @@ self.prototype.setEditor = function(ed) {
 
 }
 
+self.prototype.commit = function() {
+
+  // implemented in sub-class
+
+}
+
 self.prototype.drawSelectedPath = function(ctx) {
 
   this.drawSelectedPathImpl(ctx);
