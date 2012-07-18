@@ -241,6 +241,10 @@ self.prototype.removePath = function(p) {
 ///////////////////////////////////////
 // shape
 
+self.prototype.setShape = function(s) {
+  editor.setShape(s);
+}
+
 /**
  * @description create a shape
  * @param {Number} x x coordinate of left top corner of new shape

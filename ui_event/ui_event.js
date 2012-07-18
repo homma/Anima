@@ -19,7 +19,7 @@ self.prototype.createObjects = function() {
   // Data Creator
   new an.PenHandler();
   new an.CurveCreator();
-  new an.RectangleCreator();
+  new an.ShapeCreator();
 
   // Data Modifier
   new an.PathMover();

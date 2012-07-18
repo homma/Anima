@@ -37,5 +37,15 @@ an.k.R = 2;    // right
 an.k.T = 3;    // top
 an.k.B = 4;    // bottom
 
+// shapes
+an.k.Rectangle = 1;
+an.k.Oval = 2;
+an.k.Circle = 3;
+an.k.Triangle = 4;
+an.k.UpArrow = 5;
+an.k.DownArrow = 6;
+an.k.LeftArrow = 7;
+an.k.Rightrrow = 8;
+
 } // block
 

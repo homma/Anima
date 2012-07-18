@@ -55,11 +55,12 @@ self.prototype.selectCurveCreator = function() {
 
 }
 
-self.prototype.selectRectangleCreator = function() {
+self.prototype.selectShapeCreator = function(shape) {
 
   an.g.editor.deselectAll();
-  an.g.editor.setEditorMode(an.g.editor.EditorModes.rectangle);
-  this.setPathOp( an.g.RectangleCreator );
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.shape);
+  an.g.editor.setShape(shape);
+  this.setPathOp( an.g.ShapeCreator );
   an.g.editor.draw();
 
 }
