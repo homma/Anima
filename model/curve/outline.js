@@ -42,7 +42,7 @@ self.prototype.outLinePath = function(w) {
 self.prototype.dotOutLine = function(w) {
 
   var path = new an.Path();
-  path.createCircle(this.p0x, this.p0y, w);
+  path.createCircle(this.p0x, this.p0y, w, w);
 
   return path;
 

@@ -31,14 +31,13 @@ self.prototype.drawShape = function(ctx, x, y, w, h) {
   switch(this.shape) {
 
     case an.k.Rectangle:
-      //ctx.lineWidth = 0.8;
-      //ctx.strokeStyle = 'lightGray';
-      //ctx.strokeRect(x, y, w, h);
       p.createRectangle(x, y, w, h);
       p.draw(ctx);
       break;
 
     case an.k.Oval:
+      p.createOval(x, y, w, h);
+      p.draw(ctx);
       break;
 
     case an.k.Circle:
@@ -62,6 +61,7 @@ self.prototype.createShape = function(x, y, w, h) {
       break;
 
     case an.k.Oval:
+      p.createOval(x, y, w, h);
       break;
 
     case an.k.Circle:
