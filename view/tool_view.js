@@ -53,6 +53,8 @@ self.prototype.initToolView = function() {
                 function() { an.g.PathOp.selectShapeCreator(an.k.Rectangle); });
   an.u.onClick( "ovalCreatorButton",
                 function() { an.g.PathOp.selectShapeCreator(an.k.Oval); });
+  an.u.onClick( "circleCreatorButton",
+                function() { an.g.PathOp.selectShapeCreator(an.k.Circle); });
   an.u.onClick( "selectorButton",
                 function() { an.g.PathOp.selectTransform(); } );
 
