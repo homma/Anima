@@ -41,6 +41,8 @@ self.prototype.drawShape = function(ctx, x, y, w, h) {
       break;
 
     case an.k.Circle:
+      p.createCircle(x, y, w, h);
+      p.draw(ctx);
       break;
 
     default:
@@ -65,6 +67,7 @@ self.prototype.createShape = function(x, y, w, h) {
       break;
 
     case an.k.Circle:
+      p.createCircle(x, y, w, h);
       break;
 
     default:

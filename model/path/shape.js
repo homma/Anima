@@ -55,10 +55,13 @@ self.prototype.createCircle = function(x, y, w, h) {
 
   var r;
 
-  if( w < h ) {
-    r = w;
+  var aw = Math.abs(w);
+  var ah = Math.abs(h);
+
+  if( aw < ah ) {
+    r = ah;
   } else {
-    r = h;
+    r = aw;
   }
 
   this.createCircleImpl(x, y, r);
