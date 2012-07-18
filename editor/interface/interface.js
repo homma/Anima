@@ -136,6 +136,10 @@ self.prototype.translateSelectedPaths = function(x, y) {
 
 /**
  * @description resize selected paths
+ * @param {Number} fromX x coordinate of the origin of scale
+ * @param {Number} fromY y coordinate of the origin of scale
+ * @param {Number} scaleX horisontal scale factor
+ * @param {Number} scaleY vertical scale factor
  */
 self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
   editor.resizeSelectedPaths(fromX, fromY, scaleX, scaleY);
@@ -160,6 +164,13 @@ self.prototype.rotateSelectedPaths = function(x, y, r) {
 
 ///////////////////////////////////////
 // modify
+
+/**
+ * @description check possibility of path connection and connect paths
+ */
+self.prototype.connectPathIfPossible = function() {
+  editor.connectPathIfPossible();
+}
 
 /**
  * @description connect paths
@@ -197,26 +208,13 @@ self.prototype.divideCurve = function(curve) {
 ///////////////////////////////////////
 // commit for undo / redo
 
-self.prototype.commitChanges = function() {
-  // editor.commitChanges();
-}
+/**
+ * @description commit the past changes. makes a undo point.
+ */
+self.prototype.commit = function() {
 
-// can be replaced with commitChanges() ?
-// fix position
-self.prototype.commitTranslation = function() {
-  editor.commitTranslation();
-}
+  editor.commit();
 
-// can be replaced with commitChanges() ?
-// fix size
-self.prototype.commitSize = function() {
-//  editor.commitSize();
-}
-
-// can be replaced with commitChanges() ?
-// fix angle
-self.prototype.commitRotation = function() {
-//  editor.commitRotation();
 }
 
 ///////////////////////////////////////

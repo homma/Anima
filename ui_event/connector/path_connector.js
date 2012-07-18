@@ -103,8 +103,10 @@ self.prototype.onMouseUp = function(e) {
   }
 
   if(this.moved) {
-    an.g.editor.commitTranslation();
+
+    an.g.editor.connectPathIfPossible();
     an.g.editor.draw();
+
   }
 
   this.prevX = null;

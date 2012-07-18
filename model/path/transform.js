@@ -63,6 +63,13 @@ self.prototype.moveTo = function(x, y) {
 
 /// resize /////////////////////////////////////////////////////////////////////
 
+/**
+ * @description resize selected paths
+ * @param {Number} fromX x coordinate of the origin of scale
+ * @param {Number} fromY y coordinate of the origin of scale
+ * @param {Number} scaleX horisontal scale factor
+ * @param {Number} scaleY vertical scale factor
+ */
 self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
   for(var i = 0; i < this.edges.length; i++) {
@@ -84,7 +91,7 @@ self.prototype.scale = function(x, y) {
 }
 
 
-/// resize /////////////////////////////////////////////////////////////////////
+/// rotate /////////////////////////////////////////////////////////////////////
 
 /**
  * @description rotate path

@@ -53,12 +53,6 @@ self.prototype.drawUnselectedPath = function(ctx) {
 
 }
 
-self.prototype.commitTranslation = function() {
-
-  this.connectPathIfPossible();
-
-}
-
 self.prototype.connectPathIfPossible = function() {
 
   var path = this.editor.selectedPathList[0];
