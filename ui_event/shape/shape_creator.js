@@ -1,13 +1,13 @@
 /**
- * @fileOverview rectangle creator
+ * @fileOverview shape creator
  * @author Daisuke Homma
  */
 
 new function() {  // block
 
-an.RectangleCreator = function() {
+an.ShapeCreator = function() {
 
-  an.g.RectangleCreator = this;
+  an.g.ShapeCreator = this;
 
   this.on;
   this.x;
@@ -19,7 +19,7 @@ an.RectangleCreator = function() {
 
 }
 
-var self = an.RectangleCreator;
+var self = an.ShapeCreator;
 
 // inherit from an.EventState
 self.prototype = new an.EventState();
@@ -38,7 +38,7 @@ self.prototype.initialize = function() {
 
 self.prototype.select = function() {
 
-  an.g.editor.setEditorMode(an.g.editor.EditorModes.rectangle);
+  an.g.editor.setEditorMode(an.g.editor.EditorModes.shape);
   this.selectSelf();
 
 }

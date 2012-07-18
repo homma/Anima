@@ -8,12 +8,6 @@ var self = an.Editor;
 
 /// select / deselect path with cache management ///////////////////////////////
 
-self.prototype.setEditorMode = function(mode) {
-
-  this.editorMode = mode;
-
-}
-
 self.prototype.getSelectedPaths = function() {
 
   return this.selectedPathList;

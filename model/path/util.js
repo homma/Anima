@@ -41,5 +41,14 @@ self.prototype.addLine = function(p0x, p0y, p1x, p1y) {
 
 }
 
+// p => anchor point
+// c => control point
+self.prototype.addArc = function(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y) {
+
+  var edge = new an.Curve(p0x, p0y, c0x, c0y, p1x, p1y, c1x, c1y);
+  this.addEdge(edge);
+
+}
+
 } // block
 
