@@ -64,7 +64,7 @@ self.prototype.initToolView = function() {
                   acts.selectAll(); } );
 
   an.u.onClick( "clearButton", acts.clear );
-  an.u.onClick( "deleteButton", acts.delete );
+  an.u.onClick( "deleteButton", acts.deleteSelected );
   an.u.onClick( "cutButton", acts.cut );
   an.u.onClick( "copyButton", acts.copy );
   an.u.onClick( "pasteButton", acts.paste );

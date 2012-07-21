@@ -8,18 +8,33 @@ var self = an.Editor;
 
 /// change time frame //////////////////////////////////////////////////////////
 
-self.prototype.setTimeFrame = function(frame) {
+self.prototype.setTimeFrame = function(frameToSet) {
+
+  this.frame = frameToSet;
 
   this.interface.deselectAll();
 
   this.newPath = null;
-  this.pathList = frame.getPathList();
+  this.pathList = frameToSet.getPathList();
 
 }
 
-self.prototype.setTrack = function(track) {
+self.prototype.getTimeFrame = function() {
 
-  this.interface.setTimeFrame( track.findOrCreateFrame(0) );
+  return this.frame;
+
+}
+
+self.prototype.setTrack = function(trackToSet) {
+
+  this.track = trackToSet;
+  this.interface.setTimeFrame( trackToSet.findOrCreateFrame(0) );
+
+}
+
+self.prototype.getTrack = function() {
+
+  return this.track;
 
 }
 

@@ -13,7 +13,8 @@ an.Editor = function() {
   this.newPath = null;
   this.pathList = [];
   this.clipBoard = [];
-  this.undoList = [];
+  this.frame = null;
+  this.track = null;
   this.onion = false;
 
   this.selectedPathList = [];
@@ -41,7 +42,8 @@ self.prototype.initialize = function() {
   this.newPath = null;
   this.pathList = [];
   this.clipBoard = [];
-  this.undoList = [];
+  this.frame = null;
+  this.track = null;
   this.onion = false;
 
   this.selectedPathList = [];

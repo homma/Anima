@@ -8,19 +8,36 @@ var self = an.Editor;
 
 /// change attribute ///////////////////////////////////////////////////////////
 
-self.prototype.setLineWidth = function(w) {
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.pathList[i].setLineWidth(w);
-  }
+/**
+ * @description set line width of a path
+ * @param {Path} p a path to set line width
+ * @param {Number} w width to set
+ */
+self.prototype.setLineWidthOfPath = function(p, w) {
+
+  p.setLineWidth(w);
+
+}
+
+self.prototype.getLineWidthOfPath = function(p) {
+
+  return p.getLineWidth();
+
 }
 
 /// translate(move) ////////////////////////////////////////////////////////////
 
 self.prototype.translateSelectedPaths = function(x, y) {
 
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].translate(x, y);
-  }
+  this.selectedPathList.forEach( function(v) {
+    this.translatePath(v, x, y);
+  }, this);
+
+}
+
+self.prototype.translatePath = function(p, x, y) {
+
+  p.translate(x, y);
 
 }
 
@@ -69,35 +86,16 @@ self.prototype.splitPath = function(path, curve, point) {
 
 /**
  * @description resize selected paths
- * @param {Number} fromX x coordinate of the origin of scale
- * @param {Number} fromY y coordinate of the origin of scale
- * @param {Number} scaleX horisontal scale factor
- * @param {Number} scaleY vertical scale factor
+ * @param {Path} p a path to resize
+ * @param {Number} fx x coordinate of the origin of scale
+ * @param {Number} fy y coordinate of the origin of scale
+ * @param {Number} sx horisontal scale factor
+ * @param {Number} sy vertical scale factor
  */
-self.prototype.resizeSelectedPaths = function(fromX, fromY, scaleX, scaleY) {
+self.prototype.resizePath = function(p, fx, fy, sx, sy) {
 
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].resize(fromX, fromY, scaleX, scaleY);
-  }
+  p.resize(fx, fy, sx, sy);
 
-}
-
-/**
- * @description scale selected paths
- * not yet implemented
- * @param {Number} x scaling factor of width
- * @param {Number} y scaling factor of height
- */
-self.prototype.scaleSelectedPaths = function(x, y) {
-
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].scale(x, y);
-  }
-
-}
-
-self.prototype.commitSize = function() {
-  // do something
 }
 
 /// rotate /////////////////////////////////////////////////////////////////////
@@ -116,13 +114,23 @@ self.prototype.rotateSelectedPaths = function(x, y, r) {
   var angle = this.editorMode.getRotateAngle();
   this.editorMode.setRotateAngle(r + angle);
 
-  for (var i = 0; i < this.selectedPathList.length; i++) {
-    this.selectedPathList[i].rotate(x, y, r);
-  }
+  this.selectedPathList.forEach( function(v) {
+    this.rotatePath(v, x, y, r);
+  }, this);
+
 }
 
-self.prototype.commitRotation = function() {
-  // do something
+/**
+ * @description rotate a path
+ * @param {Path} p a path to rotate
+ * @param {Number} x x coordinate of the center of the rotation
+ * @param {Number} y y coordinate of the center of the rotation
+ * @param {Number} r angle of the rotation (radian)
+ */
+self.prototype.rotatePath = function(p, x, y, r) {
+
+  p.rotate(x, y, r);
+
 }
 
 } // block

@@ -27,9 +27,9 @@ self.prototype.clear = function() {
 
 }
 
-self.prototype.delete = function() {
+self.prototype.deleteSelected = function() {
 
-  an.g.editor.delete();
+  an.g.editor.deleteSelected();
   an.g.editor.draw();
 
 }

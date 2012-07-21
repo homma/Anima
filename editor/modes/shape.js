@@ -24,6 +24,12 @@ self.prototype.setShape = function(s) {
 
 }
 
+self.prototype.getShape = function() {
+
+  return this.shape;
+
+}
+
 self.prototype.drawShape = function(ctx, x, y, w, h) {
 
   var p = new an.Path();
@@ -52,6 +58,10 @@ self.prototype.drawShape = function(ctx, x, y, w, h) {
 
 }
 
+/**
+ * @description create a shape
+ * @retuns {Path} newly created path (returns just for undo)
+ */
 self.prototype.createShape = function(x, y, w, h) {
 
   var p = new an.Path();
@@ -76,6 +86,8 @@ self.prototype.createShape = function(x, y, w, h) {
   }
 
   this.editor.addPath(p);
+
+  return p;
 
 }
 
