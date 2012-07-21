@@ -25,6 +25,16 @@ self.prototype.modifyPoint = function(curve, point, x, y) {
 
 }
 
+/**
+ * @description get a coordination of a point
+ * @returns { x: {Number}, y: {Number} } a coordination
+ */
+self.prototype.getPoint = function(curve, point) {
+
+  return curve.getPoint(point);
+
+}
+
 self.prototype.removePoint = function(curve, point) {
 
   curve.removePoint(point);

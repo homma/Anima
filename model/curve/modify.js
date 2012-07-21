@@ -55,6 +55,28 @@ self.prototype.reverse = function() {
 
 /// transform //////////////////////////////////////////////////////////////////
 
+self.prototype.getPoint = function(point) {
+
+  switch(point) {
+
+    case an.k.P0:
+      return { x: this.p0x, y: this.p0y };
+
+    case an.k.P1:
+      return { x: this.p1x, y: this.p1y };
+
+    case an.k.C0:
+      return { x: this.c0x, y: this.c0y };
+
+    case an.k.C1:
+      return { x: this.c1x, y: this.c1y };
+
+    default:
+      console.log("error in an.Curve#getPoint " + point);
+  }
+
+}
+
 self.prototype.setPoint = function(point, x, y) {
 
   switch(point) {

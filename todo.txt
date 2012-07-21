@@ -1,11 +1,11 @@
 
 # Tasks
 
-o implement multiple selection
+o implement multiple selection tool
 
-o implement reduce points
+o implement reduce points tool
 
-o implement smooth connect
+o implement smooth connect tool
 
 - implement a tool to enable / disable smooth connect
 
@@ -22,9 +22,11 @@ o implement commit / undo / redo
 
 o implement configuration tool
 
-o ui overhaul
+o implement keyboard short cuts
 
-o make libraries
+o user interface overhaul
+
+o make library parts
 
 o implement player
 

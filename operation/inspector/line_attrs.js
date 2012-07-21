@@ -9,14 +9,16 @@ var self = an.PathInspector;
 /// line attributes ////////////////////////////////////////////////////////////
 
 self.prototype.changeLineWidth = function(e) {
+
   var w = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].setLineWidth(w);
-  }
+  paths.forEach( function(v) {
+    editor.setLineWidthOfPath(v, w);
+  });
 
   an.g.editor.draw();
+
 }
 
 self.prototype.changeLineCap = function(style) {
@@ -27,6 +29,7 @@ self.prototype.changeLineCap = function(style) {
   }
 
   an.g.editor.draw();
+
 }
 
 self.prototype.changeLineJoin = function(style) {
@@ -37,6 +40,7 @@ self.prototype.changeLineJoin = function(style) {
   }
 
   an.g.editor.draw();
+
 }
 
 self.prototype.changeMiterLimit = function(e) {

@@ -81,15 +81,12 @@ self.prototype.resize = function(fromX, fromY, scaleX, scaleY) {
 
 /**
  * @description scale selected paths
- * not yet implemented
  * @param {Number} x scaling factor of width
  * @param {Number} y scaling factor of height
  */
 self.prototype.scale = function(x, y) {
 
   // p0 is not to be changed
-
-  // console.log("scale: x: " + x + " y: " + y);
 
   this.p1x = this.p0x + (this.p1x - this.p0x) * x;
   this.p1y = this.p0y + (this.p1y - this.p0y) * y;
