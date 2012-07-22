@@ -1,3 +1,9 @@
+/**
+ * @fileOverview editor interface, undo / redo interface
+ *   every update to the model must go through this interface
+ * @author Daisuke Homma
+ */
+
 new function() {  // block
 
 var editor;  // editor internal
@@ -140,23 +146,33 @@ self.prototype.isOnAnchorPoints = function(x, y) {
 ///////////////////////////////////////
 // animation related
 
-/** @needUndo */
+/**
+ * @needUndo
+ * @description set time frame (or surface) to edit
+ */
 self.prototype.setTimeFrame = function(frame) {
 
   // undo
   var old = editor.getTimeFrame();
-  an.g.undoManager.registerUndo(this, this.setTimeFrame, [old]);
+  if(old != null) {
+    an.g.undoManager.registerUndo(this, this.setTimeFrame, [old]);
+  }
 
   editor.setTimeFrame(frame);
 
 }
 
-/** @needUndo */
+/**
+ * @needUndo
+ * @description set animation track (or layer) to edit
+ */
 self.prototype.setTrack = function(track) {
 
   // undo
   var old = editor.getTrack();
-  an.g.undoManager.registerUndo(this, this.setTrack, [old]);
+  if(old != null) {
+    an.g.undoManager.registerUndo(this, this.setTrack, [old]);
+  }
 
   editor.setTrack(track);
 
@@ -200,7 +216,7 @@ self.prototype.removePoint = function(curve, point) {
 }
 
 ///////////////////////////////////////
-// modifying lines
+// modifying line attributes
 
 /**
  * @needUndo
@@ -215,6 +231,238 @@ self.prototype.setLineWidthOfPath = function(p, w) {
   an.g.undoManager.registerUndo(this, this.setLineWidthOfPath, [p, width]);
 
   editor.setLineWidthOfPath(p, w);
+
+}
+
+/**
+ * @needUndo
+ * @description set line cap style of a path
+ * @param {Path} p a path to set line cap style
+ * @param {String} style a style to be set
+ */
+self.prototype.setLineCapOfPath = function(p, style) {
+
+  // undo
+  var old = editor.getLineCapOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setLineCapOfPath, [p, old]);
+
+  editor.setLineCapOfPath(p, style);
+
+}
+
+/**
+ * @needUndo
+ * @description set line join style of a path
+ * @param {Path} p a path to set join style
+ * @param {String} style a style to be set
+ */
+self.prototype.setLineJoinOfPath = function(p, style) {
+
+  // undo
+  var old = editor.getLineJoinOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setLineJoinOfPath, [p, old]);
+
+  editor.setLineJoinOfPath(p, style);
+
+}
+
+/**
+ * @needUndo
+ * @description set miter limit of a path
+ * @param {Path} p a path to set miter limit
+ * @param {Number} n a value of miter limit
+ */
+self.prototype.setMiterLimitOfPath = function(p, n) {
+
+  // undo
+  var old = editor.getMiterLimitOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setMiterLimitOfPath, [p, old]);
+
+  editor.setMiterLimitOfPath(p, n);
+
+}
+
+/**
+ * @needUndo
+ * @description set close path or not
+ * @param {Path} p a path to set close path or not
+ * @param {Boolean} f close or not
+ */
+self.prototype.setClosePath = function(p, f) {
+
+  // undo
+  var old = editor.getClosePath(p);
+  an.g.undoManager.registerUndo(this, this.setClosePath, [p, old]);
+
+  editor.setClosePath(p, f);
+
+}
+
+/**
+ * @needUndo
+ * @description let a path to stroke itself
+ * @param {Path} p a path to set close path or not
+ * @param {Boolean} f stroke or not
+ */
+self.prototype.setStroke = function(p, f) {
+
+  // undo
+  var old = editor.getStroke(p);
+  an.g.undoManager.registerUndo(this, this.setStroke, [p, old]);
+
+  editor.setStroke(p, f);
+
+}
+
+/**
+ * @needUndo
+ * @description let a path to fill itself
+ * @param {Path} p a path to set close path or not
+ * @param {Boolean} f fill or not
+ */
+self.prototype.setFill = function(p, f) {
+
+  // undo
+  var old = editor.getFill(p);
+  an.g.undoManager.registerUndo(this, this.setFill, [p, old]);
+
+  editor.setFill(p, f);
+
+}
+
+///////////////////////////////////////
+// modifying color attributes
+// stroke
+
+/**
+ * @needUndo
+ * @description change hue to stroke a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of hue
+ */
+self.prototype.setStrokeHueOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getStrokeHueOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setStrokeHueOfPath, [p, old]);
+
+  editor.setStrokeHueOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change saturation to stroke a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of saturation
+ */
+self.prototype.setStrokeSaturationOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getStrokeSaturationOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setStrokeSaturationOfPath, [p, old]);
+
+  editor.setStrokeSaturationOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change luminance to stroke a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of luminance
+ */
+self.prototype.setStrokeLuminanceOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getStrokeLuminanceOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setStrokeLuminanceOfPath, [p, old]);
+
+  editor.setStrokeLuminanceOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change alpha to stroke a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of alpha
+ */
+self.prototype.setStrokeAlphaOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getStrokeAlphaOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setStrokeAlphaOfPath, [p, old]);
+
+  editor.setStrokeAlphaOfPath(p, v);
+
+}
+
+///////////////////////////////////////
+// modifying color attributes
+// fill
+
+/**
+ * @needUndo
+ * @description change hue to fill a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of hue
+ */
+self.prototype.setFillHueOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getFillHueOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setFillHueOfPath, [p, old]);
+
+  editor.setFillHueOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change saturation to fill a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of saturation
+ */
+self.prototype.setFillSaturationOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getFillSaturationOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setFillSaturationOfPath, [p, old]);
+
+  editor.setFillSaturationOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change luminance to fill a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of luminance
+ */
+self.prototype.setFillLuminanceOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getFillLuminanceOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setFillLuminanceOfPath, [p, old]);
+
+  editor.setFillLuminanceOfPath(p, v);
+
+}
+
+/**
+ * @needUndo
+ * @description change alpha to fill a path
+ * @param {Path} p a path to be changed
+ * @param {Number} v a value of alpha
+ */
+self.prototype.setFillAlphaOfPath = function(p, v) {
+
+  // undo
+  var old = editor.getFillAlphaOfPath(p);
+  an.g.undoManager.registerUndo(this, this.setFillAlphaOfPath, [p, old]);
+
+  editor.setFillAlphaOfPath(p, v);
 
 }
 
@@ -252,7 +500,6 @@ self.prototype.translatePath = function(p, x, y) {
 }
 
 /**
- * @needUndo
  * @description resize selected paths
  * @param {Number} fromX x coordinate of the origin of scale
  * @param {Number} fromY y coordinate of the origin of scale
@@ -292,9 +539,17 @@ self.prototype.resizePath = function(p, fx, fy, sx, sy) {
 self.prototype.rotateSelectedPaths = function(x, y, r) {
 
   editor.rotateSelectedPaths(x, y, r);
+
 }
 
+/**
+ * @needUndo
+ * @description rotate a path
+ */
 self.prototype.setRotation = function(r) {
+
+  // undo
+  // to be implemented
 
   // to be implemented
 
@@ -310,7 +565,7 @@ self.prototype.resetRotation = function() {
 }
 
 ///////////////////////////////////////
-// modify
+// modify path
 
 /**
  * @description check possibility of path connection and connect paths
@@ -329,7 +584,12 @@ self.prototype.connectPathIfPossible = function() {
  * @returns {} 
  */
 self.prototype.connectPaths = function(from, head, to, toHead) {
+
+  // undo
+  // to be implemented with split
+
   editor.connectPath(from, head, to, toHead);
+
 }
 
 /**
@@ -337,7 +597,12 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
  * @description split a path at a point
  */
 self.prototype.splitPath = function(path, curve, point) {
+
+  // undo
+  // to be implemented with connect
+
   editor.splitPath(path, curve, point);
+
 }
 
 /**
@@ -345,7 +610,12 @@ self.prototype.splitPath = function(path, curve, point) {
  * @subdivide each curves in selected paths
  */
 self.prototype.subdivideSelectedPaths = function() {
+
+  // undo
+  // to be implemented as duplicate and replace
+
   editor.subdivideSelectedPaths();
+
 }
 
 /**
@@ -353,7 +623,12 @@ self.prototype.subdivideSelectedPaths = function() {
  * @description split a curve
  */
 self.prototype.divideCurve = function(curve) {
+
+  // undo
+  // to be implemented as duplicate and replace
+
   editor.divideCurve(curve);
+
 }
 
 ///////////////////////////////////////
@@ -364,7 +639,7 @@ self.prototype.divideCurve = function(curve) {
  */
 self.prototype.commit = function() {
 
-  editor.commit();
+  an.g.undoManager.commit();
 
 }
 
@@ -377,6 +652,7 @@ self.prototype.commit = function() {
  */
 self.prototype.addPath = function(p) {
 
+  // undo
   an.g.undoManager.registerUndo(this, this.removePath, [p]);
 
   editor.addPath(p);
@@ -404,9 +680,14 @@ self.prototype.setNewPath = function(p) {
 
 }
 
-/** @needUndo */
+/**
+ * @needUndo
+ * @description remove a path
+ * @param {Path} p a path to be removed
+ */
 self.prototype.removePath = function(p) {
 
+  // undo
   an.g.undoManager.registerUndo(this, this.addPath, [p]);
 
   editor.removePath(p);
@@ -442,6 +723,7 @@ self.prototype.createShape = function(x, y, w, h) {
 
   var p = editor.createShape(x, y, w, h);
 
+  // undo
   an.g.undoManager.registerUndo(this, this.removePath, [p]);
 
 }

@@ -30,6 +30,8 @@ o make library parts
 
 o implement player
 
+o gradient support
+
 # Done
 
 o implement circle creator

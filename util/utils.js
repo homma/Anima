@@ -83,7 +83,7 @@ an.u.getMousePositionInCanvas = function(e) {
 }
 
 /**
- * @description bind an onclick function to an html element.
+ * @description bind an onclick function to a html element.
  */
 an.u.onClick = function(id, fun) {
 
@@ -93,14 +93,28 @@ an.u.onClick = function(id, fun) {
 }
 
 /**
- * @description bind an onchange function to an html element.
+ * @description bind an onchange function to a html element.
  */
 an.u.onChange = function(id, fun) {
 
     var elem = document.getElementById(id);
     elem.onchange = fun;
 
-  }
+}
+
+/**
+ * @description bind event handler to a html element
+ * @param {String} event kind of event
+ * @param {String} id an id of html tag to be handled
+ * @param {Function} fun a function to bind to a tag
+ */
+an.u.on = function(event, id, fun) {
+
+  var elem = document.getElementById(id);
+  var ev = 'on' + event;
+  elem[ev] = fun;
+
+}
 
 an.u.getCompoundBoundary = function(rect1, rect2) {
 

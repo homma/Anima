@@ -14,9 +14,9 @@ self.prototype.setStrokeHue = function(e) {
   // console.log("h: " + h);
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getStrokeColor().setHue(h);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setStrokeHueOfPath(v, h);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -28,9 +28,9 @@ self.prototype.setStrokeSaturation = function(e) {
   var s = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getStrokeColor().setSaturation(s);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setStrokeSaturationOfPath(v, s);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -42,9 +42,9 @@ self.prototype.setStrokeLuminance = function(e) {
   var l = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getStrokeColor().setLuminance(l);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setStrokeLuminanceOfPath(v, l);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -56,9 +56,9 @@ self.prototype.setStrokeAlpha = function(e) {
   var a = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getStrokeColor().setAlpha(a);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setStrokeAlphaOfPath(v, a);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -83,12 +83,12 @@ self.prototype.setStrokeColorFromView = function() {
 self.prototype.setStrokeColor = function(h, s, l, a) {
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getStrokeColor().setHue(h);
-    paths[i].getStrokeColor().setSaturation(s);
-    paths[i].getStrokeColor().setLuminance(l);
-    paths[i].getStrokeColor().setAlpha(a);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setStrokeHueOfPath(v, h);
+    an.g.editor.setStrokeSaturationOfPath(v, s);
+    an.g.editor.setStrokeLuminanceOfPath(v, l);
+    an.g.editor.setStrokeAlphaOfPath(v, a);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
