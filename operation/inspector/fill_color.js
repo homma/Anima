@@ -13,9 +13,9 @@ self.prototype.setFillHue = function(e) {
   var h = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getFillColor().setHue(h);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setFillHueOfPath(v, h);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -27,9 +27,9 @@ self.prototype.setFillSaturation = function(e) {
   var s = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getFillColor().setSaturation(s);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setFillSaturationOfPath(v, s);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -41,9 +41,9 @@ self.prototype.setFillLuminance = function(e) {
   var l = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getFillColor().setLuminance(l);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setFillLuminanceOfPath(v, l);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -55,9 +55,9 @@ self.prototype.setFillAlpha = function(e) {
   var a = e.target.valueAsNumber;
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getFillColor().setAlpha(a);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setFillAlphaOfPath(v, a);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();
@@ -78,12 +78,12 @@ self.prototype.setFillColorFromView = function() {
 self.prototype.setFillColor = function(h, s, l, a) {
 
   var paths = an.g.editor.getSelectedPaths();
-  for(var i = 0; i < paths.length; i++) {
-    paths[i].getFillColor().setHue(h);
-    paths[i].getFillColor().setSaturation(s);
-    paths[i].getFillColor().setLuminance(l);
-    paths[i].getFillColor().setAlpha(a);
-  }
+  paths.forEach( function(v) {
+    an.g.editor.setFillHueOfPath(v, h);
+    an.g.editor.setFillSaturationOfPath(v, s);
+    an.g.editor.setFillLuminanceOfPath(v, l);
+    an.g.editor.setFillAlphaOfPath(v, a);
+  });
 
   an.g.pathInspectorView.update();
   an.g.editor.draw();

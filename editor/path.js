@@ -6,25 +6,6 @@ new function() {  // block
 
 var self = an.Editor;
 
-/// change attribute ///////////////////////////////////////////////////////////
-
-/**
- * @description set line width of a path
- * @param {Path} p a path to set line width
- * @param {Number} w width to set
- */
-self.prototype.setLineWidthOfPath = function(p, w) {
-
-  p.setLineWidth(w);
-
-}
-
-self.prototype.getLineWidthOfPath = function(p) {
-
-  return p.getLineWidth();
-
-}
-
 /// translate(move) ////////////////////////////////////////////////////////////
 
 self.prototype.translateSelectedPaths = function(x, y) {
@@ -38,47 +19,6 @@ self.prototype.translateSelectedPaths = function(x, y) {
 self.prototype.translatePath = function(p, x, y) {
 
   p.translate(x, y);
-
-}
-
-/// connect ////////////////////////////////////////////////////////////////////
-
-/**
- * @description check possibility of path connection and connect paths
- */
-self.prototype.connectPathIfPossible = function() {
-  this.editorMode.connectPathIfPossible();
-}
-
-/**
- * @description connect two path
- * @param {Path} from source path (moving)
- * @param {Boolean} head connect head (of source path to target path)
- * @param {Path} to target path (not moving, fixed position)
- * @param {Boolean} toHead connect to head or not
- * @returns {}
- */
-self.prototype.connectPaths = function(from, head, to, toHead) {
-
-  if(!head) from.reverse();
-  if(toHead) to.reverse();
-
-  to.append(from);
-  this.removePath(from);
-
-}
-
-/// split //////////////////////////////////////////////////////////////////////
-
-/**
- * @description split a path
- * @param {Path} path a path to split
- * @param {Curve} curve a curve includes splitting point
- * @param {Number} point a position in the curve to split
- */
-self.prototype.splitPath = function(path, curve, point) {
-
-  path.splitPath(curve, point);
 
 }
 
@@ -130,6 +70,47 @@ self.prototype.rotateSelectedPaths = function(x, y, r) {
 self.prototype.rotatePath = function(p, x, y, r) {
 
   p.rotate(x, y, r);
+
+}
+
+/// connect ////////////////////////////////////////////////////////////////////
+
+/**
+ * @description check possibility of path connection and connect paths
+ */
+self.prototype.connectPathIfPossible = function() {
+  this.editorMode.connectPathIfPossible();
+}
+
+/**
+ * @description connect two path
+ * @param {Path} from source path (moving)
+ * @param {Boolean} head connect head (of source path to target path)
+ * @param {Path} to target path (not moving, fixed position)
+ * @param {Boolean} toHead connect to head or not
+ * @returns {}
+ */
+self.prototype.connectPaths = function(from, head, to, toHead) {
+
+  if(!head) from.reverse();
+  if(toHead) to.reverse();
+
+  to.append(from);
+  this.removePath(from);
+
+}
+
+/// split //////////////////////////////////////////////////////////////////////
+
+/**
+ * @description split a path
+ * @param {Path} path a path to split
+ * @param {Curve} curve a curve includes splitting point
+ * @param {Number} point a position in the curve to split
+ */
+self.prototype.splitPath = function(path, curve, point) {
+
+  path.splitPath(curve, point);
 
 }
 

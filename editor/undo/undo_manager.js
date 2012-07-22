@@ -10,11 +10,7 @@ an.UndoManager = function() {
 
   // _undoStack => [ [obj, fun, [args]], [obj, fun, [args]], ...]
 
-  this._undoStack = [];
-  this._redoStack = [];
-
-  this.undoStack = this._undoStack;
-  this.redoStack = this._redoStack;
+  this.initUndoManager();
 
   an.g.undoManager = this;
 
@@ -46,18 +42,32 @@ self.prototype.redo = function() {
 }
 
 self.prototype.prepareForUndo = function() {
+
   this.undoStack = this._redoStack;
+
 }
 
 self.prototype.cleanUpForUndo = function() {
+
   this.undoStack = this._undoStack;
+
 }
 
 self.prototype.registerUndo = function(obj, fun, args) {
+
   this.undoStack.push([obj, fun, args]);
+
+}
+
+self.prototype.commit = function() {
+
+  // push 'commit' as a commit point
+  this.undoStack.push('commit');
+
 }
 
 self.prototype.shouldRegister = function(obj, fun) {
+
   var n = this.undoStack.length;
   if(n == 0) return true;
 
@@ -66,11 +76,17 @@ self.prototype.shouldRegister = function(obj, fun) {
   if( (undoEntry[0] == obj) && (undoEntry[1] == fun) ) return false;
 
   return true;
+
 }
 
 self.prototype.initUndoManager = function() {
+
   this._undoStack = [];
   this._redoStack = [];
+
+  this.undoStack = this._undoStack;
+  this.redoStack = this._redoStack;
+
 }
 
 } // block

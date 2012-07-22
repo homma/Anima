@@ -20,6 +20,10 @@ self.prototype.import = function(obj) {
   an.g.editor.initialize();
   an.g.animation.initialize();
 
+  // caring for undo
+  // we temporarily initialize the undo manager here. but this is to be fixed.
+  an.g.undoManager.initUndoManager();
+
   // import
   an.g.animation.dataImport(obj.animation);
 

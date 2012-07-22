@@ -164,34 +164,51 @@ self.prototype.duplicate = function() {
 
   var newPath = new an.Path();
 
-  this.edges.forEach(function(edg) {
+  this.edges.forEach( function(edg) {
     newPath.addEdge( edg.duplicate() );
   });
 
-  this.copyAttributes(newPath);
+  this.copyAttributes(this, newPath);
 
   return newPath;
 
 }
 
-self.prototype.copyAttributes = function(to) {
+self.prototype.copyAttributes = function(from, to) {
 
-  to.complete = this.complete;
-  to.closePath = this.closePath;
-  to.lineWidth = this.lineWidth;
-  to.lineCap = this.lineCap;
-  to.lineJoin = this.lineJoin;
-  to.miterLimit = this.miterLimit;
-  to.fill = this.fill;
-  to.fillColor = this.fillColor.duplicate();
-  to.fillStyle = this.fillStyle;
-  to.stroke = this.stroke;
-  to.strokeColor = this.strokeColor.duplicate();
-  to.strokeStyle = this.strokeStyle;
-  to.shadowColor = this.shadowColor;
-  to.shadowOffsetX = this.shadowOffsetX;
-  to.shadowOffsetY = this.shadowOffsetY;
-  to.shadowBlur = this.shadowBlur;
+  to.complete = from.complete;
+  to.closePath = from.closePath;
+  to.lineWidth = from.lineWidth;
+  to.lineCap = from.lineCap;
+  to.lineJoin = from.lineJoin;
+  to.miterLimit = from.miterLimit;
+  to.fill = from.fill;
+  to.fillColor = from.fillColor.duplicate();
+  to.fillStyle = from.fillStyle;
+  to.stroke = from.stroke;
+  to.strokeColor = from.strokeColor.duplicate();
+  to.strokeStyle = from.strokeStyle;
+  to.shadowColor = from.shadowColor;
+  to.shadowOffsetX = from.shadowOffsetX;
+  to.shadowOffsetY = from.shadowOffsetY;
+  to.shadowBlur = from.shadowBlur;
+
+}
+
+/// replace this path with another path ////////////////////////////////////////
+
+self.prototype.replace = function(from) {
+
+  this.initPath();
+
+  from.edges.forEach( function(v) {
+
+    // duplicates may not be necessary
+    this.addEdge(v.duplicate());
+
+  });
+
+  this.copyAttributes(from, this);
 
 }
 
@@ -215,7 +232,7 @@ self.prototype.splitPath = function(curve, point) {
   if(idx == this.edges.length) { return; }
 
   var newPath = new an.Path();
-  this.copyAttributes(newPath);
+  this.copyAttributes(this, newPath);
 
   for(var i = idx; i < this.edges.length; i++) {
     newPath.addEdge( this.edges[i].duplicate() );
