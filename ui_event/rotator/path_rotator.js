@@ -63,8 +63,9 @@ self.prototype.hitTestPath = function(e) {
   var y = position.y;
 
   // hit test to select path
-  var hitPath = an.g.editor.isOnPath(x, y);
-  if(hitPath) {
+  var hitInfo = an.g.editor.isOnPath(x, y);
+  if(hitInfo) {
+    var hitPath = hitInfo.path;
 
     if( an.g.editor.isSelectedPath(hitPath) ) {
 

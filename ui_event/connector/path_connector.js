@@ -29,8 +29,9 @@ self.prototype.test = function(e) {
   var y = position.y;
 
   // hit test (path for move)
-  this.hitPath = an.g.editor.isOnPath(x, y);
-  if(this.hitPath) {
+  var hitInfo = an.g.editor.isOnPath(x, y);
+  if(hitInfo) {
+    this.hitPath = hitInfo.path;
 
     var selectedAlready = an.g.editor.isSelectedPath(this.hitPath);
 

@@ -197,18 +197,18 @@ self.prototype.copyAttributes = function(from, to) {
 
 /// replace this path with another path ////////////////////////////////////////
 
-self.prototype.replace = function(from) {
+self.prototype.replaceWith = function(newPath) {
 
   this.initPath();
 
-  from.edges.forEach( function(v) {
+  newPath.edges.forEach( function(v) {
 
     // duplicates may not be necessary
     this.addEdge(v.duplicate());
 
-  });
+  },this);
 
-  this.copyAttributes(from, this);
+  this.copyAttributes(newPath, this);
 
 }
 

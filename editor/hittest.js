@@ -21,9 +21,8 @@ self.prototype.onCurve = function(x, y) {
 
   for(var i = 0; i < this.pathList.length; i++) {
 
-    var curve = this.pathList[i].onCurve(ctx, x, y);
-    if( curve ) {
-      ret = curve;
+    ret = this.pathList[i].onCurve(ctx, x, y);
+    if( ret ) {
       break;
     }
 
@@ -46,9 +45,8 @@ self.prototype.onPath = function(x, y) {
 
   for(var i = 0; i < this.pathList.length; i++) {
 
-    var curve = this.pathList[i].onPath(ctx, x, y);
-    if( curve ) {
-      ret = this.pathList[i];
+    ret = this.pathList[i].onPath(ctx, x, y);
+    if( ret ) {
       break;
     }
 
@@ -61,23 +59,7 @@ self.prototype.onPath = function(x, y) {
 // not used now
 self.prototype.inPath = function(x, y) {
 
-  var path = null;
-
-  path = this.onPath(x, y);
-  if( path ) { return path; };
-
-/*
-  var ctx = this.canvas.canvas.getContext('2d');
-
-  for(var i = 0; i < this.pathList.length; i++) {
-    if( this.pathList[i].isPointInPath(ctx, x, y) ) {
-      path = this.pathList[i];
-      break;
-    }
-  }
-*/
-
-  return path;
+  return this.onPath(x, y);
 
 }
 
