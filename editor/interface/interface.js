@@ -106,7 +106,7 @@ self.prototype.draw = function() {
  * @description test the coordinate is on a curve or not
  * @param {Number} x x-coordinate
  * @param {Number} y y-coordinate
- * @returns {Curve|null} a curve when hit
+ * @returns { {path, curve} | null } hit info or null
  */
 self.prototype.isOnCurve = function(x, y) {
   return editor.onCurve(x, y);
@@ -116,7 +116,7 @@ self.prototype.isOnCurve = function(x, y) {
  * @description test (x, y) is on path
  * @param {Number} x x coordinate
  * @param {Number} y y coordinate
- * @returns {Path|null} hit path or null
+ * @returns { {path, curve} | {path} | null } hit info or null
  */
 self.prototype.isOnPath = function(x, y) {
   return editor.onPath(x, y);
@@ -203,15 +203,30 @@ self.prototype.modifyPoint = function(curve, point, x, y) {
 /**
  * @needUndo
  * @description remove a point from a path
- * @param {Curve} a curve from which a point is removed
- * @param {Number} point in the curve to remove
+ * @param {Path} path a path which includes a curve of the point to be removed
+ * @param {Curve} curve a curve from which a point is removed
+ * @param {Number} point a point in the curve to be removed
  */
-self.prototype.removePoint = function(curve, point) {
+self.prototype.removePoint = function(path, curve, point) {
 
   // undo
-  // to be implemented
+  var p = path.duplicate();
+  an.g.undoManager.registerUndo(this, this.unremovePoint,
+                                [p, path, curve, point]);
 
   editor.removePoint(curve, point);
+
+}
+
+/**
+ * @description an opposite operation to removePoint() for undo/redo
+ */
+self.prototype.unremovePoint = function(newPath, path, curve, point) {
+
+  // undo
+  an.g.undoManager.registerUndo(this, this.removePoint, [path, curve, point]);
+
+  path.replaceWith(newPath);
 
 }
 
@@ -606,30 +621,72 @@ self.prototype.splitPath = function(path, curve, point) {
 }
 
 /**
- * @needUndo
  * @subdivide each curves in selected paths
  */
 self.prototype.subdivideSelectedPaths = function() {
 
-  // undo
-  // to be implemented as duplicate and replace
+  var lst = editor.getSelectedPaths();
+  lst.forEach(function(v) {
+    this.subdividePath(v);
+  }, this);
 
-  editor.subdivideSelectedPaths();
+}
+
+/**
+ * @needUndo
+ * @subdivide a curve
+ * @param {Path} path a path to be subdivided
+ */
+self.prototype.subdividePath = function(path) {
+
+  // undo
+  var p = path.duplicate();
+  an.g.undoManager.registerUndo(this, this.unsubdividePath, [p, path]);
+
+  editor.subdividePath(path);
+
+}
+
+/**
+ * @description an opposite operation to subdividePath() for undo/redo
+ */
+self.prototype.unsubdividePath = function(newPath, path) {
+
+  // undo
+  an.g.undoManager.registerUndo(this, this.subdividePath, [path]);
+
+  path.replaceWith(newPath);
 
 }
 
 /**
  * @needUndo
  * @description split a curve
+ * @param {Path} path a path which contains a curve to be divided
+ * @param {Curve} curve a curve to be divided
  */
-self.prototype.divideCurve = function(curve) {
+self.prototype.divideCurve = function(path, curve) {
 
   // undo
-  // to be implemented as duplicate and replace
+  var p = path.duplicate();
+  an.g.undoManager.registerUndo(this, this.undivideCurve, [p, path, curve]);
 
   editor.divideCurve(curve);
 
 }
+
+/**
+ * @description an opposite operation to removePoint() for undo/redo
+ */
+self.prototype.undivideCurve = function(newPath, path, curve) {
+
+  // undo
+  an.g.undoManager.registerUndo(this, this.divideCurve, [path, curve]);
+
+  path.replaceWith(newPath);
+
+}
+
 
 ///////////////////////////////////////
 // commit for undo / redo

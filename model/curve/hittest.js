@@ -20,15 +20,15 @@ self.prototype.onCurve = function(ctx, x, y, w) {
   var depth = 10;
   var minSize = w + margin + 8;
   var on = this.onSubCurve(x, y, depth, margin, minSize);
-  if(on) { return true; };
+  if(on) { return { curve: this } };
 
   // above lines should be replaced with:
   // var on = this.outLinePath(m).isPointInPath(ctx, x, y);
-  // if(on) { return true; };
+  // if(on) { return { curve: this } };
 
   // on the edge of the curve
   var onAnchor = this.isOnAnchorPoints(ctx, x, y, w);
-  if(onAnchor) { return true; };
+  if(onAnchor) { return { curve: this } };
 
   return false;
 

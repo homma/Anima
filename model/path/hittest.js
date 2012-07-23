@@ -20,9 +20,10 @@ self.prototype.onCurve = function(ctx, x, y) {
   var ret = null;
 
   for (var i = 0; this.edges.length > i; i++) {
-    var hit = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
-    if(hit) {
-      ret = this.edges[i]
+    var hitInfo = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
+    if(hitInfo) {
+      hitInfo.path = this;
+      return hitInfo;
       break;
     }
   }
@@ -40,14 +41,17 @@ self.prototype.onCurve = function(ctx, x, y) {
  */
 self.prototype.onPath = function(ctx, x, y) {
 
-  var hit = false;
+  var hitInfo = false;
 
   for (var i = 0; this.edges.length > i; i++) {
-    hit = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
-    if(hit) break;
+    hitInfo = this.edges[i].onCurve(ctx, x, y, this.lineWidth);
+    if(hitInfo) break;
   }
 
-  if(hit) return hit;
+  if(hitInfo) {
+    hitInfo.path = this;
+    return hitInfo;
+  }
 
   // check closing edge if this.closePath == true
   if( this.getClosePath() ) {
@@ -55,22 +59,25 @@ self.prototype.onPath = function(ctx, x, y) {
     var p1 = this.getBeginPoint();
 
     var cv = new an.Curve(p0.x, p0.y, p0.x, p0.y, p1.x, p1.y, p1.x, p1.y);
-    hit = cv.onCurve(ctx, x, y, this.lineWidth);
+    hitInfo = cv.onCurve(ctx, x, y, this.lineWidth);
 
   }
 
-  if(hit) return hit;
+  if(hitInfo) {
+    hitInfo.path = this;
+    return hitInfo;
+  }
 
   if( this.getFill() ) {
-    hit = this.isPointInPath(ctx, x, y);
+    hitInfo = this.isPointInPath(ctx, x, y);
   }
 
-  return hit;
+  return hitInfo;
 }
 
 self.prototype.isPointInPath = function(ctx, x, y) {
 
-  var res = false;
+  var hit = false;
 
   ctx.save();
 
@@ -87,11 +94,15 @@ self.prototype.isPointInPath = function(ctx, x, y) {
     ctx.closePath();
   }
 
-  res = ctx.isPointInPath(x, y);
+  hit = ctx.isPointInPath(x, y);
 
   ctx.restore();
 
-  return res;
+  if(hit) {
+    return { path: this }
+  } else {
+    return hit;
+  }
 
 }
 

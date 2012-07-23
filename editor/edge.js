@@ -35,21 +35,24 @@ self.prototype.getPoint = function(curve, point) {
 
 }
 
+/**
+ * @description remove a point from a curve
+ * @param {Curve} curve a curve from which a point will be removed
+ * @param {Number} point a position of the point to be removed
+ */
 self.prototype.removePoint = function(curve, point) {
 
   curve.removePoint(point);
 
 }
 
-self.prototype.subdivideSelectedPaths = function() {
+/**
+ * @description subdivide a path
+ * @param {Path} path a path to be subdivided
+ */
+self.prototype.subdividePath = function(path) {
 
-  var plist = this.getSelectedPaths();
-
-  plist.forEach(function(p) {
-
-    p.subdivide();
-
-  });
+  path.subdivide();
 
 }
 
