@@ -66,6 +66,8 @@ self.prototype.commit = function() {
 
 }
 
+/**
+ * @description folding undo registration
 self.prototype.shouldRegister = function(obj, fun) {
 
   var n = this.undoStack.length;
@@ -78,6 +80,7 @@ self.prototype.shouldRegister = function(obj, fun) {
   return true;
 
 }
+*/
 
 self.prototype.initUndoManager = function() {
 
