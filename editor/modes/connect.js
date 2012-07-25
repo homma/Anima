@@ -60,7 +60,7 @@ self.prototype.connectPathIfPossible = function() {
   var conn = this.findConnection(path);
   if(conn) {
     // connect paths
-    this.editor.connectPaths(conn.from, conn.head, conn.to, conn.toHead);
+    an.g.editor.connectPaths(conn.from, conn.head, conn.to, conn.toHead);
   }
 }
 

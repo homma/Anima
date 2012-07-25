@@ -110,7 +110,7 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
  */
 self.prototype.splitPath = function(path, curve, point) {
 
-  path.splitPath(curve, point);
+  return path.splitPath(curve, point);
 
 }
 

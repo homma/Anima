@@ -238,11 +238,14 @@ self.prototype.splitPath = function(curve, point) {
     newPath.addEdge( this.edges[i].duplicate() );
   }
 
-  // add newly created path
+  // add newly created path. it induces registering undo
   an.g.editor.addPath(newPath);
 
   // remove unnecessary edges
   this.removeEdgesAfter(idx);
+
+  // returns newly created. it may be used for undo
+  return newPath;
 
 }
 
