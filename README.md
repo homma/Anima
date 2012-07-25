@@ -12,11 +12,8 @@ and is in its early stage of development.
 Demo
 ====
 
-You can try live demo at here.
-
-  <http://homma.github.com/Anima/anima.html>
-
-It is tested with Safari and Chrome on Mac OS X.
+You can try live demo at <http://homma.github.com/Anima/anima.html> .
+It has been tested with Safari on Mac OS X.
 
 License
 =======
