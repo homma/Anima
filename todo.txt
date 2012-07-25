@@ -32,6 +32,10 @@ o implement player
 
 o gradient support
 
+o key frame animation
+
+o create documents
+
 # Done
 
 o implement circle creator

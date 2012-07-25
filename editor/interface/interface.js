@@ -601,9 +601,23 @@ self.prototype.connectPathIfPossible = function() {
 self.prototype.connectPaths = function(from, head, to, toHead) {
 
   // undo
-  // to be implemented with split
+  var p1 = to.duplicate();
+  var p2 = from.duplicate();
+  an.g.undoManager.registerUndo(this, this.unconnectPaths,
+                                [p1, p2, from, head, to, toHead]);
 
-  editor.connectPath(from, head, to, toHead);
+  editor.connectPaths(from, head, to, toHead);
+
+}
+
+self.prototype.unconnectPaths = function(p1, p2, from, head, to, toHead) {
+
+  to.replaceWith(p1);
+  from.replaceWith(p2);
+  editor.addPath(from);
+
+  an.g.undoManager.registerUndo(this, this.connectPaths,
+                                [from, head, to, toHead]);
 
 }
 
@@ -614,9 +628,20 @@ self.prototype.connectPaths = function(from, head, to, toHead) {
 self.prototype.splitPath = function(path, curve, point) {
 
   // undo
-  // to be implemented with connect
+  var p = path.duplicate();
+  an.g.undoManager.registerUndo(this, this.unsplitPath,
+                                [p, path, curve, point]);
 
   editor.splitPath(path, curve, point);
+
+}
+
+self.prototype.unsplitPath = function(oldPath, path, curve, point) {
+
+  path.replaceWith(oldPath);
+
+  // undo
+  an.g.undoManager.registerUndo(this, this.splitPath, [path, curve, point]);
 
 }
 
@@ -650,12 +675,12 @@ self.prototype.subdividePath = function(path) {
 /**
  * @description an opposite operation to subdividePath() for undo/redo
  */
-self.prototype.unsubdividePath = function(newPath, path) {
+self.prototype.unsubdividePath = function(oldPath, path) {
+
+  path.replaceWith(oldPath);
 
   // undo
   an.g.undoManager.registerUndo(this, this.subdividePath, [path]);
-
-  path.replaceWith(newPath);
 
 }
 
@@ -724,14 +749,9 @@ self.prototype.getNewPath = function(p) {
 }
 
 /**
- * @needUndo
  * @description get current new path
  */
 self.prototype.setNewPath = function(p) {
-
-  // undo
-  var old = editor.getNewPath();
-  an.g.undoManager.registerUndo(this, this.setNewPath, [old]);
 
   editor.setNewPath(p);
 
@@ -755,14 +775,13 @@ self.prototype.removePath = function(p) {
 // shape
 
 /**
- * @needUndo
  * @description select a shape which is used in shape creator mode
  */
 self.prototype.setShape = function(s) {
 
-  // undo
-  var old = editor.getShape();
-  an.g.undoManager.registerUndo(this, this.setShape, [old]);
+  // we don't do undo here
+  // var old = editor.getShape();
+  // n.g.undoManager.registerUndo(this, this.setShape, [old]);
 
   editor.setShape(s);
 
@@ -792,14 +811,14 @@ self.prototype.drawShape = function(x, y, w, h) {
 ///////////////////////////////////////
 // path selection
 
-/** @needUndo */
 self.prototype.setEditorMode = function(mode) {
 
-  // undo
-  var old = editor.getEditorMode();
-  an.g.undoManager.registerUndo(this, this.setEditorMode, [old]);
+  // we don't do undo here
+  // var old = editor.getEditorMode();
+  // an.g.undoManager.registerUndo(this, this.setEditorMode, [old]);
 
   editor.setEditorMode(mode);
+
 }
 
 self.prototype.getSelectedPaths = function() {
