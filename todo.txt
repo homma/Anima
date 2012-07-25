@@ -1,24 +1,25 @@
 
 # Tasks
 
+o implement undo / redo operation
+
+o implement commit operation for group undo/redo
+
 o implement multiple selection tool
 
 o implement reduce points tool
 
 o implement smooth connect tool
-
 - implement a tool to enable / disable smooth connect
 
 o separate tools into groups
-  path tools
-  point tools
-  selected path tools
+- path tools
+- point tools
+- selected path tools
 
 o implement Curve#outLine method
 
 o implement path actions like smoothen, merge pathes
-
-o implement commit / undo / redo
 
 o implement configuration tool
 
@@ -26,15 +27,16 @@ o implement keyboard short cuts
 
 o user interface overhaul
 
-o make library parts
+o move codes into libraries
 
 o implement player
 
 o gradient support
 
-o key frame animation
+o key frame animation support
+- a kind of...
 
-o create documents
+o create usage documents
 
 # Done
 
